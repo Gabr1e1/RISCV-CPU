@@ -1,0 +1,215 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Oct 24 21:34:33 2019
+# Process ID: 15240
+# Current directory: C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16152 C:\Users\zhang\Documents\Computer Architecture\ComputerArch2019\adder\adder.xpr
+# Log file: C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/vivado.log
+# Journal file: C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.xpr}
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'test_adder' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj test_adder_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.srcs/sources_1/new/adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module full_adder
+INFO: [VRFC 10-311] analyzing module adder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/test_adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module test_adder
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim'
+"xelab -wto a72aa3c47ff743e392667e465dbcb1c8 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test_adder_behav xil_defaultlib.test_adder xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto a72aa3c47ff743e392667e465dbcb1c8 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test_adder_behav xil_defaultlib.test_adder xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-3833] width of actual 15 differs from expected width of formal 1 or 14 for port 'o' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.srcs/sources_1/new/adder.v:45]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'test_adder' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj test_adder_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.srcs/sources_1/new/adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module full_adder
+INFO: [VRFC 10-311] analyzing module adder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/test_adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module test_adder
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim'
+"xelab -wto a72aa3c47ff743e392667e465dbcb1c8 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test_adder_behav xil_defaultlib.test_adder xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto a72aa3c47ff743e392667e465dbcb1c8 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test_adder_behav xil_defaultlib.test_adder xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'c1' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.srcs/sources_1/new/adder.v:44]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.full_adder
+Compiling module xil_defaultlib.adder_default
+Compiling module xil_defaultlib.test_adder
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot test_adder_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "test_adder_behav -key {Behavioral:sim_1:Functional:test_adder} -tclbatch {test_adder.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source test_adder.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+TESTCASE           1: 13604 + 24193 = 37797 carry: 0
+TESTCASE           2: 54793 + 22115 = 11372 carry: 1
+TESTCASE           3: 31501 + 39309 =  5274 carry: 1
+TESTCASE           4: 33893 + 21010 = 54903 carry: 0
+TESTCASE           5: 58113 + 52493 = 45070 carry: 1
+TESTCASE           6: 61814 + 52541 = 48819 carry: 1
+TESTCASE           7: 22509 + 63372 = 20345 carry: 1
+TESTCASE           8: 59897 +  9414 =  3775 carry: 1
+TESTCASE           9: 33989 + 53930 = 22383 carry: 1
+TESTCASE          10: 63461 + 29303 = 27228 carry: 1
+TESTCASE          11: 54802 + 56207 = 45473 carry: 1
+TESTCASE          12: 27122 + 38606 =   192 carry: 1
+TESTCASE          13: 31464 + 20165 = 51629 carry: 0
+TESTCASE          14: 18780 + 10429 = 29209 carry: 0
+TESTCASE          15: 22573 +  9829 = 32402 carry: 0
+TESTCASE          16: 25187 + 34570 = 59757 carry: 0
+TESTCASE          17:  8832 +  8480 = 17312 carry: 0
+TESTCASE          18: 17834 + 52381 =  4679 carry: 1
+TESTCASE          19: 16022 + 47123 = 63145 carry: 0
+TESTCASE          20: 14349 + 54867 =  3680 carry: 1
+TESTCASE          21: 56683 + 10965 =  2112 carry: 1
+TESTCASE          22: 18946 + 16046 = 34992 carry: 0
+TESTCASE          23: 59677 + 29391 = 23532 carry: 1
+TESTCASE          24: 18723 + 25866 = 44589 carry: 0
+TESTCASE          25:  2762 + 19516 = 22278 carry: 0
+TESTCASE          26: 48626 + 24970 =  8060 carry: 1
+TESTCASE          27: 45889 + 13528 = 59417 carry: 0
+TESTCASE          28: 62328 +  4745 =  1537 carry: 1
+TESTCASE          29:  3563 + 26038 = 29601 carry: 0
+TESTCASE          30: 63942 +  5038 =  3444 carry: 1
+TESTCASE          31:   700 + 56618 = 57318 carry: 0
+TESTCASE          32: 39435 + 48753 = 22652 carry: 1
+TESTCASE          33: 16773 + 21839 = 38612 carry: 0
+TESTCASE          34: 24635 + 13114 = 37749 carry: 0
+TESTCASE          35: 12926 + 19221 = 32147 carry: 0
+TESTCASE          36: 39921 + 19417 = 59338 carry: 0
+TESTCASE          37:  1890 + 64332 =   686 carry: 1
+TESTCASE          38: 21919 + 41359 = 63278 carry: 0
+TESTCASE          39: 43512 + 24759 =  2735 carry: 1
+TESTCASE          40: 22175 + 37980 = 60155 carry: 0
+TESTCASE          41: 49243 + 14217 = 63460 carry: 0
+TESTCASE          42: 12873 + 16080 = 28953 carry: 0
+TESTCASE          43: 49367 + 64593 = 48424 carry: 1
+TESTCASE          44: 12182 + 32524 = 44706 carry: 0
+TESTCASE          45: 52930 + 60872 = 48266 carry: 1
+TESTCASE          46: 23159 + 60733 = 18356 carry: 1
+TESTCASE          47: 56082 +   126 = 56208 carry: 0
+TESTCASE          48: 33133 + 59193 = 26790 carry: 1
+TESTCASE          49: 36639 + 63187 = 34290 carry: 1
+TESTCASE          50: 12165 + 34936 = 47101 carry: 0
+TESTCASE          51: 22875 + 19273 = 42148 carry: 0
+TESTCASE          52: 44607 + 44842 = 23913 carry: 1
+TESTCASE          53: 25432 + 14470 = 39902 carry: 0
+TESTCASE          54:  3214 + 62108 = 65322 carry: 0
+TESTCASE          55: 39418 + 48166 = 22048 carry: 1
+TESTCASE          56:  6003 + 46243 = 52246 carry: 0
+TESTCASE          57: 43055 + 37555 = 15074 carry: 1
+TESTCASE          58: 22111 +  3396 = 25507 carry: 0
+TESTCASE          59: 65015 + 14027 = 13506 carry: 1
+TESTCASE          60:  6886 + 56154 = 63040 carry: 0
+TESTCASE          61: 49449 + 58093 = 42006 carry: 1
+TESTCASE          62: 27866 + 46693 =  9023 carry: 1
+TESTCASE          63: 58037 + 38111 = 30612 carry: 1
+TESTCASE          64:  6521 + 65348 =  6333 carry: 1
+TESTCASE          65:  3280 +  2858 =  6138 carry: 0
+TESTCASE          66: 44459 + 53006 = 31929 carry: 1
+TESTCASE          67: 44508 + 48282 = 27254 carry: 1
+TESTCASE          68: 29437 +   707 = 30144 carry: 0
+TESTCASE          69: 60758 + 59726 = 54948 carry: 1
+TESTCASE          70: 30311 + 13322 = 43633 carry: 0
+TESTCASE          71: 47542 + 35384 = 17390 carry: 1
+TESTCASE          72: 34681 + 50360 = 19505 carry: 1
+TESTCASE          73: 49044 + 23955 =  7463 carry: 1
+TESTCASE          74: 11268 + 51801 = 63069 carry: 0
+TESTCASE          75: 27099 + 56909 = 18472 carry: 1
+TESTCASE          76: 47065 +  9837 = 56902 carry: 0
+TESTCASE          77: 57974 + 18890 = 11328 carry: 1
+TESTCASE          78: 11702 + 29077 = 40779 carry: 0
+TESTCASE          79:  6726 + 39684 = 46410 carry: 0
+TESTCASE          80: 25079 +  1897 = 26976 carry: 0
+TESTCASE          81: 47796 + 36232 = 18492 carry: 1
+TESTCASE          82: 55592 +  1069 = 56661 carry: 0
+TESTCASE          83: 12487 + 39982 = 52469 carry: 0
+TESTCASE          84: 58376 + 17692 = 10532 carry: 1
+TESTCASE          85: 42749 +  1833 = 44582 carry: 0
+TESTCASE          86: 36892 + 26502 = 63394 carry: 0
+TESTCASE          87:  2266 + 50749 = 53015 carry: 0
+TESTCASE          88: 42854 + 50288 = 27606 carry: 1
+TESTCASE          89:  1139 + 39354 = 40493 carry: 0
+TESTCASE          90: 45918 + 31226 = 11608 carry: 1
+TESTCASE          91:  1493 + 63002 = 64495 carry: 0
+TESTCASE          92:   185 + 24887 = 25072 carry: 0
+TESTCASE          93: 14230 +  8640 = 22870 carry: 0
+TESTCASE          94: 40742 +  6838 = 47580 carry: 0
+TESTCASE          95: 33661 +  4060 = 37721 carry: 0
+TESTCASE          96: 22406 + 65400 = 22270 carry: 1
+TESTCASE          97: 39806 + 32987 =  7257 carry: 1
+TESTCASE          98: 46799 + 11129 = 57928 carry: 0
+TESTCASE          99: 58618 + 61025 = 54107 carry: 1
+TESTCASE         100:  2327 + 30881 = 33208 carry: 0
+Congratulations! You have passed all of the tests.
+$finish called at time : 100 ns : File "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/test_adder.v" Line 43
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'test_adder_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 933.848 ; gain = 29.516
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 24 21:44:07 2019...

@@ -76,4 +76,29 @@ TESTCASE          73: 49044 + 23955 =  7463 carry: 1
 TESTCASE          74: 11268 + 51801 = 63069 carry: 0
 TESTCASE          75: 27099 + 56909 = 18472 carry: 1
 TESTCASE          76: 47065 +  9837 = 56902 carry: 0
-TESTCASE          77
+TESTCASE          77: 57974 + 18890 = 11328 carry: 1
+TESTCASE          78: 11702 + 29077 = 40779 carry: 0
+TESTCASE          79:  6726 + 39684 = 46410 carry: 0
+TESTCASE          80: 25079 +  1897 = 26976 carry: 0
+TESTCASE          81: 47796 + 36232 = 18492 carry: 1
+TESTCASE          82: 55592 +  1069 = 56661 carry: 0
+TESTCASE          83: 12487 + 39982 = 52469 carry: 0
+TESTCASE          84: 58376 + 17692 = 10532 carry: 1
+TESTCASE          85: 42749 +  1833 = 44582 carry: 0
+TESTCASE          86: 36892 + 26502 = 63394 carry: 0
+TESTCASE          87:  2266 + 50749 = 53015 carry: 0
+TESTCASE          88: 42854 + 50288 = 27606 carry: 1
+TESTCASE          89:  1139 + 39354 = 40493 carry: 0
+TESTCASE          90: 45918 + 31226 = 11608 carry: 1
+TESTCASE          91:  1493 + 63002 = 64495 carry: 0
+TESTCASE          92:   185 + 24887 = 25072 carry: 0
+TESTCASE          93: 14230 +  8640 = 22870 carry: 0
+TESTCASE          94: 40742 +  6838 = 47580 carry: 0
+TESTCASE          95: 33661 +  4060 = 37721 carry: 0
+TESTCASE          96: 22406 + 65400 = 22270 carry: 1
+TESTCASE          97: 39806 + 32987 =  7257 carry: 1
+TESTCASE          98: 46799 + 11129 = 57928 carry: 0
+TESTCASE          99: 58618 + 61025 = 54107 carry: 1
+TESTCASE         100:  2327 + 30881 = 33208 carry: 0
+Congratulations! You have passed all of the tests.
+$finish called at time : 100 ns : File "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/adder/adder.sim/test_adder.v" Line 43

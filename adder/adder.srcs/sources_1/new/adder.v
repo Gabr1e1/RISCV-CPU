@@ -14,36 +14,32 @@
  *
  */
  
-	// TODO: Write the ports of this module here
-	//
-	// Hint: 
-	//   The module needs 4 ports, 
-	//     the first 2 ports input two 16-bit unsigned numbers as the addends
-	//     the third port outputs a 16-bit unsigned number as the sum
-	//	   the forth port outputs a 1-bit carry flag as the overflow
-	// 
-	// TODO: Implement this module here
-	// Hint: You can use generate statement in Verilog to create multiple instantiations of modules and code.
-	
-module adder(in1, in2, out, overflow);
-    input in1, in2;
-    output out, overflow;
+//worse-than-naive version
+//module adder(in1, in2, out, overflow);
+//    input in1, in2;
+//    output out, overflow;
     
-    wire[15:0] in1, in2;
-    reg[15:0] out;
-    reg overflow;
-    
-    integer i;
-    
-    initial begin
-        overflow = 0;
-    end
-    
-    always @ (in1, in2) begin
-            overflow = 0;
-            for (i = 0; i < 16; i = i + 1) begin
-                out[i] = in1[i] ^ in2[i] ^ overflow;
-                overflow = (in1[i] & in2[i]) | ((in1[i] ^ in2[i]) & overflow);
-            end
-        end
+//    wire[15:0] in1, in2;
+//    reg[15:0] out;
+//    reg overflow;
+//    integer i;
+//    always @ (in1, in2) begin
+//            overflow = 0;
+//            for (i = 0; i < 16; i = i + 1) begin
+//                out[i] = in1[i] ^ in2[i] ^ overflow;
+//                overflow = (in1[i] & in2[i]) | ((in1[i] ^ in2[i]) & overflow);
+//            end
+//        end
+//endmodule
+
+module full_adder(input a, input b, input c1, output o, output c2);
+    assign o = a ^ b ^ c1;
+    assign c2 = (a & b) | ((a ^ b) & c1);
+endmodule
+
+module adder(input [15:0] in1, input [15:0] in2, output [15:0] out, output overflow);
+    wire[15:1] c;
+    full_adder add0(in1[0], in2[0], 0, out[0], c[1]);
+    full_adder add[14:1](in1[14:1], in2[14:1], c[14:1], out[14:1], c[15:2]);
+    full_adder add15(in1[15], in2[15], c[15], out[15], overflow);           
 endmodule
