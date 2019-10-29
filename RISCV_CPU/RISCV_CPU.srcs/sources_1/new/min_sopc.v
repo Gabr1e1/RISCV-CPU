@@ -29,8 +29,8 @@ module min_sopc(
     wire rom_ce;
     wire [`InstLen - 1 : 0] inst;
 
-    cpu(.clk_in(clk), .rst(rst_in),
+    cpu cpu0(.clk_in(clk), .rst_in(rst),
         .rom_data_i(inst), .rom_addr_o(rom_addr), .rom_ce_o(rom_ce));
-    rom(.ce(rom_ce), .addr(rom_addr), .inst(inst));
+    rom rom0(.ce(rom_ce), .addr(rom_addr), .inst(inst));
 
 endmodule

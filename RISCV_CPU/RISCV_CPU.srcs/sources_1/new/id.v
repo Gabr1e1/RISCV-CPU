@@ -43,8 +43,9 @@ module id(
     output reg [`OpSelLen - 1 : 0] alusel
     );
 
-    wire [`OpCodeLen - 1 : 0] opcode = inst[`OpCodeLen - 1 : 0];
-
+    wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
+    reg useImmInstead;
+    
 //Decode: Get opcode, imm, rd, and the addr of rs1&rs2
 always @ (*) begin
     if (rst == `ResetEnable) begin
@@ -64,6 +65,7 @@ always @ (*) begin
             rd_enable <= `WriteEnable;                
             aluop <= `EXE_OR;
             alusel <= `LOGIC_OP;
+            useImmInstead <= 1'b1;
         end
         default: begin
             rd_enable <= `WriteDisable;
@@ -91,8 +93,9 @@ always @ (*) begin
     if (rst == `ResetEnable) begin
         reg2 <= `ZERO_WORD;
     end
-    else if (reg1_read_enable == `ReadDisable) begin
-        reg2 <= `ZERO_WORD;
+    else if (reg2_read_enable == `ReadDisable) begin
+        if (useImmInstead == 1'b0) reg2 <= `ZERO_WORD;
+        else reg2 <= Imm;
     end
     else begin
         reg2 <= reg2_data_i;

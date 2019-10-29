@@ -21,7 +21,7 @@
 
 
 module rom(
-    input wire ce, 
+    input wire ce,
     input wire[`AddrLen -1 : 0] addr, 
     output reg[`InstLen - 1 : 0] inst
 );
@@ -30,6 +30,7 @@ module rom(
     initial begin
         $readmemh("inst.data", inst_mem);
     end
+    
     always @ (*) begin
         if (ce == `ChipDisable) begin
             inst <= `ZERO_WORD;

@@ -25,15 +25,16 @@ module min_sopc_test();
 
 //50MHz
 initial begin 
-    CLOCK_ 50 = 1' b0; 
-    forever #10 CLOCK_ 50 = ~ CLOCK_ 50; 
+    CLOCK_50 = 1'b0; 
+    forever #10 CLOCK_50 = ~CLOCK_50; 
 end
 
 initial begin
-    rst = 
-    #1000 $stop;
+    rst = `ResetEnable;
+    #30 rst = `ResetDisable;
+    #200 $stop;
 end
 
-min_sopc(.clk(CLOCK_50), .rst(rst));
+min_sopc cpu(.clk(CLOCK_50), .rst(rst));
 
 endmodule

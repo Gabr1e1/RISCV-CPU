@@ -91,8 +91,8 @@ id id0(.rst(rst_in), .pc(id_pc_i), .inst(id_inst_i), .reg1_data_i(reg1_data), .r
       
 register register0(.clk(clk_in), .rst(rst_in), 
                   .write_enable(write_enable), .write_addr(write_addr), .write_data(write_data),
-                  .read_enable1(reg1_read_enable), .read_addr1(reg1_addr), .read_data(reg1_data),
-                  .read_enable2(reg2_read_enable), .read_addr2(reg2_addr), .read_data(reg2_data));
+                  .read_enable1(reg1_read_enable), .read_addr1(reg1_addr), .read_data1(reg1_data),
+                  .read_enable2(reg2_read_enable), .read_addr2(reg2_addr), .read_data2(reg2_data));
 id_ex id_ex0(.clk(clk_in), .rst(rst_in),
             .id_reg1(id_reg1), .id_reg2(id_reg2), .id_Imm(id_Imm), .id_rd(id_rd), .id_rd_enable(id_rd_enable), .id_aluop(id_aluop), .id_alusel(id_alusel),
             .ex_reg1(ex_reg1), .ex_reg2(ex_reg2), .ex_Imm(ex_Imm), .ex_rd(ex_rd), .ex_rd_enable(ex_rd_enable_i), .ex_aluop(ex_aluop), .ex_alusel(ex_alusel));

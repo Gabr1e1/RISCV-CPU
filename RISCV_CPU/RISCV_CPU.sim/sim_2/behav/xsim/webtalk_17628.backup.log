@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Webtalk v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Oct 29 20:50:50 2019
+# Process ID: 17628
+# Current directory: C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.sim/sim_2/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.sim/sim_2/behav/xsim/xsim.dir/min_sopc_test_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.sim/sim_2/behav/xsim/webtalk.log
+# Journal file: C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.sim/sim_2/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/zhang/Documents/Computer -notrace
+couldn't read file "C:/Users/zhang/Documents/Computer": no such file or directory
+INFO: [Common 17-206] Exiting Webtalk at Tue Oct 29 20:50:50 2019...

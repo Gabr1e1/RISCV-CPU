@@ -40,6 +40,7 @@
 `define RAM_SIZELOG2 17
 
 //OPCODE
+`define OpLen 7
 `define INTCOM_ORI 7'b0010011
 
 //AluOP

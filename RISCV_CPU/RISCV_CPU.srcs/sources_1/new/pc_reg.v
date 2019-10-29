@@ -27,9 +27,9 @@ module pc_reg(
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable)
-        chip_enable <= `ChipEnable;
-    else
         chip_enable <= `ChipDisable;
+    else
+        chip_enable <= `ChipEnable;
 end
 
 always @ (posedge clk) begin
