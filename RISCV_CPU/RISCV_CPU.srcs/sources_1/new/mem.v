@@ -21,7 +21,6 @@
 
 
 module mem(
-    input clk,
     input rst,
     input wire [`RegLen - 1 : 0] rd_data_i,
     input wire [`RegAddrLen - 1 : 0] rd_addr_i,
@@ -32,7 +31,7 @@ module mem(
     output reg rd_enable_o
     );
 
-always @ (posedge clk) begin
+always @ (*) begin
     if (rst == `ResetEnable) begin
         rd_data_o <= `ZERO_WORD;
         rd_addr_o <= `RegAddrLen'h0;

@@ -36,6 +36,9 @@
 `define ReadEnable 1'b1
 `define ReadDisable 1'b0
 
+`define RAM_SIZE 100
+`define RAM_SIZELOG2 17
+
 //OPCODE
 `define INTCOM_ORI 7'b0010011
 
