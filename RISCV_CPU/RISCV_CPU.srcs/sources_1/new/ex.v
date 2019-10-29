@@ -21,7 +21,6 @@
 
 
 module ex(
-    input wire clk,
     input wire rst,
 
     input wire [`RegLen - 1 : 0] reg1,
