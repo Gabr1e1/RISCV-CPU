@@ -1,7 +1,7 @@
-Running: xsim.dir/min_sopc_test_behav/xsimk.exe -simmode gui -wdb min_sopc_test_behav.wdb -simrunnum 0 -socket 47375
+Running: xsim.dir/min_sopc_test_behav/xsimk.exe -simmode gui -wdb min_sopc_test_behav.wdb -simrunnum 0 -socket 44206
 Design successfully loaded
-Design Loading Memory Usage: 5404 KB (Peak: 5404 KB)
+Design Loading Memory Usage: 7640 KB (Peak: 7640 KB)
 Design Loading CPU Usage: 77 ms
 Simulation completed
-Simulation Memory Usage: 6244 KB (Peak: 6244 KB)
-Simulation CPU Usage: 108 ms
+Simulation Memory Usage: 8440 KB (Peak: 8440 KB)
+Simulation CPU Usage: 77 ms

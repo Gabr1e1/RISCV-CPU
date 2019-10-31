@@ -27,6 +27,16 @@ module id(
     input wire [`RegLen - 1 : 0] reg1_data_i,
     input wire [`RegLen - 1 : 0] reg2_data_i,
 
+//Forwarding result from EX
+    input wire ex_reg_i,
+    input wire [`RegAddrLen - 1 : 0] ex_reg_addr,
+    input wire [`RegLen - 1 : 0] ex_reg_data,
+
+//Forwarding result from MEM
+    input wire mem_reg_i,
+    input wire [`RegAddrLen - 1 : 0] mem_reg_addr,
+    input wire [`RegLen - 1 : 0] mem_reg_data,
+
 //To Register
     output reg [`RegAddrLen - 1 : 0] reg1_addr_o,
     output reg [`RegLen - 1 : 0] reg1_read_enable,
@@ -44,7 +54,6 @@ module id(
     );
 
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
-    reg useImmInstead;
     
 //Decode: Get opcode, imm, rd, and the addr of rs1&rs2
 always @ (*) begin
@@ -65,7 +74,6 @@ always @ (*) begin
             rd_enable <= `WriteEnable;                
             aluop <= `EXE_OR;
             alusel <= `LOGIC_OP;
-            useImmInstead <= 1'b1;
         end
         default: begin
             rd_enable <= `WriteDisable;
@@ -83,8 +91,12 @@ always @ (*) begin
     else if (reg1_read_enable == `ReadDisable) begin
         reg1 <= `ZERO_WORD;
     end
-    else begin
-        reg1 <= reg1_data_i;
+    else if (reg1_read_enable == `ReadEnable) begin
+        if (ex_reg_i == `ForwardEnable && ex_reg_addr == reg1_addr_o)
+            reg1 <= ex_reg_data; 
+        else if (mem_reg_i == `ForwardEnable && mem_reg_addr == reg1_addr_o)
+            reg1 <= mem_reg_data;
+        else reg1 <= reg1_data_i;
     end
 end
 
@@ -94,11 +106,14 @@ always @ (*) begin
         reg2 <= `ZERO_WORD;
     end
     else if (reg2_read_enable == `ReadDisable) begin
-        if (useImmInstead == 1'b0) reg2 <= `ZERO_WORD;
-        else reg2 <= Imm;
+        reg2 <= Imm;
     end
-    else begin
-        reg2 <= reg2_data_i;
+    else if (reg2_read_enable == `ReadEnable) begin
+        if (ex_reg_i == `ForwardEnable && ex_reg_addr == reg2_addr_o)
+            reg2 <= ex_reg_data; 
+        else if (mem_reg_i == `ForwardEnable && mem_reg_addr == reg2_addr_o)
+            reg2 <= mem_reg_data;
+        else reg2 <= reg2_data_i;
     end
 end
 

@@ -3,8 +3,8 @@ Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
 Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto aa429414c4cf43869f53064022eb3ec6 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot min_sopc_test_behav xil_defaultlib.min_sopc_test xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'read_enable1' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:94]
-WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'read_enable2' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:95]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'read_enable1' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:96]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'read_enable2' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:97]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis

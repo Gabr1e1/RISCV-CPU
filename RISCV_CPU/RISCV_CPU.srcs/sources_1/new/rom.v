@@ -28,7 +28,7 @@ module rom(
 
     reg[`InstLen : 0] inst_mem[0 : `RAM_SIZE - 1];
     initial begin
-        $readmemh("inst.data", inst_mem);
+        $readmemh("forward_test1.data", inst_mem);
     end
     
     always @ (*) begin

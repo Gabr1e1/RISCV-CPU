@@ -87,7 +87,9 @@ if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(pc), .if_inst(rom_data_i), .id_p
 
 id id0(.rst(rst_in), .pc(id_pc_i), .inst(id_inst_i), .reg1_data_i(reg1_data), .reg2_data_i(reg2_data), 
       .reg1_addr_o(reg1_addr), .reg1_read_enable(reg1_read_enable), .reg2_addr_o(reg2_addr), .reg2_read_enable(reg2_read_enable),
-      .reg1(id_reg1), .reg2(id_reg2), .Imm(id_Imm), .rd(id_rd), .rd_enable(id_rd_enable), .aluop(id_aluop), .alusel(id_alusel));
+      .reg1(id_reg1), .reg2(id_reg2), .Imm(id_Imm), .rd(id_rd), .rd_enable(id_rd_enable), .aluop(id_aluop), .alusel(id_alusel),
+      .ex_reg_i(ex_rd_enable_o), .ex_reg_addr(ex_rd_addr), .ex_reg_data(ex_rd_data),
+      .mem_reg_i(mem_rd_enable_o), .mem_reg_addr(mem_rd_addr_o), .mem_reg_data(mem_rd_data_o));
       
 register register0(.clk(clk_in), .rst(rst_in), 
                   .write_enable(write_enable), .write_addr(write_addr), .write_data(write_data),

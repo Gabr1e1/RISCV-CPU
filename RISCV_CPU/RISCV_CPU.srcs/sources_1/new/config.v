@@ -35,6 +35,9 @@
 `define WriteDisable 1'b0
 `define ReadEnable 1'b1
 `define ReadDisable 1'b0
+`define ForwardEnable 1'b1
+`define ForwardDisable 1'b
+
 
 `define RAM_SIZE 100
 `define RAM_SIZELOG2 17
