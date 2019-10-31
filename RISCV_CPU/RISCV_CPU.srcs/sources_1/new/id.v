@@ -54,7 +54,9 @@ module id(
     );
 
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
-    
+    wire [`Funct3Len - 1 : 0] funct3 = inst[Funct3];
+    wire [`Funct7Len - 1 : 0] funct7 = inst[Funct7];
+
 //Decode: Get opcode, imm, rd, and the addr of rs1&rs2
 always @ (*) begin
     if (rst == `ResetEnable) begin
@@ -66,20 +68,85 @@ always @ (*) begin
     end
 
     case (opcode)
-        `INTCOM_ORI: begin
+        `INTCOM_REG: begin
             Imm <= { {19{inst[31]}} ,inst[31:20] };
             reg1_read_enable <= `ReadEnable;
             reg2_read_enable <= `ReadDisable;
             rd <= inst[11 : 7];
-            rd_enable <= `WriteEnable;                
-            aluop <= `EXE_OR;
+            rd_enable <= `WriteEnable;
             alusel <= `LOGIC_OP;
+            case (funct3)
+                `ADDI:
+                    aluop <= `EXE_ADD;
+                `SLLI:
+                    aluop <= `EXE_SLL;
+                `SLTI:
+                    aluop <= `EXE_SLT;
+                `SLTIU:
+                    aluop <= `EXE_SLTU;
+                `XORI:
+                    aluop <= `EXE_XOR;
+                `SRXI: begin
+                    case (funct7)
+                        `SRLI:
+                            aluop <= `EXE_SRL;
+                        `SRAI:
+                            aluop <= `EXE_SRA;                     
+                        default: 
+                    endcase
+                end
+                `ORI:
+                    aluop <= `EXE_OR;
+                `ANDI:
+                    aluop <= `EXE_ANDI;     
+                default:
+            endcase
+        end
+        `INTCOM_REGREG: begin
+            reg1_read_enable <= `ReadEnable;
+            reg2_read_enable <= `ReadEnable;
+            rd <= inst[11 : 7];
+            rd_enable <= `WriteEnable;
+            aluop <= `LOGIC_OP;
+            case (funct3):
+                `ADDSUB: begin
+                    case (funct7)
+                        `ADD:
+                            aluop <= `EXE_ADD;
+                        `SUB:
+                            aluop <= `EXE_SUB;
+                        default: 
+                    endcase
+                end
+                `SLL:
+                    aluop <= `EXE_SLL;
+                `SLT:
+                    aluop <= `EXE_SLT;
+                `SLTIU:
+                    aluop <= `EXE_SLTU;
+                `XOR:
+                    aluop <= `EXE_XOR;
+                `SRX: begin
+                    case (funct7):
+                        `SRL:
+                            aluop <= `EXE_SRL;
+                        `SRA:
+                            aluop <= `EXE_SRA;
+                        default:
+                    endcase
+                end
+                `OR:
+                    aluop <= `EXE_OR;
+                `AND:
+                    aluop <= `EXE_AND;
+                default:
+            endcase
         end
         default: begin
             rd_enable <= `WriteDisable;
             reg1_read_enable <= `ReadDisable;
             reg2_read_enable <= `ReadDisable;
-        end
+        end 
     endcase
 end
 
