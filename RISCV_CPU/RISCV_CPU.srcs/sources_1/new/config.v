@@ -79,17 +79,22 @@
 
 //AluOP
 `define OpCodeLen 4
-`define EXE_ADD 4'b0000
-`define EXE_SUB 4'b1000
-`define EXE_SLL 4'b0001
-`define EXE_SLT 4'b0010
-`define EXE_SLTU 4'b0011
-`define EXE_XOR 4'b0100
-`define EXE_SRL 4'b0101
-`define EXE_SRA 4'b1101
-`define EXE_OR 4'b0110
-`define EXE_AND 4'b0111
+`define OP_LUI 4'b1110
+`define OP_AUIPC 4'b1010
+
+`define OP_ADD 4'b0000
+`define OP_SUB 4'b1000
+`define OP_SLL 4'b0001
+`define OP_SLT 4'b0010
+`define OP_SLTU 4'b0011
+`define OP_XOR 4'b0100
+`define OP_SRL 4'b0101
+`define OP_SRA 4'b1101
+`define OP_OR 4'b0110
+`define OP_AND 4'b0111
 
 //AluSelect
 `define OpSelLen 3
-`define LOGIC_OP 3'b001
+`define Arith_OP 3'b001
+`define LUI_OP 3'b010
+`define AUIPC_OP 3'b011

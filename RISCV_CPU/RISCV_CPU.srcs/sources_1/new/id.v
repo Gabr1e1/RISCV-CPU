@@ -54,8 +54,8 @@ module id(
     );
 
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
-    wire [`Funct3Len - 1 : 0] funct3 = inst[Funct3];
-    wire [`Funct7Len - 1 : 0] funct7 = inst[Funct7];
+    wire [`Funct3Len - 1 : 0] funct3 = inst[`Funct3];
+    wire [`Funct7Len - 1 : 0] funct7 = inst[`Funct7];
 
 //Decode: Get opcode, imm, rd, and the addr of rs1&rs2
 always @ (*) begin
@@ -68,38 +68,55 @@ always @ (*) begin
     end
 
     case (opcode)
+        `INTCOM_LUI: begin
+            Imm <= { inst[31:12], {12{1'b0}} };
+            rd <= inst[11 : 7];
+            rd_enable <= `WriteEnable;
+            aluop <= `OP_LUI;
+            alusel <= `LUI_OP;
+        end
+        `INTCOM_AUIPC: begin
+            Imm <= { inst[31:12], {12{1'b0}} };
+            rd <= inst[11 : 7];
+            rd_enable <= `WriteEnable;
+            aluop <= `OP_LUI;
+            alusel <= `LUI_OP;
+        end
         `INTCOM_REG: begin
             Imm <= { {19{inst[31]}} ,inst[31:20] };
             reg1_read_enable <= `ReadEnable;
             reg2_read_enable <= `ReadDisable;
             rd <= inst[11 : 7];
             rd_enable <= `WriteEnable;
-            alusel <= `LOGIC_OP;
+            alusel <= `Arith_OP;
             case (funct3)
                 `ADDI:
-                    aluop <= `EXE_ADD;
-                `SLLI:
-                    aluop <= `EXE_SLL;
+                    aluop <= `OP_ADD;
+                `SLLI: begin
+                    aluop <= `OP_SLL;
+                    Imm <= { {27{1'b0}}, inst[24:20] };
+                end
                 `SLTI:
-                    aluop <= `EXE_SLT;
+                    aluop <= `OP_SLT;
                 `SLTIU:
-                    aluop <= `EXE_SLTU;
+                    aluop <= `OP_SLTU;
                 `XORI:
-                    aluop <= `EXE_XOR;
+                    aluop <= `OP_XOR;
                 `SRXI: begin
+                    Imm <= { {27{1'b0}}, inst[24:20] };
                     case (funct7)
                         `SRLI:
-                            aluop <= `EXE_SRL;
+                            aluop <= `OP_SRL;
                         `SRAI:
-                            aluop <= `EXE_SRA;                     
-                        default: 
+                            aluop <= `OP_SRA;                     
+                        default: ;
                     endcase
                 end
                 `ORI:
-                    aluop <= `EXE_OR;
+                    aluop <= `OP_OR;
                 `ANDI:
-                    aluop <= `EXE_ANDI;     
-                default:
+                    aluop <= `OP_AND;     
+                default: ;
             endcase
         end
         `INTCOM_REGREG: begin
@@ -107,39 +124,39 @@ always @ (*) begin
             reg2_read_enable <= `ReadEnable;
             rd <= inst[11 : 7];
             rd_enable <= `WriteEnable;
-            aluop <= `LOGIC_OP;
-            case (funct3):
+            aluop <= `Arith_OP;
+            case (funct3)
                 `ADDSUB: begin
                     case (funct7)
                         `ADD:
-                            aluop <= `EXE_ADD;
+                            aluop <= `OP_ADD;
                         `SUB:
-                            aluop <= `EXE_SUB;
-                        default: 
+                            aluop <= `OP_SUB;
+                        default: ;
                     endcase
                 end
                 `SLL:
-                    aluop <= `EXE_SLL;
+                    aluop <= `OP_SLL;
                 `SLT:
-                    aluop <= `EXE_SLT;
+                    aluop <= `OP_SLT;
                 `SLTIU:
-                    aluop <= `EXE_SLTU;
+                    aluop <= `OP_SLTU;
                 `XOR:
-                    aluop <= `EXE_XOR;
+                    aluop <= `OP_XOR;
                 `SRX: begin
-                    case (funct7):
+                    case (funct7)
                         `SRL:
-                            aluop <= `EXE_SRL;
+                            aluop <= `OP_SRL;
                         `SRA:
-                            aluop <= `EXE_SRA;
-                        default:
+                            aluop <= `OP_SRA;
+                        default: ;
                     endcase
                 end
                 `OR:
-                    aluop <= `EXE_OR;
+                    aluop <= `OP_OR;
                 `AND:
-                    aluop <= `EXE_AND;
-                default:
+                    aluop <= `OP_AND;
+                default: ;
             endcase
         end
         default: begin

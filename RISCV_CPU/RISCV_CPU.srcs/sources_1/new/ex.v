@@ -22,6 +22,7 @@
 
 module ex(
     input wire rst,
+    input wire [`AddrLen - 1 : 0] pc,
 
     input wire [`RegLen - 1 : 0] reg1,
     input wire [`RegLen - 1 : 0] reg2,
@@ -45,8 +46,28 @@ always @ (*) begin
     end
     else begin
         case (aluop)
-            `EXE_OR:
-                res <= reg1 | reg2; 
+            `OP_AUIPC:
+                res <= pc + Imm;
+            `OP_ADD:
+                res <= reg1 + reg2;
+            `OP_SUB:
+                res <= reg1 - reg2;
+            `OP_SLL:
+                res <= reg1 << reg2[4:0];
+            `OP_SLT:
+                res <= { {31{1'b0}}, $signed(reg1) < $signed(reg2) };
+            `OP_SLTU:
+                res <= { {31{1'b0}}, reg1 < reg2 };
+            `OP_XOR:
+                res <= reg1 ^ reg2;
+            `OP_SRL:
+                res <= reg1 >> reg2[4:0];
+            `OP_SRA:
+                res <= $signed(reg1) >>> reg2[4:0];
+            `OP_OR:
+                res <= reg1 | reg2;
+            `OP_AND:
+                res <= reg1 & reg2;
             default: 
                 res <= `ZERO_WORD;
         endcase
@@ -62,8 +83,12 @@ always @ (*) begin
         rd_addr <= rd;
         rd_enable_o <= rd_enable;
         case (alusel)
-            `LOGIC_OP:
-                rd_data_o <= res; 
+            `Arith_OP: 
+                rd_data_o <= res;
+            `LUI_OP:
+                rd_data_o <= Imm;
+            `AUIPC_OP:
+                rd_data_o <= res;
             default: 
                 rd_data_o <= `ZERO_WORD;
         endcase

@@ -47,7 +47,7 @@ always @ (posedge clk) begin
 end
 
 //read 1
-always @ (posedge clk) begin
+always @ (*) begin
     if (rst == `ResetDisable && read_enable1 == `ReadEnable) begin
         if (read_addr1 == `RegAddrLen'h0)
             read_data1 <= `ZERO_WORD;
@@ -62,7 +62,7 @@ always @ (posedge clk) begin
 end
 
 //read 2
-always @ (posedge clk) begin
+always @ (*) begin
     if (rst == `ResetDisable && read_enable2 == `ReadEnable) begin
         if (read_addr2 == `RegAddrLen'h0)
             read_data2 <= `ZERO_WORD;

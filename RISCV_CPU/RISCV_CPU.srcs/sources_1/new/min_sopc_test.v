@@ -32,7 +32,7 @@ end
 initial begin
     rst = `ResetEnable;
     #30 rst = `ResetDisable;
-    #200 $stop;
+    #400 $stop;
 end
 
 min_sopc cpu(.clk(CLOCK_50), .rst(rst));
