@@ -25,7 +25,7 @@
 `define RegAddrLen 5
 `define RegLen 32
 `define RegNum 32
-
+`define PipelineDepth 6 //include pc
 
 `define ResetEnable 1'b1
 `define ResetDisable 1'b0
@@ -37,7 +37,8 @@
 `define ReadDisable 1'b0
 `define ForwardEnable 1'b1
 `define ForwardDisable 1'b0
-
+`define StallEnable 1'b1
+`define StallDisable 1'b0
 
 `define RAM_SIZE 100
 `define RAM_SIZELOG2 17

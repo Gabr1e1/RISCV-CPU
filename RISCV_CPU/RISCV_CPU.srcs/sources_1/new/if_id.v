@@ -26,14 +26,17 @@ module if_id(
     input wire [`AddrLen - 1 : 0] if_pc,
     input wire [`InstLen - 1 : 0] if_inst,
     output reg [`AddrLen - 1 : 0] id_pc,
-    output reg [`InstLen - 1 : 0] id_inst);
+    output reg [`InstLen - 1 : 0] id_inst,
+    input wire [`PipelineDepth - 1 : 0] stall
+    );
     
 always @ (posedge clk) begin
-    if (rst == `ResetEnable) begin
+    //if stall[1] & stall[2] are stallenable, then pass nothing downward
+    if (rst == `ResetEnable || (stall[1] == `StallEnable && stall[2] == `StallDisable)) begin
         id_pc = `ZERO_WORD;
         id_inst = `ZERO_WORD;
     end
-    else begin
+    else if (stall[1] == `StallDisable) begin
         id_pc = if_pc;
         id_inst = if_inst;
     end

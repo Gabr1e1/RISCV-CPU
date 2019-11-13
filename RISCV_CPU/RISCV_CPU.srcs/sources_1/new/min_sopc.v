@@ -22,14 +22,15 @@
 
 module min_sopc(
     input wire clk,
-    input wire rst
+    input wire rst,
+    input wire stall_test
     );
 
     wire [`AddrLen - 1 : 0] rom_addr;
     wire rom_ce;
     wire [`InstLen - 1 : 0] inst;
 
-    cpu cpu0(.clk_in(clk), .rst_in(rst),
+    cpu cpu0(.clk_in(clk), .rst_in(rst), .stall_test(stall_test),
         .rom_data_i(inst), .rom_addr_o(rom_addr), .rom_ce_o(rom_ce));
     rom rom0(.ce(rom_ce), .addr(rom_addr), .inst(inst));
 

@@ -37,14 +37,16 @@ module id_ex(
     output reg [`RegLen - 1 : 0] ex_rd,
     output reg ex_rd_enable,
     output reg [`OpCodeLen - 1 : 0] ex_aluop,
-    output reg [`OpSelLen - 1 : 0] ex_alusel
+    output reg [`OpSelLen - 1 : 0] ex_alusel,
+
+    input wire [`PipelineDepth - 1 : 0] stall
     );
 
 always @ (posedge clk) begin
-    if (rst == `ResetEnable) begin
+    if (rst == `ResetEnable || (stall[2] == `StallEnable && stall[3] == `StallDisable)) begin
         //TODO: ASSIGN ALL OUTPUT WITH NULL EQUIVALENT
     end
-    else begin
+    else if (stall[2] == `StallDisable) begin
         ex_reg1 <= id_reg1;
         ex_reg2 <= id_reg2;
         ex_Imm <= id_Imm;

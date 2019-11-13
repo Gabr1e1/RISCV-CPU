@@ -29,14 +29,16 @@ module ex_mem(
 
     output reg [`RegLen - 1 : 0] mem_rd_data,
     output reg [`RegAddrLen - 1 : 0] mem_rd_addr,
-    output reg mem_rd_enable
+    output reg mem_rd_enable,
+
+    input wire [`PipelineDepth - 1 : 0] stall
     );
 
 always @ (posedge clk) begin
-    if (rst == `ResetEnable) begin
+    if (rst == `ResetEnable || (stall[3] == `StallEnable && stall[4] == `StallDisable)) begin
         //TODO: Reset
     end
-    else begin
+    else if (stall[3] == `StallDisable) begin
         mem_rd_data <= ex_rd_data;
         mem_rd_addr <= ex_rd_addr;
         mem_rd_enable <= ex_rd_enable;
