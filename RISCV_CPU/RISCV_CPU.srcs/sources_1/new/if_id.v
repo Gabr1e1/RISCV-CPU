@@ -33,12 +33,12 @@ module if_id(
 always @ (posedge clk) begin
     //if stall[1] & stall[2] are stallenable, then pass nothing downward
     if (rst == `ResetEnable || (stall[1] == `StallEnable && stall[2] == `StallDisable)) begin
-        id_pc = `ZERO_WORD;
-        id_inst = `ZERO_WORD;
+        id_pc <= `ZERO_WORD;
+        id_inst <= `ZERO_WORD;
     end
     else if (stall[1] == `StallDisable) begin
-        id_pc = if_pc;
-        id_inst = if_inst;
+        id_pc <= if_pc;
+        id_inst <= if_inst;
     end
 end
 endmodule
