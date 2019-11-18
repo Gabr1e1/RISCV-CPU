@@ -21,7 +21,7 @@
 
 
 module min_sopc_test();
-    reg CLOCK_50, rst;
+    reg CLOCK_50, rst, rdy;
     reg stall_test;
 
 //50MHz
@@ -32,12 +32,12 @@ end
 
 initial begin
     rst = `ResetEnable;
-    #30 rst = `ResetDisable;
-    #100 stall_test = `StallEnable;
-    #210 stall_test = `StallDisable;
-    #600 $stop;
+    stall_test = `StallDisable;
+    rdy = 1'b1;
+    #100 rst = `ResetDisable;
+    #2000 $stop;
 end
 
-min_sopc cpu(.clk(CLOCK_50), .rst(rst), .stall_test(stall_test));
+min_sopc cpu(.clk(CLOCK_50), .rst(rst), .stall_test(stall_test), .rdy(rdy));
 
 endmodule

@@ -23,7 +23,7 @@
 module ctrl(
     input wire rst,
     input wire stallreq,
-    input wire stallreq_id,
+    input wire stallreq_if,
     input wire stallreq_ex,
     input wire stallreq_mem,
     output reg[`PipelineDepth - 1 : 0] stall
@@ -33,8 +33,8 @@ module ctrl(
         if (rst == `ResetEnable) begin
             stall <= `PipelineDepth'b000000; //from msb to lsb!!!
         end 
-        else if (stallreq_id == `StallEnable) begin
-            stall <= `PipelineDepth'b000111;
+        else if (stallreq_if == `StallEnable) begin
+            stall <= `PipelineDepth'b000011;
         end        
         else if (stallreq_ex == `StallEnable) begin
             stall <= `PipelineDepth'b001111;

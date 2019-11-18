@@ -2,20 +2,15 @@
 // port modification allowed for debugging purposes
 
 module cpu(
-  input  wire                 clk_in,			// system clock signal
-  input  wire                 rst_in,			// reset signal
-  input wire [`RegLen - 1 : 0] rom_data_i,
-  input wire stall_test,
-  
-  output wire [`InstLen - 1 : 0] rom_addr_o,
-  output wire rom_ce_o
-  
-//  input  wire					        rdy_in,			// ready signal, pause cpu when low
-//  input  wire [ 7:0]          mem_din,		// data input bus
-
-//  output wire [ 7:0]          mem_dout,		// data output bus
-//  output wire [31:0]          mem_a,			// address bus (only 17:0 is used)
-//  output wire                 mem_wr,			// write/read signal (1 for write)
+      input  wire                 clk_in,			// system clock signal
+      input  wire                 rst_in,			// reset signal
+      input wire stall_test,
+      input  wire                 rdy_in,			// ready signal, pause cpu when low
+      
+      input  wire [ 7:0]          mem_din,		// data input bus
+      output wire [ 7:0]          mem_dout,		// data output bus
+      output wire [31:0]          mem_a,			// address bus (only 17:0 is used)
+      output wire                 mem_wr			// write/read signal (1 for write)
 //	output wire [31:0]			dbgreg_dout		  // cpu register output (debugging demo)
 );
 
@@ -31,8 +26,11 @@ module cpu(
 // - 0x30004 read: read clocks passed since cpu starts (in dword, 4 bytes)
 // - 0x30004 write: indicates program stop (will output '\0' through uart tx)
 
-//PC -> IF/ID
+//PC
 wire [`AddrLen - 1 : 0] pc;
+
+//IF -> IF/ID
+wire [`InstLen - 1 : 0] if_inst;
 
 //IF/ID -> ID
 wire [`AddrLen - 1 : 0] id_pc_i;
@@ -83,15 +81,27 @@ wire [`RegLen - 1 : 0] write_data;
 //Stall request
 wire [`PipelineDepth - 1 : 0] stall;
 wire stallreq;
-wire stallreq_id, stallreq_ex, stallreq_mem;
+wire stallreq_if, stallreq_mem;
 
-assign rom_addr_o = pc;
+//Mem Ctrl
+wire [`AddrLen - 1 : 0] addr_from_if;
+wire [`AddrLen - 1 : 0] addr_from_mem;
+wire rw_if;
+wire [2:0] rw_mem;
+wire [`RegLen - 1: 0] data_in;
+wire [`RegLen - 1 : 0] data_out;
+wire [1:0] MemCtrlStatus;
 
 //Instantiation
-pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc), .chip_enable(rom_ce_o),
+pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc), .chip_enable(rdy_in),
               .stall(stall[0]));
 
-if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(pc), .if_inst(rom_data_i), .id_pc(id_pc_i), .id_inst(id_inst_i),
+if_stage if0(.rst(rst_in),
+      .pc(pc), .inst(if_inst),
+      .addr_to_mem(addr_from_if), .rw(rw_if), .data_from_mem(data_out), .mem_status(MemCtrlStatus),
+      .stall(stall), .stallreq(stallreq_if));
+
+if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(pc), .if_inst(if_inst), .id_pc(id_pc_i), .id_inst(id_inst_i),
             .stall(stall));
 
 id id0(.rst(rst_in), .pc(id_pc_i), .inst(id_inst_i), .reg1_data_i(reg1_data), .reg2_data_i(reg2_data), 
@@ -129,6 +139,11 @@ mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),
 
 ctrl ctrl0(.rst(rst_in),
           .stallreq(stall_test),
-          .stallreq_id(stallreq_id), .stallreq_ex(stallreq_ex), .stallreq_mem(stallreq_mem),
+          .stallreq_if(stallreq_if), .stallreq_mem(stallreq_mem),
           .stall(stall));
+
+mem_ctrl mem_ctrl0(.clk(clk_in), .rst(rst_in),
+                  .addr_from_if(addr_from_if), .addr_from_mem(addr_from_mem), .data_in(data_in), .rw_if(rw_if), .rw_mem(rw_mem),
+                  .data_out(data_out), .status(MemCtrlStatus),
+                  .addr_to_mem(mem_a), .r_nw_to_mem(mem_wr), .data_to_mem(mem_dout), .data_from_mem(mem_din));
 endmodule

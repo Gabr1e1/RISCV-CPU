@@ -23,15 +23,23 @@
 module min_sopc(
     input wire clk,
     input wire rst,
-    input wire stall_test
+    input wire stall_test,
+    input wire rdy
     );
+    
+localparam RAM_ADDR_WIDTH = 17; 			// 128KiB ram, should not be modified
 
-    wire [`AddrLen - 1 : 0] rom_addr;
-    wire rom_ce;
-    wire [`InstLen - 1 : 0] inst;
+    wire [ 7:0]   mem_din;
+    wire [ 7:0]   mem_dout;
+    wire [31:0]   mem_a;
+    wire          mem_wr;	
+    
 
     cpu cpu0(.clk_in(clk), .rst_in(rst), .stall_test(stall_test),
-        .rom_data_i(inst), .rom_addr_o(rom_addr), .rom_ce_o(rom_ce));
-    rom rom0(.ce(rom_ce), .addr(rom_addr), .inst(inst));
-
+            .mem_din(mem_din), .mem_dout(mem_dout), .mem_a(mem_a), .mem_wr(mem_wr));
+            
+    ram #(.ADDR_WIDTH(RAM_ADDR_WIDTH))
+        ram0(.clk_in(clk), .en_in(rdy),
+            .r_nw_in(mem_wr), .a_in(mem_a), .d_in(mem_dout), .d_out(mem_din));
+    
 endmodule
