@@ -51,7 +51,7 @@ module id(
     output reg rd_enable,
     output reg [`OpCodeLen - 1 : 0] aluop,
     output reg [`OpSelLen - 1 : 0] alusel,
-    output reg [3:0] width,
+    output reg [3:0] width
     );
 
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
@@ -185,11 +185,11 @@ always @ (*) begin
         `SAVE: begin
             Imm <= { {20{inst[31]}} ,inst[31:25], inst[11:7] };
             reg1_read_enable <= `ReadEnable;
-            reg2_read_enable <= `ReadDisable;
-            rd <= inst[24 : 20];
+            reg2_read_enable <= `ReadEnable;
+            rd <= inst[11 : 7];
             rd_enable <= `WriteEnable;
-            aluop <= `OP_ADD;
-            alusel <= `SAVE_OP;
+            aluop <= `OP_ADD2;
+            alusel <= `STORE_OP;
             case (funct3)
                 `SB:
                     width <= 4'b1001;

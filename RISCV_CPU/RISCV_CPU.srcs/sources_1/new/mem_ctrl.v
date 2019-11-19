@@ -49,6 +49,8 @@ always @ (posedge clk) begin
     end
     else begin
         case (status)
+            `DONE:
+                status <= `IDLE;
             `IDLE: begin
                 data_out <= `ZERO_WORD;
                 if (rw_if != 1'b0 || rw_mem != 2'b00) begin
@@ -81,7 +83,7 @@ always @ (posedge clk) begin
                     addr_to_mem <= addr_to_mem + 1;
                 end
                 if (count == 4 || q == 3'b001)  begin //have read all
-                    status <= `IDLE;
+                    status <= `DONE;
                 end
             end
             `BUSYW: begin
@@ -89,7 +91,7 @@ always @ (posedge clk) begin
                 data_to_mem <= data_in[(count + 2) * `RamWord - 1 -: `RamWord];
                 q <= q - 1;
                 if (count == 4 || q == 3'b001) begin
-                    status <= `IDLE;
+                    status <= `DONE;
                 end
             end
             default: ;

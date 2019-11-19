@@ -35,12 +35,10 @@ module ex(
 
     output reg [`RegLen - 1 : 0] rd_data_o,
     output reg [`RegAddrLen - 1 : 0] rd_addr,
-    output reg rd_enable_o
-    output wire [3:0] width_o,
+    output reg rd_enable_o,
+    output reg [3:0] width_o
     );
     
-    assign width_o = width_i; 
-
     reg [`RegLen - 1 : 0] res;
 
 //Do the calculation
@@ -54,6 +52,8 @@ always @ (*) begin
                 res <= pc + Imm;
             `OP_ADD:
                 res <= reg1 + reg2;
+            `OP_ADD2:
+                res <= reg1 + Imm;
             `OP_SUB:
                 res <= reg1 - reg2;
             `OP_SLL:
@@ -94,8 +94,14 @@ always @ (*) begin
                 rd_data_o <= Imm;
             `AUIPC_OP:
                 rd_data_o <= res;
-            `LOAD_OP: begin
+            `LOAD_OP: begin    
+                width_o <= width_i; 
                 rd_data_o <= res;
+            end
+            `STORE_OP: begin
+                width_o <= width_i;
+                rd_data_o <= res;
+                rd_addr <= reg2;
             end
             default: 
                 rd_data_o <= `ZERO_WORD;

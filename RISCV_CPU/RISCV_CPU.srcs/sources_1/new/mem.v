@@ -47,61 +47,68 @@ module mem(
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
-        rd_data_o <= `ZERO_WORD;
-        rd_addr_o <= `RegAddrLen'h0;
-        rd_enable_o <= `WriteDisable;
-        stallreq <= `StallDisable;
-        start <= 1'b0;
+        rd_data_o = `ZERO_WORD;
+        rd_addr_o = `RegAddrLen'h0;
+        rd_enable_o = `WriteDisable;
+        stallreq = `StallDisable;
+        start = 1'b0;
     end
     else if (width == 4'b0000) begin
-        rd_data_o <= rd_data_i;
-        rd_addr_o <= rd_addr_i;
-        rd_enable_o <= rd_enable_i;
-        stallreq <= `StallDisable;
-        start <= 1'b0;
+        rd_data_o = rd_data_i;
+        rd_addr_o = rd_addr_i;
+        rd_enable_o = rd_enable_i;
+        stallreq = `StallDisable;
+        start = 1'b0;
     end
     else if (width[3] == 1'b0) begin //LOAD
         if (mem_status != `IDLE && start == 1'b0) begin
-            stallreq <= `StallEnable;
+            stallreq = `StallEnable;
         end
-        else if (mem_status == `IDLE && start == 1'b1) begin
+        else if (mem_status == `DONE) begin
             if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
-                rd_data_o <= { {(32 - digit_cnt){0}} , data_from_mem[ digit_cnt - 1 : 0] };
+               if (width[0] == 1'b1) //LBU
+                    rd_data_o = { {24{1'b0}} , data_from_mem[7 : 0] };
+               else
+                    rd_data_o = { {16{1'b0}} , data_from_mem[15 : 0] };
             end
             else begin //Signed extension
-                rd_data_o <= { {(32 - digit){ data_from_mem[digit_cnt - 1] }, data_from_mem[ digit_cnt - 1 : 0] };
+                if (width[0] == 1'b1) //LB
+                    rd_data_o = $signed(data_from_mem[7 : 0]);
+                else if (width[1] == 1'b1)
+                    rd_data_o = $signed(data_from_mem[15 : 0]);
+                else 
+                    rd_data_o = $signed(data_from_mem[31 : 0]);
             end
-            stallreq <= `StallDisable;
+            stallreq = `StallDisable;
+            start = 1'b0;
         end
         else begin
-            addr_to_mem <= rd_data_i;
-            rw_mem <= 2'b01;
-            stallreq <= `StallEnable;
-            start <= 1'b1;
-            if (width != 4'b0100) begin 
-                digit_cnt <= (width & 4'b0011) << 3;
-                quantity <= width & 4'b0011;
-            end
-            else begin 
-                digit_cnt <= 6'b100000;
-                quantity <= 3'b100;
-            end;
+            addr_to_mem = rd_data_i;
+            rw_mem = 2'b01;
+            stallreq = `StallEnable;
+            start = 1'b1;
+            if (width[2] != 1'b1) 
+                quantity = width;
+            else  
+                quantity = width & 4'b0011;
         end
     end
     else if (width[3] == 1'b1) begin //SAVE
-        if (mem_status != `IDLE && start == 1'b0') begin
-            stallreq <= `StallEnable;
+        if (mem_status != `IDLE && start == 1'b0) begin
+            stallreq = `StallEnable;
         end
-        else if (mem_status == `IDLE && start == 1'b1) begin
-            rd_enable_o <= `WriteDisable;
-            stallreq <= `StallDisable;
+        else if (mem_status == `DONE) begin
+            rd_enable_o = `WriteDisable;
+            stallreq = `StallDisable;
+            start = 1'b0;
+            rw_mem = 2'b00;
         end
         else begin
-            addr_to_mem <= rd_data_i;
-            rw_mem <= 2'b10;
-            stallreq <= `StallEnable;
-            start <= 1'b1;
-            quantity <= width & 4'b0111;
+            addr_to_mem = rd_data_i;
+            rw_mem = 2'b10;
+            stallreq = `StallEnable;
+            start = 1'b1;
+            quantity = width & 4'b0111;
         end
     end
 end

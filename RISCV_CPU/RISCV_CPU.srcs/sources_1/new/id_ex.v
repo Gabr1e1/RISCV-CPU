@@ -30,7 +30,7 @@ module id_ex(
     input wire id_rd_enable,
     input wire [`OpCodeLen - 1 : 0] id_aluop,
     input wire [`OpSelLen - 1 : 0] id_alusel,
-    input wire [2:0] id_width,
+    input wire [3:0] id_width,
 
     output reg [`RegLen - 1 : 0] ex_reg1,
     output reg [`RegLen - 1 : 0] ex_reg2,

@@ -100,6 +100,7 @@
 `define OP_AUIPC 4'b1010
 
 `define OP_ADD 4'b0000
+`define OP_ADD2 4'b1001
 `define OP_SUB 4'b1000
 `define OP_SLL 4'b0001
 `define OP_SLT 4'b0010
@@ -116,4 +117,4 @@
 `define LUI_OP 3'b010
 `define AUIPC_OP 3'b011
 `define LOAD_OP 3'b100
-`define SAVE_OP 3'b101
+`define STORE_OP 3'b101

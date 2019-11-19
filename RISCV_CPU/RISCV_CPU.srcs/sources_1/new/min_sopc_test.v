@@ -34,7 +34,7 @@ initial begin
     rst = `ResetEnable;
     stall_test = `StallDisable;
     rdy = 1'b1;
-    #100 rst = `ResetDisable;
+    #150 rst = `ResetDisable;
     #2000 $stop;
 end
 
