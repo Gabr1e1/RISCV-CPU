@@ -50,7 +50,8 @@ module id(
     output reg [`RegLen - 1 : 0] rd,
     output reg rd_enable,
     output reg [`OpCodeLen - 1 : 0] aluop,
-    output reg [`OpSelLen - 1 : 0] alusel
+    output reg [`OpSelLen - 1 : 0] alusel,
+    output reg [3:0] width,
     );
 
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
@@ -83,7 +84,7 @@ always @ (*) begin
             alusel <= `LUI_OP;
         end
         `INTCOM_REG: begin
-            Imm <= { {19{inst[31]}} ,inst[31:20] };
+            Imm <= { {20{inst[31]}} ,inst[31:20] };
             reg1_read_enable <= `ReadEnable;
             reg2_read_enable <= `ReadDisable;
             rd <= inst[11 : 7];
@@ -159,6 +160,46 @@ always @ (*) begin
                 default: ;
             endcase
         end
+        `LOAD: begin
+            Imm <= { {20{inst[31]}} ,inst[31:20] };
+            reg1_read_enable <= `ReadEnable;
+            reg2_read_enable <= `ReadDisable;
+            rd <= inst[11 : 7];
+            rd_enable <= `WriteEnable;
+            aluop <= `OP_ADD;
+            alusel <= `LOAD_OP;
+            case (funct3)
+                `LB:
+                    width <= 4'b0001;
+                `LH:
+                    width <= 4'b0010;
+                `LW:
+                    width <= 4'b0100;
+                `LBU:
+                    width <= 4'b0101;
+                `LHU:
+                    width <= 4'b0110;
+                default: ;
+            endcase
+        end
+        `SAVE: begin
+            Imm <= { {20{inst[31]}} ,inst[31:25], inst[11:7] };
+            reg1_read_enable <= `ReadEnable;
+            reg2_read_enable <= `ReadDisable;
+            rd <= inst[24 : 20];
+            rd_enable <= `WriteEnable;
+            aluop <= `OP_ADD;
+            alusel <= `SAVE_OP;
+            case (funct3)
+                `SB:
+                    width <= 4'b1001;
+                `SH:
+                    width <= 4'b1010;
+                `SW:
+                    width <= 4'b1100;
+            endcase
+        end
+
         default: begin
             rd_enable <= `WriteDisable;
             reg1_read_enable <= `ReadDisable;

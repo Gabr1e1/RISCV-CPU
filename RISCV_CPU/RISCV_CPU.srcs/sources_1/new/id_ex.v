@@ -30,6 +30,7 @@ module id_ex(
     input wire id_rd_enable,
     input wire [`OpCodeLen - 1 : 0] id_aluop,
     input wire [`OpSelLen - 1 : 0] id_alusel,
+    input wire [2:0] id_width,
 
     output reg [`RegLen - 1 : 0] ex_reg1,
     output reg [`RegLen - 1 : 0] ex_reg2,
@@ -38,6 +39,7 @@ module id_ex(
     output reg ex_rd_enable,
     output reg [`OpCodeLen - 1 : 0] ex_aluop,
     output reg [`OpSelLen - 1 : 0] ex_alusel,
+    output reg [3:0] ex_width,
 
     input wire [`PipelineDepth - 1 : 0] stall
     );
@@ -54,6 +56,7 @@ always @ (posedge clk) begin
         ex_rd_enable <= id_rd_enable;
         ex_aluop <= id_aluop;
         ex_alusel <= id_alusel;
+        ex_width <= id_width;
     end
 end
 

@@ -41,22 +41,22 @@ always @ (*) begin
         rw <= 1'b0;
         addr_to_mem <= `ZERO_WORD;
         stallreq <= `StallDisable;
-        start = 1'b0;
+        start <= 1'b0;
     end
     else begin
         if (mem_status != `IDLE && start == 1'b0) begin
-            stallreq = `StallEnable;
+            stallreq <= `StallEnable;
         end
-        else if (mem_status == `DONE) begin
-            inst = data_from_mem;
-            stallreq = `StallDisable;
-            start = 1'b0;
+        else if (mem_status == `IDLE && start == 1'b1) begin
+            inst <= data_from_mem;
+            stallreq <= `StallDisable;
+            start <= 1'b0;
         end
         else begin
-            addr_to_mem = pc;
-            rw = 1'b1;
-            stallreq = `StallEnable;
-            start = 1'b1;
+            addr_to_mem <= pc;
+            rw <= 1'b1;
+            stallreq <= `StallEnable;
+            start <= 1'b1;
         end
     end
 end

@@ -31,11 +31,15 @@ module ex(
     input wire rd_enable,
     input wire [`OpCodeLen - 1 : 0] aluop,
     input wire [`OpSelLen - 1 : 0] alusel,
+    input wire [3:0] width_i,
 
     output reg [`RegLen - 1 : 0] rd_data_o,
     output reg [`RegAddrLen - 1 : 0] rd_addr,
     output reg rd_enable_o
+    output wire [3:0] width_o,
     );
+    
+    assign width_o = width_i; 
 
     reg [`RegLen - 1 : 0] res;
 
@@ -82,6 +86,7 @@ always @ (*) begin
     else begin 
         rd_addr <= rd;
         rd_enable_o <= rd_enable;
+        width_o <= 4'b0000;
         case (alusel)
             `Arith_OP: 
                 rd_data_o <= res;
@@ -89,6 +94,9 @@ always @ (*) begin
                 rd_data_o <= Imm;
             `AUIPC_OP:
                 rd_data_o <= res;
+            `LOAD_OP: begin
+                rd_data_o <= res;
+            end
             default: 
                 rd_data_o <= `ZERO_WORD;
         endcase

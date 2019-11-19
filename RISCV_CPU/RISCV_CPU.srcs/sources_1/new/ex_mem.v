@@ -26,13 +26,17 @@ module ex_mem(
     input wire [`RegLen - 1 : 0] ex_rd_data,
     input wire [`RegAddrLen - 1 : 0] ex_rd_addr,
     input wire ex_rd_enable,
+    input wire [3:0] ex_width, 
 
     output reg [`RegLen - 1 : 0] mem_rd_data,
     output reg [`RegAddrLen - 1 : 0] mem_rd_addr,
     output reg mem_rd_enable,
+    output wire [3:0] mem_width,
 
     input wire [`PipelineDepth - 1 : 0] stall
     );
+
+    assign mem_width = ex_width;
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable || (stall[3] == `StallEnable && stall[4] == `StallDisable)) begin
@@ -42,6 +46,7 @@ always @ (posedge clk) begin
         mem_rd_data <= ex_rd_data;
         mem_rd_addr <= ex_rd_addr;
         mem_rd_enable <= ex_rd_enable;
+        mem_width <= ex_width;
     end
 end
 

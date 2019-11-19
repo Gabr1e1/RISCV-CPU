@@ -83,6 +83,16 @@
         `define SRA 7'b0100000
     `define OR 3'b110
     `define AND 3'b111
+`define LOAD 7'b0000011
+    `define LB 3'b000
+    `define LH 3'b001
+    `define LW 3'b010
+    `define LBU 3'b100
+    `define LHU 3'b001
+`define SAVE 7'b0100011
+    `define SB 3'b000
+    `define SH 3'b001
+    `define SW 3'b010
 
 //AluOP
 `define OpCodeLen 4
@@ -105,3 +115,5 @@
 `define Arith_OP 3'b001
 `define LUI_OP 3'b010
 `define AUIPC_OP 3'b011
+`define LOAD_OP 3'b100
+`define SAVE_OP 3'b101
