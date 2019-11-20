@@ -31,7 +31,8 @@
 `define IDLE 2'b00
 `define BUSYR 2'b01
 `define BUSYW 2'b10
-`define DONE 2'b11
+`define WORKING 2'b01
+`define DONE 2'b10
 
 `define ResetEnable 1'b1
 `define ResetDisable 1'b0

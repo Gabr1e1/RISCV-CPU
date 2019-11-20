@@ -32,7 +32,8 @@ module mem_ctrl(
     input wire [3:0] quantity,
 
     output reg [`RegLen - 1 : 0] data_out,
-    output reg [1:0] status,
+    output reg [1:0] status_if,
+    output reg [1:0] status_mem,
 
     output reg [`AddrLen - 1 : 0] addr_to_mem,
     output reg r_nw_to_mem,
@@ -41,36 +42,38 @@ module mem_ctrl(
     );
 
     integer q, count;
+    reg [1:0] status;
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
         //TODO: set to zero
         status <= `IDLE;
+        status_if <= 2'b00;
+        status_mem <= 2'b00;
     end
     else begin
         case (status)
-            `DONE:
-                status <= `IDLE;
             `IDLE: begin
                 data_out <= `ZERO_WORD;
-                if (rw_if != 1'b0 || rw_mem != 2'b00) begin
-                    count <= 2'b00;
+                count <= 2'b00;
+
+                if (rw_mem != 2'b00) begin
                     r_nw_to_mem <= (rw_mem == 2'b10);
-                    if (rw_if != 1'b0) begin
-                        addr_to_mem <= addr_from_if;
-                        q <= 3'b100;
-                    end
-                    else begin
-                        addr_to_mem <= addr_from_mem;
-                        q <= quantity;
-                    end
-                    if (rw_if == 1'b1 || rw_mem == 2'b01) begin
+                    addr_to_mem <= addr_from_mem;
+                    q <= quantity;
+                    status_mem <= `WORKING;
+                    if (rw_mem == 2'b10)
                         status <= `BUSYR;
-                    end
-                    else if (rw_mem == 2'b10) begin
-                        data_to_mem <= data_in[7 : 0];
+                    else begin
+                        data_to_mem <= data_in[7:0];
                         status <= `BUSYW;
                     end
+                end
+                else if (rw_if != 1'b0) begin
+                    addr_to_mem <= addr_from_if;
+                    q <= 3'b100;
+                    status_if <= `WORKING;
+                    status <= `BUSYR;
                 end
             end
             `BUSYR: begin
@@ -83,7 +86,11 @@ always @ (posedge clk) begin
                     addr_to_mem <= addr_to_mem + 1;
                 end
                 if (count == 4 || q == 3'b001)  begin //have read all
-                    status <= `DONE;
+                    status <= `IDLE;
+                    if (status_if == `WORKING)
+                        status_if <= `DONE;
+                    else
+                        status_mem <= `DONE;
                 end
             end
             `BUSYW: begin
@@ -91,7 +98,8 @@ always @ (posedge clk) begin
                 data_to_mem <= data_in[(count + 2) * `RamWord - 1 -: `RamWord];
                 q <= q - 1;
                 if (count == 4 || q == 3'b001) begin
-                    status <= `DONE;
+                    status <= `IDLE;
+                    status_mem <= `DONE;
                 end
             end
             default: ;
