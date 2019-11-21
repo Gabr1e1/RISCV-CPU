@@ -46,7 +46,14 @@ module id_ex(
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable || (stall[2] == `StallEnable && stall[3] == `StallDisable)) begin
-        //TODO: ASSIGN ALL OUTPUT WITH NULL EQUIVALENT
+        ex_reg1 <= `ZERO_WORD;
+        ex_reg2 <= `ZERO_WORD;
+        ex_Imm <= `ZERO_WORD;
+        ex_rd <= `ZERO_WORD;
+        ex_rd_enable <= `WriteDisable;
+        ex_aluop <= `ZERO_WORD;
+        ex_alusel <= `ZERO_WORD;
+        ex_width <= `ZERO_WORD;
     end
     else if (stall[2] == `StallDisable) begin
         ex_reg1 <= id_reg1;

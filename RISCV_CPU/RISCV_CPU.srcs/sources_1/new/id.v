@@ -204,6 +204,13 @@ always @ (*) begin
             rd_enable <= `WriteDisable;
             reg1_read_enable <= `ReadDisable;
             reg2_read_enable <= `ReadDisable;
+            reg1 <= `ZERO_WORD;
+            reg2 <= `ZERO_WORD;
+            rd <= `ZERO_WORD;
+            Imm <= `ZERO_WORD;
+            aluop <= `ZERO_WORD;
+            alusel <= `ZERO_WORD;
+            width <= `ZERO_WORD;
         end 
     endcase
 end
@@ -211,34 +218,34 @@ end
 //Get rs1
 always @ (*) begin
     if (rst == `ResetEnable) begin
-        reg1 <= `ZERO_WORD;
+        reg1 = `ZERO_WORD;
     end
     else if (reg1_read_enable == `ReadDisable) begin
-        reg1 <= `ZERO_WORD;
+        reg1 = `ZERO_WORD;
     end
     else if (reg1_read_enable == `ReadEnable) begin
         if (ex_reg_i == `ForwardEnable && ex_reg_addr == reg1_addr_o)
-            reg1 <= ex_reg_data; 
+            reg1 = ex_reg_data; 
         else if (mem_reg_i == `ForwardEnable && mem_reg_addr == reg1_addr_o)
-            reg1 <= mem_reg_data;
-        else reg1 <= reg1_data_i;
+            reg1 = mem_reg_data;
+        else reg1 = reg1_data_i;
     end
 end
 
 //Get rs2
 always @ (*) begin
     if (rst == `ResetEnable) begin
-        reg2 <= `ZERO_WORD;
+        reg2 = `ZERO_WORD;
     end
     else if (reg2_read_enable == `ReadDisable) begin
-        reg2 <= Imm;
+        reg2 = Imm;
     end
     else if (reg2_read_enable == `ReadEnable) begin
         if (ex_reg_i == `ForwardEnable && ex_reg_addr == reg2_addr_o)
-            reg2 <= ex_reg_data; 
+            reg2 = ex_reg_data; 
         else if (mem_reg_i == `ForwardEnable && mem_reg_addr == reg2_addr_o)
-            reg2 <= mem_reg_data;
-        else reg2 <= reg2_data_i;
+            reg2 = mem_reg_data;
+        else reg2 = reg2_data_i;
     end
 end
 

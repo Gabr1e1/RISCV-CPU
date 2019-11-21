@@ -24,6 +24,8 @@ module mem(
     input rst,
     input wire [`RegLen - 1 : 0] rd_data_i,
     input wire [`RegAddrLen - 1 : 0] rd_addr_i,
+    input wire [`AddrLen - 1 : 0] mem_addr,
+    
     input wire rd_enable_i,
     input wire [3:0] width,
 
@@ -33,17 +35,17 @@ module mem(
 
 //TO MEMCTRL
     output reg [`AddrLen - 1 : 0] addr_to_mem,
+    output reg [`AddrLen - 1 : 0] data_to_mem,
     output reg [2:0] rw_mem,
     output reg [3:0] quantity,
 
     input wire [`RegLen - 1 : 0] data_from_mem,
     input wire [1:0] mem_status,
-
+    input wire enable,
+    
+    input wire [`PipelineDepth - 1 : 0] stall,
     output reg stallreq
     );
-
-    reg start;
-    reg [5:0] digit_cnt;
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
@@ -51,20 +53,16 @@ always @ (*) begin
         rd_addr_o = `RegAddrLen'h0;
         rd_enable_o = `WriteDisable;
         stallreq = `StallDisable;
-        start = 1'b0;
+        rw_mem = 2'b00;
     end
     else if (width == 4'b0000) begin
         rd_data_o = rd_data_i;
         rd_addr_o = rd_addr_i;
         rd_enable_o = rd_enable_i;
         stallreq = `StallDisable;
-        start = 1'b0;
     end
     else if (width[3] == 1'b0) begin //LOAD
-        if (mem_status != `IDLE && start == 1'b0) begin
-            stallreq = `StallEnable;
-        end
-        else if (mem_status == `DONE) begin
+        if (mem_status == `DONE) begin
             if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
                if (width[0] == 1'b1) //LBU
                     rd_data_o = { {24{1'b0}} , data_from_mem[7 : 0] };
@@ -80,13 +78,11 @@ always @ (*) begin
                     rd_data_o = $signed(data_from_mem[31 : 0]);
             end
             stallreq = `StallDisable;
-            start = 1'b0;
         end
         else begin
             addr_to_mem = rd_data_i;
             rw_mem = 2'b01;
             stallreq = `StallEnable;
-            start = 1'b1;
             if (width[2] != 1'b1) 
                 quantity = width;
             else  
@@ -94,20 +90,16 @@ always @ (*) begin
         end
     end
     else if (width[3] == 1'b1) begin //SAVE
-        if (mem_status != `IDLE && start == 1'b0) begin
-            stallreq = `StallEnable;
-        end
-        else if (mem_status == `DONE) begin
+        if (mem_status == `DONE) begin
             rd_enable_o = `WriteDisable;
             stallreq = `StallDisable;
-            start = 1'b0;
             rw_mem = 2'b00;
         end
-        else begin
-            addr_to_mem = rd_data_i;
+        else if (mem_status == `IDLE) begin
+            addr_to_mem = mem_addr;
+            data_to_mem = rd_data_i;
             rw_mem = 2'b10;
             stallreq = `StallEnable;
-            start = 1'b1;
             quantity = width & 4'b0111;
         end
     end

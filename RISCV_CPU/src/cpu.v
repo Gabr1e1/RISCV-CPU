@@ -28,6 +28,7 @@ module cpu(
 
 //PC
 wire [`AddrLen - 1 : 0] pc;
+wire enable_pc;
 
 //IF -> IF/ID
 wire [`InstLen - 1 : 0] if_inst;
@@ -63,14 +64,17 @@ wire ex_rd_enable_i;
 //EX -> EX/MEM
 wire [`RegLen - 1 : 0] ex_rd_data;
 wire [`RegAddrLen - 1 : 0] ex_rd_addr;
+wire [`AddrLen - 1 : 0] ex_mem_addr;
 wire ex_rd_enable_o;
 wire [3:0] ex_width_o;
 
 //EX/MEM -> MEM
 wire [`RegLen - 1 : 0] mem_rd_data_i;
 wire [`RegAddrLen - 1 : 0] mem_rd_addr_i;
+wire [`AddrLen - 1 : 0] mem_mem_addr;
 wire mem_rd_enable_i;
 wire [3:0] mem_width;
+wire mem_enable;
 
 //MEM -> MEM/WB
 wire [`RegLen - 1 : 0] mem_rd_data_o;
@@ -94,16 +98,16 @@ wire rw_if;
 wire [2:0] rw_mem;
 wire [`RegLen - 1: 0] data_in;
 wire [`RegLen - 1 : 0] data_out;
-wire [1:0] MemCtrlStatus;
+wire [1:0] status_if, status_mem;
 wire [3:0] quantity;
 
 //Instantiation
 pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc), .chip_enable(rdy_in),
-              .stall(stall[0]));
+              .stall(stall[0]), .enable(enable_pc));
 
 if_stage if0(.rst(rst_in),.clk(clk_in),
-      .pc(pc), .inst(if_inst),
-      .addr_to_mem(addr_from_if), .rw(rw_if), .data_from_mem(data_out), .mem_status(MemCtrlStatus),
+      .pc(pc), .enable_pc(enable_pc), .inst(if_inst),
+      .addr_to_mem(addr_from_if), .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
       .stall(stall), .stallreq(stallreq_if));
 
 if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(pc), .if_inst(if_inst), .id_pc(id_pc_i), .id_inst(id_inst_i),
@@ -126,18 +130,18 @@ id_ex id_ex0(.clk(clk_in), .rst(rst_in),
 
 ex ex0(.rst(rst_in), .pc(pc), 
       .reg1(ex_reg1), .reg2(ex_reg2), .Imm(ex_Imm), .rd(ex_rd), .rd_enable(ex_rd_enable_i), .aluop(ex_aluop), .alusel(ex_alusel), .width_i(ex_width),
-      .rd_data_o(ex_rd_data), .rd_addr(ex_rd_addr), .rd_enable_o(ex_rd_enable_o), .width_o(ex_width_o));
+      .rd_data_o(ex_rd_data), .rd_addr(ex_rd_addr), .rd_enable_o(ex_rd_enable_o), .mem_addr(ex_mem_addr), .width_o(ex_width_o));
       
 ex_mem ex_mem0(.clk(clk_in), .rst(rst_in),
-              .ex_rd_data(ex_rd_data), .ex_rd_addr(ex_rd_addr), .ex_rd_enable(ex_rd_enable_o), .ex_width(ex_width_o), 
-              .mem_rd_data(mem_rd_data_i), .mem_rd_addr(mem_rd_addr_i), .mem_rd_enable(mem_rd_enable_i), .mem_width(mem_width), 
-              .stall(stall));
+              .ex_rd_data(ex_rd_data), .ex_rd_addr(ex_rd_addr), .ex_rd_enable(ex_rd_enable_o), .ex_mem_addr(ex_mem_addr), .ex_width(ex_width_o), 
+              .mem_rd_data(mem_rd_data_i), .mem_rd_addr(mem_rd_addr_i), .mem_rd_enable(mem_rd_enable_i), .mem_mem_addr(mem_mem_addr), .mem_width(mem_width), 
+              .stall(stall), .out_enable(mem_enable));
               
 mem mem0(.rst(rst_in),
-        .rd_data_i(mem_rd_data_i), .rd_addr_i(mem_rd_addr_i), .rd_enable_i(mem_rd_enable_i), .width(mem_width), 
+        .rd_data_i(mem_rd_data_i), .rd_addr_i(mem_rd_addr_i), .rd_enable_i(mem_rd_enable_i), .mem_addr(mem_mem_addr), .width(mem_width), 
         .rd_data_o(mem_rd_data_o), .rd_addr_o(mem_rd_addr_o), .rd_enable_o(mem_rd_enable_o),
         .addr_to_mem(addr_from_mem), .rw_mem(rw_mem), .quantity(quantity), .stallreq(stallreq_mem),
-        .data_from_mem(data_out), .mem_status(MemCtrlStatus));
+        .data_from_mem(data_out), .mem_status(status_mem), .data_to_mem(data_in), .stall(stall), .enable(mem_enable));
         
 mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),
               .mem_rd_data(mem_rd_data_o), .mem_rd_addr(mem_rd_addr_o), .mem_rd_enable(mem_rd_enable_o),
@@ -145,14 +149,14 @@ mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),
               .stall(stall));
 
 
-ctrl ctrl0(.rst(rst_in),
+ctrl ctrl0(.rst(rst_in), .clk(clk_in),
           .stallreq(stall_test),
           .stallreq_if(stallreq_if), .stallreq_mem(stallreq_mem),
           .stall(stall));
 
 mem_ctrl mem_ctrl0(.clk(clk_in), .rst(rst_in),
                   .addr_from_if(addr_from_if), .addr_from_mem(addr_from_mem), .data_in(data_in), .rw_if(rw_if), .rw_mem(rw_mem),
-                  .data_out(data_out), .status(MemCtrlStatus),
+                  .data_out(data_out), .status_if(status_if), .status_mem(status_mem), 
                   .addr_to_mem(mem_a), .r_nw_to_mem(mem_wr), .data_to_mem(mem_dout), .data_from_mem(mem_din),
                   .quantity(quantity));
 endmodule

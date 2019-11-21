@@ -24,8 +24,11 @@ module pc_reg(
     input wire rst,
     input wire stall,
     output reg [`AddrLen - 1 : 0] pc,
-    output reg chip_enable);
+    output reg chip_enable,
+    output reg enable
+    );
 
+    
 always @ (posedge clk) begin
     if (rst == `ResetEnable)
         chip_enable <= `ChipDisable;
@@ -38,8 +41,11 @@ always @ (posedge clk) begin
         pc <= `ZERO_WORD;
     end
     else if (stall == `StallDisable) begin
-        pc <= pc + 4'h4;
+        pc <= pc + 4;
+        enable <= 1'b1;
     end
+    else
+        enable <= 1'b0;
 end
 
 endmodule

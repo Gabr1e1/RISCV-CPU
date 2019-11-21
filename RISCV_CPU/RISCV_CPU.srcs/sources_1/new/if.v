@@ -32,26 +32,29 @@ module if_stage(
     input wire [1:0] mem_status,
 
     input wire [`PipelineDepth - 1 : 0] stall,
+    input wire enable_pc,
     output reg stallreq
     );
     
 always @ (*) begin
     if (rst == `ResetEnable) begin
         //TODO: RESET ALL
-        rw = 1'b0;
-        addr_to_mem = `ZERO_WORD;
-        stallreq = `StallDisable;
+        rw <= 1'b0;
+        addr_to_mem <= `ZERO_WORD;
+        stallreq <= `StallDisable;
     end
     else begin
         if (mem_status == `DONE) begin
-            inst = data_from_mem;
-            stallreq = `StallDisable;
+            inst <= data_from_mem;
+            stallreq <= `StallDisable;
+            rw <= 1'b0;
         end
-        else if (mem_status == `IDLE) begin
-            addr_to_mem = pc;
-            rw = 1'b1;
-            stallreq = `StallEnable;
+        else if (mem_status == `IDLE && enable_pc) begin
+            addr_to_mem <= pc;
+            rw <= 1'b1;
+            stallreq <= `StallEnable;
         end
     end
 end
+
 endmodule

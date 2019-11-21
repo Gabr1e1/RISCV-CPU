@@ -37,7 +37,13 @@ module register(
     );
     
     reg[`RegLen - 1 : 0] regs[`RegNum - 1 : 0];
+    integer i;
     
+initial begin
+    for (i = 0; i < `RegNum; i = i + 1)
+        regs[i] = `ZERO_WORD;
+end
+
 //write 1
 always @ (posedge clk) begin
     if (rst == `ResetDisable && write_enable == `WriteEnable) begin
@@ -57,7 +63,7 @@ always @ (*) begin
             read_data1 <= regs[read_addr1];
     end
     else begin
-        read_data1 = `ZERO_WORD;
+        read_data1 <= `ZERO_WORD;
     end
 end
 
@@ -72,7 +78,7 @@ always @ (*) begin
             read_data2 <= regs[read_addr2];
     end
     else begin
-        read_data2 = `ZERO_WORD;
+        read_data2 <= `ZERO_WORD;
     end
 end
 

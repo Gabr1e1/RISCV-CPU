@@ -47,9 +47,6 @@
 `define StallEnable 1'b1
 `define StallDisable 1'b0
 
-`define RAM_SIZE 100
-`define RAM_SIZELOG2 17
-
 //OPCODE
 `define OpLen 7
 `define Funct3 14:12

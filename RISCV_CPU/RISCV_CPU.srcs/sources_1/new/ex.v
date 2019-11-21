@@ -35,6 +35,8 @@ module ex(
 
     output reg [`RegLen - 1 : 0] rd_data_o,
     output reg [`RegAddrLen - 1 : 0] rd_addr,
+    output reg [`AddrLen - 1 : 0] mem_addr,
+
     output reg rd_enable_o,
     output reg [3:0] width_o
     );
@@ -100,8 +102,8 @@ always @ (*) begin
             end
             `STORE_OP: begin
                 width_o <= width_i;
-                rd_data_o <= res;
-                rd_addr <= reg2;
+                rd_data_o <= reg2;
+                mem_addr <= res;
             end
             default: 
                 rd_data_o <= `ZERO_WORD;
