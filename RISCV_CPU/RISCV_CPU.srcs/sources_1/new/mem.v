@@ -62,6 +62,7 @@ always @ (*) begin
         stallreq = `StallDisable;
     end
     else if (width[3] == 1'b0) begin //LOAD
+        rd_addr_o = rd_addr_i;
         if (mem_status == `DONE) begin
             if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
                if (width[0] == 1'b1) //LBU
@@ -78,12 +79,13 @@ always @ (*) begin
                     rd_data_o = $signed(data_from_mem[31 : 0]);
             end
             stallreq = `StallDisable;
+            rw_mem = 2'b00;
         end
-        else begin
+        else if (mem_status == `IDLE) begin
             addr_to_mem = rd_data_i;
             rw_mem = 2'b01;
             stallreq = `StallEnable;
-            if (width[2] != 1'b1) 
+            if (width[2] ^ width[1] ^ width[0] == 1) 
                 quantity = width;
             else  
                 quantity = width & 4'b0011;

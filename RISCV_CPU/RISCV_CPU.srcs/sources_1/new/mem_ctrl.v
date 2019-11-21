@@ -58,6 +58,7 @@ always @ (posedge clk) begin
                 count <= 2'b00;
                 status_mem <= `IDLE;
                 status_if <= `IDLE;
+                r_nw_to_mem <= 1'b1;
 
                 if (rw_mem != 2'b00) begin
                     r_nw_to_mem <= (rw_mem != 2'b10);
@@ -83,7 +84,7 @@ always @ (posedge clk) begin
             `BUSYR: begin
                 count <= count + 1;
                 if (count >= 1) begin
-                    data_out[q * `RamWord - 1 -: `RamWord] <= data_from_mem;
+                    data_out[count * `RamWord - 1 -: `RamWord] <= data_from_mem;
                     q <= q - 1;
                 end
                 if (count <= 3) begin
@@ -103,10 +104,9 @@ always @ (posedge clk) begin
                 q <= q - 1;
                 if (count <= 2)
                     addr_to_mem <= addr_to_mem + 1;
-                if (count == 3 || q == 3'b001) begin
+                if (count == 2 || q == 3'b010) begin
                     status <= `IDLE;
                     status_mem <= `DONE;
-                    r_nw_to_mem <= 1'b0;
                 end
             end
             default: ;
