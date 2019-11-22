@@ -1,0 +1,22 @@
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+750000  4          8
+770000  4          8
+790000  4          8
+810000  4          8
+830000  4          8
+850000  4          8
+890000  4          8
+910000  4          8
+950000  4          8
+1150000  5         12
+1170000  5         12
+1190000  5         12
+1210000  5         12
+1230000  5         12
+1250000  5         12
+1290000  5         12
+1310000  5         12
+1330000  5         12
+1350000  5         12
+$stop called at time : 2150 ns : File "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/min_sopc_test.v" Line 38
