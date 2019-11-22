@@ -90,7 +90,7 @@ always @ (posedge clk) begin
                 if (count <= 3) begin
                     addr_to_mem <= addr_to_mem + 1;
                 end
-                if (count == 4 || q == 3'b001)  begin //have read all
+                if (count == 4 || q == 3'b000)  begin //have read all
                     status <= `IDLE;
                     if (status_if == `WORKING)
                         status_if <= `DONE;

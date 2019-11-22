@@ -62,6 +62,7 @@ always @ (*) begin
         stallreq = `StallDisable;
     end
     else if (width[3] == 1'b0) begin //LOAD
+        $display("%0t %d %d",$time, rd_addr_i, rd_data_i);
         rd_addr_o = rd_addr_i;
         if (mem_status == `DONE) begin
             if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
@@ -80,6 +81,7 @@ always @ (*) begin
             end
             stallreq = `StallDisable;
             rw_mem = 2'b00;
+            rd_enable_o = `WriteEnable;
         end
         else if (mem_status == `IDLE) begin
             addr_to_mem = rd_data_i;

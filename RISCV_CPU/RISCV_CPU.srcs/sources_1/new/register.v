@@ -42,7 +42,7 @@ module register(
 initial begin
     for (i = 0; i < `RegNum; i = i + 1)
         regs[i] = `ZERO_WORD;
-    regs[1] = 32'b11110000101001010000111101011010;
+    //regs[1] = 32'b11110000101001010000111101011010;
 end
 
 //write 1

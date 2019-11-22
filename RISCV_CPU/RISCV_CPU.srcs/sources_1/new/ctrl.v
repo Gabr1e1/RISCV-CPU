@@ -29,7 +29,7 @@ module ctrl(
     output reg [`PipelineDepth - 1 : 0] stall
     );
 
-    always @ (posedge clk or negedge clk) begin
+    always @ (posedge clk, negedge clk) begin
         if (rst == `ResetEnable) begin
             stall <= `PipelineDepth'b000000; //from msb to lsb!!!
         end 
