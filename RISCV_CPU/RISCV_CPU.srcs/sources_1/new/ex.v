@@ -105,6 +105,9 @@ always @ (*) begin
                 rd_data_o <= reg2;
                 mem_addr <= res;
             end
+            `JAL_OP: begin
+                rd_data_o <= reg2;
+            end
             default: 
                 rd_data_o <= `ZERO_WORD;
         endcase

@@ -33,9 +33,15 @@ module if_stage(
 
     input wire [`PipelineDepth - 1 : 0] stall,
     input wire enable_pc,
-    output reg stallreq
+    output reg stallreq,
+
+    output reg [`AddrLen - 1 : 0] prediction,
+    output wire pred_enable,
+    input wire flush
     );
     
+    assign pred_enable = (inst[`OpLen - 1 : 0] == `JAL);
+
 always @ (*) begin
     if (rst == `ResetEnable) begin
         //TODO: RESET ALL
@@ -45,7 +51,7 @@ always @ (*) begin
     end
     else begin
         if (mem_status == `DONE) begin
-            inst <= data_from_mem;
+            inst <= (flush == `FlushEnable) ? `ZERO_WORD + 32'h0000001: data_from_mem;
             stallreq <= `StallDisable;
             rw <= 1'b0;
         end
@@ -53,6 +59,8 @@ always @ (*) begin
             addr_to_mem <= pc;
             rw <= 1'b1;
             stallreq <= `StallEnable;
+            //Prediction next inst, assuming always not jump for now
+            prediction <= pc + 4;
         end
     end
 end

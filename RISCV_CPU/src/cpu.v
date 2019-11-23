@@ -29,6 +29,11 @@ module cpu(
 //PC
 wire [`AddrLen - 1 : 0] pc;
 wire enable_pc;
+wire [`AddrLen - 1 : 0] jmp_addr;
+wire jmp_enable;
+wire [`AddrLen - 1 : 0] prediction_addr;
+wire pred_enable;
+wire flush;
 
 //IF -> IF/ID
 wire [`InstLen - 1 : 0] if_inst;
@@ -36,6 +41,7 @@ wire [`InstLen - 1 : 0] if_inst;
 //IF/ID -> ID
 wire [`AddrLen - 1 : 0] id_pc_i;
 wire [`InstLen - 1 : 0] id_inst_i;
+wire [`AddrLen - 1 : 0] id_prediction_addr;
 
 //Register -> ID
 wire [`RegLen - 1 : 0] reg1_data;
@@ -103,21 +109,25 @@ wire [3:0] quantity;
 
 //Instantiation
 pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc), .chip_enable(rdy_in),
-              .stall(stall[0]), .enable(enable_pc));
+              .stall(stall[0]), .enable(enable_pc), .flush(flush),
+              .jmp(jmp_addr), .jmp_enable(jmp_enable), .prediction(prediction_addr), .pred_enable(pred_enable));
 
 if_stage if0(.rst(rst_in),.clk(clk_in),
       .pc(pc), .enable_pc(enable_pc), .inst(if_inst),
       .addr_to_mem(addr_from_if), .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
-      .stall(stall), .stallreq(stallreq_if));
+      .stall(stall), .stallreq(stallreq_if),
+      .prediction(prediction_addr), .pred_enable(pred_enable), .flush(flush));
 
 if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(pc), .if_inst(if_inst), .id_pc(id_pc_i), .id_inst(id_inst_i),
-            .stall(stall));
+            .stall(stall),
+            .if_prediction(prediction_addr), .id_prediction(id_prediction_addr));
 
 id id0(.rst(rst_in), .pc(id_pc_i), .inst(id_inst_i), .reg1_data_i(reg1_data), .reg2_data_i(reg2_data), 
       .reg1_addr_o(reg1_addr), .reg1_read_enable(reg1_read_enable), .reg2_addr_o(reg2_addr), .reg2_read_enable(reg2_read_enable),
       .reg1(id_reg1), .reg2(id_reg2), .Imm(id_Imm), .rd(id_rd), .rd_enable(id_rd_enable), .aluop(id_aluop), .alusel(id_alusel), .width(id_width),
       .ex_reg_i(ex_rd_enable_o), .ex_reg_addr(ex_rd_addr), .ex_reg_data(ex_rd_data),
-      .mem_reg_i(mem_rd_enable_o), .mem_reg_addr(mem_rd_addr_o), .mem_reg_data(mem_rd_data_o));
+      .mem_reg_i(mem_rd_enable_o), .mem_reg_addr(mem_rd_addr_o), .mem_reg_data(mem_rd_data_o),
+      .prediction(prediction_addr), .jmp_addr(jmp_addr), .jmp_enable(jmp_enable));
       
 register register0(.clk(clk_in), .rst(rst_in), 
                   .write_enable(write_enable), .write_addr(write_addr), .write_data(write_data),

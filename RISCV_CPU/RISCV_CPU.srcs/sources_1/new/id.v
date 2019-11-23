@@ -51,168 +51,193 @@ module id(
     output reg rd_enable,
     output reg [`OpCodeLen - 1 : 0] aluop,
     output reg [`OpSelLen - 1 : 0] alusel,
-    output reg [3:0] width
+    output reg [3:0] width,
+
+//Branch related: prediction
+    input wire [`AddrLen - 1 : 0] prediction,
+    output reg [`AddrLen - 1 : 0] jmp_addr,
+    output reg jmp_enable
     );
 
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
     wire [`Funct3Len - 1 : 0] funct3 = inst[`Funct3];
     wire [`Funct7Len - 1 : 0] funct7 = inst[`Funct7];
 
+    wire [`AddrLen - 1 : 0] npc;
+
+    assign npc = pc + 4;
+    
 //Decode: Get opcode, imm, rd, and the addr of rs1&rs2
 always @ (*) begin
     if (rst == `ResetEnable) begin
         //TODO: RESET
+        jmp_enable <= `JumpDisable;
     end
     else begin
         reg1_addr_o <= inst[19 : 15];
         reg2_addr_o <= inst[24 : 20];
+        rd <= inst[11 : 7];
+
+        case (opcode)
+            `INTCOM_LUI: begin
+                Imm <= { inst[31:12], {12{1'b0}} };
+                rd_enable <= `WriteEnable;
+                aluop <= `OP_LUI;
+                alusel <= `LUI_OP;
+                jmp_enable <= `JumpDisable;
+            end
+            `INTCOM_AUIPC: begin
+                Imm <= { inst[31:12], {12{1'b0}} };
+                rd_enable <= `WriteEnable;
+                aluop <= `OP_LUI;
+                alusel <= `LUI_OP;
+                jmp_enable <= `JumpDisable;
+            end
+            `INTCOM_REG: begin
+                Imm <= { {20{inst[31]}} ,inst[31:20] };
+                reg1_read_enable <= `ReadEnable;
+                reg2_read_enable <= `ReadDisable;
+                rd_enable <= `WriteEnable;
+                alusel <= `Arith_OP;
+                jmp_enable <= `JumpDisable;
+                case (funct3)
+                    `ADDI:
+                        aluop <= `OP_ADD;
+                    `SLLI: begin
+                        aluop <= `OP_SLL;
+                        Imm <= { {27{1'b0}}, inst[24:20] };
+                    end
+                    `SLTI:
+                        aluop <= `OP_SLT;
+                    `SLTIU:
+                        aluop <= `OP_SLTU;
+                    `XORI:
+                        aluop <= `OP_XOR;
+                    `SRXI: begin
+                        Imm <= { {27{1'b0}}, inst[24:20] };
+                        case (funct7)
+                            `SRLI:
+                                aluop <= `OP_SRL;
+                            `SRAI:
+                                aluop <= `OP_SRA;                     
+                            default: ;
+                        endcase
+                    end
+                    `ORI:
+                        aluop <= `OP_OR;
+                    `ANDI:
+                        aluop <= `OP_AND;     
+                    default: ;
+                endcase
+            end
+            `INTCOM_REGREG: begin
+                reg1_read_enable <= `ReadEnable;
+                reg2_read_enable <= `ReadEnable;
+                rd_enable <= `WriteEnable;
+                aluop <= `Arith_OP;
+                jmp_enable <= `JumpDisable;
+                case (funct3)
+                    `ADDSUB: begin
+                        case (funct7)
+                            `ADD:
+                                aluop <= `OP_ADD;
+                            `SUB:
+                                aluop <= `OP_SUB;
+                            default: ;
+                        endcase
+                    end
+                    `SLL:
+                        aluop <= `OP_SLL;
+                    `SLT:
+                        aluop <= `OP_SLT;
+                    `SLTIU:
+                        aluop <= `OP_SLTU;
+                    `XOR:
+                        aluop <= `OP_XOR;
+                    `SRX: begin
+                        case (funct7)
+                            `SRL:
+                                aluop <= `OP_SRL;
+                            `SRA:
+                                aluop <= `OP_SRA;
+                            default: ;
+                        endcase
+                    end
+                    `OR:
+                        aluop <= `OP_OR;
+                    `AND:
+                        aluop <= `OP_AND;
+                    default: ;
+                endcase
+            end
+            `LOAD: begin
+                Imm <= { {20{inst[31]}} ,inst[31:20] };
+                reg1_read_enable <= `ReadEnable;
+                reg2_read_enable <= `ReadDisable;
+                rd_enable <= `WriteEnable;
+                aluop <= `OP_ADD;
+                alusel <= `LOAD_OP;
+                jmp_enable <= `JumpDisable;
+                case (funct3)
+                    `LB:
+                        width <= 4'b0001;
+                    `LH:
+                        width <= 4'b0010;
+                    `LW:
+                        width <= 4'b0100;
+                    `LBU:
+                        width <= 4'b0101;
+                    `LHU:
+                        width <= 4'b0110;
+                    default: ;
+                endcase
+            end
+            `SAVE: begin
+                Imm <= { {20{inst[31]}} ,inst[31:25], inst[11:7] };
+                reg1_read_enable <= `ReadEnable;
+                reg2_read_enable <= `ReadEnable;
+                rd_enable <= `WriteEnable;
+                aluop <= `OP_ADD2;
+                alusel <= `STORE_OP;
+                jmp_enable <= `JumpDisable;
+                case (funct3)
+                    `SB:
+                        width <= 4'b1001;
+                    `SH:
+                        width <= 4'b1010;
+                    `SW:
+                        width <= 4'b1100;
+                endcase
+            end
+            `Flushed: begin
+                jmp_enable <= `JumpDisable;
+            end
+            `JAL: begin
+                reg1_read_enable <= `ReadDisable;
+                reg2_read_enable <= `ReadDisable;
+                Imm <= npc;
+                rd_enable <= `WriteEnable;
+                aluop <= `NOP;
+                alusel <= `JAL_OP;
+                jmp_addr <= pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 };
+                jmp_enable <= `JumpEnable & (jmp_addr != prediction);
+            end
+            default: begin
+                //$display("FUCK unknow inst %0t %h", $time, inst);
+                rd_enable <= `WriteDisable;
+                reg1_read_enable <= `ReadDisable;
+                reg2_read_enable <= `ReadDisable;
+                reg1 <= `ZERO_WORD;
+                reg2 <= `ZERO_WORD;
+                rd <= `ZERO_WORD;
+                Imm <= `ZERO_WORD;
+                aluop <= `ZERO_WORD;
+                alusel <= `ZERO_WORD;
+                width <= `ZERO_WORD;
+//                jmp_enable <= `JumpDisable;
+            end 
+        endcase
     end
-
-    case (opcode)
-        `INTCOM_LUI: begin
-            Imm <= { inst[31:12], {12{1'b0}} };
-            rd <= inst[11 : 7];
-            rd_enable <= `WriteEnable;
-            aluop <= `OP_LUI;
-            alusel <= `LUI_OP;
-        end
-        `INTCOM_AUIPC: begin
-            Imm <= { inst[31:12], {12{1'b0}} };
-            rd <= inst[11 : 7];
-            rd_enable <= `WriteEnable;
-            aluop <= `OP_LUI;
-            alusel <= `LUI_OP;
-        end
-        `INTCOM_REG: begin
-            Imm <= { {20{inst[31]}} ,inst[31:20] };
-            reg1_read_enable <= `ReadEnable;
-            reg2_read_enable <= `ReadDisable;
-            rd <= inst[11 : 7];
-            rd_enable <= `WriteEnable;
-            alusel <= `Arith_OP;
-            case (funct3)
-                `ADDI:
-                    aluop <= `OP_ADD;
-                `SLLI: begin
-                    aluop <= `OP_SLL;
-                    Imm <= { {27{1'b0}}, inst[24:20] };
-                end
-                `SLTI:
-                    aluop <= `OP_SLT;
-                `SLTIU:
-                    aluop <= `OP_SLTU;
-                `XORI:
-                    aluop <= `OP_XOR;
-                `SRXI: begin
-                    Imm <= { {27{1'b0}}, inst[24:20] };
-                    case (funct7)
-                        `SRLI:
-                            aluop <= `OP_SRL;
-                        `SRAI:
-                            aluop <= `OP_SRA;                     
-                        default: ;
-                    endcase
-                end
-                `ORI:
-                    aluop <= `OP_OR;
-                `ANDI:
-                    aluop <= `OP_AND;     
-                default: ;
-            endcase
-        end
-        `INTCOM_REGREG: begin
-            reg1_read_enable <= `ReadEnable;
-            reg2_read_enable <= `ReadEnable;
-            rd <= inst[11 : 7];
-            rd_enable <= `WriteEnable;
-            aluop <= `Arith_OP;
-            case (funct3)
-                `ADDSUB: begin
-                    case (funct7)
-                        `ADD:
-                            aluop <= `OP_ADD;
-                        `SUB:
-                            aluop <= `OP_SUB;
-                        default: ;
-                    endcase
-                end
-                `SLL:
-                    aluop <= `OP_SLL;
-                `SLT:
-                    aluop <= `OP_SLT;
-                `SLTIU:
-                    aluop <= `OP_SLTU;
-                `XOR:
-                    aluop <= `OP_XOR;
-                `SRX: begin
-                    case (funct7)
-                        `SRL:
-                            aluop <= `OP_SRL;
-                        `SRA:
-                            aluop <= `OP_SRA;
-                        default: ;
-                    endcase
-                end
-                `OR:
-                    aluop <= `OP_OR;
-                `AND:
-                    aluop <= `OP_AND;
-                default: ;
-            endcase
-        end
-        `LOAD: begin
-            Imm <= { {20{inst[31]}} ,inst[31:20] };
-            reg1_read_enable <= `ReadEnable;
-            reg2_read_enable <= `ReadDisable;
-            rd <= inst[11 : 7];
-            rd_enable <= `WriteEnable;
-            aluop <= `OP_ADD;
-            alusel <= `LOAD_OP;
-            case (funct3)
-                `LB:
-                    width <= 4'b0001;
-                `LH:
-                    width <= 4'b0010;
-                `LW:
-                    width <= 4'b0100;
-                `LBU:
-                    width <= 4'b0101;
-                `LHU:
-                    width <= 4'b0110;
-                default: ;
-            endcase
-        end
-        `SAVE: begin
-            Imm <= { {20{inst[31]}} ,inst[31:25], inst[11:7] };
-            reg1_read_enable <= `ReadEnable;
-            reg2_read_enable <= `ReadEnable;
-            rd <= inst[11 : 7];
-            rd_enable <= `WriteEnable;
-            aluop <= `OP_ADD2;
-            alusel <= `STORE_OP;
-            case (funct3)
-                `SB:
-                    width <= 4'b1001;
-                `SH:
-                    width <= 4'b1010;
-                `SW:
-                    width <= 4'b1100;
-            endcase
-        end
-
-        default: begin
-            rd_enable <= `WriteDisable;
-            reg1_read_enable <= `ReadDisable;
-            reg2_read_enable <= `ReadDisable;
-            reg1 <= `ZERO_WORD;
-            reg2 <= `ZERO_WORD;
-            rd <= `ZERO_WORD;
-            Imm <= `ZERO_WORD;
-            aluop <= `ZERO_WORD;
-            alusel <= `ZERO_WORD;
-            width <= `ZERO_WORD;
-        end 
-    endcase
 end
 
 //Get rs1

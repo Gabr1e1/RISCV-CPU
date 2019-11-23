@@ -46,6 +46,10 @@
 `define ForwardDisable 1'b0
 `define StallEnable 1'b1
 `define StallDisable 1'b0
+`define FlushEnable 1'b1
+`define FlushDisable 1'b0
+`define JumpEnable 1'b1
+`define JumpDisable 1'b0
 
 //OPCODE
 `define OpLen 7
@@ -91,6 +95,8 @@
     `define SB 3'b000
     `define SH 3'b001
     `define SW 3'b010
+`define Flushed 7'b0000001
+`define JAL 7'b1101111
 
 //AluOP
 `define OpCodeLen 4
@@ -108,6 +114,7 @@
 `define OP_SRA 4'b1101
 `define OP_OR 4'b0110
 `define OP_AND 4'b0111
+`define NOP 4'b1000
 
 //AluSelect
 `define OpSelLen 3
@@ -116,3 +123,4 @@
 `define AUIPC_OP 3'b011
 `define LOAD_OP 3'b100
 `define STORE_OP 3'b101
+`define JAL_OP 3'b110

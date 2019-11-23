@@ -24,9 +24,12 @@ module if_id(
     input wire clk, 
     input wire rst,
     input wire [`AddrLen - 1 : 0] if_pc,
-    input wire [`InstLen - 1 : 0] if_inst,
+    input wire [`InstLen - 1 : 0] if_inst, 
+    input wire [`AddrLen - 1 : 0] if_prediction,
+
     output reg [`AddrLen - 1 : 0] id_pc,
     output reg [`InstLen - 1 : 0] id_inst,
+    output reg [`InstLen - 1 : 0] id_prediction,
     input wire [`PipelineDepth - 1 : 0] stall
     );
     
@@ -39,6 +42,7 @@ always @ (posedge clk) begin
     else if (stall[1] == `StallDisable) begin
         id_pc <= if_pc;
         id_inst <= if_inst;
+        id_prediction <= if_prediction;
     end
 end
 endmodule
