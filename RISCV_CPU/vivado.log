@@ -563,3 +563,8 @@ $stop called at time : 2150 ns : File "C:/Users/zhang/Documents/计算机系统/Compu
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'min_sopc_test_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 5000ns
 launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:21 . Memory (MB): peak = 850.801 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 852.379 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 25 00:13:27 2019...

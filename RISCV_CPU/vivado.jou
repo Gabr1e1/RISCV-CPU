@@ -24,3 +24,4 @@ source min_sopc_test.tcl
 close_sim
 launch_simulation -simset [get_filesets sim_2 ]
 source min_sopc_test.tcl
+close_sim
