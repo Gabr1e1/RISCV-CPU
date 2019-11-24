@@ -31,7 +31,7 @@ module ex(
     input wire rd_enable,
     input wire [`OpCodeLen - 1 : 0] aluop,
     input wire [`OpSelLen - 1 : 0] alusel,
-    input wire [`CtrlLen - 1 : 0] 
+    input wire [`CtrlLen - 1 : 0] ctrlsel,
     input wire [3:0] width_i,
     
     output reg [`RegLen - 1 : 0] rd_data_o,
@@ -138,12 +138,27 @@ always @ (*) begin
         //TODO: RESET
     end
     else begin
-        case (ex_ctrlsel)
-            `JAL: begin
-                jmp_enable <= `JumpEnable && (prediction != jmp_addr);
+        case (ctrlsel)
+            `Ctrl_JAL: begin
+                jmp_enable <= `JumpEnable & (prediction != jmp_addr);
             end
-            `JALR: begin
-                jmp_enable <= `JumpEnable && (prediction != jmp_addr);
+            `BEQ: begin
+                jmp_enable <= beq && (prediction != jmp_addr);
+            end
+            `BNE: begin
+                jmp_enable <= bne && (prediction != jmp_addr);
+            end
+            `BLT: begin
+                jmp_enable <= blt && (prediction != jmp_addr);
+            end
+            `BGE: begin
+                jmp_enable <= bge && (prediction != jmp_addr);
+            end
+            `BLTU: begin
+                jmp_enable <= bltu && (prediction != jmp_addr);
+            end
+            `BGEU: begin
+                jmp_enable <= bgeu && (prediction != jmp_addr);
             end
             default: 
                 jmp_enable <= `JumpDisable;

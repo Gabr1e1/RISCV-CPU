@@ -31,7 +31,7 @@ module pc_reg(
 
     output reg [`AddrLen - 1 : 0] pc,
     output reg chip_enable,
-    output reg enable,
+    output reg enable
     );
 
 always @ (posedge clk) begin

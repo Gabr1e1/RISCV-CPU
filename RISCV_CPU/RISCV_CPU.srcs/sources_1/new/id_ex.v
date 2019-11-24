@@ -32,7 +32,8 @@ module id_ex(
     input wire [`OpSelLen - 1 : 0] id_alusel,
     input wire [`CtrlLen - 1 : 0] id_ctrlsel,
     input wire [3:0] id_width,
-    
+    input wire [`AddrLen - 1 : 0] id_jmp_addr,
+
     output reg [`RegLen - 1 : 0] ex_reg1,
     output reg [`RegLen - 1 : 0] ex_reg2,
     output reg [`RegLen - 1 : 0] ex_Imm,
@@ -42,6 +43,7 @@ module id_ex(
     output reg [`OpSelLen - 1 : 0] ex_alusel,
     output reg [`CtrlLen - 1 : 0] ex_ctrlsel,
     output reg [3:0] ex_width,
+    output reg [`AddrLen - 1 : 0] ex_jmp_addr,
 
     input wire [`PipelineDepth - 1 : 0] stall,
     input wire flush
@@ -69,10 +71,12 @@ always @ (posedge clk) begin
             ex_alusel <= id_alusel;
             ex_ctrlsel <= id_ctrlsel;
             ex_width <= id_width;
+            ex_jmp_addr <= id_jmp_addr;
         end
         else begin
             ex_aluop <= `FlushOp;
             ex_alusel <= `NO_OP;
+            ex_rd_enable <= `WriteDisable;
             // ex_ctrlsel <= `Ctrl_NOP;
         end
     end

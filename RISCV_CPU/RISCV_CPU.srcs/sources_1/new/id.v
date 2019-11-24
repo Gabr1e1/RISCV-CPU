@@ -55,8 +55,9 @@ module id(
     output reg [3:0] width,
 
 //Branch prediction
-    input wire [`AddrLen - 1 : 0] prediction_i
+    input wire [`AddrLen - 1 : 0] prediction_i,
     output wire [`AddrLen - 1 : 0] prediction_o,
+    output reg [`AddrLen - 1 : 0] jmp_addr,
 //Flush
     output reg if_flushed
     );
@@ -80,6 +81,8 @@ always @ (*) begin
         reg2_addr_o <= inst[24 : 20];
         rd <= inst[11 : 7];
         if_flushed <= 1'b0;
+        ctrlsel <= `Ctrl_NOP;
+        
         case (opcode)
             `INTCOM_LUI: begin
                 Imm <= { inst[31:12], {12{1'b0}} };
@@ -207,7 +210,10 @@ always @ (*) begin
             end
             `Flushed: begin
                 if_flushed <= 1'b1;
-            end
+                reg1_read_enable <= `ReadDisable;
+                reg2_read_enable <= `ReadDisable;
+                rd_enable <= `WriteDisable;
+             end
             `JAL: begin
                 reg1_read_enable <= `ReadDisable;
                 reg2_read_enable <= `ReadDisable;
@@ -225,20 +231,18 @@ always @ (*) begin
                 Imm <= npc;
                 aluop <= `NOP;
                 alusel <= `JAL_OP;
-                ctrlsel <= `Ctrl_JALR;
+                ctrlsel <= `Ctrl_JAL;
                 jmp_addr <= (reg1 + { {20{inst[31]}}, inst[31:20] }) & 32'hfffffffe; //assign lsb to 0
             end
-            // `BRANCH: begin
-            //     reg1_read_enable <= `ReadEnable;
-            //     reg2_read_enable <= `ReadEnable;
-            //     rd_enable <= `WriteDisable;
-            //     aluop <= `NOP;
-            //     alusel <= `NOP;
-            //     Imm <= { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
-            //     case (funct3)
-                    
-            //     endcase
-            // end
+            `BRANCH: begin
+                reg1_read_enable <= `ReadEnable;
+                reg2_read_enable <= `ReadEnable;
+                rd_enable <= `WriteDisable;
+                aluop <= `NOP;
+                alusel <= `NOP;
+                ctrlsel <= funct3;
+                Imm <= { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
+            end
             default: begin
                 //$display("FUCK unknow inst %0t %h", $time, inst);
                 rd_enable <= `WriteDisable;

@@ -140,5 +140,5 @@
 //Ctrl
 `define CtrlLen 3
 `define Ctrl_JAL 3'b010
-`define Ctrl_JALR 3'b011
+`define Ctrl_NOP 3'b011
 //see branch define above

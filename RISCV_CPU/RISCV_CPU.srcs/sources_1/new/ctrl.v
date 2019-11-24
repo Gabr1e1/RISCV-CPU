@@ -27,6 +27,13 @@ module ctrl(
     input wire stallreq_if,
     input wire stallreq_mem,
     output reg [`PipelineDepth - 1 : 0] stall,
+
+//Flush
+    input wire jmp_enable,
+    input wire if_flushed,
+    input wire id_flushed,
+    output reg flush_if,
+    output reg flush_id
     );
 
     always @ (posedge clk) begin
@@ -63,5 +70,19 @@ module ctrl(
         else begin
             stall <= `PipelineDepth'b000000;
         end 
+    end
+
+    always @ (*) begin
+        if (jmp_enable) begin
+            flush_if <= `FlushEnable;
+            flush_id <= `FlushEnable;
+        end
+    end
+
+    always @ (*) begin
+        if (if_flushed)
+            flush_if <= `FlushDisable;
+        else
+            flush_id <= `FlushDisable;
     end
 endmodule

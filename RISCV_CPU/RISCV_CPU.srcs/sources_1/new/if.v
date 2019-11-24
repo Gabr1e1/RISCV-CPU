@@ -36,7 +36,7 @@ module if_stage(
     output reg stallreq,
 
     output reg [`AddrLen - 1 : 0] prediction,
-    output wire pred_enable,
+    output wire pred_enable
     );
     
     assign pred_enable = (inst[`OpLen - 1 : 0] == `JAL);
