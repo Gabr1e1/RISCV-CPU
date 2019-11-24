@@ -30,8 +30,9 @@ module id_ex(
     input wire id_rd_enable,
     input wire [`OpCodeLen - 1 : 0] id_aluop,
     input wire [`OpSelLen - 1 : 0] id_alusel,
+    input wire [`CtrlLen - 1 : 0] id_ctrlsel,
     input wire [3:0] id_width,
-
+    
     output reg [`RegLen - 1 : 0] ex_reg1,
     output reg [`RegLen - 1 : 0] ex_reg2,
     output reg [`RegLen - 1 : 0] ex_Imm,
@@ -39,9 +40,11 @@ module id_ex(
     output reg ex_rd_enable,
     output reg [`OpCodeLen - 1 : 0] ex_aluop,
     output reg [`OpSelLen - 1 : 0] ex_alusel,
+    output reg [`CtrlLen - 1 : 0] ex_ctrlsel,
     output reg [3:0] ex_width,
 
-    input wire [`PipelineDepth - 1 : 0] stall
+    input wire [`PipelineDepth - 1 : 0] stall,
+    input wire flush
     );
 
 always @ (posedge clk) begin
@@ -56,14 +59,22 @@ always @ (posedge clk) begin
         ex_width <= `ZERO_WORD;
     end
     else if (stall[2] == `StallDisable) begin
-        ex_reg1 <= id_reg1;
-        ex_reg2 <= id_reg2;
-        ex_Imm <= id_Imm;
-        ex_rd <= id_rd;
-        ex_rd_enable <= id_rd_enable;
-        ex_aluop <= id_aluop;
-        ex_alusel <= id_alusel;
-        ex_width <= id_width;
+        if (flush == `FlushDisable) begin
+            ex_reg1 <= id_reg1;
+            ex_reg2 <= id_reg2;
+            ex_Imm <= id_Imm;
+            ex_rd <= id_rd;
+            ex_rd_enable <= id_rd_enable;
+            ex_aluop <= id_aluop;
+            ex_alusel <= id_alusel;
+            ex_ctrlsel <= id_ctrlsel;
+            ex_width <= id_width;
+        end
+        else begin
+            ex_aluop <= `FlushOp;
+            ex_alusel <= `NO_OP;
+            // ex_ctrlsel <= `Ctrl_NOP;
+        end
     end
 end
 

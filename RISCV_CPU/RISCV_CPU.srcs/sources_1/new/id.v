@@ -51,47 +51,47 @@ module id(
     output reg rd_enable,
     output reg [`OpCodeLen - 1 : 0] aluop,
     output reg [`OpSelLen - 1 : 0] alusel,
+    output reg [`CtrlLen - 1 : 0] ctrlsel,
     output reg [3:0] width,
 
-//Branch related: prediction
-    input wire [`AddrLen - 1 : 0] prediction,
-    output reg [`AddrLen - 1 : 0] jmp_addr,
-    output reg jmp_enable
+//Branch prediction
+    input wire [`AddrLen - 1 : 0] prediction_i
+    output wire [`AddrLen - 1 : 0] prediction_o,
+//Flush
+    output reg if_flushed
     );
+
+    assign prediction_o = prediction_i;
 
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
     wire [`Funct3Len - 1 : 0] funct3 = inst[`Funct3];
     wire [`Funct7Len - 1 : 0] funct7 = inst[`Funct7];
-
     wire [`AddrLen - 1 : 0] npc;
 
     assign npc = pc + 4;
-    
+
 //Decode: Get opcode, imm, rd, and the addr of rs1&rs2
 always @ (*) begin
     if (rst == `ResetEnable) begin
         //TODO: RESET
-        jmp_enable <= `JumpDisable;
     end
     else begin
         reg1_addr_o <= inst[19 : 15];
         reg2_addr_o <= inst[24 : 20];
         rd <= inst[11 : 7];
-
+        if_flushed <= 1'b0;
         case (opcode)
             `INTCOM_LUI: begin
                 Imm <= { inst[31:12], {12{1'b0}} };
                 rd_enable <= `WriteEnable;
                 aluop <= `OP_LUI;
                 alusel <= `LUI_OP;
-                jmp_enable <= `JumpDisable;
             end
             `INTCOM_AUIPC: begin
                 Imm <= { inst[31:12], {12{1'b0}} };
                 rd_enable <= `WriteEnable;
                 aluop <= `OP_LUI;
                 alusel <= `LUI_OP;
-                jmp_enable <= `JumpDisable;
             end
             `INTCOM_REG: begin
                 Imm <= { {20{inst[31]}} ,inst[31:20] };
@@ -99,7 +99,6 @@ always @ (*) begin
                 reg2_read_enable <= `ReadDisable;
                 rd_enable <= `WriteEnable;
                 alusel <= `Arith_OP;
-                jmp_enable <= `JumpDisable;
                 case (funct3)
                     `ADDI:
                         aluop <= `OP_ADD;
@@ -135,7 +134,6 @@ always @ (*) begin
                 reg2_read_enable <= `ReadEnable;
                 rd_enable <= `WriteEnable;
                 aluop <= `Arith_OP;
-                jmp_enable <= `JumpDisable;
                 case (funct3)
                     `ADDSUB: begin
                         case (funct7)
@@ -177,7 +175,6 @@ always @ (*) begin
                 rd_enable <= `WriteEnable;
                 aluop <= `OP_ADD;
                 alusel <= `LOAD_OP;
-                jmp_enable <= `JumpDisable;
                 case (funct3)
                     `LB:
                         width <= 4'b0001;
@@ -199,7 +196,6 @@ always @ (*) begin
                 rd_enable <= `WriteEnable;
                 aluop <= `OP_ADD2;
                 alusel <= `STORE_OP;
-                jmp_enable <= `JumpDisable;
                 case (funct3)
                     `SB:
                         width <= 4'b1001;
@@ -210,7 +206,7 @@ always @ (*) begin
                 endcase
             end
             `Flushed: begin
-                jmp_enable <= `JumpDisable;
+                if_flushed <= 1'b1;
             end
             `JAL: begin
                 reg1_read_enable <= `ReadDisable;
@@ -219,9 +215,30 @@ always @ (*) begin
                 rd_enable <= `WriteEnable;
                 aluop <= `NOP;
                 alusel <= `JAL_OP;
+                ctrlsel <= `Ctrl_JAL;
                 jmp_addr <= pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 };
-                jmp_enable <= `JumpEnable & (jmp_addr != prediction);
             end
+            `JALR: begin
+                reg1_read_enable <= `ReadEnable;
+                reg2_read_enable <= `ReadDisable;
+                rd_enable <= `WriteEnable;
+                Imm <= npc;
+                aluop <= `NOP;
+                alusel <= `JAL_OP;
+                ctrlsel <= `Ctrl_JALR;
+                jmp_addr <= (reg1 + { {20{inst[31]}}, inst[31:20] }) & 32'hfffffffe; //assign lsb to 0
+            end
+            // `BRANCH: begin
+            //     reg1_read_enable <= `ReadEnable;
+            //     reg2_read_enable <= `ReadEnable;
+            //     rd_enable <= `WriteDisable;
+            //     aluop <= `NOP;
+            //     alusel <= `NOP;
+            //     Imm <= { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
+            //     case (funct3)
+                    
+            //     endcase
+            // end
             default: begin
                 //$display("FUCK unknow inst %0t %h", $time, inst);
                 rd_enable <= `WriteDisable;
@@ -234,7 +251,7 @@ always @ (*) begin
                 aluop <= `ZERO_WORD;
                 alusel <= `ZERO_WORD;
                 width <= `ZERO_WORD;
-//                jmp_enable <= `JumpDisable;
+//             
             end 
         endcase
     end

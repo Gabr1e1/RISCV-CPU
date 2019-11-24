@@ -37,10 +37,10 @@ module if_stage(
 
     output reg [`AddrLen - 1 : 0] prediction,
     output wire pred_enable,
-    input wire flush
     );
     
     assign pred_enable = (inst[`OpLen - 1 : 0] == `JAL);
+    assign is_jalr = (inst[`OpLen - 1 : 0] == `JALR);
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
@@ -51,7 +51,7 @@ always @ (*) begin
     end
     else begin
         if (mem_status == `DONE) begin
-            inst <= (flush == `FlushEnable) ? `ZERO_WORD + 32'h0000001: data_from_mem;
+            inst <= data_from_mem;
             stallreq <= `StallDisable;
             rw <= 1'b0;
         end

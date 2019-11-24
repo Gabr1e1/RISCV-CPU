@@ -31,17 +31,33 @@ module ex(
     input wire rd_enable,
     input wire [`OpCodeLen - 1 : 0] aluop,
     input wire [`OpSelLen - 1 : 0] alusel,
+    input wire [`CtrlLen - 1 : 0] 
     input wire [3:0] width_i,
-
+    
     output reg [`RegLen - 1 : 0] rd_data_o,
     output reg [`RegAddrLen - 1 : 0] rd_addr,
     output reg [`AddrLen - 1 : 0] mem_addr,
 
     output reg rd_enable_o,
-    output reg [3:0] width_o
+    output reg [3:0] width_o,
+
+//Branch related
+    input wire [`AddrLen - 1 : 0] jmp_addr,
+    input wire [`AddrLen - 1 : 0] prediction,
+    output reg jmp_enable,
+
+//Flush
+    output reg id_flushed
     );
     
     reg [`RegLen - 1 : 0] res;
+
+    wire beq = reg1 == reg2;
+    wire bne = reg1 != reg2;
+    wire blt = $signed(reg1) < $signed(reg2);
+    wire bltu = $unsigned(reg1) < $unsigned(reg2);
+    wire bge = $signed(reg1) > $signed(reg2);
+    wire bgeu = $unsigned(reg1) > $unsigned(reg2);
 
 //Do the calculation
 always @ (*) begin
@@ -49,6 +65,7 @@ always @ (*) begin
         res <= `ZERO_WORD;
     end
     else begin
+        id_flushed <= 1'b0;
         case (aluop)
             `OP_AUIPC:
                 res <= pc + Imm;
@@ -74,6 +91,8 @@ always @ (*) begin
                 res <= reg1 | reg2;
             `OP_AND:
                 res <= reg1 & reg2;
+            `FlushOp:
+                id_flushed <= 1'b1;
             default: 
                 res <= `ZERO_WORD;
         endcase
@@ -114,5 +133,22 @@ always @ (*) begin
     end
 end
 
+always @ (*) begin
+    if (rst == `ResetEnable) begin
+        //TODO: RESET
+    end
+    else begin
+        case (ex_ctrlsel)
+            `JAL: begin
+                jmp_enable <= `JumpEnable && (prediction != jmp_addr);
+            end
+            `JALR: begin
+                jmp_enable <= `JumpEnable && (prediction != jmp_addr);
+            end
+            default: 
+                jmp_enable <= `JumpDisable;
+        endcase
+    end
+end
 
 endmodule

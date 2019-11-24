@@ -26,7 +26,7 @@ module ctrl(
     input wire stallreq,
     input wire stallreq_if,
     input wire stallreq_mem,
-    output reg [`PipelineDepth - 1 : 0] stall
+    output reg [`PipelineDepth - 1 : 0] stall,
     );
 
     always @ (posedge clk) begin

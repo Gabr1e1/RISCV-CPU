@@ -19,6 +19,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 `define ZERO_WORD 32'h00000000
+`define FlushInst 32'h00000001
 
 `define InstLen 32
 `define AddrLen 32
@@ -97,6 +98,14 @@
     `define SW 3'b010
 `define Flushed 7'b0000001
 `define JAL 7'b1101111
+`define JALR 7'b1100111 
+`define BRANCH 7'b1100011
+    `define BEQ 3'b000
+    `define BNE 3'b001
+    `define BLT 3'b100
+    `define BGE 3'b101
+    `define BLTU 3'b110
+    `define BGEU 3'b111
 
 //AluOP
 `define OpCodeLen 4
@@ -115,12 +124,21 @@
 `define OP_OR 4'b0110
 `define OP_AND 4'b0111
 `define NOP 4'b1000
+`define FlushOp 4'b1111
+`define OP_JAL 4'b
 
 //AluSelect
 `define OpSelLen 3
+`define NO_OP 3'b000
 `define Arith_OP 3'b001
 `define LUI_OP 3'b010
 `define AUIPC_OP 3'b011
 `define LOAD_OP 3'b100
 `define STORE_OP 3'b101
 `define JAL_OP 3'b110
+
+//Ctrl
+`define CtrlLen 3
+`define Ctrl_JAL 3'b010
+`define Ctrl_JALR 3'b011
+//see branch define above

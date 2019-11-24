@@ -32,11 +32,8 @@ module pc_reg(
     output reg [`AddrLen - 1 : 0] pc,
     output reg chip_enable,
     output reg enable,
-    output wire flush
     );
 
-    assign flush = jmp_enable;
-    
 always @ (posedge clk) begin
     if (rst == `ResetEnable)
         chip_enable <= `ChipDisable;
