@@ -44,7 +44,6 @@ module if_stage(
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
-        //TODO: RESET ALL
         rw <= 1'b0;
         addr_to_mem <= `ZERO_WORD;
         stallreq <= `StallDisable;

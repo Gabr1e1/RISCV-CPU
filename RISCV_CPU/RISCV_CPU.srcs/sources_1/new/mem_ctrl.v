@@ -46,10 +46,10 @@ module mem_ctrl(
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
-        //TODO: set to zero
         status <= `IDLE;
         status_if <= 2'b00;
         status_mem <= 2'b00;
+        r_nw_to_mem <= 1'b1; //Read
     end
     else begin
         case (status)

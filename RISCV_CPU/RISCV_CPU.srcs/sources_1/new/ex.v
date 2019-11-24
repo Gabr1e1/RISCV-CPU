@@ -135,7 +135,7 @@ end
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
-        //TODO: RESET
+        jmp_enable <= `JumpDisable;
     end
     else begin
         case (ctrlsel)

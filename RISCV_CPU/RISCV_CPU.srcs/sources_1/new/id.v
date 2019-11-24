@@ -74,7 +74,17 @@ module id(
 //Decode: Get opcode, imm, rd, and the addr of rs1&rs2
 always @ (*) begin
     if (rst == `ResetEnable) begin
-        //TODO: RESET
+        rd_enable <= `WriteDisable;
+        reg1_read_enable <= `ReadDisable;
+        reg2_read_enable <= `ReadDisable;
+        reg1 <= `ZERO_WORD;
+        reg2 <= `ZERO_WORD;
+        rd <= `ZERO_WORD;
+        Imm <= `ZERO_WORD;
+        aluop <= `ZERO_WORD;
+        alusel <= `ZERO_WORD;
+        width <= `ZERO_WORD;
+        ctrlsel <= `Ctrl_NOP;
     end
     else begin
         reg1_addr_o <= inst[19 : 15];
@@ -255,7 +265,7 @@ always @ (*) begin
                 aluop <= `ZERO_WORD;
                 alusel <= `ZERO_WORD;
                 width <= `ZERO_WORD;
-//             
+                ctrlsel <= `Ctrl_NOP;
             end 
         endcase
     end
