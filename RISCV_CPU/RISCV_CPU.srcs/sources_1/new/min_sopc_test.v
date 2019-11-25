@@ -35,7 +35,7 @@ initial begin
     stall_test = `StallDisable;
     rdy = 1'b1;
     #150 rst = `ResetDisable;
-    #2000 $stop;
+    #1000000 $stop;
 end
 
 min_sopc cpu(.clk(CLOCK_50), .rst(rst), .stall_test(stall_test), .rdy(rdy));

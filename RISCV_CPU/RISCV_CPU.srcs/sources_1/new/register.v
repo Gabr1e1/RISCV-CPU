@@ -42,14 +42,15 @@ module register(
 initial begin
     for (i = 0; i < `RegNum; i = i + 1)
         regs[i] = `ZERO_WORD;
-    //regs[1] = 32'b11110000101001010000111101011010;
 end
 
 //write 1
 always @ (posedge clk) begin
     if (rst == `ResetDisable && write_enable == `WriteEnable) begin
-        if (write_addr != `RegAddrLen'h0) //not zero register
+        if (write_addr != `RegAddrLen'b00000) begin //not zero register
             regs[write_addr] <= write_data;
+//            $display("write reg %d %h",write_addr, write_data);
+        end
     end
 end
 

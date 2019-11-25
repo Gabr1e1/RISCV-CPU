@@ -35,12 +35,12 @@ module if_stage(
     input wire enable_pc,
     output reg stallreq,
 
-    output reg [`AddrLen - 1 : 0] prediction,
+    output wire [`AddrLen - 1 : 0] prediction,
     output wire pred_enable
     );
     
     assign pred_enable = (inst[`OpLen - 1 : 0] == `JAL);
-    assign is_jalr = (inst[`OpLen - 1 : 0] == `JALR);
+    assign prediction = pc + 4;            //Prediction next inst, assuming always not jump for now
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
@@ -58,8 +58,6 @@ always @ (*) begin
             addr_to_mem <= pc;
             rw <= 1'b1;
             stallreq <= `StallEnable;
-            //Prediction next inst, assuming always not jump for now
-            prediction <= pc + 4;
         end
     end
 end

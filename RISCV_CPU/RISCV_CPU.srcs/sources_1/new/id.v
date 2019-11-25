@@ -147,7 +147,7 @@ always @ (*) begin
                 reg1_read_enable <= `ReadEnable;
                 reg2_read_enable <= `ReadEnable;
                 rd_enable <= `WriteEnable;
-                aluop <= `Arith_OP;
+                alusel <= `Arith_OP;
                 case (funct3)
                     `ADDSUB: begin
                         case (funct7)
@@ -252,7 +252,7 @@ always @ (*) begin
                 aluop <= `NOP;
                 alusel <= `NOP;
                 ctrlsel <= funct3;
-                Imm <= { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
+                jmp_addr <= pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
             end
             default: begin
                 //$display("FUCK unknow inst %0t %h", $time, inst);

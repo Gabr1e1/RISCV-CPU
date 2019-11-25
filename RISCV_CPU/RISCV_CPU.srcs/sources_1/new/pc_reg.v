@@ -34,6 +34,8 @@ module pc_reg(
     output reg enable
     );
 
+    integer count = 0;
+    
 always @ (posedge clk) begin
     if (rst == `ResetEnable)
         chip_enable <= `ChipDisable;
@@ -46,6 +48,7 @@ always @ (posedge clk) begin
         pc <= `ZERO_WORD;
     end
     else if (stall == `StallDisable) begin
+        count = count + 1;
         enable <= 1'b1;
         if (jmp_enable == `JumpEnable) begin
             pc <= jmp;
@@ -56,6 +59,7 @@ always @ (posedge clk) begin
         else begin
             pc <= pc + 4;
         end
+//        $display("%d %h",count, pc);
     end
     else
         enable <= 1'b0;

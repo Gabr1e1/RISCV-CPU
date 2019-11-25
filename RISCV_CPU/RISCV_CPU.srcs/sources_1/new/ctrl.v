@@ -73,7 +73,11 @@ module ctrl(
     end
 
     always @ (*) begin
-        if (jmp_enable) begin
+        if (rst == `ResetEnable) begin
+            flush_if <= `FlushDisable;
+            flush_id <= `FlushDisable;
+        end
+        else if (jmp_enable) begin
             flush_if <= `FlushEnable;
             flush_id <= `FlushEnable;
         end

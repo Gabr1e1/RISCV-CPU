@@ -79,7 +79,7 @@ always @(posedge clk)
   begin
     if (we) begin
         ram[addr_a] <= din_a;
-        $display("%0t WRITE: %d %d %d", $time, addr_a, din_a, we);
+//        $display("%0t WRITE: %d %d %d", $time, addr_a, din_a, we);
     end
     q_addr_a <= addr_a;
   end
@@ -92,7 +92,7 @@ initial begin
   for (i=0;i<2**ADDR_WIDTH;i=i+1) begin
     ram[i] = 0;
   end
-  $readmemb("hazard_test1.data", ram); // add test.data to vivado project or specify a valid file path
+  $readmemh("test.data", ram); // add test.data to vivado project or specify a valid file path
 end
 
 endmodule

@@ -10,8 +10,8 @@ module cpu(
       input  wire [ 7:0]          mem_din,		// data input bus
       output wire [ 7:0]          mem_dout,		// data output bus
       output wire [31:0]          mem_a,			// address bus (only 17:0 is used)
-      output wire                 mem_wr			// write/read signal (1 for write)
-//	output wire [31:0]			dbgreg_dout		  // cpu register output (debugging demo)
+      output wire                 mem_wr,			// write/read signal (1 for write)
+	output wire [31:0]			dbgreg_dout		  // cpu register output (debugging demo)
 );
 
 // implementation goes here
@@ -36,7 +36,9 @@ wire enable_pc;
 
 //Branch related
 wire jmp_enable;
-wire [`AddrLen - 1 : 0] prediction_addr;
+wire [`AddrLen - 1 : 0] if_prediction;
+wire [`AddrLen - 1 : 0] id_prediction_i, id_prediction_o;
+wire [`AddrLen - 1 : 0] ex_prediction;
 wire pred_enable;
 
 //IF -> IF/ID
@@ -117,17 +119,17 @@ wire [3:0] quantity;
 //Instantiation
 pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc), .chip_enable(rdy_in),
               .stall(stall[0]), .enable(enable_pc),
-              .jmp(id_jmp_addr), .jmp_enable(jmp_enable), .prediction(prediction_addr), .pred_enable(pred_enable));
+              .jmp(id_jmp_addr), .jmp_enable(jmp_enable), .prediction(if_prediction), .pred_enable(pred_enable));
 
 if_stage if0(.rst(rst_in),.clk(clk_in),
       .pc(pc), .enable_pc(enable_pc), .inst(if_inst),
       .addr_to_mem(addr_from_if), .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
       .stall(stall), .stallreq(stallreq_if),
-      .prediction(prediction_addr), .pred_enable(pred_enable));
+      .prediction(if_prediction), .pred_enable(pred_enable));
 
 if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(pc), .if_inst(if_inst), .id_pc(id_pc_i), .id_inst(id_inst_i),
             .stall(stall),
-//            .if_prediction(prediction_addr), .id_prediction(id_prediction_addr_i),
+            .if_prediction(if_prediction), .id_prediction(id_prediction_i),
             .flush(flush_if));
 
 id id0(.rst(rst_in), .pc(id_pc_i), .inst(id_inst_i), .reg1_data_i(reg1_data), .reg2_data_i(reg2_data), 
@@ -135,7 +137,7 @@ id id0(.rst(rst_in), .pc(id_pc_i), .inst(id_inst_i), .reg1_data_i(reg1_data), .r
       .reg1(id_reg1), .reg2(id_reg2), .Imm(id_Imm), .rd(id_rd), .rd_enable(id_rd_enable), .aluop(id_aluop), .alusel(id_alusel), .ctrlsel(ctrlsel_i), .width(id_width),
       .ex_reg_i(ex_rd_enable_o), .ex_reg_addr(ex_rd_addr), .ex_reg_data(ex_rd_data),
       .mem_reg_i(mem_rd_enable_o), .mem_reg_addr(mem_rd_addr_o), .mem_reg_data(mem_rd_data_o),
-      .prediction_i(prediction_addr_i), .prediction_o(prediction_addr_o), .jmp_addr(id_jmp_addr), 
+      .prediction_i(id_prediction_i), .prediction_o(id_prediction_o), .jmp_addr(id_jmp_addr), 
       .if_flushed(if_flushed));
       
 register register0(.clk(clk_in), .rst(rst_in), 
@@ -147,12 +149,13 @@ id_ex id_ex0(.clk(clk_in), .rst(rst_in),
             .id_reg1(id_reg1), .id_reg2(id_reg2), .id_Imm(id_Imm), .id_rd(id_rd), .id_rd_enable(id_rd_enable), .id_aluop(id_aluop), .id_alusel(id_alusel), .id_ctrlsel(ctrlsel_i), .id_width(id_width), 
             .ex_reg1(ex_reg1), .ex_reg2(ex_reg2), .ex_Imm(ex_Imm), .ex_rd(ex_rd), .ex_rd_enable(ex_rd_enable_i), .ex_aluop(ex_aluop), .ex_alusel(ex_alusel), .ex_ctrlsel(ctrlsel_o), .ex_width(ex_width), 
             .id_jmp_addr(id_jmp_addr), .ex_jmp_addr(ex_jmp_addr), 
+            .id_prediction(id_prediction_o), .ex_prediction(ex_prediction),
             .stall(stall), .flush(flush_id));
 
 ex ex0(.rst(rst_in), .pc(pc), 
       .reg1(ex_reg1), .reg2(ex_reg2), .Imm(ex_Imm), .rd(ex_rd), .rd_enable(ex_rd_enable_i), .aluop(ex_aluop), .alusel(ex_alusel), .ctrlsel(ctrlsel_o), .width_i(ex_width),
       .rd_data_o(ex_rd_data), .rd_addr(ex_rd_addr), .rd_enable_o(ex_rd_enable_o), .mem_addr(ex_mem_addr), .width_o(ex_width_o),
-      .jmp_addr(ex_jmp_addr), .prediction(prediction_addr),
+      .jmp_addr(ex_jmp_addr), .prediction(ex_prediction),
       .jmp_enable(jmp_enable),
       .id_flushed(id_flushed));
       

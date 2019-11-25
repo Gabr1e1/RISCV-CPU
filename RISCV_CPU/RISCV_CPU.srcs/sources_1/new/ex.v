@@ -56,8 +56,8 @@ module ex(
     wire bne = reg1 != reg2;
     wire blt = $signed(reg1) < $signed(reg2);
     wire bltu = $unsigned(reg1) < $unsigned(reg2);
-    wire bge = $signed(reg1) > $signed(reg2);
-    wire bgeu = $unsigned(reg1) > $unsigned(reg2);
+    wire bge = $signed(reg1) >= $signed(reg2);
+    wire bgeu = $unsigned(reg1) >= $unsigned(reg2);
 
 //Do the calculation
 always @ (*) begin
@@ -86,13 +86,15 @@ always @ (*) begin
             `OP_SRL:
                 res <= reg1 >> reg2[4:0];
             `OP_SRA:
-                res <= $signed(reg1) >>> reg2[4:0];
+                res <= reg1 >>> reg2[4:0];
             `OP_OR:
                 res <= reg1 | reg2;
             `OP_AND:
                 res <= reg1 & reg2;
-            `FlushOp:
+            `FlushOp: begin
                 id_flushed <= 1'b1;
+                res <= `ZERO_WORD;
+            end
             default: 
                 res <= `ZERO_WORD;
         endcase

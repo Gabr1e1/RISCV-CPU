@@ -44,7 +44,7 @@ always @ (posedge clk) begin
         if (flush == `FlushDisable) begin
             id_pc <= if_pc;
             id_inst <= if_inst;
-//            id_prediction <= if_prediction;
+            id_prediction <= if_prediction;
         end
         else begin
             id_inst <= `FlushInst;

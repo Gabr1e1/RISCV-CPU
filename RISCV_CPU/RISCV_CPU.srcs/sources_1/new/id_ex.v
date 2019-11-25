@@ -33,7 +33,8 @@ module id_ex(
     input wire [`CtrlLen - 1 : 0] id_ctrlsel,
     input wire [3:0] id_width,
     input wire [`AddrLen - 1 : 0] id_jmp_addr,
-
+    input wire [`AddrLen - 1 : 0] id_prediction,
+    
     output reg [`RegLen - 1 : 0] ex_reg1,
     output reg [`RegLen - 1 : 0] ex_reg2,
     output reg [`RegLen - 1 : 0] ex_Imm,
@@ -44,6 +45,7 @@ module id_ex(
     output reg [`CtrlLen - 1 : 0] ex_ctrlsel,
     output reg [3:0] ex_width,
     output reg [`AddrLen - 1 : 0] ex_jmp_addr,
+    output reg [`AddrLen - 1 : 0] ex_prediction,
 
     input wire [`PipelineDepth - 1 : 0] stall,
     input wire flush
@@ -72,6 +74,7 @@ always @ (posedge clk) begin
             ex_ctrlsel <= id_ctrlsel;
             ex_width <= id_width;
             ex_jmp_addr <= id_jmp_addr;
+            ex_prediction <= id_prediction;
         end
         else begin
             ex_aluop <= `FlushOp;

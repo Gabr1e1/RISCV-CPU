@@ -49,7 +49,7 @@ always @ (posedge clk) begin
         status <= `IDLE;
         status_if <= 2'b00;
         status_mem <= 2'b00;
-        r_nw_to_mem <= 1'b1; //Read
+        r_nw_to_mem <= 1'b0; //Read
     end
     else begin
         case (status)
@@ -58,10 +58,10 @@ always @ (posedge clk) begin
                 count <= 2'b00;
                 status_mem <= `IDLE;
                 status_if <= `IDLE;
-                r_nw_to_mem <= 1'b1;
+                r_nw_to_mem <= 1'b0;
 
                 if (rw_mem != 2'b00) begin
-                    r_nw_to_mem <= (rw_mem != 2'b10);
+                    r_nw_to_mem <= (rw_mem == 2'b10);
                     addr_to_mem <= addr_from_mem;
                     data_to_mem <= data_in[7:0];
                     q <= quantity;
@@ -74,7 +74,7 @@ always @ (posedge clk) begin
                     end
                 end
                 else if (rw_if != 1'b0) begin
-                    r_nw_to_mem <= 1'b1;
+                    r_nw_to_mem <= 1'b0;
                     addr_to_mem <= addr_from_if;
                     q <= 3'b100;
                     status_if <= `WORKING;
