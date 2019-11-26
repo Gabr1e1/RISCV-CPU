@@ -65,7 +65,8 @@ always @ (posedge clk) begin
         ex_aluop <= `ZERO_WORD;
         ex_alusel <= `ZERO_WORD;
         ex_width <= `ZERO_WORD;
-        ex_pc <= `ZERO_WORD;
+//        ex_pc <= `ZERO_WORD;
+//        ex_ctrlsel <= `Ctrl_NOP;
     end
     else if (stall[2] == `StallDisable) begin
         if (flush == `FlushDisable) begin
@@ -86,7 +87,7 @@ always @ (posedge clk) begin
             ex_aluop <= `FlushOp;
             ex_alusel <= `NO_OP;
             ex_rd_enable <= `WriteDisable;
-            // ex_ctrlsel <= `Ctrl_NOP;
+//            ex_ctrlsel <= `Ctrl_NOP;
         end
     end
 end

@@ -43,8 +43,8 @@ module if_stage(
     assign opcode = inst[`OpLen - 1 : 0];
     assign pred_enable = (opcode == `JAL) || (opcode == `BRANCH);
     assign isBranch = (opcode == `BRANCH);
-    assign prediction = isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
-                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 }) ;
+    assign prediction = pc + 4; //isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
+//                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 }) ;
 
 always @ (*) begin
     if (rst == `ResetEnable) begin

@@ -144,31 +144,31 @@ always @ (*) begin
         case (ctrlsel)
             `Ctrl_JAL: begin
                 jmp_enable <= `JumpEnable ^ (prediction == jmp_addr);
-                jmp_target = jmp_addr;
+                jmp_target <= jmp_addr;
             end
             `BEQ: begin
                 jmp_enable <= beq ^ (prediction == jmp_addr);
-                jmp_target = beq ? jmp_addr : (pc + 4);
+                jmp_target <= beq ? jmp_addr : (pc + 4);
             end
             `BNE: begin
                 jmp_enable <= bne ^ (prediction == jmp_addr);
-                jmp_target = bne ? jmp_addr : (pc + 4);
+                jmp_target <= bne ? jmp_addr : (pc + 4);
             end
             `BLT: begin
                 jmp_enable <= blt ^ (prediction == jmp_addr);
-                jmp_target = blt ? jmp_addr : (pc + 4);                
+                jmp_target <= blt ? jmp_addr : (pc + 4);                
             end
             `BGE: begin
                 jmp_enable <= bge ^ (prediction == jmp_addr);
-                jmp_target = bge ? jmp_addr : (pc + 4);                
+                jmp_target <= bge ? jmp_addr : (pc + 4);                
             end
             `BLTU: begin
                 jmp_enable <= bltu ^ (prediction == jmp_addr);
-                jmp_target = bltu ? jmp_addr : (pc + 4);                
+                jmp_target <= bltu ? jmp_addr : (pc + 4);                
             end
             `BGEU: begin
                 jmp_enable <= bgeu ^ (prediction == jmp_addr);
-                jmp_target = bgeu ? jmp_addr : (pc + 4);                
+                jmp_target <= bgeu ? jmp_addr : (pc + 4);                
             end
             default: 
                 jmp_enable <= `JumpDisable;
