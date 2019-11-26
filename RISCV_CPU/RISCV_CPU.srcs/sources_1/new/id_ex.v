@@ -23,6 +23,10 @@
 module id_ex(
     input wire clk,
     input wire rst,
+    
+    input wire [`AddrLen - 1 : 0] id_pc,
+    output reg [`AddrLen - 1 : 0] ex_pc,
+    
     input wire [`RegLen - 1 : 0] id_reg1,
     input wire [`RegLen - 1 : 0] id_reg2,
     input wire [`RegLen - 1 : 0] id_Imm,
@@ -61,6 +65,7 @@ always @ (posedge clk) begin
         ex_aluop <= `ZERO_WORD;
         ex_alusel <= `ZERO_WORD;
         ex_width <= `ZERO_WORD;
+        ex_pc <= `ZERO_WORD;
     end
     else if (stall[2] == `StallDisable) begin
         if (flush == `FlushDisable) begin
@@ -75,6 +80,7 @@ always @ (posedge clk) begin
             ex_width <= id_width;
             ex_jmp_addr <= id_jmp_addr;
             ex_prediction <= id_prediction;
+            ex_pc <= id_pc;
         end
         else begin
             ex_aluop <= `FlushOp;

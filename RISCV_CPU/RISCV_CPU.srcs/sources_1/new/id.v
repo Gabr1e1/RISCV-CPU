@@ -24,6 +24,7 @@
 module id(
     input wire rst,
     input wire [`AddrLen - 1 : 0] pc,
+    output wire [`AddrLen - 1 : 0] pc_o,
     input wire [`InstLen - 1 : 0] inst,
     input wire [`RegLen - 1 : 0] reg1_data_i,
     input wire [`RegLen - 1 : 0] reg2_data_i,
@@ -64,7 +65,8 @@ module id(
     );
 
     assign prediction_o = prediction_i;
-
+    assign pc_o = pc;
+    
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
     wire [`Funct3Len - 1 : 0] funct3 = inst[`Funct3];
     wire [`Funct7Len - 1 : 0] funct7 = inst[`Funct7];

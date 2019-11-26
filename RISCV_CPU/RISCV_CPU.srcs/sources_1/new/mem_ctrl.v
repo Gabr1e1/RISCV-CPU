@@ -83,12 +83,12 @@ always @ (posedge clk) begin
             end
             `BUSYR: begin
                 count <= count + 1;
+                if (count <= 3) begin
+                    addr_to_mem <= addr_to_mem + 1;
+                end
                 if (count >= 1) begin
                     data_out[count * `RamWord - 1 -: `RamWord] <= data_from_mem;
                     q <= q - 1;
-                end
-                if (count <= 3) begin
-                    addr_to_mem <= addr_to_mem + 1;
                 end
                 if (count == 4 || q == 3'b000)  begin //have read all
                     status <= `IDLE;
@@ -113,5 +113,22 @@ always @ (posedge clk) begin
         endcase
     end
 end
+
+//Not debugged yet
+//always @ (negedge clk) begin
+//    if (status == `BUSYR) begin
+//        if (count >= 1) begin
+//            data_out[count * `RamWord - 1 -: `RamWord] <= data_from_mem;
+//            q <= q - 1;
+//        end
+//        if (count == 4 || q == 3'b000)  begin //have read all
+//            status <= `IDLE;
+//            if (status_if == `WORKING)
+//                status_if <= `DONE;
+//            else
+//                status_mem <= `DONE;
+//        end
+//    end
+//end
 
 endmodule

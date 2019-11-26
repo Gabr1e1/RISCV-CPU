@@ -30,7 +30,7 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="384"/>
+    <Option Name="WTXSimLaunchSim" Val="436"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -383,7 +383,6 @@
         <Option Name="SrcSet" Val="sources_1"/>
         <Option Name="Incremental" Val="0"/>
         <Option Name="xsim.simulate.runtime" Val="1000000000ns"/>
-        <Option Name="xsim.simulate.log_all_signals" Val="true"/>
         <Option Name="xsim.simulate.add_positional" Val="true"/>
       </Config>
     </FileSet>
