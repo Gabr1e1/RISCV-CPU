@@ -24,6 +24,7 @@ module if_stage(
     input wire rst,
     input wire clk,
     input wire [`AddrLen - 1 : 0] pc,
+    output reg [`AddrLen - 1 : 0] pc_o,
     output reg [`InstLen - 1 : 0] inst,
     
     output reg [`InstLen - 1 : 0] addr_to_mem,
@@ -63,6 +64,7 @@ always @ (*) begin
             addr_to_mem <= pc;
             rw <= 1'b1;
             stallreq <= `StallEnable;
+            pc_o <= pc;
         end
     end
 end

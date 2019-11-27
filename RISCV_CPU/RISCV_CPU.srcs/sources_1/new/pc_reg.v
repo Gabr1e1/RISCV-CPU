@@ -30,10 +30,13 @@ module pc_reg(
     input wire pred_enable,
 
     output reg [`AddrLen - 1 : 0] pc,
-    output reg chip_enable,
-    output reg enable
+    output reg enable_pc,
+    output reg chip_enable
     );
-    
+ 
+    reg [`AddrLen - 1 : 0] npc;
+    reg assigned;
+       
 always @ (posedge clk) begin
     if (rst == `ResetEnable)
         chip_enable <= `ChipDisable;
@@ -44,22 +47,42 @@ end
 always @ (posedge clk) begin
     if (chip_enable == `ChipDisable) begin
         pc <= `ZERO_WORD;
+        npc <= 4;
+        assigned <= 1'b0;
     end
-    else if (stall == `StallDisable) begin
-        enable <= 1'b1;
+    else begin
         if (jmp_enable == `JumpEnable) begin
-            pc <= jmp_target;
+            assigned <= 1'b1;
+            if (stall == `StallDisable) begin
+                pc <= jmp_target;
+                npc <= jmp_target + 4;
+                enable_pc <= 1'b1;
+            end
+            else begin
+                npc <= jmp_target;
+            end
         end
-        else if (pred_enable == `JumpEnable) begin
-            pc <= prediction;
+        else if (pred_enable == `JumpEnable && assigned != 1'b1) begin
+            assigned <= 1'b1;
+            if (stall == `StallDisable) begin
+                pc <= prediction;
+                npc <= prediction + 4;
+                enable_pc <= 1'b1;
+            end
+            else begin
+                npc <= prediction;
+            end
+        end
+        else if (stall == `StallDisable) begin
+            pc <= npc;
+            npc <= npc + 4;
+            assigned <= 1'b0;
+            enable_pc <= 1'b1;
         end
         else begin
-            pc <= pc + 4;
+            enable_pc <= 1'b0;
         end
-//        $display("%d %h",count, pc);
     end
-    else
-        enable <= 1'b0;
 end
 
 endmodule

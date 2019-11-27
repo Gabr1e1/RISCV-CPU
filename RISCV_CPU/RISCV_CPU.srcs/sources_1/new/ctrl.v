@@ -36,24 +36,6 @@ module ctrl(
     output reg flush_id
     );
 
-    always @ (posedge clk) begin
-        if (rst == `ResetEnable) begin
-            stall <= `PipelineDepth'b000000; //from msb to lsb!!!
-        end 
-        else if (stallreq_mem == `StallEnable) begin
-            stall <= `PipelineDepth'b011111;
-        end
-        else if (stallreq_if == `StallEnable) begin
-            stall <= `PipelineDepth'b000011;
-        end        
-        else if (stallreq == `StallEnable) begin
-            stall <= `PipelineDepth'b111111;
-        end 
-        else begin
-            stall <= `PipelineDepth'b000000;
-        end 
-    end
-
     always @ (negedge clk) begin
         if (rst == `ResetEnable) begin
             stall <= `PipelineDepth'b000000; //from msb to lsb!!!

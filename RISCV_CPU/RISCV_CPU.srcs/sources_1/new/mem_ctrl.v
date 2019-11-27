@@ -84,9 +84,9 @@ always @ (posedge clk) begin
                 end
                 else if (rw_if != 1'b0) begin
                     //Try to access cache
-                    if (isValid[0] == `Valid || isValid[1] == `Valid) begin //Cache Hit
-                        $display("%0t: Cache Hit! %h %h", $time, data[0], data[1]);
-                        data_out <= isValid[0] == `Valid ? data[0] : data[1];
+                    if (isCorrect[0] == `Correct || isCorrect[1] == `Correct) begin //Cache Hit
+//                        $display("%0t: Cache Hit! %h %h", $time, data[0], data[1]);
+                        data_out <= isCorrect[0] == `Correct ? data[0] : data[1];
                         status_if <= `DONE;
                     end
                     else begin //Cache Miss
@@ -117,6 +117,7 @@ always @ (posedge clk) begin
                             replace[0] <= 1'b1;
                         end
                         else begin
+//                            $display("Using cache 1 %h", data_out);
                             replace[1] <= 1'b1;
                         end
                     end

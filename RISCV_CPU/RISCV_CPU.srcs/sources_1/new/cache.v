@@ -36,9 +36,9 @@ module cache(
     reg [`CacheSize - 1 : 0] valid; //not initialized 
 
     assign data = entry[addr[`CacheLen - 1 : 0]];
-    assign isValid = (valid[addr[`CacheLen - 1 : 0]] == `Valid)
+    assign isCorrect = (valid[addr[`CacheLen - 1 : 0]] == `Valid)
                     && (tag[addr[`CacheLen - 1 : 0]] == addr[16 : `CacheLen]);
-    assign isCorrect = valid[addr[`CacheLen - 1 : 0]] == `Valid;
+    assign isValid = valid[addr[`CacheLen - 1 : 0]] == `Valid;
     
     integer i;
     

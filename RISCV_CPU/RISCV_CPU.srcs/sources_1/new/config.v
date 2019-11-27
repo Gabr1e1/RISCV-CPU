@@ -137,9 +137,16 @@
 `define JAL_OP 3'b110
 
 //Ctrl
-`define CtrlLen 3
-`define Ctrl_JAL 3'b010
-`define Ctrl_NOP 3'b011
+`define CtrlLen 4
+`define Ctrl_JAL 4'b0010
+`define Ctrl_NOP 4'b1111
+`define Ctrl_BEQ 4'b0000
+`define Ctrl_BNE 4'b0001
+`define Ctrl_BLT 4'b0100
+`define Ctrl_BGE 4'b0101
+`define Ctrl_BLTU 4'b0110
+`define Ctrl_BGEU 4'b0111
+`define Ctrl_Flush 4'b1010
 //see branch define above
 
 //ICache
@@ -147,3 +154,4 @@
 `define CacheSize 256
 `define TagLen 9
 `define Valid 1'b1
+`define Correct 1'b1

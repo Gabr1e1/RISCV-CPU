@@ -43,7 +43,7 @@ wire [`AddrLen - 1 : 0] jmp_target;
 wire pred_enable;
 
 //IF -> IF/ID
-wire [`InstLen - 1 : 0] if_inst;
+wire [`InstLen - 1 : 0] if_inst, if_pc;
 
 //IF/ID -> ID
 wire [`AddrLen - 1 : 0] id_pc_i;
@@ -121,16 +121,16 @@ wire [3:0] quantity;
 
 //Instantiation
 pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc), .chip_enable(rdy_in),
-              .stall(stall[0]), .enable(enable_pc),
+              .stall(stall[0]), .enable_pc(enable_pc),
               .jmp_target(jmp_target), .jmp_enable(jmp_enable), .prediction(if_prediction), .pred_enable(pred_enable));
 
 if_stage if0(.rst(rst_in),.clk(clk_in),
-      .pc(pc), .enable_pc(enable_pc), .inst(if_inst),
+      .pc(pc), .pc_o(if_pc), .enable_pc(enable_pc), .inst(if_inst),
       .addr_to_mem(addr_from_if), .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
       .stall(stall), .stallreq(stallreq_if),
       .prediction(if_prediction), .pred_enable(pred_enable));
 
-if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(pc), .if_inst(if_inst), .id_pc(id_pc_i), .id_inst(id_inst_i),
+if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(if_pc), .if_inst(if_inst), .id_pc(id_pc_i), .id_inst(id_inst_i),
             .stall(stall),
             .if_prediction(if_prediction), .id_prediction(id_prediction_i),
             .flush(flush_if));
