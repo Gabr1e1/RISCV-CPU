@@ -84,9 +84,13 @@ always @ (posedge clk) begin
             ex_pc <= id_pc;
         end
         else begin
+            ex_reg1 <= `ZERO_WORD;
+            ex_reg2 <= `ZERO_WORD;
+            ex_Imm <= `ZERO_WORD;
             ex_aluop <= `FlushOp;
             ex_alusel <= `NO_OP;
             ex_rd_enable <= `WriteDisable;
+            ex_width <= `ZERO_WORD;
 //            ex_ctrlsel <= `Ctrl_NOP;
         end
     end

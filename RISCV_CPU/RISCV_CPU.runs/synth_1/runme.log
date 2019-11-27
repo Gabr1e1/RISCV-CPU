@@ -1,0 +1,1173 @@
+
+*** Running vivado
+    with args -log riscv_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source riscv_top.tcl
+
+
+****** Vivado v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source riscv_top.tcl -notrace
+Command: synth_design -top riscv_top -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 14428 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 573.188 ; gain = 242.906
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'riscv_top' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:4]
+	Parameter SIM bound to: 0 - type: integer 
+	Parameter SYS_CLK_FREQ bound to: 100000000 - type: integer 
+	Parameter UART_BAUD_RATE bound to: 115200 - type: integer 
+	Parameter RAM_ADDR_WIDTH bound to: 17 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'ram' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/ram.v:3]
+	Parameter ADDR_WIDTH bound to: 17 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'single_port_ram_sync' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/block_ram/block_ram.v:62]
+	Parameter ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+WARNING: [Synth 8-6896] loop limit (65536) exceeded inside initial block, initial block items will be ignored [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/block_ram/block_ram.v:92]
+INFO: [Synth 8-6155] done synthesizing module 'single_port_ram_sync' (1#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/block_ram/block_ram.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'ram' (2#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/ram.v:3]
+INFO: [Synth 8-6157] synthesizing module 'cpu' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:4]
+INFO: [Synth 8-6157] synthesizing module 'pc_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/pc_reg.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'pc_reg' (3#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/pc_reg.v:22]
+WARNING: [Synth 8-6104] Input port 'rdy_in' has an internal driver [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:123]
+INFO: [Synth 8-6157] synthesizing module 'if_stage' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'if_stage' (4#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if.v:23]
+INFO: [Synth 8-6157] synthesizing module 'if_id' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if_id.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'if_id' (5#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if_id.v:23]
+INFO: [Synth 8-6157] synthesizing module 'id' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:24]
+INFO: [Synth 8-226] default block is never used [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:116]
+INFO: [Synth 8-226] default block is never used [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:151]
+WARNING: [Synth 8-151] case item 3'b001 is unreachable [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:192]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:213]
+INFO: [Synth 8-6155] done synthesizing module 'id' (6#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:24]
+INFO: [Synth 8-6157] synthesizing module 'register' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/register.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'register' (7#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/register.v:22]
+INFO: [Synth 8-6157] synthesizing module 'id_ex' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id_ex.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'id_ex' (8#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id_ex.v:23]
+INFO: [Synth 8-6157] synthesizing module 'ex' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'ex' (9#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:23]
+INFO: [Synth 8-6157] synthesizing module 'ex_mem' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex_mem.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'ex_mem' (10#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex_mem.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mem' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'mem' (11#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mem_wb' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem_wb.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'mem_wb' (12#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem_wb.v:23]
+INFO: [Synth 8-6157] synthesizing module 'ctrl' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'ctrl' (13#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mem_ctrl' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem_ctrl.v:25]
+INFO: [Synth 8-6157] synthesizing module 'cache' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'cache' (14#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:23]
+WARNING: [Synth 8-639] system function call 'time' not supported [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem_ctrl.v:88]
+INFO: [Synth 8-251] 1'b0: Cache Hit! xxxxxxxx xxxxxxxx [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem_ctrl.v:88]
+INFO: [Synth 8-6155] done synthesizing module 'mem_ctrl' (15#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem_ctrl.v:25]
+WARNING: [Synth 8-3848] Net dbgreg_dout in module/entity cpu does not have driver. [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'cpu' (16#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:4]
+WARNING: [Synth 8-7023] instance 'cpu0' of module 'cpu' has 9 connections declared, but only 8 given [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:80]
+INFO: [Synth 8-6157] synthesizing module 'hci' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/hci.v:30]
+	Parameter SYS_CLK_FREQ bound to: 100000000 - type: integer 
+	Parameter RAM_ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+	Parameter OP_ECHO bound to: 8'b00000000 
+	Parameter OP_CPU_REG_RD bound to: 8'b00000001 
+	Parameter OP_CPU_REG_WR bound to: 8'b00000010 
+	Parameter OP_DBG_BRK bound to: 8'b00000011 
+	Parameter OP_DBG_RUN bound to: 8'b00000100 
+	Parameter OP_IO_IN bound to: 8'b00000101 
+	Parameter OP_QUERY_DBG_BRK bound to: 8'b00000111 
+	Parameter OP_QUERY_ERR_CODE bound to: 8'b00001000 
+	Parameter OP_MEM_RD bound to: 8'b00001001 
+	Parameter OP_MEM_WR bound to: 8'b00001010 
+	Parameter OP_DISABLE bound to: 8'b00001011 
+	Parameter DBG_UART_PARITY_ERR bound to: 0 - type: integer 
+	Parameter DBG_UNKNOWN_OPCODE bound to: 1 - type: integer 
+	Parameter S_DISABLED bound to: 5'b00000 
+	Parameter S_DECODE bound to: 5'b00001 
+	Parameter S_ECHO_STG_0 bound to: 5'b00010 
+	Parameter S_ECHO_STG_1 bound to: 5'b00011 
+	Parameter S_IO_IN_STG_0 bound to: 5'b00100 
+	Parameter S_IO_IN_STG_1 bound to: 5'b00101 
+	Parameter S_CPU_REG_RD_STG0 bound to: 5'b00110 
+	Parameter S_CPU_REG_RD_STG1 bound to: 5'b00111 
+	Parameter S_QUERY_ERR_CODE bound to: 5'b01000 
+	Parameter S_MEM_RD_STG_0 bound to: 5'b01001 
+	Parameter S_MEM_RD_STG_1 bound to: 5'b01010 
+	Parameter S_MEM_WR_STG_0 bound to: 5'b01011 
+	Parameter S_MEM_WR_STG_1 bound to: 5'b01100 
+	Parameter S_DISABLE bound to: 5'b10000 
+	Parameter IO_IN_BUF_WIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'fifo' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/fifo/fifo.v:27]
+	Parameter DATA_BITS bound to: 8 - type: integer 
+	Parameter ADDR_BITS bound to: 10 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo' (17#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/fifo/fifo.v:27]
+INFO: [Synth 8-6157] synthesizing module 'uart' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart.v:28]
+	Parameter SYS_CLK_FREQ bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+	Parameter DATA_BITS bound to: 8 - type: integer 
+	Parameter STOP_BITS bound to: 1 - type: integer 
+	Parameter PARITY_MODE bound to: 1 - type: integer 
+	Parameter BAUD_CLK_OVERSAMPLE_RATE bound to: 16 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'uart_baud_clk' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_baud_clk.v:29]
+	Parameter SYS_CLK_FREQ bound to: 100000000 - type: integer 
+	Parameter BAUD bound to: 115200 - type: integer 
+	Parameter BAUD_CLK_OVERSAMPLE_RATE bound to: 16 - type: integer 
+	Parameter CLKS_PER_OVERSAMPLE_TICK bound to: 16'b0000000000110110 
+INFO: [Synth 8-6155] done synthesizing module 'uart_baud_clk' (18#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_baud_clk.v:29]
+INFO: [Synth 8-6157] synthesizing module 'uart_rx' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_rx.v:28]
+	Parameter DATA_BITS bound to: 8 - type: integer 
+	Parameter STOP_BITS bound to: 1 - type: integer 
+	Parameter PARITY_MODE bound to: 1 - type: integer 
+	Parameter BAUD_CLK_OVERSAMPLE_RATE bound to: 16 - type: integer 
+	Parameter STOP_OVERSAMPLE_TICKS bound to: 6'b010000 
+	Parameter S_IDLE bound to: 5'b00001 
+	Parameter S_START bound to: 5'b00010 
+	Parameter S_DATA bound to: 5'b00100 
+	Parameter S_PARITY bound to: 5'b01000 
+	Parameter S_STOP bound to: 5'b10000 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_rx.v:101]
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (19#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_rx.v:28]
+INFO: [Synth 8-6157] synthesizing module 'uart_tx' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_tx.v:28]
+	Parameter DATA_BITS bound to: 8 - type: integer 
+	Parameter STOP_BITS bound to: 1 - type: integer 
+	Parameter PARITY_MODE bound to: 1 - type: integer 
+	Parameter BAUD_CLK_OVERSAMPLE_RATE bound to: 16 - type: integer 
+	Parameter STOP_OVERSAMPLE_TICKS bound to: 6'b010000 
+	Parameter S_IDLE bound to: 5'b00001 
+	Parameter S_START bound to: 5'b00010 
+	Parameter S_DATA bound to: 5'b00100 
+	Parameter S_PARITY bound to: 5'b01000 
+	Parameter S_STOP bound to: 5'b10000 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_tx.v:101]
+INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (20#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_tx.v:28]
+INFO: [Synth 8-6157] synthesizing module 'fifo__parameterized0' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/fifo/fifo.v:27]
+	Parameter DATA_BITS bound to: 8 - type: integer 
+	Parameter ADDR_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo__parameterized0' (20#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/fifo/fifo.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'uart' (21#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart.v:28]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/hci.v:203]
+INFO: [Synth 8-251] IO:Return [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/hci.v:250]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/hci.v:237]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/hci.v:255]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/hci.v:270]
+INFO: [Synth 8-6155] done synthesizing module 'hci' (22#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/hci.v:30]
+INFO: [Synth 8-6155] done synthesizing module 'riscv_top' (23#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:4]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[31]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[30]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[29]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[28]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[27]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[26]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[25]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[24]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[23]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[22]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[21]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[20]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[19]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[18]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[17]
+WARNING: [Synth 8-3331] design ctrl has unconnected port id_flushed
+WARNING: [Synth 8-3331] design mem_wb has unconnected port stall[3]
+WARNING: [Synth 8-3331] design mem_wb has unconnected port stall[2]
+WARNING: [Synth 8-3331] design mem_wb has unconnected port stall[1]
+WARNING: [Synth 8-3331] design mem_wb has unconnected port stall[0]
+WARNING: [Synth 8-3331] design mem has unconnected port enable
+WARNING: [Synth 8-3331] design mem has unconnected port stall[5]
+WARNING: [Synth 8-3331] design mem has unconnected port stall[4]
+WARNING: [Synth 8-3331] design mem has unconnected port stall[3]
+WARNING: [Synth 8-3331] design mem has unconnected port stall[2]
+WARNING: [Synth 8-3331] design mem has unconnected port stall[1]
+WARNING: [Synth 8-3331] design mem has unconnected port stall[0]
+WARNING: [Synth 8-3331] design ex_mem has unconnected port stall[5]
+WARNING: [Synth 8-3331] design ex_mem has unconnected port stall[2]
+WARNING: [Synth 8-3331] design ex_mem has unconnected port stall[1]
+WARNING: [Synth 8-3331] design ex_mem has unconnected port stall[0]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[31]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[30]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[29]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[28]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[27]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[26]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[25]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[24]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[23]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[22]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[21]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[20]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[19]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[18]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[17]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[16]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[15]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[14]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[13]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[12]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[11]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[10]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[9]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[8]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[7]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[6]
+WARNING: [Synth 8-3331] design ex has unconnected port rd[5]
+WARNING: [Synth 8-3331] design id_ex has unconnected port stall[5]
+WARNING: [Synth 8-3331] design id_ex has unconnected port stall[4]
+WARNING: [Synth 8-3331] design id_ex has unconnected port stall[1]
+WARNING: [Synth 8-3331] design id_ex has unconnected port stall[0]
+WARNING: [Synth 8-3331] design if_id has unconnected port stall[5]
+WARNING: [Synth 8-3331] design if_id has unconnected port stall[4]
+WARNING: [Synth 8-3331] design if_id has unconnected port stall[3]
+WARNING: [Synth 8-3331] design if_id has unconnected port stall[0]
+WARNING: [Synth 8-3331] design if_stage has unconnected port clk
+WARNING: [Synth 8-3331] design if_stage has unconnected port stall[5]
+WARNING: [Synth 8-3331] design if_stage has unconnected port stall[4]
+WARNING: [Synth 8-3331] design if_stage has unconnected port stall[3]
+WARNING: [Synth 8-3331] design if_stage has unconnected port stall[2]
+WARNING: [Synth 8-3331] design if_stage has unconnected port stall[1]
+WARNING: [Synth 8-3331] design if_stage has unconnected port stall[0]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[31]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[30]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[29]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[28]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[27]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[26]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[25]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[24]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[23]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[22]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[21]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[20]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[19]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[18]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[17]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[16]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[15]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[14]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[13]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[12]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[11]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[10]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[9]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[8]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[7]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[6]
+WARNING: [Synth 8-3331] design cpu has unconnected port dbgreg_dout[5]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 718.234 ; gain = 387.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 718.234 ; gain = 387.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 718.234 ; gain = 387.953
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:97]
+INFO: [Synth 8-5587] ROM size for "rd_enable" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "reg1_read_enable" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "Imm" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "alusel" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "if_flushed" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "jmp_addr" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:70]
+INFO: [Synth 8-802] inferred FSM for state register 'q_state_reg' in module 'uart_rx'
+INFO: [Synth 8-802] inferred FSM for state register 'q_state_reg' in module 'uart_tx'
+INFO: [Synth 8-802] inferred FSM for state register 'q_state_reg' in module 'hci'
+INFO: [Synth 8-5546] ROM "d_state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "d_err_code" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "d_tx_data" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-327] inferring latch for variable 'inst_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if.v:43]
+WARNING: [Synth 8-327] inferring latch for variable 'addr_to_mem_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if.v:52]
+WARNING: [Synth 8-327] inferring latch for variable 'rw_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if.v:51]
+WARNING: [Synth 8-327] inferring latch for variable 'reg1_addr_o_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:91]
+WARNING: [Synth 8-327] inferring latch for variable 'reg1_read_enable_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:81]
+WARNING: [Synth 8-327] inferring latch for variable 'reg2_addr_o_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:92]
+WARNING: [Synth 8-327] inferring latch for variable 'reg2_read_enable_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:82]
+WARNING: [Synth 8-327] inferring latch for variable 'Imm_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:84]
+WARNING: [Synth 8-327] inferring latch for variable 'aluop_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:85]
+WARNING: [Synth 8-327] inferring latch for variable 'alusel_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:86]
+WARNING: [Synth 8-327] inferring latch for variable 'width_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:87]
+WARNING: [Synth 8-327] inferring latch for variable 'jmp_addr_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:236]
+WARNING: [Synth 8-327] inferring latch for variable 'if_flushed_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/id.v:94]
+WARNING: [Synth 8-327] inferring latch for variable 'rd_data_o_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:116]
+WARNING: [Synth 8-327] inferring latch for variable 'rd_addr_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:111]
+WARNING: [Synth 8-327] inferring latch for variable 'mem_addr_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:128]
+WARNING: [Synth 8-327] inferring latch for variable 'width_o_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:113]
+WARNING: [Synth 8-327] inferring latch for variable 'jmp_target_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:147]
+WARNING: [Synth 8-327] inferring latch for variable 'id_flushed_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ex.v:69]
+WARNING: [Synth 8-327] inferring latch for variable 'rd_data_o_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:52]
+WARNING: [Synth 8-327] inferring latch for variable 'rd_addr_o_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:53]
+WARNING: [Synth 8-327] inferring latch for variable 'rd_enable_o_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:54]
+WARNING: [Synth 8-327] inferring latch for variable 'addr_to_mem_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:87]
+WARNING: [Synth 8-327] inferring latch for variable 'data_to_mem_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:105]
+WARNING: [Synth 8-327] inferring latch for variable 'rw_mem_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:56]
+WARNING: [Synth 8-327] inferring latch for variable 'quantity_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:91]
+WARNING: [Synth 8-327] inferring latch for variable 'stallreq_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem.v:55]
+WARNING: [Synth 8-327] inferring latch for variable 'flush_if_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:88]
+WARNING: [Synth 8-327] inferring latch for variable 'flush_if_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:77]
+WARNING: [Synth 8-327] inferring latch for variable 'flush_id_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:90]
+WARNING: [Synth 8-327] inferring latch for variable 'flush_id_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:78]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[255]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[254]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[253]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[252]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[251]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[250]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[249]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[248]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[247]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[246]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[245]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[244]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[243]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[242]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[241]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[240]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[239]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[238]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[237]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[236]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[235]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[234]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[233]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[232]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[231]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[230]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[229]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[228]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[227]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[226]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[225]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[224]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[223]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[222]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[221]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[220]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[219]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[218]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[217]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[216]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[215]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[214]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[213]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[212]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[211]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[210]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[209]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[208]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[207]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[206]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[205]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[204]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[203]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[202]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[201]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[200]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[199]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[198]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[197]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[196]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[195]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[194]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[193]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[192]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[191]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[190]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[189]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[188]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+WARNING: [Synth 8-327] inferring latch for variable 'entry_reg[187]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v:38]
+INFO: [Common 17-14] Message 'Synth 8-327' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                  S_IDLE |                            00001 |                            00001
+                 S_START |                            00010 |                            00010
+                  S_DATA |                            00100 |                            00100
+                S_PARITY |                            01000 |                            01000
+                  S_STOP |                            10000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'q_state_reg' in module 'uart_rx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                  S_IDLE |                            00001 |                            00001
+                 S_START |                            00010 |                            00010
+                  S_DATA |                            00100 |                            00100
+                S_PARITY |                            01000 |                            01000
+                  S_STOP |                            10000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'q_state_reg' in module 'uart_tx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                S_DECODE |                             0000 |                            00001
+            S_ECHO_STG_0 |                             0001 |                            00010
+            S_ECHO_STG_1 |                             0010 |                            00011
+           S_IO_IN_STG_0 |                             0011 |                            00100
+           S_IO_IN_STG_1 |                             0100 |                            00101
+        S_QUERY_ERR_CODE |                             0101 |                            01000
+          S_MEM_RD_STG_0 |                             0110 |                            01001
+          S_MEM_RD_STG_1 |                             0111 |                            01010
+          S_MEM_WR_STG_0 |                             1000 |                            01011
+          S_MEM_WR_STG_1 |                             1001 |                            01100
+       S_CPU_REG_RD_STG0 |                             1010 |                            00110
+       S_CPU_REG_RD_STG1 |                             1011 |                            00111
+                  iSTATE |                             1100 |                            10000
+              S_DISABLED |                             1101 |                            00000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'q_state_reg' using encoding 'sequential' in module 'hci'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:16 . Memory (MB): peak = 862.844 ; gain = 532.563
+---------------------------------------------------------------------------------
+RAM Pipeline Warning: Read Address Register Found For RAM ram_reg. We will not be able to pipeline it. This may degrade performance. 
+
+Report RTL Partitions: 
++------+---------------+------------+----------+
+|      |RTL Partition  |Replication |Instances |
++------+---------------+------------+----------+
+|1     |cache          |           2|     25106|
+|2     |mem_ctrl__GC0  |           1|      2271|
+|3     |cpu__GC0       |           1|     17396|
+|4     |riscv_top__GC0 |           1|      3255|
++------+---------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 9     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     17 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 6     
+	   3 Input     10 Bit       Adders := 4     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 2     
+	   2 Input      3 Bit       Adders := 5     
+	   3 Input      3 Bit       Adders := 2     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 10    
++---XORs : 
+	                8 Bit    Wide XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 51    
+	               17 Bit    Registers := 3     
+	               16 Bit    Registers := 1     
+	               10 Bit    Registers := 4     
+	                8 Bit    Registers := 6     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 5     
+	                3 Bit    Registers := 5     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 27    
++---RAMs : 
+	            1024K Bit         RAMs := 1     
+	               8K Bit         RAMs := 2     
+	               64 Bit         RAMs := 1     
++---Muxes : 
+	   2 Input    256 Bit        Muxes := 2     
+	   4 Input     32 Bit        Muxes := 6     
+	   2 Input     32 Bit        Muxes := 163   
+	   8 Input     32 Bit        Muxes := 1     
+	   7 Input     32 Bit        Muxes := 2     
+	  14 Input     32 Bit        Muxes := 2     
+	   2 Input     18 Bit        Muxes := 1     
+	   2 Input     17 Bit        Muxes := 10    
+	   4 Input     17 Bit        Muxes := 2     
+	   5 Input     17 Bit        Muxes := 1     
+	  14 Input     17 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 5     
+	   4 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 14    
+	   6 Input      8 Bit        Muxes := 1     
+	  14 Input      8 Bit        Muxes := 2     
+	   3 Input      8 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 2     
+	  11 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 1     
+	   6 Input      5 Bit        Muxes := 2     
+	   8 Input      4 Bit        Muxes := 1     
+	  10 Input      4 Bit        Muxes := 1     
+	  11 Input      4 Bit        Muxes := 3     
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 11    
+	   4 Input      4 Bit        Muxes := 1     
+	   7 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 2     
+	  13 Input      4 Bit        Muxes := 1     
+	  11 Input      3 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 2     
+	   6 Input      3 Bit        Muxes := 2     
+	  14 Input      3 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   7 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	  14 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 696   
+	   4 Input      1 Bit        Muxes := 13    
+	  11 Input      1 Bit        Muxes := 13    
+	   3 Input      1 Bit        Muxes := 7     
+	   8 Input      1 Bit        Muxes := 3     
+	   5 Input      1 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 1     
+	  14 Input      1 Bit        Muxes := 8     
+	   6 Input      1 Bit        Muxes := 13    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module riscv_top 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     18 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
+Module cache 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input    256 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 256   
+Module mem_ctrl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 5     
+	                8 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 5     
+	   2 Input     32 Bit        Muxes := 8     
+	   4 Input      8 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   7 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 12    
+	   2 Input      1 Bit        Muxes := 6     
+Module pc_reg 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+Module if_stage 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 3     
+Module if_id 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module id 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 7     
+	   8 Input     32 Bit        Muxes := 1     
+	   7 Input     32 Bit        Muxes := 1     
+	  11 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 1     
+	   8 Input      4 Bit        Muxes := 1     
+	  10 Input      4 Bit        Muxes := 1     
+	  11 Input      4 Bit        Muxes := 2     
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	  11 Input      3 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 1     
+	  11 Input      1 Bit        Muxes := 10    
+	   2 Input      1 Bit        Muxes := 2     
+	   3 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 2     
+	   5 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module register 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 32    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 134   
+	   2 Input      1 Bit        Muxes := 128   
+Module id_ex 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 7     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+Module ex 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 7     
++---Muxes : 
+	  14 Input     32 Bit        Muxes := 2     
+	   4 Input     32 Bit        Muxes := 1     
+	   7 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 6     
+	   7 Input      4 Bit        Muxes := 1     
+	  14 Input      2 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 1     
+	  14 Input      1 Bit        Muxes := 1     
+Module ex_mem 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
+Module mem 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 5     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 17    
+	   3 Input      1 Bit        Muxes := 4     
+Module mem_wb 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module ctrl 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      6 Bit        Muxes := 2     
+Module single_port_ram_sync 
+Detailed RTL Component Info : 
++---Registers : 
+	               17 Bit    Registers := 1     
++---RAMs : 
+	            1024K Bit         RAMs := 1     
+Module ram 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+Module fifo 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 3     
+	   3 Input     10 Bit       Adders := 2     
++---Registers : 
+	               10 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---RAMs : 
+	               8K Bit         RAMs := 1     
+Module uart_baud_clk 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+Module uart_rx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---XORs : 
+	                8 Bit    Wide XORs := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   6 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   6 Input      4 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 5     
+	   6 Input      1 Bit        Muxes := 6     
+Module uart_tx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---XORs : 
+	                8 Bit    Wide XORs := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   6 Input      8 Bit        Muxes := 1     
+	   6 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   6 Input      1 Bit        Muxes := 7     
+Module fifo__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      3 Bit       Adders := 2     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                1 Bit    Registers := 2     
++---RAMs : 
+	               64 Bit         RAMs := 1     
+Module fifo__1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 3     
+	   3 Input     10 Bit       Adders := 2     
++---Registers : 
+	               10 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---RAMs : 
+	               8K Bit         RAMs := 1     
+Module uart 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module hci 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 2     
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 2     
+	                8 Bit    Registers := 3     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     17 Bit        Muxes := 10    
+	   4 Input     17 Bit        Muxes := 2     
+	   5 Input     17 Bit        Muxes := 1     
+	  14 Input     17 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 11    
+	   4 Input      8 Bit        Muxes := 1     
+	  14 Input      8 Bit        Muxes := 2     
+	   3 Input      8 Bit        Muxes := 1     
+	  13 Input      4 Bit        Muxes := 1     
+	  11 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 4     
+	  14 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 17    
+	   3 Input      1 Bit        Muxes := 2     
+	  11 Input      1 Bit        Muxes := 3     
+	  14 Input      1 Bit        Muxes := 7     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-4471] merging register 'count_reg[31:0]' into 'count_reg[31:0]' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem_ctrl.v:66]
+INFO: [Synth 8-5587] ROM size for "id0/rd_enable" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "id0/reg1_read_enable" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "id0/Imm" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "id0/alusel" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "id0/jmp_addr" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "id0/if_flushed" won't be mapped to RAM because it is too sparse
+RAM Pipeline Warning: Read Address Register Found For RAM ram0/ram_bram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM ram0/ram_bram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM ram0/ram_bram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\mem0/rw_mem_reg[2] )
+INFO: [Synth 8-3886] merging instance 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel' (FD) to 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__6'
+INFO: [Synth 8-3886] merging instance 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__0' (FD) to 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__6'
+INFO: [Synth 8-3886] merging instance 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__1' (FD) to 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__6'
+INFO: [Synth 8-3886] merging instance 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__2' (FD) to 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__6'
+INFO: [Synth 8-3886] merging instance 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__3' (FD) to 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__6'
+INFO: [Synth 8-3886] merging instance 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__4' (FD) to 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__6'
+INFO: [Synth 8-3886] merging instance 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__5' (FD) to 'i_0/i_0/ram0/ram_bram/ram_reg_mux_sel__6'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][1]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][0]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][3]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][2]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][5]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][4]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][7]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][6]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][9]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][8]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][11]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][10]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][13]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][12]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][15]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][14]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][17]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][16]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][19]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][18]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][21]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][20]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][23]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][22]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][25]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][24]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][27]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][26]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][29]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][28]' (FDE) to 'cpu0i_2/register0/regs_reg[0][31]'
+INFO: [Synth 8-3886] merging instance 'cpu0i_2/register0/regs_reg[0][31]' (FDE) to 'cpu0i_2/register0/regs_reg[0][30]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (register0/\regs_reg[0][30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\mem0/quantity_reg[3] )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:34 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping	Report (see note below)
++------------+-----------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object            | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-----------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|riscv_top   | ram0/ram_bram/ram_reg | 128 K x 8(WRITE_FIRST) | W | R |                        |   |   | Port A           | 0      | 32     | 
++------------+-----------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------+---------------------------------------------+-----------+----------------------+----------------------------+
+|Module Name | RTL Object                                  | Inference | Size (Depth x Width) | Primitives                 | 
++------------+---------------------------------------------+-----------+----------------------+----------------------------+
+|riscv_top   | hci0/io_in_fifo/q_data_array_reg            | Implied   | 1 K x 8              | RAM64X1D x 32	RAM64M x 32	 | 
+|riscv_top   | hci0/uart_blk/uart_tx_fifo/q_data_array_reg | Implied   | 1 K x 8              | RAM64X1D x 32	RAM64M x 32	 | 
+|riscv_top   | hci0/uart_blk/uart_rx_fifo/q_data_array_reg | Implied   | 8 x 8                | RAM32M x 2	                | 
++------------+---------------------------------------------+-----------+----------------------+----------------------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+---------------+------------+----------+
+|      |RTL Partition  |Replication |Instances |
++------+---------------+------------+----------+
+|1     |cache          |           2|     23498|
+|2     |mem_ctrl__GC0  |           1|       787|
+|3     |cpu__GC0       |           1|      8770|
+|4     |riscv_top__GC0 |           1|      2026|
++------+---------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:34 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping	Report
++------------+-----------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object            | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-----------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|riscv_top   | ram0/ram_bram/ram_reg | 128 K x 8(WRITE_FIRST) | W | R |                        |   |   | Port A           | 0      | 32     | 
++------------+-----------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping	Report
++------------+---------------------------------------------+-----------+----------------------+----------------------------+
+|Module Name | RTL Object                                  | Inference | Size (Depth x Width) | Primitives                 | 
++------------+---------------------------------------------+-----------+----------------------+----------------------------+
+|riscv_top   | hci0/io_in_fifo/q_data_array_reg            | Implied   | 1 K x 8              | RAM64X1D x 32	RAM64M x 32	 | 
+|riscv_top   | hci0/uart_blk/uart_tx_fifo/q_data_array_reg | Implied   | 1 K x 8              | RAM64X1D x 32	RAM64M x 32	 | 
+|riscv_top   | hci0/uart_blk/uart_rx_fifo/q_data_array_reg | Implied   | 8 x 8                | RAM32M x 2	                | 
++------------+---------------------------------------------+-----------+----------------------+----------------------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+---------------+------------+----------+
+|      |RTL Partition  |Replication |Instances |
++------+---------------+------------+----------+
+|1     |cache          |           2|     23498|
+|2     |mem_ctrl__GC0  |           1|       785|
+|3     |cpu__GC0       |           1|      8770|
+|4     |riscv_top__GC0 |           1|      2026|
++------+---------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[0]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[0]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[1]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[1]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[2]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[2]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[3]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[3]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[4]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[5]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[5]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[6]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[6]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[7]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[7]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[8]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[8]'
+INFO: [Synth 8-3886] merging instance 'hci0/io_in_fifo/q_rd_ptr_reg_rep[9]' (FDRE) to 'hci0/io_in_fifo/q_rd_ptr_reg[9]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[4]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[3]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[3]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[0]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[0]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[1]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[1]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[2]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[2]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[5]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[5]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[9]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[9]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[7]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[7]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[6]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[6]'
+INFO: [Synth 8-3886] merging instance 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg_rep[8]' (FDRE) to 'hci0/uart_blk/uart_tx_fifo/q_rd_ptr_reg[8]'
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:40 ; elapsed = 00:00:39 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6064] Net n_0_13376 is driving 64 big block pins (URAM, BRAM and DSP loads). Created 7 replicas of its driver. 
+INFO: [Synth 8-6064] Net n_0_14022 is driving 64 big block pins (URAM, BRAM and DSP loads). Created 7 replicas of its driver. 
+INFO: [Synth 8-6064] Net n_0_13655 is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net n_0_13656 is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net n_0_13657 is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:00:45 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:00:45 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[5] with 1st driver pin 'cpu0/ctrl0/stall_reg[5]/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[5] with 2nd driver pin 'cpu0/ctrl0/stall_reg[5]__0/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:41]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[4] with 1st driver pin 'cpu0/ctrl0/stall_reg[4]/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[4] with 2nd driver pin 'cpu0/ctrl0/stall_reg[4]__0/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:41]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[3] with 1st driver pin 'cpu0/ctrl0/stall_reg[3]/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[3] with 2nd driver pin 'cpu0/ctrl0/stall_reg[3]__0/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:41]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[2] with 1st driver pin 'cpu0/ctrl0/stall_reg[2]/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[2] with 2nd driver pin 'cpu0/ctrl0/stall_reg[2]__0/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:41]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[1] with 1st driver pin 'cpu0/ctrl0/stall_reg[1]/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[1] with 2nd driver pin 'cpu0/ctrl0/stall_reg[1]__0/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:41]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[0] with 1st driver pin 'cpu0/ctrl0/stall_reg[0]/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/stall[0] with 2nd driver pin 'cpu0/ctrl0/stall_reg[0]__0/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:41]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/flush_if with 1st driver pin 'cpu0/ctrl0/flush_if_reg/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:88]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/flush_if with 2nd driver pin 'cpu0/ctrl0/flush_if_reg__0/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:77]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/flush_id with 1st driver pin 'cpu0/ctrl0/flush_id_reg/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:90]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cpu0/flush_id with 2nd driver pin 'cpu0/ctrl0/flush_id_reg__0/Q' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/ctrl.v:78]
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        8|Failed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:47 ; elapsed = 00:00:46 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:47 ; elapsed = 00:00:46 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:47 ; elapsed = 00:00:47 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:47 ; elapsed = 00:00:47 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |    12|
+|2     |CARRY4   |   136|
+|3     |LUT1     |    74|
+|4     |LUT2     |   484|
+|5     |LUT3     |   141|
+|6     |LUT4     |   507|
+|7     |LUT5     |   321|
+|8     |LUT6     |  8459|
+|9     |MUXF7    |  3142|
+|10    |MUXF8    |  1506|
+|11    |RAM32M   |     2|
+|12    |RAM64M   |    64|
+|13    |RAM64X1D |    64|
+|14    |RAMB36E1 |    32|
+|15    |FDCE     |    59|
+|16    |FDPE     |     6|
+|17    |FDRE     |  1967|
+|18    |FDSE     |     3|
+|19    |LD       |   229|
+|20    |LDC      | 21757|
+|21    |IBUF     |     3|
+|22    |OBUF     |     2|
++------+---------+------+
+
+Report Instance Areas: 
++------+------------------------+---------------------+------+
+|      |Instance                |Module               |Cells |
++------+------------------------+---------------------+------+
+|1     |top                     |                     | 38970|
+|2     |  cpu0                  |cpu                  | 37881|
+|3     |    ctrl0               |ctrl                 |    16|
+|4     |    ex0                 |ex                   |   124|
+|5     |    ex_mem0             |ex_mem               |   120|
+|6     |    id0                 |id                   |   299|
+|7     |    id_ex0              |id_ex                |   831|
+|8     |    if0                 |if_stage             |   861|
+|9     |    if_id0              |if_id                |   241|
+|10    |    mem0                |mem                  |   120|
+|11    |    mem_ctrl0           |mem_ctrl             | 33002|
+|12    |      cache0            |cache                | 16088|
+|13    |      cache1            |cache_1              | 16311|
+|14    |    mem_wb0             |mem_wb               |   373|
+|15    |    pc_reg0             |pc_reg               |    38|
+|16    |    register0           |register             |  1856|
+|17    |  hci0                  |hci                  |  1023|
+|18    |    io_in_fifo          |fifo                 |   245|
+|19    |    uart_blk            |uart                 |   566|
+|20    |      uart_baud_clk_blk |uart_baud_clk        |    44|
+|21    |      uart_rx_blk       |uart_rx              |    58|
+|22    |      uart_rx_fifo      |fifo__parameterized0 |   156|
+|23    |      uart_tx_blk       |uart_tx              |    63|
+|24    |      uart_tx_fifo      |fifo_0               |   243|
+|25    |  ram0                  |ram                  |    47|
+|26    |    ram_bram            |single_port_ram_sync |    47|
++------+------------------------+---------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:47 ; elapsed = 00:00:47 . Memory (MB): peak = 975.965 ; gain = 645.684
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 16 critical warnings and 655 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:47 ; elapsed = 00:00:47 . Memory (MB): peak = 975.965 ; gain = 645.684
+Synthesis Optimization Complete : Time (s): cpu = 00:00:47 ; elapsed = 00:00:47 . Memory (MB): peak = 975.965 ; gain = 645.684
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.392 . Memory (MB): peak = 975.965 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 26932 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 3 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 4 inverter(s) to 67 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1019.469 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 22116 instances were transformed.
+  LD => LDCE: 168 instances
+  LD => LDCE (inverted pins: G): 61 instances
+  LDC => LDCE: 21751 instances
+  LDC => LDCE (inverted pins: G): 6 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
+  RAM64M => RAM64M (RAMD64E(x4)): 64 instances
+  RAM64X1D => RAM64X1D (RAMD64E(x2)): 64 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+176 Infos, 206 Warnings, 16 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:58 ; elapsed = 00:00:58 . Memory (MB): peak = 1019.469 ; gain = 714.020
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1019.469 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_1/riscv_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file riscv_top_utilization_synth.rpt -pb riscv_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 27 13:44:11 2019...

@@ -48,6 +48,7 @@ always @ (posedge clk) begin
         end
         else begin
             id_inst <= `FlushInst;
+            id_pc <= `ZERO_WORD;
         end
     end
 end

@@ -41,9 +41,9 @@ module id(
 
 //To Register
     output reg [`RegAddrLen - 1 : 0] reg1_addr_o,
-    output reg [`RegLen - 1 : 0] reg1_read_enable,
+    output reg reg1_read_enable,
     output reg [`RegAddrLen - 1 : 0] reg2_addr_o,
-    output reg [`RegLen - 1 : 0] reg2_read_enable,
+    output reg reg2_read_enable,
 
 //To next stage
     output reg [`RegLen - 1 : 0] reg1,
@@ -80,8 +80,6 @@ always @ (*) begin
         rd_enable <= `WriteDisable;
         reg1_read_enable <= `ReadDisable;
         reg2_read_enable <= `ReadDisable;
-        reg1 <= `ZERO_WORD;
-        reg2 <= `ZERO_WORD;
         rd <= `ZERO_WORD;
         Imm <= `ZERO_WORD;
         aluop <= `ZERO_WORD;
@@ -261,8 +259,6 @@ always @ (*) begin
                 rd_enable <= `WriteDisable;
                 reg1_read_enable <= `ReadDisable;
                 reg2_read_enable <= `ReadDisable;
-                reg1 <= `ZERO_WORD;
-                reg2 <= `ZERO_WORD;
                 rd <= `ZERO_WORD;
                 Imm <= `ZERO_WORD;
                 aluop <= `ZERO_WORD;

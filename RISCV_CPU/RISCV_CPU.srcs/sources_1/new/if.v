@@ -45,7 +45,7 @@ module if_stage(
     assign isBranch = (opcode == `BRANCH);
     assign prediction = pc + 4; //isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
 //                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 }) ;
-
+    
 always @ (*) begin
     if (rst == `ResetEnable) begin
         rw <= 1'b0;

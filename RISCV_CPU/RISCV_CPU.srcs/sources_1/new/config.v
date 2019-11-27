@@ -141,3 +141,9 @@
 `define Ctrl_JAL 3'b010
 `define Ctrl_NOP 3'b011
 //see branch define above
+
+//ICache
+`define CacheLen 8
+`define CacheSize 256
+`define TagLen 9
+`define Valid 1'b1
