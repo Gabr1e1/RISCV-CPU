@@ -35,13 +35,17 @@ module if_stage(
     input wire enable_pc,
     output reg stallreq,
 
-    output reg [`AddrLen - 1 : 0] prediction,
+    output wire [`AddrLen - 1 : 0] prediction,
     output wire pred_enable
     );
     
-    assign pred_enable = (inst[`OpLen - 1 : 0] == `JAL);
-    assign is_jalr = (inst[`OpLen - 1 : 0] == `JALR);
-
+    wire [`OpLen - 1 : 0] opcode;
+    assign opcode = inst[`OpLen - 1 : 0];
+    assign pred_enable = (opcode == `JAL) || (opcode == `BRANCH);
+    assign isBranch = (opcode == `BRANCH);
+    assign prediction = pc + 4; //isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
+//                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 }) ;
+    
 always @ (*) begin
     if (rst == `ResetEnable) begin
         rw <= 1'b0;
@@ -55,11 +59,10 @@ always @ (*) begin
             rw <= 1'b0;
         end
         else if (mem_status == `IDLE && enable_pc) begin
+//            $display("%h",pc);
             addr_to_mem <= pc;
             rw <= 1'b1;
             stallreq <= `StallEnable;
-            //Prediction next inst, assuming always not jump for now
-            prediction <= pc + 4;
         end
     end
 end

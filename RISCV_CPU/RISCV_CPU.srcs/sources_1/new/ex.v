@@ -45,7 +45,8 @@ module ex(
     input wire [`AddrLen - 1 : 0] jmp_addr,
     input wire [`AddrLen - 1 : 0] prediction,
     output reg jmp_enable,
-
+    output reg [`AddrLen - 1 : 0] jmp_target,
+    
 //Flush
     output reg id_flushed
     );
@@ -56,8 +57,8 @@ module ex(
     wire bne = reg1 != reg2;
     wire blt = $signed(reg1) < $signed(reg2);
     wire bltu = $unsigned(reg1) < $unsigned(reg2);
-    wire bge = $signed(reg1) > $signed(reg2);
-    wire bgeu = $unsigned(reg1) > $unsigned(reg2);
+    wire bge = $signed(reg1) >= $signed(reg2);
+    wire bgeu = $unsigned(reg1) >= $unsigned(reg2);
 
 //Do the calculation
 always @ (*) begin
@@ -86,13 +87,15 @@ always @ (*) begin
             `OP_SRL:
                 res <= reg1 >> reg2[4:0];
             `OP_SRA:
-                res <= $signed(reg1) >>> reg2[4:0];
+                res <= reg1 >>> reg2[4:0];
             `OP_OR:
                 res <= reg1 | reg2;
             `OP_AND:
                 res <= reg1 & reg2;
-            `FlushOp:
+            `FlushOp: begin
                 id_flushed <= 1'b1;
+                res <= `ZERO_WORD;
+            end
             default: 
                 res <= `ZERO_WORD;
         endcase
@@ -140,25 +143,32 @@ always @ (*) begin
     else begin
         case (ctrlsel)
             `Ctrl_JAL: begin
-                jmp_enable <= `JumpEnable & (prediction != jmp_addr);
+                jmp_enable <= `JumpEnable ^ (prediction == jmp_addr);
+                jmp_target <= jmp_addr;
             end
             `BEQ: begin
-                jmp_enable <= beq && (prediction != jmp_addr);
+                jmp_enable <= beq ^ (prediction == jmp_addr);
+                jmp_target <= beq ? jmp_addr : (pc + 4);
             end
             `BNE: begin
-                jmp_enable <= bne && (prediction != jmp_addr);
+                jmp_enable <= bne ^ (prediction == jmp_addr);
+                jmp_target <= bne ? jmp_addr : (pc + 4);
             end
             `BLT: begin
-                jmp_enable <= blt && (prediction != jmp_addr);
+                jmp_enable <= blt ^ (prediction == jmp_addr);
+                jmp_target <= blt ? jmp_addr : (pc + 4);                
             end
             `BGE: begin
-                jmp_enable <= bge && (prediction != jmp_addr);
+                jmp_enable <= bge ^ (prediction == jmp_addr);
+                jmp_target <= bge ? jmp_addr : (pc + 4);                
             end
             `BLTU: begin
-                jmp_enable <= bltu && (prediction != jmp_addr);
+                jmp_enable <= bltu ^ (prediction == jmp_addr);
+                jmp_target <= bltu ? jmp_addr : (pc + 4);                
             end
             `BGEU: begin
-                jmp_enable <= bgeu && (prediction != jmp_addr);
+                jmp_enable <= bgeu ^ (prediction == jmp_addr);
+                jmp_target <= bgeu ? jmp_addr : (pc + 4);                
             end
             default: 
                 jmp_enable <= `JumpDisable;

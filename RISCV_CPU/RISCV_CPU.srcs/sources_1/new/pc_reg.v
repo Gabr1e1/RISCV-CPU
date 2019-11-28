@@ -24,7 +24,7 @@ module pc_reg(
     input wire rst,
     input wire stall,
 
-    input wire [`AddrLen - 1 : 0] jmp,
+    input wire [`AddrLen - 1 : 0] jmp_target,
     input wire jmp_enable,
     input wire [`AddrLen - 1 : 0] prediction,
     input wire pred_enable,
@@ -33,7 +33,7 @@ module pc_reg(
     output reg chip_enable,
     output reg enable
     );
-
+    
 always @ (posedge clk) begin
     if (rst == `ResetEnable)
         chip_enable <= `ChipDisable;
@@ -48,7 +48,7 @@ always @ (posedge clk) begin
     else if (stall == `StallDisable) begin
         enable <= 1'b1;
         if (jmp_enable == `JumpEnable) begin
-            pc <= jmp;
+            pc <= jmp_target;
         end
         else if (pred_enable == `JumpEnable) begin
             pc <= prediction;
@@ -56,6 +56,7 @@ always @ (posedge clk) begin
         else begin
             pc <= pc + 4;
         end
+//        $display("%d %h",count, pc);
     end
     else
         enable <= 1'b0;

@@ -125,7 +125,6 @@
 `define OP_AND 4'b0111
 `define NOP 4'b1000
 `define FlushOp 4'b1111
-`define OP_JAL 4'b
 
 //AluSelect
 `define OpSelLen 3
@@ -142,3 +141,9 @@
 `define Ctrl_JAL 3'b010
 `define Ctrl_NOP 3'b011
 //see branch define above
+
+//ICache
+`define CacheLen 8
+`define CacheSize 256
+`define TagLen 9
+`define Valid 1'b1

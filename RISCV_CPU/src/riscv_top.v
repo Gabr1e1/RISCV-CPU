@@ -86,7 +86,6 @@ cpu cpu0(
 	.mem_dout(cpu_ram_dout),
 	.mem_a(cpu_ram_a),
 	.mem_wr(cpu_ram_wr),
-
 	.dbgreg_dout(cpu_dbgreg_dout)	// demo
 );
 

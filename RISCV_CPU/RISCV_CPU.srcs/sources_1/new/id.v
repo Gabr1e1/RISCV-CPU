@@ -20,9 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
+//TODO: SOLVE DATA HAZARD
 module id(
     input wire rst,
     input wire [`AddrLen - 1 : 0] pc,
+    output wire [`AddrLen - 1 : 0] pc_o,
     input wire [`InstLen - 1 : 0] inst,
     input wire [`RegLen - 1 : 0] reg1_data_i,
     input wire [`RegLen - 1 : 0] reg2_data_i,
@@ -39,9 +41,9 @@ module id(
 
 //To Register
     output reg [`RegAddrLen - 1 : 0] reg1_addr_o,
-    output reg [`RegLen - 1 : 0] reg1_read_enable,
+    output reg reg1_read_enable,
     output reg [`RegAddrLen - 1 : 0] reg2_addr_o,
-    output reg [`RegLen - 1 : 0] reg2_read_enable,
+    output reg reg2_read_enable,
 
 //To next stage
     output reg [`RegLen - 1 : 0] reg1,
@@ -63,7 +65,8 @@ module id(
     );
 
     assign prediction_o = prediction_i;
-
+    assign pc_o = pc;
+    
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
     wire [`Funct3Len - 1 : 0] funct3 = inst[`Funct3];
     wire [`Funct7Len - 1 : 0] funct7 = inst[`Funct7];
@@ -77,8 +80,6 @@ always @ (*) begin
         rd_enable <= `WriteDisable;
         reg1_read_enable <= `ReadDisable;
         reg2_read_enable <= `ReadDisable;
-        reg1 <= `ZERO_WORD;
-        reg2 <= `ZERO_WORD;
         rd <= `ZERO_WORD;
         Imm <= `ZERO_WORD;
         aluop <= `ZERO_WORD;
@@ -146,7 +147,7 @@ always @ (*) begin
                 reg1_read_enable <= `ReadEnable;
                 reg2_read_enable <= `ReadEnable;
                 rd_enable <= `WriteEnable;
-                aluop <= `Arith_OP;
+                alusel <= `Arith_OP;
                 case (funct3)
                     `ADDSUB: begin
                         case (funct7)
@@ -251,15 +252,13 @@ always @ (*) begin
                 aluop <= `NOP;
                 alusel <= `NOP;
                 ctrlsel <= funct3;
-                Imm <= { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
+                jmp_addr <= pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
             end
             default: begin
                 //$display("FUCK unknow inst %0t %h", $time, inst);
                 rd_enable <= `WriteDisable;
                 reg1_read_enable <= `ReadDisable;
                 reg2_read_enable <= `ReadDisable;
-                reg1 <= `ZERO_WORD;
-                reg2 <= `ZERO_WORD;
                 rd <= `ZERO_WORD;
                 Imm <= `ZERO_WORD;
                 aluop <= `ZERO_WORD;
