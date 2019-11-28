@@ -87,15 +87,11 @@ always @ (posedge clk) begin
             ex_reg1 <= `ZERO_WORD;
             ex_reg2 <= `ZERO_WORD;
             ex_Imm <= `ZERO_WORD;
-//            ex_rd <= `ZERO_WORD;
-            ex_rd_enable <= `WriteDisable;
             ex_aluop <= `FlushOp;
             ex_alusel <= `NO_OP;
-            ex_ctrlsel <= `Ctrl_Flush;
+            ex_rd_enable <= `WriteDisable;
             ex_width <= `ZERO_WORD;
-//            ex_jmp_addr <= `ZERO_WORD;
-//            ex_prediction <= `ZERO_WORD;
-//            ex_pc <= `ZERO_WORD;
+            ex_ctrlsel <= `Ctrl_Flush;
         end
     end
 end

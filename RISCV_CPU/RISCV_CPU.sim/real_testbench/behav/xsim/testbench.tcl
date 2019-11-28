@@ -7,6 +7,5 @@ if { [string length $curr_wave] == 0 } {
      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
   }
 }
-log_wave -r /
 
-run 10000000ns
+run 1s

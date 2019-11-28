@@ -41,6 +41,7 @@ always @ (posedge clk) begin
         pc <= `ZERO_WORD;
         npc <= 4;
         assigned <= 1'b0;
+        enable_pc <= 1'b1;
     end
     else begin
         if (jmp_enable == `JumpEnable) begin
