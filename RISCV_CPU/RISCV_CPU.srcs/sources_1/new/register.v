@@ -41,7 +41,11 @@ module register(
 
 //write 1
 always @ (posedge clk) begin
-    if (write_enable == `WriteEnable) begin
+    if (rst == `ResetEnable) begin
+        for (i = 0; i < `RegNum; i = i + 1)
+            regs[i] = `ZERO_WORD;     
+    end 
+    else if (write_enable == `WriteEnable) begin
         if (write_addr != `RegAddrLen'b00000) begin //not zero register
             regs[write_addr] <= write_data;
 //            $display("write reg %d %h",write_addr, write_data);
@@ -51,11 +55,7 @@ end
 
 //read 1
 always @ (*) begin
-    if (rst == `ResetEnable) begin
-        for (i = 0; i < `RegNum; i = i + 1)
-            regs[i] = `ZERO_WORD;     
-    end 
-    else if (rst == `ResetDisable && read_enable1 == `ReadEnable) begin
+    if (rst == `ResetDisable && read_enable1 == `ReadEnable) begin
         if (read_addr1 == `RegAddrLen'h0)
             read_data1 <= `ZERO_WORD;
         else if (read_addr1 == write_addr && write_enable == `WriteEnable) //support "first half write, second half read"

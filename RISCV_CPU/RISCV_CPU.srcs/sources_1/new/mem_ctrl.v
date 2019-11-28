@@ -19,9 +19,6 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-//TODO: reduce cache hit to 1 cycle total instead of 2
-
 module mem_ctrl(
     input wire rst,
     input wire clk,
@@ -35,6 +32,9 @@ module mem_ctrl(
 
     output reg [`RegLen - 1 : 0] data_out,
     output reg [1:0] status_if,
+    output reg cacheHit,
+    output reg [`RegLen - 1 : 0] cacheVal,
+    
     output reg [1:0] status_mem,
 
     output reg [`AddrLen - 1 : 0] addr_to_mem,
@@ -51,6 +51,11 @@ module mem_ctrl(
     wire [`RegLen - 1 : 0] data[0:1];
     cache cache0(.rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[0]), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
     cache cache1(.rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[1]), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
+
+always @ (*) begin
+    cacheVal = isCorrect[0] == `Correct ? data[0] : data[1];
+    cacheHit = isCorrect[0] || isCorrect[1];
+end
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
@@ -84,18 +89,18 @@ always @ (posedge clk) begin
                 end
                 else if (rw_if != 1'b0) begin
                     //Try to access cache
-                    if (isCorrect[0] == `Correct || isCorrect[1] == `Correct) begin //Cache Hit
+//                    if (isCorrect[0] == `Correct || isCorrect[1] == `Correct) begin //Cache Hit
 //                        $display("%0t: Cache Hit! %h %h", $time, data[0], data[1]);
-                        data_out <= isCorrect[0] == `Correct ? data[0] : data[1];
-                        status_if <= `DONE;
-                    end
-                    else begin //Cache Miss
+//                        data_out <= isCorrect[0] == `Correct ? data[0] : data[1];
+//                        status_if <= `DONE;
+//                    end
+//                    else begin //Cache Miss //Cache miss
                         r_nw_to_mem <= 1'b0;
                         addr_to_mem <= addr_from_if;
                         q <= 3'b100;
                         status_if <= `WORKING;
                         status <= `BUSYR;
-                    end
+//                    end
                 end
             end
             `BUSYR: begin

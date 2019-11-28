@@ -91,7 +91,7 @@
     `define LH 3'b001
     `define LW 3'b010
     `define LBU 3'b100
-    `define LHU 3'b001
+    `define LHU 3'b101
 `define SAVE 7'b0100011
     `define SB 3'b000
     `define SH 3'b001
@@ -152,6 +152,6 @@
 //ICache
 `define CacheLen 8
 `define CacheSize 256
-`define TagLen 9
+`define TagLen 7
 `define Valid 1'b1
 `define Correct 1'b1

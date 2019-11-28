@@ -63,12 +63,11 @@ module ctrl(
             flush_if <= `FlushEnable;
             flush_id <= `FlushEnable;
         end
-    end
-
-    always @ (*) begin
+        
         if (if_flushed)
             flush_if <= `FlushDisable;
-        else
+        if (id_flushed)
             flush_id <= `FlushDisable;
     end
+    
 endmodule

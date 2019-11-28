@@ -31,7 +31,10 @@ module if_stage(
     output reg rw,  
     input wire [`AddrLen - 1 : 0] data_from_mem,
     input wire [1:0] mem_status,
-
+//Cache 
+    input wire cacheHit,
+    input wire [`RegLen - 1 : 0] cacheVal,
+    
     input wire [`PipelineDepth - 1 : 0] stall,
     input wire enable_pc,
     output reg stallreq,
@@ -44,14 +47,18 @@ module if_stage(
     assign opcode = inst[`OpLen - 1 : 0];
     assign pred_enable = (opcode == `JAL) || (opcode == `BRANCH);
     assign isBranch = (opcode == `BRANCH);
-    assign prediction = pc + 4; //isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
-//                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 }) ;
+    assign isLoad = (opcode == `LOAD);
+    assign prediction = pc + 4; //(isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
+//                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 }));
+    
+//    integer count;
     
 always @ (*) begin
     if (rst == `ResetEnable) begin
         rw <= 1'b0;
         addr_to_mem <= `ZERO_WORD;
         stallreq <= `StallDisable;
+//        count = 0;
     end
     else begin
         if (mem_status == `DONE) begin
@@ -60,11 +67,19 @@ always @ (*) begin
             rw <= 1'b0;
         end
         else if (mem_status == `IDLE && enable_pc) begin
-//            $display("%h",pc);
-            addr_to_mem <= pc;
-            rw <= 1'b1;
-            stallreq <= `StallEnable;
-            pc_o <= pc;
+            addr_to_mem = pc;
+            pc_o = pc;
+            if ((!cacheHit) || isLoad) begin
+                rw <= 1'b1;
+                stallreq <= `StallEnable;
+//                if (isLoad)
+//                    count = count + 1;
+            end
+            else begin
+                inst <= cacheVal;
+                stallreq <= `StallDisable;
+                rw <= 1'b0;
+            end
         end
     end
 end

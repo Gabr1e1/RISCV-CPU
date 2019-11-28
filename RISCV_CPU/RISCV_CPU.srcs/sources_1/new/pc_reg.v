@@ -30,22 +30,14 @@ module pc_reg(
     input wire pred_enable,
 
     output reg [`AddrLen - 1 : 0] pc,
-    output reg enable_pc,
-    output reg chip_enable
+    output reg enable_pc
     );
  
     reg [`AddrLen - 1 : 0] npc;
     reg assigned;
-       
-always @ (posedge clk) begin
-    if (rst == `ResetEnable)
-        chip_enable <= `ChipDisable;
-    else
-        chip_enable <= `ChipEnable;
-end
 
 always @ (posedge clk) begin
-    if (chip_enable == `ChipDisable) begin
+    if (rst == `ResetEnable) begin
         pc <= `ZERO_WORD;
         npc <= 4;
         assigned <= 1'b0;
@@ -63,8 +55,8 @@ always @ (posedge clk) begin
             end
         end
         else if (pred_enable == `JumpEnable && assigned != 1'b1) begin
-            assigned <= 1'b1;
             if (stall == `StallDisable) begin
+//                $display("%h",prediction);
                 pc <= prediction;
                 npc <= prediction + 4;
                 enable_pc <= 1'b1;
