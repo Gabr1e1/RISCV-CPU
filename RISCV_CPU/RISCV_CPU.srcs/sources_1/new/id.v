@@ -60,6 +60,7 @@ module id(
     input wire [`AddrLen - 1 : 0] prediction_i,
     output wire [`AddrLen - 1 : 0] prediction_o,
     output reg [`AddrLen - 1 : 0] jmp_addr,
+    
 //Flush
     output reg if_flushed
     );
@@ -224,6 +225,10 @@ always @ (*) begin
                 reg1_read_enable <= `ReadDisable;
                 reg2_read_enable <= `ReadDisable;
                 rd_enable <= `WriteDisable;
+//                aluop <= `FlushOp;
+//                alusel <= `NO_OP;
+//                ctrlsel <= `Ctrl_Flush;
+//                width <= `ZERO_WORD;
              end
             `JAL: begin
                 reg1_read_enable <= `ReadDisable;
