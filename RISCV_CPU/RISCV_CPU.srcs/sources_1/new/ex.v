@@ -146,32 +146,35 @@ always @ (*) begin
                 jmp_enable <= `JumpEnable ^ (prediction == jmp_addr);
                 jmp_target <= jmp_addr;
             end
-            `BEQ: begin
+            `Ctrl_BEQ: begin
                 jmp_enable <= beq ^ (prediction == jmp_addr);
                 jmp_target <= beq ? jmp_addr : (pc + 4);
             end
-            `BNE: begin
+            `Ctrl_BNE: begin
                 jmp_enable <= bne ^ (prediction == jmp_addr);
                 jmp_target <= bne ? jmp_addr : (pc + 4);
             end
-            `BLT: begin
+            `Ctrl_BLT: begin
                 jmp_enable <= blt ^ (prediction == jmp_addr);
                 jmp_target <= blt ? jmp_addr : (pc + 4);                
             end
-            `BGE: begin
+            `Ctrl_BGE: begin
                 jmp_enable <= bge ^ (prediction == jmp_addr);
                 jmp_target <= bge ? jmp_addr : (pc + 4);                
             end
-            `BLTU: begin
+            `Ctrl_BLTU: begin
                 jmp_enable <= bltu ^ (prediction == jmp_addr);
                 jmp_target <= bltu ? jmp_addr : (pc + 4);                
             end
-            `BGEU: begin
+            `Ctrl_BGEU: begin
                 jmp_enable <= bgeu ^ (prediction == jmp_addr);
                 jmp_target <= bgeu ? jmp_addr : (pc + 4);                
             end
-            default: 
+            `Ctrl_Flush: begin
                 jmp_enable <= `JumpDisable;
+            end
+            default: ;
+//                jmp_enable <= `JumpDisable;
         endcase
     end
 end

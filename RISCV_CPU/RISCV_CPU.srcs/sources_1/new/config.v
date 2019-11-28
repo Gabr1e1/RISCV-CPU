@@ -91,7 +91,7 @@
     `define LH 3'b001
     `define LW 3'b010
     `define LBU 3'b100
-    `define LHU 3'b001
+    `define LHU 3'b101
 `define SAVE 7'b0100011
     `define SB 3'b000
     `define SH 3'b001
@@ -137,13 +137,21 @@
 `define JAL_OP 3'b110
 
 //Ctrl
-`define CtrlLen 3
-`define Ctrl_JAL 3'b010
-`define Ctrl_NOP 3'b011
+`define CtrlLen 4
+`define Ctrl_JAL 4'b0010
+`define Ctrl_NOP 4'b1111
+`define Ctrl_BEQ 4'b0000
+`define Ctrl_BNE 4'b0001
+`define Ctrl_BLT 4'b0100
+`define Ctrl_BGE 4'b0101
+`define Ctrl_BLTU 4'b0110
+`define Ctrl_BGEU 4'b0111
+`define Ctrl_Flush 4'b1010
 //see branch define above
 
 //ICache
 `define CacheLen 8
 `define CacheSize 256
-`define TagLen 9
+`define TagLen 7
 `define Valid 1'b1
+`define Correct 1'b1

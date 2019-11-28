@@ -35,10 +35,10 @@ module cache(
     reg [`TagLen - 1 : 0] tag[`CacheSize - 1 : 0];
     reg [`CacheSize - 1 : 0] valid; //not initialized 
 
-    assign data = entry[addr[`CacheLen - 1 : 0]];
-    assign isValid = (valid[addr[`CacheLen - 1 : 0]] == `Valid)
-                    && (tag[addr[`CacheLen - 1 : 0]] == addr[16 : `CacheLen]);
-    assign isCorrect = valid[addr[`CacheLen - 1 : 0]] == `Valid;
+    assign data = entry[addr[`CacheLen - 1 + 2 : 2]];
+    assign isCorrect = (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid)
+                    && (tag[addr[`CacheLen - 1 + 2 : 2]] == addr[16 : `CacheLen + 2]);
+    assign isValid = valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid;
     
     integer i;
     
@@ -51,9 +51,9 @@ module cache(
             end
         end 
         else if (replace) begin
-            entry[addr[`CacheLen - 1 : 0]] = data_r;
-            tag[addr[`CacheLen - 1 : 0]] = addr[16 : `CacheLen];
-            valid[addr[`CacheLen - 1 : 0]] = `Valid;
+            entry[addr[`CacheLen - 1 + 2 : 2]] = data_r;
+            tag[addr[`CacheLen - 1 + 2 : 2]] = addr[16 : `CacheLen + 2];
+            valid[addr[`CacheLen - 1 + 2 : 2]] = `Valid;
         end
     end
 endmodule
