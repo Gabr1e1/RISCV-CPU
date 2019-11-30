@@ -157,4 +157,5 @@
 `define Correct 1'b1
 
 //Branch Prediction
-`define BHTSize 1024
+`define BHTLen 7
+`define BHTSize 128

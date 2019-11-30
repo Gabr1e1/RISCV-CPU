@@ -21,6 +21,7 @@
 
 
 module cache(
+    input wire clk,
     input wire rst,
     input wire [`AddrLen - 1 : 0] addr,
     input wire [`AddrLen - 1 : 0] data_r,
@@ -33,7 +34,7 @@ module cache(
 
     reg [`AddrLen - 1 : 0] entry[`CacheSize - 1 : 0];
     reg [`TagLen - 1 : 0] tag[`CacheSize - 1 : 0];
-    reg [`CacheSize - 1 : 0] valid; //not initialized 
+    reg [`CacheSize - 1 : 0] valid;
 
     assign data = entry[addr[`CacheLen - 1 + 2 : 2]];
     assign isCorrect = (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid)
@@ -42,14 +43,14 @@ module cache(
     
     integer i;
     
-    always @ (*) begin
+    always @ (posedge clk) begin
         if (rst == `ResetEnable) begin
             for (i = 0; i < `CacheSize; i = i + 1) begin
                 entry[i] = `ZERO_WORD;
                 tag[i] = `ZERO_WORD;
                 valid[i] = 1'b0;
             end
-        end 
+        end
         else if (replace) begin
             entry[addr[`CacheLen - 1 + 2 : 2]] = data_r;
             tag[addr[`CacheLen - 1 + 2 : 2]] = addr[16 : `CacheLen + 2];

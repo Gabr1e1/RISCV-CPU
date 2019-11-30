@@ -49,8 +49,8 @@ module mem_ctrl(
     reg replace[0:1];
     wire isValid[0:1], isCorrect[0:1];
     wire [`RegLen - 1 : 0] data[0:1];
-    cache cache0(.rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[0]), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
-    cache cache1(.rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[1]), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
+    cache cache0(.clk(clk), .rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[0]), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
+    cache cache1(.clk(clk), .rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[1]), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
 
 always @ (*) begin
     cacheVal = isCorrect[0] == `Correct ? data[0] : data[1];

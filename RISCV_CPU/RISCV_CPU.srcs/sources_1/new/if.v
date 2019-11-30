@@ -24,7 +24,7 @@ module if_stage(
     input wire rst,
     input wire clk,
     input wire [`AddrLen - 1 : 0] pc,
-    output reg [`AddrLen - 1 : 0] pc_o,
+    output wire [`AddrLen - 1 : 0] pc_o,
     output reg [`InstLen - 1 : 0] inst,
     
     output reg [`InstLen - 1 : 0] addr_to_mem,
@@ -48,14 +48,15 @@ module if_stage(
     assign pred_enable = (opcode == `JAL) || (opcode == `BRANCH);
     assign isBranch = (opcode == `BRANCH);
     assign isLoad = (opcode == `LOAD);
-       
+    assign pc_o = pc;
+
 always @ (*) begin
     if (mem_status != `DONE) begin
         prediction = pc + 4; //the inst after a branch/jal
     end
     else begin
-        prediction = pc + 4; //(isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
-//                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 }));
+        prediction = isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
+                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 });
     end
 end
 
@@ -64,16 +65,17 @@ always @ (*) begin
         rw <= 1'b0;
         addr_to_mem <= `ZERO_WORD;
         stallreq <= `StallDisable;
+        inst <= `ZERO_WORD;
     end
     else begin
+//        inst <= `ZERO_WORD;
         if (mem_status == `DONE) begin
+            rw <= 1'b0;
             inst <= data_from_mem;
             stallreq <= `StallDisable;
-            rw <= 1'b0;
         end
         else if (mem_status == `IDLE && enable_pc) begin
             addr_to_mem = pc;
-            pc_o = pc;
             if ((!cacheHit) || isLoad) begin
                 rw <= 1'b1;
                 stallreq <= `StallEnable;

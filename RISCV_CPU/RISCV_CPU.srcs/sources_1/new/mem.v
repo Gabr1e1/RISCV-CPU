@@ -64,6 +64,9 @@ always @ (*) begin
     else if (width[3] == 1'b0) begin //LOAD
         // $display("%0t %d %d",$time, rd_addr_i, rd_data_i);
         rd_addr_o = rd_addr_i;
+        
+        rd_data_o = `ZERO_WORD;
+        
         if (mem_status == `DONE) begin
             if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
                if (width[0] == 1'b1) //LBU

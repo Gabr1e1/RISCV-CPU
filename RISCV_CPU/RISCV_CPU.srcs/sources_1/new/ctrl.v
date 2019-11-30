@@ -36,7 +36,7 @@ module ctrl(
     output reg flush_id
     );
 
-    always @ (negedge clk) begin
+    always @ (*) begin
         if (rst == `ResetEnable) begin
             stall <= `PipelineDepth'b000000; //from msb to lsb!!!
         end 

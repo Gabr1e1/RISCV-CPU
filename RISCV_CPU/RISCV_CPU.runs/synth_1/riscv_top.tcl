@@ -60,6 +60,7 @@ read_verilog -library xil_defaultlib {
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_rx.v}
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_tx.v}
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v}
+  {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/bp.v}
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

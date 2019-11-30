@@ -105,12 +105,18 @@ end
 //Determine the output
 always @ (*) begin
     if (rst == `ResetEnable) begin
+        rd_addr <= `ZERO_WORD;
+        width_o <= 4'b0000;
         rd_enable_o <= `WriteDisable;
+        rd_data_o <= `ZERO_WORD;
+        mem_addr <= `ZERO_WORD;
     end
     else begin 
         rd_addr <= rd;
         rd_enable_o <= rd_enable;
         width_o <= 4'b0000;
+        mem_addr <= `ZERO_WORD;
+        
         case (alusel)
             `Arith_OP: 
                 rd_data_o <= res;
@@ -139,6 +145,7 @@ end
 always @ (*) begin
     if (rst == `ResetEnable) begin
         jmp_enable <= `JumpDisable;
+        jmp_target <= `ZERO_WORD;
     end
     else begin
         case (ctrlsel)
@@ -172,9 +179,12 @@ always @ (*) begin
             end
             `Ctrl_Flush: begin
                 jmp_enable <= `JumpDisable;
+                jmp_target <= `ZERO_WORD;
             end
-            default: ;
+            default: begin
+                jmp_target <= `ZERO_WORD;
 //                jmp_enable <= `JumpDisable;
+            end
         endcase
     end
 end

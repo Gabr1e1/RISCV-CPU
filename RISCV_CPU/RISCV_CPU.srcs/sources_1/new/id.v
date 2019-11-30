@@ -78,6 +78,8 @@ module id(
 always @ (*) begin
     if (rst == `ResetEnable) begin
         rd_enable <= `WriteDisable;
+        reg1_addr_o <= `ZERO_WORD;
+        reg2_addr_o <= `ZERO_WORD;
         reg1_read_enable <= `ReadDisable;
         reg2_read_enable <= `ReadDisable;
         rd <= `ZERO_WORD;
@@ -86,14 +88,22 @@ always @ (*) begin
         alusel <= `ZERO_WORD;
         width <= `ZERO_WORD;
         ctrlsel <= `Ctrl_NOP;
+        jmp_addr <= `ZERO_WORD;
     end
     else begin
         reg1_addr_o <= inst[19 : 15];
         reg2_addr_o <= inst[24 : 20];
         rd <= inst[11 : 7];
         if_flushed <= 1'b0;
+        reg1_read_enable <= `ReadDisable;
+        reg2_read_enable <= `ReadDisable;
+        Imm <= `ZERO_WORD;
+        aluop <= `ZERO_WORD;
+        alusel <= `ZERO_WORD;
+        width <= `ZERO_WORD;
         ctrlsel <= `Ctrl_NOP;
-        
+        jmp_addr <= `ZERO_WORD;
+
         case (opcode)
             `INTCOM_LUI: begin
                 Imm <= { inst[31:12], {12{1'b0}} };
