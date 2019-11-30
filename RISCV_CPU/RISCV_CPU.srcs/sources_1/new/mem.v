@@ -54,19 +54,27 @@ always @ (*) begin
         rd_enable_o = `WriteDisable;
         stallreq = `StallDisable;
         rw_mem = 2'b00;
+        quantity = `ZERO_WORD;
     end
     else if (width == 4'b0000) begin
         rd_data_o = rd_data_i;
         rd_addr_o = rd_addr_i;
         rd_enable_o = rd_enable_i;
         stallreq = `StallDisable;
+        rw_mem = 2'b00;
+        quantity = `ZERO_WORD;
     end
     else if (width[3] == 1'b0) begin //LOAD
         // $display("%0t %d %d",$time, rd_addr_i, rd_data_i);
         rd_addr_o = rd_addr_i;
-        
         rd_data_o = `ZERO_WORD;
-        
+        rd_enable_o = `WriteEnable;
+        if (width[2] ^ width[1] ^ width[0] == 1) 
+            quantity = width;
+        else  
+            quantity = width & 4'b0011;
+            
+        rw_mem = 2'b01;
         if (mem_status == `DONE) begin
             if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
                if (width[0] == 1'b1) //LBU
@@ -84,31 +92,27 @@ always @ (*) begin
             end
             stallreq = `StallDisable;
             rw_mem = 2'b00;
-            rd_enable_o = `WriteEnable;
         end
         else if (mem_status == `IDLE) begin
             addr_to_mem = rd_data_i;
-            rw_mem = 2'b01;
             stallreq = `StallEnable;
-            if (width[2] ^ width[1] ^ width[0] == 1) 
-                quantity = width;
-            else  
-                quantity = width & 4'b0011;
         end
     end
-    else if (width[3] == 1'b1) begin //SAVE
+    else begin //SAVE
+        rd_data_o = `ZERO_WORD;
+        rd_enable_o = `WriteDisable;
+        rd_addr_o = rd_addr_i;
+        quantity = width & 4'b0111;
+        
+        rw_mem = 2'b10;
         if (mem_status == `DONE) begin
-            rd_enable_o = `WriteDisable;
             stallreq = `StallDisable;
             rw_mem = 2'b00;    
-            rd_enable_o = `WriteDisable;
         end
         else if (mem_status == `IDLE) begin
             addr_to_mem = mem_addr;
             data_to_mem = rd_data_i;
-            rw_mem = 2'b10;
             stallreq = `StallEnable;
-            quantity = width & 4'b0111;
         end
     end
 end
