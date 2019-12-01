@@ -55,8 +55,8 @@ always @ (*) begin
         prediction = pc + 4; //the inst after a branch/jal
     end
     else begin
-        prediction = isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
-                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 });
+        prediction = pc + 4; //isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
+//                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 });
     end
 end
 
@@ -68,17 +68,18 @@ always @ (*) begin
         inst <= `ZERO_WORD;
     end
     else begin
-//        inst <= `ZERO_WORD;
+        addr_to_mem <= pc;
+        
         if (mem_status == `DONE) begin
             rw <= 1'b0;
             inst <= data_from_mem;
             stallreq <= `StallDisable;
         end
         else if (mem_status == `IDLE && enable_pc) begin
-            addr_to_mem = pc;
             if ((!cacheHit) || isLoad) begin
                 rw <= 1'b1;
                 stallreq <= `StallEnable;
+//                inst <= `ZERO_WORD;
             end
             else begin
                 inst <= cacheVal;

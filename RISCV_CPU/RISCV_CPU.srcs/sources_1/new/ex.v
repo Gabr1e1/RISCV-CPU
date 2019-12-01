@@ -64,6 +64,7 @@ module ex(
 always @ (*) begin
     if (rst == `ResetEnable) begin
         res <= `ZERO_WORD;
+        id_flushed <= 1'b0;
     end
     else begin
         id_flushed <= 1'b0;

@@ -89,6 +89,7 @@ always @ (*) begin
         width <= `ZERO_WORD;
         ctrlsel <= `Ctrl_NOP;
         jmp_addr <= `ZERO_WORD;
+        if_flushed <= 1'b0;
     end
     else begin
         reg1_addr_o <= inst[19 : 15];

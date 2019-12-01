@@ -54,7 +54,9 @@ always @ (*) begin
         rd_enable_o = `WriteDisable;
         stallreq = `StallDisable;
         rw_mem = 2'b00;
+        addr_to_mem = `ZERO_WORD;
         quantity = `ZERO_WORD;
+        data_to_mem = `ZERO_WORD;
     end
     else if (width == 4'b0000) begin
         rd_data_o = rd_data_i;
@@ -62,10 +64,14 @@ always @ (*) begin
         rd_enable_o = rd_enable_i;
         stallreq = `StallDisable;
         rw_mem = 2'b00;
+        addr_to_mem = `ZERO_WORD;
         quantity = `ZERO_WORD;
+        data_to_mem = `ZERO_WORD;
     end
     else if (width[3] == 1'b0) begin //LOAD
         // $display("%0t %d %d",$time, rd_addr_i, rd_data_i);
+        data_to_mem = `ZERO_WORD;
+        
         rd_addr_o = rd_addr_i;
         rd_data_o = `ZERO_WORD;
         rd_enable_o = `WriteEnable;
@@ -75,6 +81,7 @@ always @ (*) begin
             quantity = width & 4'b0011;
             
         rw_mem = 2'b01;
+        addr_to_mem = rd_data_i;
         if (mem_status == `DONE) begin
             if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
                if (width[0] == 1'b1) //LBU
@@ -94,7 +101,6 @@ always @ (*) begin
             rw_mem = 2'b00;
         end
         else if (mem_status == `IDLE) begin
-            addr_to_mem = rd_data_i;
             stallreq = `StallEnable;
         end
     end
@@ -103,15 +109,15 @@ always @ (*) begin
         rd_enable_o = `WriteDisable;
         rd_addr_o = rd_addr_i;
         quantity = width & 4'b0111;
-        
+        data_to_mem = rd_data_i;
+        addr_to_mem = mem_addr;
+
         rw_mem = 2'b10;
         if (mem_status == `DONE) begin
             stallreq = `StallDisable;
             rw_mem = 2'b00;    
         end
         else if (mem_status == `IDLE) begin
-            addr_to_mem = mem_addr;
-            data_to_mem = rd_data_i;
             stallreq = `StallEnable;
         end
     end
