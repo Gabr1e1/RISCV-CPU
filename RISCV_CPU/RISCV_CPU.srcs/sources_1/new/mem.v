@@ -22,6 +22,7 @@
 
 module mem(
     input rst,
+    input clk,
     input wire [`RegLen - 1 : 0] rd_data_i,
     input wire [`RegAddrLen - 1 : 0] rd_addr_i,
     input wire [`AddrLen - 1 : 0] mem_addr,
@@ -46,6 +47,12 @@ module mem(
     input wire [`PipelineDepth - 1 : 0] stall,
     output reg stallreq
     );
+    
+    reg _stallreq;
+    
+always @ (posedge clk) begin
+    _stallreq <= stallreq;
+end
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
@@ -103,6 +110,9 @@ always @ (*) begin
         else if (mem_status == `IDLE) begin
             stallreq = `StallEnable;
         end
+        else begin
+            stallreq = _stallreq;
+        end
     end
     else begin //SAVE
         rd_data_o = `ZERO_WORD;
@@ -119,6 +129,9 @@ always @ (*) begin
         end
         else if (mem_status == `IDLE) begin
             stallreq = `StallEnable;
+        end
+        else begin
+            stallreq = _stallreq;
         end
     end
 end

@@ -43,7 +43,7 @@ module register(
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
         for (i = 0; i < `RegNum; i = i + 1)
-            regs[i] = `ZERO_WORD;     
+            regs[i] <= `ZERO_WORD;     
     end 
     else if (write_enable == `WriteEnable) begin
         if (write_addr != `RegAddrLen'b00000) begin //not zero register

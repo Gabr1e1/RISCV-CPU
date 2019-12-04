@@ -23,7 +23,7 @@
 module ctrl(
     input wire rst,
     input wire clk,
-    input wire stallreq,
+//    input wire stallreq,
     input wire stallreq_if,
     input wire stallreq_mem,
     output reg [`PipelineDepth - 1 : 0] stall,
@@ -46,28 +46,42 @@ module ctrl(
         else if (stallreq_if == `StallEnable) begin
             stall <= `PipelineDepth'b000011;
         end        
-        else if (stallreq == `StallEnable) begin
-            stall <= `PipelineDepth'b111111;
-        end 
+//        else if (stallreq == `StallEnable) begin
+//            stall <= `PipelineDepth'b111111;
+//        end 
         else begin
             stall <= `PipelineDepth'b000000;
         end 
     end
 
+    reg _flush_if, _flush_id;
+    
+    always @ (posedge clk) begin
+        _flush_if <= flush_if;
+        _flush_id <= flush_id;
+    end
+    
     always @ (*) begin
         if (rst == `ResetEnable) begin
             flush_if <= `FlushDisable;
             flush_id <= `FlushDisable;
         end
-        else if (jmp_enable) begin
-            flush_if <= `FlushEnable;
-            flush_id <= `FlushEnable;
-        end
-        
-        if (if_flushed)
-            flush_if <= `FlushDisable;
-        if (id_flushed)
-            flush_id <= `FlushDisable;
+        else begin
+            if (jmp_enable) begin
+                flush_if <= `FlushEnable;
+                flush_id <= `FlushEnable;
+            end
+            else begin
+                flush_if <= _flush_if;
+                flush_id <= _flush_id; 
+            
+                if (if_flushed)
+                    flush_if <= `FlushDisable;
+                    
+                if (id_flushed)
+                    flush_id <= `FlushDisable;
+            end
+       end
     end
     
 endmodule

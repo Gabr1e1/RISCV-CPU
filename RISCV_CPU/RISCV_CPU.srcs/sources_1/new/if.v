@@ -42,50 +42,65 @@ module if_stage(
     output reg [`AddrLen - 1 : 0] prediction,
     output wire pred_enable
     );
+        
+    reg [`InstLen - 1 : 0] _inst;
+    reg _stallreq, _rw;
     
     wire [`OpLen - 1 : 0] opcode;
     assign opcode = inst[`OpLen - 1 : 0];
     assign pred_enable = (opcode == `JAL) || (opcode == `BRANCH);
     assign isBranch = (opcode == `BRANCH);
-    assign isLoad = (opcode == `LOAD);
+    assign isLoad = (_inst[`OpLen - 1 : 0] == `LOAD);
     assign pc_o = pc;
-
+    
 always @ (*) begin
-    if (mem_status != `DONE) begin
-        prediction = pc + 4; //the inst after a branch/jal
-    end
-    else begin
-        prediction = pc + 4; //isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
-//                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 });
-    end
+    prediction = pc + 4;
+//    if (mem_status != `DONE) begin
+//        prediction = pc + 4; //the inst after a branch/jal
+//    end
+//    else begin
+//        prediction = pc + 4; //isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
+////                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 });
+//    end
+end
+
+always @ (posedge clk) begin
+    _inst <= inst;
+    _stallreq <= stallreq;
+    _rw <= rw;
 end
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
-        rw <= 1'b0;
-        addr_to_mem <= `ZERO_WORD;
-        stallreq <= `StallDisable;
-        inst <= `ZERO_WORD;
+        rw = 1'b0;
+        addr_to_mem = `ZERO_WORD;
+        stallreq = `StallDisable;
+        inst = `ZERO_WORD;
     end
     else begin
-        addr_to_mem <= pc;
+        addr_to_mem = pc;
         
         if (mem_status == `DONE) begin
-            rw <= 1'b0;
-            inst <= data_from_mem;
-            stallreq <= `StallDisable;
+            rw = 1'b0;
+            inst = data_from_mem;
+            stallreq = `StallDisable;
         end
         else if (mem_status == `IDLE && enable_pc) begin
             if ((!cacheHit) || isLoad) begin
-                rw <= 1'b1;
-                stallreq <= `StallEnable;
-//                inst <= `ZERO_WORD;
+                rw = 1'b1;
+                stallreq = `StallEnable;
+                inst = _inst;
             end
             else begin
-                inst <= cacheVal;
-                stallreq <= `StallDisable;
-                rw <= 1'b0;
+                inst = cacheVal;
+                stallreq = `StallDisable;
+                rw = 1'b0;
             end
+        end
+        else begin
+            inst = _inst;
+            stallreq = _stallreq;
+            rw = _rw;
         end
     end
 end

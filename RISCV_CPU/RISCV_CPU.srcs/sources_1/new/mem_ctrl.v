@@ -32,8 +32,8 @@ module mem_ctrl(
 
     output reg [`RegLen - 1 : 0] data_out,
     output reg [1:0] status_if,
-    output reg cacheHit,
-    output reg [`RegLen - 1 : 0] cacheVal,
+    output wire cacheHit,
+    output wire [`RegLen - 1 : 0] cacheVal,
     
     output reg [1:0] status_mem,
 
@@ -50,12 +50,15 @@ module mem_ctrl(
     wire isValid[0:1], isCorrect[0:1];
     wire [`RegLen - 1 : 0] data[0:1];
     cache cache0(.clk(clk), .rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[0]), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
-    cache cache1(.clk(clk), .rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[1]), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
-
-always @ (*) begin
-    cacheVal = isCorrect[0] == `Correct ? data[0] : data[1];
-    cacheHit = isCorrect[0] || isCorrect[1];
-end
+//    cache cache1(.clk(clk), .rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[1]), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
+    
+    assign cacheVal = data[0]; //isCorrect[0] == `Correct ? data[0] : data[1];
+    assign cacheHit = isCorrect[0]; // | isCorrect[1];
+    
+//always @ (*) begin
+//    cacheVal = isCorrect[0] == `Correct ? data[0] : data[1];
+//    cacheHit = isCorrect[0] | isCorrect[1];
+//end
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
@@ -72,7 +75,7 @@ always @ (posedge clk) begin
                 status_mem <= `IDLE;
                 status_if <= `IDLE;
                 r_nw_to_mem <= 1'b0;
-                { replace[0], replace[1] } = { 2'b00 };
+                { replace[0], replace[1] } <= { 2'b00 };
 
                 if (rw_mem != 2'b00) begin
                     r_nw_to_mem <= (rw_mem == 2'b10);
@@ -105,7 +108,7 @@ always @ (posedge clk) begin
             end
             `BUSYR: begin
                 count <= count + 1;
-                if (count <= 3) begin
+                if (count <= 2 && q >= 3'b010) begin
                     addr_to_mem <= addr_to_mem + 1;
                 end
                 if (count >= 1) begin
@@ -114,17 +117,19 @@ always @ (posedge clk) begin
                 end
                 if (count == 4 || q == 3'b000)  begin //have read all
                     status <= `IDLE;
+//                    addr_to_mem <= `ZERO_WORD;
+                    
                     if (status_if == `WORKING) begin
                         status_if <= `DONE;
                         //Replace entry in cache
-                        //Potential problem: could status of isValid change??
-                        if (isValid[0] != `Valid) begin
+                        
+//                        if (isValid[0] != `Valid) begin
                             replace[0] <= 1'b1;
-                        end
-                        else begin
+//                        end
+//                        else begin
 //                            $display("Using cache 1 %h", data_out);
-                            replace[1] <= 1'b1;
-                        end
+//                            replace[1] <= 1'b1;
+//                        end
                     end
                     else
                         status_mem <= `DONE;

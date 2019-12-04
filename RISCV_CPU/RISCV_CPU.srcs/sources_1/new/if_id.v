@@ -42,6 +42,7 @@ always @ (posedge clk) begin
     end
     else if (stall[1] == `StallDisable) begin
         if (flush == `FlushDisable) begin
+//            $display("%h %h",if_pc, if_inst);
             id_pc <= if_pc;
             id_inst <= if_inst;
             id_prediction <= if_prediction;

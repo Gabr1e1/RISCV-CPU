@@ -4,7 +4,6 @@ Running: C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto aa429414c4
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-5021] port 'stall_test' is not connected on this instance [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:80]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis

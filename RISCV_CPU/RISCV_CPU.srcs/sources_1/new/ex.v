@@ -22,6 +22,7 @@
 
 module ex(
     input wire rst,
+    input wire clk,
     input wire [`AddrLen - 1 : 0] pc,
 
     input wire [`RegLen - 1 : 0] reg1,
@@ -143,6 +144,12 @@ always @ (*) begin
     end
 end
 
+reg _jmp_enable;
+
+always @ (posedge clk) begin
+    _jmp_enable <= jmp_enable;
+end
+
 always @ (*) begin
     if (rst == `ResetEnable) begin
         jmp_enable <= `JumpDisable;
@@ -184,7 +191,7 @@ always @ (*) begin
             end
             default: begin
                 jmp_target <= `ZERO_WORD;
-//                jmp_enable <= `JumpDisable;
+                jmp_enable <= _jmp_enable;
             end
         endcase
     end

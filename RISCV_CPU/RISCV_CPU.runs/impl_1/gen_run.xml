@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1575206123">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1575439461">
   <File Type="BITSTR-BMM" Name="riscv_top_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="riscv_top_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="riscv_top_timing_summary_init.rpt"/>
@@ -310,14 +310,16 @@
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
     <Filter Type="Constrs"/>
-    <File Path="$PSRCDIR/constrs_1/new/cons_test.xdc">
+    <File Path="$PSRCDIR/constrs_1/imports/src/Basys-3-Master.xdc">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Arch2019_Assignment/riscv/src/Basys-3-Master.xdc"/>
+        <Attr Name="ImportTime" Val="1571824133"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
       </FileInfo>
     </File>
     <Config>
-      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/cons_test.xdc"/>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/src/Basys-3-Master.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>

@@ -150,9 +150,9 @@
 //see branch define above
 
 //ICache
-`define CacheLen 7
-`define CacheSize 128
-`define TagLen 8
+`define CacheLen 8
+`define CacheSize 256
+`define TagLen 7
 `define Valid 1'b1
 `define Correct 1'b1
 

@@ -4,7 +4,6 @@
 module cpu(
       input  wire                 clk_in,			// system clock signal
       input  wire                 rst_in,			// reset signal
-      input wire stall_test,
       input  wire                 rdy_in,			// ready signal, pause cpu when low
       
       input  wire [ 7:0]          mem_din,		// data input bus
@@ -13,6 +12,7 @@ module cpu(
       output wire                 mem_wr,			// write/read signal (1 for write)
 	output wire [31:0]			dbgreg_dout		  // cpu register output (debugging demo)
 );
+
 
 // implementation goes here
 
@@ -32,6 +32,8 @@ wire flush_if, flush_id;
 
 //PC
 wire [`AddrLen - 1 : 0] pc;
+assign dbgreg_dout = `ZERO_WORD;
+
 wire enable_pc;
 
 //Branch related
@@ -158,7 +160,7 @@ id_ex id_ex0(.clk(clk_in), .rst(rst_in), .id_pc(id_pc_o), .ex_pc(ex_pc),
             .id_prediction(id_prediction_o), .ex_prediction(ex_prediction),
             .stall(stall), .flush(flush_id));
 
-ex ex0(.rst(rst_in), .pc(ex_pc), 
+ex ex0(.clk(clk_in), .rst(rst_in), .pc(ex_pc), 
       .reg1(ex_reg1), .reg2(ex_reg2), .Imm(ex_Imm), .rd(ex_rd), .rd_enable(ex_rd_enable_i), .aluop(ex_aluop), .alusel(ex_alusel), .ctrlsel(ctrlsel_o), .width_i(ex_width),
       .rd_data_o(ex_rd_data), .rd_addr(ex_rd_addr), .rd_enable_o(ex_rd_enable_o), .mem_addr(ex_mem_addr), .width_o(ex_width_o),
       .jmp_addr(ex_jmp_addr), .prediction(ex_prediction),
@@ -170,7 +172,7 @@ ex_mem ex_mem0(.clk(clk_in), .rst(rst_in),
               .mem_rd_data(mem_rd_data_i), .mem_rd_addr(mem_rd_addr_i), .mem_rd_enable(mem_rd_enable_i), .mem_mem_addr(mem_mem_addr), .mem_width(mem_width), 
               .stall(stall), .out_enable(mem_enable));
               
-mem mem0(.rst(rst_in),
+mem mem0(.rst(rst_in),.clk(clk_in),
         .rd_data_i(mem_rd_data_i), .rd_addr_i(mem_rd_addr_i), .rd_enable_i(mem_rd_enable_i), .mem_addr(mem_mem_addr), .width(mem_width), 
         .rd_data_o(mem_rd_data_o), .rd_addr_o(mem_rd_addr_o), .rd_enable_o(mem_rd_enable_o),
         .addr_to_mem(addr_from_mem), .rw_mem(rw_mem), .quantity(quantity), .stallreq(stallreq_mem),
@@ -182,7 +184,7 @@ mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),
               .stall(stall));
 
 ctrl ctrl0(.rst(rst_in), .clk(clk_in),
-          .stallreq(stall_test),
+//          .stallreq(stall_test),
           .stallreq_if(stallreq_if), .stallreq_mem(stallreq_mem),
           .stall(stall),
           .jmp_enable(jmp_enable), .if_flushed(if_flushed), .id_flushed(id_flushed), 
