@@ -27,7 +27,7 @@ module if_stage(
     output wire [`AddrLen - 1 : 0] pc_o,
     output reg [`InstLen - 1 : 0] inst,
     
-    output reg [`InstLen - 1 : 0] addr_to_mem,
+//    output reg [`InstLen - 1 : 0] addr_to_mem,
     output reg rw,  
     input wire [`AddrLen - 1 : 0] data_from_mem,
     input wire [1:0] mem_status,
@@ -73,12 +73,12 @@ end
 always @ (*) begin
     if (rst == `ResetEnable) begin
         rw = 1'b0;
-        addr_to_mem = `ZERO_WORD;
+//        addr_to_mem = `ZERO_WORD;
         stallreq = `StallDisable;
         inst = `ZERO_WORD;
     end
     else begin
-        addr_to_mem = pc;
+//        addr_to_mem = pc;
         
         if (mem_status == `DONE) begin
             rw = 1'b0;

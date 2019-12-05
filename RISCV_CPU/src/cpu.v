@@ -130,7 +130,8 @@ pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc),
 
 if_stage if0(.rst(rst_in),.clk(clk_in),
       .pc(pc), .pc_o(if_pc), .enable_pc(enable_pc), .inst(if_inst),
-      .addr_to_mem(addr_from_if), .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
+//      .addr_to_mem(addr_from_if), 
+      .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
       .stall(stall), .stallreq(stallreq_if),
       .prediction(if_prediction), .pred_enable(pred_enable),
       .cacheHit(cacheHit), .cacheVal(cacheVal));
@@ -184,14 +185,13 @@ mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),
               .stall(stall));
 
 ctrl ctrl0(.rst(rst_in), .clk(clk_in),
-//          .stallreq(stall_test),
           .stallreq_if(stallreq_if), .stallreq_mem(stallreq_mem),
           .stall(stall),
           .jmp_enable(jmp_enable), .if_flushed(if_flushed), .id_flushed(id_flushed), 
           .flush_if(flush_if), .flush_id(flush_id));
 
-mem_ctrl mem_ctrl0(.clk(clk_in), .rst(rst_in),
-                  .addr_from_if(addr_from_if), .addr_from_mem(addr_from_mem), .data_in(data_in), .rw_if(rw_if), .rw_mem(rw_mem),
+mem_ctrl mem_ctrl0(.clk(clk_in), .rst(rst_in), .pc(pc),
+                  .addr_from_if(pc), .addr_from_mem(addr_from_mem), .data_in(data_in), .rw_if(rw_if), .rw_mem(rw_mem),
                   .data_out(data_out), .status_if(status_if), .status_mem(status_mem), 
                   .addr_to_mem(mem_a), .r_nw_to_mem(mem_wr), .data_to_mem(mem_dout), .data_from_mem(mem_din),
                   .quantity(quantity),

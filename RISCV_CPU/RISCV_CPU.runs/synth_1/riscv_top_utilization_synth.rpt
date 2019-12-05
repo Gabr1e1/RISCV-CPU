@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Thu Dec  5 15:02:08 2019
+| Date         : Thu Dec  5 16:38:42 2019
 | Host         : DESKTOP-KOEBDED running 64-bit major release  (build 9200)
 | Command      : report_utilization -file riscv_top_utilization_synth.rpt -pb riscv_top_utilization_synth.pb
 | Design       : riscv_top
@@ -30,13 +30,13 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                | 3379 |     0 |     20800 | 16.25 |
-|   LUT as Logic             | 2831 |     0 |     20800 | 13.61 |
+| Slice LUTs*                | 3394 |     0 |     20800 | 16.32 |
+|   LUT as Logic             | 2846 |     0 |     20800 | 13.68 |
 |   LUT as Memory            |  548 |     0 |      9600 |  5.71 |
 |     LUT as Distributed RAM |  548 |     0 |           |       |
 |     LUT as Shift Register  |    0 |     0 |           |       |
-| Slice Registers            | 2105 |     0 |     41600 |  5.06 |
-|   Register as Flip Flop    | 2105 |     0 |     41600 |  5.06 |
+| Slice Registers            | 2108 |     0 |     41600 |  5.07 |
+|   Register as Flip Flop    | 2108 |     0 |     41600 |  5.07 |
 |   Register as Latch        |    0 |     0 |     41600 |  0.00 |
 | F7 Muxes                   |  400 |     0 |     16300 |  2.45 |
 | F8 Muxes                   |  200 |     0 |      8150 |  2.45 |
@@ -59,7 +59,7 @@ Table of Contents
 | 6     |          Yes |           - |          Set |
 | 59    |          Yes |           - |        Reset |
 | 8     |          Yes |         Set |            - |
-| 2032  |          Yes |       Reset |            - |
+| 2035  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -152,13 +152,13 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     | 2032 |        Flop & Latch |
-| LUT6     | 1540 |                 LUT |
-| LUT4     |  598 |                 LUT |
-| LUT5     |  446 |                 LUT |
+| FDRE     | 2035 |        Flop & Latch |
+| LUT6     | 1550 |                 LUT |
+| LUT4     |  650 |                 LUT |
+| LUT5     |  408 |                 LUT |
 | MUXF7    |  400 |               MuxFx |
-| LUT2     |  388 |                 LUT |
 | RAMD64E  |  384 |  Distributed Memory |
+| LUT2     |  372 |                 LUT |
 | MUXF8    |  200 |               MuxFx |
 | CARRY4   |  162 |          CarryLogic |
 | RAMS64E  |  156 |  Distributed Memory |

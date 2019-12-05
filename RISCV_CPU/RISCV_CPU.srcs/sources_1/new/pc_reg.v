@@ -39,7 +39,7 @@ module pc_reg(
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
         pc <= `ZERO_WORD;
-        npc <= 32'h00000004;
+        npc <= 4;
         assigned <= 1'b0;
         enable_pc <= 1'b1;
     end
