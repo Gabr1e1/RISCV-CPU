@@ -38,16 +38,16 @@ module ctrl(
 
     always @ (*) begin
         if (rst == `ResetEnable) begin
-            stall <= `PipelineDepth'b000000; //from msb to lsb!!!
+            stall = `PipelineDepth'b000000; //from msb to lsb!!!
         end 
         else if (stallreq_mem == `StallEnable) begin
-            stall <= `PipelineDepth'b011111;
+            stall = `PipelineDepth'b011111;
         end
         else if (stallreq_if == `StallEnable) begin
-            stall <= `PipelineDepth'b000011;
+            stall = `PipelineDepth'b000011;
         end
         else begin
-            stall <= `PipelineDepth'b000000;
+            stall = `PipelineDepth'b000000;
         end 
     end
 
@@ -60,24 +60,24 @@ module ctrl(
     
     always @ (*) begin
         if (rst == `ResetEnable) begin
-            flush_if <= `FlushDisable;
-            flush_id <= `FlushDisable;
+            flush_if = `FlushDisable;
+            flush_id = `FlushDisable;
         end
         else begin
             if (jmp_enable) begin
-                flush_if <= `FlushEnable;
-                flush_id <= `FlushEnable;
+                flush_if = `FlushEnable;
+                flush_id = `FlushEnable;
             end
             else begin
-                flush_if <= _flush_if;
-                flush_id <= _flush_id; 
+                flush_if = _flush_if;
+                flush_id = _flush_id; 
             end
                 
             if (if_flushed)
-                flush_if <= `FlushDisable;
+                flush_if = `FlushDisable;
                 
             if (id_flushed)
-                flush_id <= `FlushDisable;
+                flush_id = `FlushDisable;
        end
     end
     

@@ -1,0 +1,61 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Thu Dec  5 21:12:13 2019
+| Host         : DESKTOP-KOEBDED running 64-bit major release  (build 9200)
+| Command      : report_methodology -file riscv_top_methodology_drc_routed.rpt -pb riscv_top_methodology_drc_routed.pb -rpx riscv_top_methodology_drc_routed.rpx
+| Design       : riscv_top
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 5
++-----------+----------+--------------------------------------------+------------+
+| Rule      | Severity | Description                                | Violations |
++-----------+----------+--------------------------------------------+------------+
+| SYNTH-6   | Warning  | Timing of a block RAM might be sub-optimal | 1          |
+| TIMING-18 | Warning  | Missing input or output delay              | 4          |
++-----------+----------+--------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+SYNTH-6#1 Warning
+Timing of a block RAM might be sub-optimal  
+The timing for the instance ram0/ram_bram/ram_reg_3_0, implemented as a block RAM, might be sub-optimal as no output register was merged into the block
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on Rx relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on btnC relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An output delay is missing on Tx relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An output delay is missing on led relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+

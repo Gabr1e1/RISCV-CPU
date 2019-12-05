@@ -57,14 +57,14 @@ end
 always @ (*) begin
     if (rst == `ResetDisable && read_enable1 == `ReadEnable) begin
         if (read_addr1 == `RegAddrLen'h0)
-            read_data1 <= `ZERO_WORD;
+            read_data1 = `ZERO_WORD;
         else if (read_addr1 == write_addr && write_enable == `WriteEnable) //support "first half write, second half read"
-            read_data1 <= write_data;
+            read_data1 = write_data;
         else
-            read_data1 <= regs[read_addr1];
+            read_data1 = regs[read_addr1];
     end
     else begin
-        read_data1 <= `ZERO_WORD;
+        read_data1 = `ZERO_WORD;
     end
 end
 
@@ -72,14 +72,14 @@ end
 always @ (*) begin
     if (rst == `ResetDisable && read_enable2 == `ReadEnable) begin
         if (read_addr2 == `RegAddrLen'h0)
-            read_data2 <= `ZERO_WORD;
+            read_data2 = `ZERO_WORD;
         else if (read_addr2 == write_addr && write_enable == `WriteEnable) //support "first half write, second half read"
-            read_data2 <= write_data;
+            read_data2 = write_data;
         else
-            read_data2 <= regs[read_addr2];
+            read_data2 = regs[read_addr2];
     end
     else begin
-        read_data2 <= `ZERO_WORD;
+        read_data2 = `ZERO_WORD;
     end
 end
 
