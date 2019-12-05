@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Thu Dec  5 21:12:15 2019
+| Date             : Thu Dec  5 21:22:36 2019
 | Host             : DESKTOP-KOEBDED running 64-bit major release  (build 9200)
 | Command          : report_power -file riscv_top_power_routed.rpt -pb riscv_top_power_summary_routed.pb -rpx riscv_top_power_routed.rpx
 | Design           : riscv_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.114        |
+| Total On-Chip Power (W)  | 0.120        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.041        |
+| Dynamic (W)              | 0.047        |
 | Device Static (W)        | 0.073        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.4         |
@@ -52,19 +52,19 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.008 |        3 |       --- |             --- |
-| Slice Logic              |     0.003 |     5613 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     2413 |     20800 |           11.60 |
+| Clocks                   |     0.011 |        3 |       --- |             --- |
+| Slice Logic              |     0.003 |     6601 |       --- |             --- |
+|   LUT as Logic           |     0.003 |     2798 |     20800 |           13.45 |
 |   CARRY4                 |    <0.001 |      162 |      8150 |            1.99 |
-|   Register               |    <0.001 |     1855 |     41600 |            4.46 |
-|   LUT as Distributed RAM |    <0.001 |      392 |      9600 |            4.08 |
-|   F7/F8 Muxes            |    <0.001 |      432 |     32600 |            1.33 |
-|   Others                 |     0.000 |       36 |       --- |             --- |
-| Signals                  |     0.003 |     4044 |       --- |             --- |
-| Block RAM                |     0.026 |       32 |        50 |           64.00 |
+|   Register               |    <0.001 |     2121 |     41600 |            5.10 |
+|   LUT as Distributed RAM |    <0.001 |      548 |      9600 |            5.71 |
+|   F7/F8 Muxes            |    <0.001 |      600 |     32600 |            1.84 |
+|   Others                 |     0.000 |       37 |       --- |             --- |
+| Signals                  |     0.005 |     4436 |       --- |             --- |
+| Block RAM                |     0.027 |       32 |        50 |           64.00 |
 | I/O                      |    <0.001 |        5 |       106 |            4.72 |
 | Static Power             |     0.073 |          |           |                 |
-| Total                    |     0.114 |          |           |                 |
+| Total                    |     0.120 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.048 |       0.038 |      0.010 |
+| Vccint    |       1.000 |     0.054 |       0.044 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -143,15 +143,18 @@ Table of Contents
 +---------------+-----------+
 | Name          | Power (W) |
 +---------------+-----------+
-| riscv_top     |     0.041 |
-|   cpu0        |     0.010 |
+| riscv_top     |     0.047 |
+|   cpu0        |     0.015 |
 |     id_ex0    |     0.001 |
-|     mem_ctrl0 |     0.003 |
-|     register0 |     0.003 |
+|     if_id0    |     0.001 |
+|     mem_ctrl0 |     0.005 |
+|       cache0  |     0.002 |
+|     pc_reg0   |     0.002 |
+|     register0 |     0.004 |
 |   hci0        |     0.003 |
 |     uart_blk  |     0.002 |
-|   ram0        |     0.027 |
-|     ram_bram  |     0.027 |
+|   ram0        |     0.028 |
+|     ram_bram  |     0.028 |
 +---------------+-----------+
 
 

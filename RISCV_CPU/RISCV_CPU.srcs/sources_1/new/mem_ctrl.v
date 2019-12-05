@@ -95,42 +95,49 @@ always @ (posedge clk) begin
                     end
                 end
                 else if (rw_if != 1'b0) begin
-                        r_nw_to_mem <= 1'b0;
-                        addr_to_mem <= addr_from_if;
-                        q <= 3'b100;
-                        status_if <= `WORKING;
-                        status <= `BUSYR;
+                    r_nw_to_mem <= 1'b0;
+                    addr_to_mem <= addr_from_if;
+                    q <= 3'b100;
+                    status_if <= `WORKING;
+                    status <= `BUSYR;
                 end
             end
             `BUSYR: begin
-                count <= count + 1;
-                if (count <= 2 && q >= 2) begin
-                    addr_to_mem <= addr_to_mem + 1;
-                end
-                
-                if (count >= 1) begin
-                    data_out[count * `RamWord - 1 -: `RamWord] <= data_from_mem;
-                end
-                q <= q - 1;
-
-                if (count == 4 || q == 0)  begin //have read all
+                if (count == 0 && cacheHit && status_if == `WORKING) begin   //Cache Hit
+                    data_out <= cacheVal;
+                    status_if <= `DONE;
                     status <= `IDLE;
-                    addr_to_mem <= `ZERO_WORD;
-
-                    if (status_if == `WORKING) begin
-                        status_if <= `DONE;
-                        //Replace entry in cache
-                        
-//                        if (isValid[0] != `Valid) begin
-                          replace[0] <= 1'b1;
-//                        end
-//                        else begin
-//                            $display("Using cache 1 %h", data_out);
-//                            replace[1] <= 1'b1;
-//                        end
+                end
+                else begin
+                    count <= count + 1;
+                    if (count <= 2 && q >= 2) begin
+                        addr_to_mem <= addr_to_mem + 1;
                     end
-                    else
-                        status_mem <= `DONE;
+                    
+                    if (count >= 1) begin
+                        data_out[count * `RamWord - 1 -: `RamWord] <= data_from_mem;
+                    end
+                    q <= q - 1;
+    
+                    if (count == 4 || q == 0)  begin //have read all
+                        status <= `IDLE;
+                        addr_to_mem <= `ZERO_WORD;
+    
+                        if (status_if == `WORKING) begin
+                            status_if <= `DONE;
+                            //Replace entry in cache
+                            
+    //                        if (isValid[0] != `Valid) begin
+                              replace[0] <= 1'b1;
+    //                        end
+    //                        else begin
+    //                            $display("Using cache 1 %h", data_out);
+    //                            replace[1] <= 1'b1;
+    //                        end
+                        end
+                        else
+                            status_mem <= `DONE;
+                    end
                 end
             end
             `BUSYW: begin
