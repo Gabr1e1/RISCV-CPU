@@ -36,7 +36,6 @@ module ex_mem(
 
     output reg mem_rd_enable,
     output reg [3:0] mem_width,
-    output reg out_enable,
     
     input wire [`PipelineDepth - 1 : 0] stall
     );
@@ -47,8 +46,7 @@ always @ (posedge clk) begin
         mem_rd_addr <= `RegAddrLen'h00;
         mem_rd_enable <= `WriteDisable;
         mem_mem_addr <= `ZERO_WORD;
-        mem_width <= 3'b000;
-        out_enable <= 1'b0;
+        mem_width <= 4'b0000;
     end
     else if (stall[3] == `StallDisable) begin
         mem_rd_data <= ex_rd_data;
@@ -56,10 +54,6 @@ always @ (posedge clk) begin
         mem_rd_enable <= ex_rd_enable;
         mem_mem_addr <= ex_mem_addr;
         mem_width <= ex_width;
-        out_enable <= 1'b1;
-    end
-    else begin
-        out_enable <= 1'b0;
     end
 end
 

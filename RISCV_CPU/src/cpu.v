@@ -170,13 +170,13 @@ ex ex0(.clk(clk_in), .rst(rst_in), .pc(ex_pc),
 ex_mem ex_mem0(.clk(clk_in), .rst(rst_in),
               .ex_rd_data(ex_rd_data), .ex_rd_addr(ex_rd_addr), .ex_rd_enable(ex_rd_enable_o), .ex_mem_addr(ex_mem_addr), .ex_width(ex_width_o), 
               .mem_rd_data(mem_rd_data_i), .mem_rd_addr(mem_rd_addr_i), .mem_rd_enable(mem_rd_enable_i), .mem_mem_addr(mem_mem_addr), .mem_width(mem_width), 
-              .stall(stall), .out_enable(mem_enable));
+              .stall(stall));
               
 mem mem0(.rst(rst_in),.clk(clk_in),
         .rd_data_i(mem_rd_data_i), .rd_addr_i(mem_rd_addr_i), .rd_enable_i(mem_rd_enable_i), .mem_addr(mem_mem_addr), .width(mem_width), 
         .rd_data_o(mem_rd_data_o), .rd_addr_o(mem_rd_addr_o), .rd_enable_o(mem_rd_enable_o),
         .addr_to_mem(addr_from_mem), .rw_mem(rw_mem), .quantity(quantity), .stallreq(stallreq_mem),
-        .data_from_mem(data_out), .mem_status(status_mem), .data_to_mem(data_in), .stall(stall), .enable(mem_enable));
+        .data_from_mem(data_out), .mem_status(status_mem), .data_to_mem(data_in), .stall(stall));
         
 mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),
               .mem_rd_data(mem_rd_data_o), .mem_rd_addr(mem_rd_addr_o), .mem_rd_enable(mem_rd_enable_o),

@@ -42,7 +42,6 @@ module mem(
 
     input wire [`RegLen - 1 : 0] data_from_mem,
     input wire [1:0] mem_status,
-    input wire enable,
     
     input wire [`PipelineDepth - 1 : 0] stall,
     output reg stallreq

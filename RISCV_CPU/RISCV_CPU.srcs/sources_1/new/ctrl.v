@@ -45,10 +45,7 @@ module ctrl(
         end
         else if (stallreq_if == `StallEnable) begin
             stall <= `PipelineDepth'b000011;
-        end        
-//        else if (stallreq == `StallEnable) begin
-//            stall <= `PipelineDepth'b111111;
-//        end 
+        end
         else begin
             stall <= `PipelineDepth'b000000;
         end 
@@ -74,13 +71,13 @@ module ctrl(
             else begin
                 flush_if <= _flush_if;
                 flush_id <= _flush_id; 
-            
-                if (if_flushed)
-                    flush_if <= `FlushDisable;
-                    
-                if (id_flushed)
-                    flush_id <= `FlushDisable;
             end
+                
+            if (if_flushed)
+                flush_if <= `FlushDisable;
+                
+            if (id_flushed)
+                flush_id <= `FlushDisable;
        end
     end
     

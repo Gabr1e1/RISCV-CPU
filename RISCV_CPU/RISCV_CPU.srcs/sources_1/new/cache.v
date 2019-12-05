@@ -34,20 +34,20 @@ module cache(
 
     reg [`AddrLen - 1 : 0] entry[`CacheSize - 1 : 0];
     reg [`TagLen - 1 : 0] tag[`CacheSize - 1 : 0];
-    reg  [`CacheSize - 1 : 0] valid;
+    reg [`CacheSize - 1 : 0] valid;
 
     assign data = entry[addr[`CacheLen - 1 + 2 : 2]];
-    assign isCorrect = (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid)
-                    && (tag[addr[`CacheLen - 1 + 2 : 2]] == addr[16 : `CacheLen + 2]);
+    assign isCorrect = (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid) ? 
+                        tag[addr[`CacheLen - 1 + 2 : 2]] == addr[16 : `CacheLen + 2] : 1'b0;
     assign isValid = valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid;
         
-    integer i;
-    
+            
     always @ (posedge clk) begin
         if (rst == `ResetEnable) begin
-            valid <= { {8{`ZERO_WORD}} };
+            valid <= 0;
         end
         else if (replace) begin
+//            $display("%h %h",data_r, addr);
             entry[addr[`CacheLen - 1 + 2 : 2]] <= data_r;
             tag[addr[`CacheLen - 1 + 2 : 2]] <= addr[16 : `CacheLen + 2];
             valid[addr[`CacheLen - 1 + 2 : 2]] <= `Valid;

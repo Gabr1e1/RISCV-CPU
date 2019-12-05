@@ -126,11 +126,12 @@ always @ (*) begin
                 rd_data_o <= Imm;
             `AUIPC_OP:
                 rd_data_o <= res;
-            `LOAD_OP: begin    
+            `LOAD_OP: begin
                 width_o <= width_i; 
                 rd_data_o <= res;
             end
             `STORE_OP: begin
+                rd_enable_o <= `WriteDisable;
                 width_o <= width_i;
                 rd_data_o <= reg2;
                 mem_addr <= res;
