@@ -80,7 +80,7 @@ always @ (posedge clk) begin
                 r_nw_to_mem <= 1'b0;
                 addr_to_mem <= `ZERO_WORD;
 
-                { replace[0], replace[1] } <= { 2'b00 };
+                replace[0] <= 1'b0;
 
                 if (rw_mem != 2'b00) begin
                     r_nw_to_mem <= (rw_mem == 2'b10);

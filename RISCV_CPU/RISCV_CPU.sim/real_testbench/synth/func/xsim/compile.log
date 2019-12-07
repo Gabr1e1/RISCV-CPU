@@ -1,6 +1,5 @@
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.sim/real_testbench/synth/func/xsim/testbench_func_synth.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module cache
-INFO: [VRFC 10-311] analyzing module cache_1
 INFO: [VRFC 10-311] analyzing module cpu
 INFO: [VRFC 10-311] analyzing module ctrl
 INFO: [VRFC 10-311] analyzing module ex
