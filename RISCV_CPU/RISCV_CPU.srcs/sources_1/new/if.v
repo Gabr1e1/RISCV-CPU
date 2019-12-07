@@ -79,7 +79,6 @@ always @ (*) begin
     end
     else begin
 //        addr_to_mem = pc;
-        
         if (mem_status == `DONE) begin
             rw = 1'b0;
             inst = data_from_mem;

@@ -52,6 +52,7 @@ always @ (posedge clk) begin
                 enable_pc <= 1'b1;
             end
             else begin
+                enable_pc <= 1'b0;
                 npc <= jmp_target;
             end
         end
@@ -63,6 +64,7 @@ always @ (posedge clk) begin
                 enable_pc <= 1'b1;
             end
             else begin
+                enable_pc <= 1'b0;
                 npc <= prediction;
             end
         end
