@@ -83,9 +83,16 @@ always @ (*) begin
             stallreq = `StallDisable;
         end
         else if (mem_status == `IDLE && enable_pc) begin
-            rw = 1'b1;
-            stallreq = `StallEnable;
-            inst = _inst;
+            if ((!cacheHit) || isLoad) begin
+                rw = 1'b1;
+                stallreq = `StallEnable;
+                inst = _inst;
+            end
+            else begin
+                inst = cacheVal;
+                stallreq = `StallDisable;
+                rw = 1'b0;
+            end
         end
         else begin
             inst = _inst;

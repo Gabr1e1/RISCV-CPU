@@ -28,7 +28,7 @@ module cache(
     input wire replace,
 
     output wire [`RegLen - 1 : 0] data,
-    output reg isCorrect,
+    output wire isCorrect,
     output wire isValid
     );
 
@@ -38,23 +38,12 @@ module cache(
 
     assign data = entry[addr[`CacheLen - 1 + 2 : 2]];
     assign isValid = valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid;
-        
-    always @ (*) begin
-        if (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid) begin
-            isCorrect = tag[addr[`CacheLen - 1 + 2 : 2]] == addr[16 : `CacheLen + 2];
-        end
-        else
-            isCorrect = 1'b0;
-    end
+    assign isCorrect = (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid) ? (tag[addr[`CacheLen - 1 + 2 : 2]] == addr[16 : `CacheLen + 2]) : 1'b0;
     
     integer i;
     always @ (posedge clk) begin
         if (rst == `ResetEnable) begin
-            for (i = 0; i < `CacheSize; i = i + 1) begin
-                entry[i] <= 0;
-                tag[i] <= 0;
-                valid[i] <= 0;
-            end
+            valid <= 0;
         end
         else if (replace) begin
 //            $display("%h %h",data_r, addr);

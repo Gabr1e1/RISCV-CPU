@@ -53,9 +53,10 @@ module mem_ctrl(
     wire [`RegLen - 1 : 0] data[0:1];
     
     cache cache0(.clk(clk), .rst(rst), .addr(pc), .replace(replace[0]), .data_r(data_out), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
-        
-    assign cacheVal = data[0];
-    assign cacheHit = isCorrect[0];
+    cache cache1(.clk(clk), .rst(rst), .addr(pc), .replace(replace[1]), .data_r(data_out), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
+
+    assign cacheVal = isCorrect[0] ? data[0] : data[1];
+    assign cacheHit = isCorrect[0] || isCorrect[1];
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
@@ -79,7 +80,7 @@ always @ (posedge clk) begin
                 r_nw_to_mem <= 1'b0;
                 addr_to_mem <= `ZERO_WORD;
 
-                replace[0] <= 1'b0;
+                { replace[0], replace[1] }  <= 2'b00;
 
                 if (rw_mem != 2'b00) begin
                     r_nw_to_mem <= (rw_mem == 2'b10);
@@ -94,17 +95,11 @@ always @ (posedge clk) begin
                     end
                 end
                 else if (rw_if != 1'b0) begin
-                    if (cacheHit) begin //Cache Hit
-                        data_out <= cacheVal;
-                        status_if <= `DONE;
-                    end
-                    else begin
-                        r_nw_to_mem <= 1'b0;
-                        addr_to_mem <= addr_from_if;
-                        q <= 3'b100;
-                        status_if <= `WORKING;
-                        status <= `BUSYR;
-                    end
+                    r_nw_to_mem <= 1'b0;
+                    addr_to_mem <= addr_from_if;
+                    q <= 3'b100;
+                    status_if <= `WORKING;
+                    status <= `BUSYR;
                 end
             end
             `BUSYR: begin
@@ -125,7 +120,10 @@ always @ (posedge clk) begin
                     if (status_if == `WORKING) begin
                         status_if <= `DONE;
                         //Replace entry in cache
-                        replace[0] <= 1'b1;
+                        if (!isValid[0])
+                            replace[0] <= 1'b1;
+                        else
+                            replace[1] <= 1'b1;
                     end
                     else
                         status_mem <= `DONE;
