@@ -92,6 +92,7 @@ always @ (*) begin
         if_flushed = 1'b0;
     end
     else begin
+        //TODO: Simplify
         reg1_addr_o = inst[19 : 15];
         reg2_addr_o = inst[24 : 20];
         rd = inst[11 : 7];
@@ -234,6 +235,7 @@ always @ (*) begin
                 if_flushed = 1'b1;
                 reg1_read_enable = `ReadDisable;
                 reg2_read_enable = `ReadDisable;
+                Imm = 0;
                 rd_enable = `WriteDisable;
              end
             `JAL: begin
@@ -266,7 +268,6 @@ always @ (*) begin
                 jmp_addr = pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
             end
             default: begin
-                //$display("FUCK unknow inst %0t %h", $time, inst);
                 rd_enable = `WriteDisable;
                 reg1_read_enable = `ReadDisable;
                 reg2_read_enable = `ReadDisable;

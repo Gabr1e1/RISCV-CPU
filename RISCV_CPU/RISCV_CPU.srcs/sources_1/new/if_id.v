@@ -39,10 +39,10 @@ always @ (posedge clk) begin
     if (rst == `ResetEnable || (stall[1] == `StallEnable && stall[2] == `StallDisable)) begin
         id_pc <= `ZERO_WORD;
         id_inst <= `ZERO_WORD;
+        id_prediction <= `ZERO_WORD;
     end
     else if (stall[1] == `StallDisable) begin
         if (flush == `FlushDisable) begin
-//            $display("%h %h",if_pc, if_inst);
             id_pc <= if_pc;
             id_inst <= if_inst;
             id_prediction <= if_prediction;
@@ -50,6 +50,7 @@ always @ (posedge clk) begin
         else begin
             id_inst <= `FlushInst;
             id_pc <= `ZERO_WORD;
+            id_prediction <= `ZERO_WORD;
         end
     end
 end

@@ -21,8 +21,8 @@
 
 
 module mem_wb(
-    input clk,
-    input rst,
+    input wire clk,
+    input wire rst,
     input wire [`RegLen - 1 : 0] mem_rd_data,
     input wire [`RegAddrLen - 1 : 0] mem_rd_addr,
     input wire mem_rd_enable,
@@ -37,7 +37,7 @@ module mem_wb(
 always @ (posedge clk) begin
     if (rst == `ResetEnable || (stall[4] == `StallEnable && stall[5] == `StallDisable)) begin
         wb_rd_data <= `ZERO_WORD;
-        wb_rd_addr <= `RegAddrLen'h0;
+        wb_rd_addr <= 0;
         wb_rd_enable <= `WriteDisable;
     end
     else if (stall[4] == `StallDisable) begin

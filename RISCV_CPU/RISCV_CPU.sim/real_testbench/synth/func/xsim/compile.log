@@ -8,7 +8,6 @@ INFO: [VRFC 10-311] analyzing module fifo
 INFO: [VRFC 10-311] analyzing module fifo_0
 INFO: [VRFC 10-311] analyzing module fifo__parameterized0
 INFO: [VRFC 10-311] analyzing module hci
-INFO: [VRFC 10-311] analyzing module id
 INFO: [VRFC 10-311] analyzing module id_ex
 INFO: [VRFC 10-311] analyzing module if_id
 INFO: [VRFC 10-311] analyzing module if_stage

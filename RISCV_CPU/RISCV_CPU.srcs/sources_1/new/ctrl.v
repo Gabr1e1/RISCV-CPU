@@ -21,6 +21,7 @@
 
 
 module ctrl(
+    input wire rdy,
     input wire rst,
     input wire clk,
 //    input wire stallreq,
@@ -39,7 +40,10 @@ module ctrl(
     always @ (*) begin
         if (rst == `ResetEnable) begin
             stall = `PipelineDepth'b000000; //from msb to lsb!!!
-        end 
+        end
+        else if (!rdy) begin
+            stall = `PipelineDepth'b111111;
+        end
         else if (stallreq_mem == `StallEnable) begin
             stall = `PipelineDepth'b011111;
         end

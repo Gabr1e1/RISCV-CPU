@@ -17,8 +17,9 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param tcl.collectionResultDisplayLimit 0
 set_param chipscope.maxJobs 3
-set_param synth.incrementalSynthesisCache C:/Users/zhang/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-15740-DESKTOP-KOEBDED/incrSyn
+set_param synth.incrementalSynthesisCache C:/Users/zhang/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-14620-DESKTOP-KOEBDED/incrSyn
 set_param xicom.use_bs_reader 1
 set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
@@ -38,6 +39,7 @@ read_mem {
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/test/inst.data}
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/test/forward_test1.data}
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/test/arith_test1.data}
+  {C:/Users/zhang/Documents/Computer Architecture/Arch2019_Assignment/riscv/test/test.data}
 }
 read_verilog -library xil_defaultlib {
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/config.v}
@@ -64,7 +66,6 @@ read_verilog -library xil_defaultlib {
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_rx.v}
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_tx.v}
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v}
-  {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/bp.v}
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

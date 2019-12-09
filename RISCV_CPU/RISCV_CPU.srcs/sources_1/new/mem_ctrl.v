@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module mem_ctrl(
+    input wire rdy,
     input wire rst,
     input wire clk,
     input wire [`AddrLen - 1 : 0] pc,
@@ -51,16 +52,10 @@ module mem_ctrl(
     wire isValid[0:1], isCorrect[0:1];
     wire [`RegLen - 1 : 0] data[0:1];
     
-    cache cache0(.clk(clk), .rst(rst), .addr(pc), .data_r(data_out), .replace(replace[0]), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
-//    cache cache1(.clk(clk), .rst(rst), .addr(addr_from_if), .data_r(data_out), .replace(replace[1]), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
-    
-    assign cacheVal = data[0]; //isCorrect[0] == `Correct ? data[0] : data[1];
-    assign cacheHit = isCorrect[0]; // | isCorrect[1];
-    
-//always @ (*) begin
-//    cacheVal = isCorrect[0] == `Correct ? data[0] : data[1];
-//    cacheHit = isCorrect[0] | isCorrect[1];
-//end
+    cache cache0(.clk(clk), .rst(rst), .addr(pc), .replace(replace[0]), .data_r(data_out), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
+        
+    assign cacheVal = data[0];
+    assign cacheHit = isCorrect[0];
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
@@ -69,6 +64,10 @@ always @ (posedge clk) begin
         status_mem <= 2'b00;
         r_nw_to_mem <= 1'b0; //Read
         { replace[0], replace[1] } <= { 2'b00 };
+        q <= 0;
+        count <= 0;
+    end
+    else if (!rdy) begin
     end
     else begin
         case (status)
@@ -126,14 +125,7 @@ always @ (posedge clk) begin
                     if (status_if == `WORKING) begin
                         status_if <= `DONE;
                         //Replace entry in cache
-                        
-//                        if (isValid[0] != `Valid) begin
-                          replace[0] <= 1'b1;
-//                        end
-//                        else begin
-//                            $display("Using cache 1 %h", data_out);
-//                            replace[1] <= 1'b1;
-//                        end
+                        replace[0] <= 1'b1;
                     end
                     else
                         status_mem <= `DONE;

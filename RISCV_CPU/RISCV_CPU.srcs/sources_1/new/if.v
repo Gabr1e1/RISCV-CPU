@@ -48,7 +48,7 @@ module if_stage(
     
     wire [`OpLen - 1 : 0] opcode;
     assign opcode = inst[`OpLen - 1 : 0];
-    assign pred_enable = (opcode == `JAL) || (opcode == `BRANCH);
+    assign pred_enable = 1'b0; //(opcode == `JAL) || (opcode == `BRANCH);
     assign isBranch = (opcode == `BRANCH);
     assign isLoad = (_inst[`OpLen - 1 : 0] == `LOAD);
     assign pc_o = pc;
@@ -73,12 +73,10 @@ end
 always @ (*) begin
     if (rst == `ResetEnable) begin
         rw = 1'b0;
-//        addr_to_mem = `ZERO_WORD;
         stallreq = `StallDisable;
         inst = `ZERO_WORD;
     end
     else begin
-//        addr_to_mem = pc;
         if (mem_status == `DONE) begin
             rw = 1'b0;
             inst = data_from_mem;

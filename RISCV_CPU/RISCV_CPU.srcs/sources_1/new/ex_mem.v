@@ -43,7 +43,7 @@ module ex_mem(
 always @ (posedge clk) begin
     if (rst == `ResetEnable || (stall[3] == `StallEnable && stall[4] == `StallDisable)) begin
         mem_rd_data <= `ZERO_WORD;
-        mem_rd_addr <= `RegAddrLen'h00;
+        mem_rd_addr <= 0;
         mem_rd_enable <= `WriteDisable;
         mem_mem_addr <= `ZERO_WORD;
         mem_width <= 4'b0000;

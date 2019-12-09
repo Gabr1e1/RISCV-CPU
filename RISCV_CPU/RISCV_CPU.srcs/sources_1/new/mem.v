@@ -56,7 +56,7 @@ end
 always @ (*) begin
     if (rst == `ResetEnable) begin
         rd_data_o = `ZERO_WORD;
-        rd_addr_o = `RegAddrLen'h0;
+        rd_addr_o = 0;
         rd_enable_o = `WriteDisable;
         stallreq = `StallDisable;
         rw_mem = 2'b00;

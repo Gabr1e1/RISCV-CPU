@@ -33,7 +33,7 @@
 `define BUSYR 2'b01
 `define BUSYW 2'b10
 `define WORKING 2'b01
-`define DONE 2'b10
+`define DONE 2'b11
 
 `define ResetEnable 1'b1
 `define ResetDisable 1'b0
@@ -123,7 +123,7 @@
 `define OP_SRA 4'b1101
 `define OP_OR 4'b0110
 `define OP_AND 4'b0111
-`define NOP 4'b1000
+`define NOP 4'b1010
 `define FlushOp 4'b1111
 
 //AluSelect
@@ -147,7 +147,6 @@
 `define Ctrl_BLTU 4'b0110
 `define Ctrl_BGEU 4'b0111
 `define Ctrl_Flush 4'b1010
-//see branch define above
 
 //ICache
 `define CacheLen 8

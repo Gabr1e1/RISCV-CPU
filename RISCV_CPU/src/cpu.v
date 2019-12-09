@@ -184,13 +184,13 @@ mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),
               .wb_rd_data(write_data), .wb_rd_addr(write_addr), .wb_rd_enable(write_enable),
               .stall(stall));
 
-ctrl ctrl0(.rst(rst_in), .clk(clk_in),
+ctrl ctrl0(.rdy(rdy_in), .rst(rst_in), .clk(clk_in),
           .stallreq_if(stallreq_if), .stallreq_mem(stallreq_mem),
           .stall(stall),
           .jmp_enable(jmp_enable), .if_flushed(if_flushed), .id_flushed(id_flushed), 
           .flush_if(flush_if), .flush_id(flush_id));
 
-mem_ctrl mem_ctrl0(.clk(clk_in), .rst(rst_in), .pc(pc),
+mem_ctrl mem_ctrl0(.rdy(rdy_in), .clk(clk_in), .rst(rst_in), .pc(pc),
                   .addr_from_if(pc), .addr_from_mem(addr_from_mem), .data_in(data_in), .rw_if(rw_if), .rw_mem(rw_mem),
                   .data_out(data_out), .status_if(status_if), .status_mem(status_mem), 
                   .addr_to_mem(mem_a), .r_nw_to_mem(mem_wr), .data_to_mem(mem_dout), .data_from_mem(mem_din),
