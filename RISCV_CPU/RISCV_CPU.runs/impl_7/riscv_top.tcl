@@ -67,6 +67,7 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 3
+  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
@@ -93,7 +94,7 @@ start_step opt_design
 set ACTIVE_STEP opt_design
 set rc [catch {
   create_msg_db opt_design.pb
-  opt_design -directive Explore
+  opt_design -directive ExploreWithRemap
   write_checkpoint -force riscv_top_opt.dcp
   create_report "impl_7_opt_report_drc_0" "report_drc -file riscv_top_drc_opted.rpt -pb riscv_top_drc_opted.pb -rpx riscv_top_drc_opted.rpx"
   close_msg_db -file opt_design.pb
@@ -149,7 +150,7 @@ start_step route_design
 set ACTIVE_STEP route_design
 set rc [catch {
   create_msg_db route_design.pb
-  route_design -directive Explore
+  route_design -directive NoTimingRelaxation -tns_cleanup
   write_checkpoint -force riscv_top_routed.dcp
   create_report "impl_7_route_report_drc_0" "report_drc -file riscv_top_drc_routed.rpt -pb riscv_top_drc_routed.pb -rpx riscv_top_drc_routed.rpx"
   create_report "impl_7_route_report_methodology_0" "report_methodology -file riscv_top_methodology_drc_routed.rpt -pb riscv_top_methodology_drc_routed.pb -rpx riscv_top_methodology_drc_routed.rpx"
@@ -176,7 +177,7 @@ set rc [catch {
   set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
   if {$tool_flow eq {SDx}} {send_msg_id {101-1} {status} {Starting optional post-route physical design optimization.} }
   create_msg_db post_route_phys_opt_design.pb
-  phys_opt_design 
+  phys_opt_design -directive Explore
   write_checkpoint -force riscv_top_postroute_physopt.dcp
   create_report "impl_7_post_route_phys_opt_report_timing_summary_0" "report_timing_summary -max_paths 10 -warn_on_violation -file riscv_top_timing_summary_postroute_physopted.rpt -pb riscv_top_timing_summary_postroute_physopted.pb -rpx riscv_top_timing_summary_postroute_physopted.rpx"
   create_report "impl_7_post_route_phys_opt_report_bus_skew_0" "report_bus_skew -warn_on_violation -file riscv_top_bus_skew_postroute_physopted.rpt -pb riscv_top_bus_skew_postroute_physopted.pb -rpx riscv_top_bus_skew_postroute_physopted.rpx"

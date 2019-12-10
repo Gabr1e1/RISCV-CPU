@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Tue Dec 10 00:15:20 2019
+// Date        : Tue Dec 10 01:05:38 2019
 // Host        : DESKTOP-KOEBDED running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top clk_wiz_0 -prefix
-//               clk_wiz_0_ clk_wiz_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim {C:/Users/zhang/Documents/Computer
+//               Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.v}
 // Design      : clk_wiz_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,32 +15,57 @@
 (* NotValidForBitStream *)
 module clk_wiz_0
    (clk_out1,
+    clk_out2,
+    clk_out3,
+    clk_out4,
+    clk_out5,
     reset,
     locked,
     clk_in1);
   output clk_out1;
+  output clk_out2;
+  output clk_out3;
+  output clk_out4;
+  output clk_out5;
   input reset;
   output locked;
   input clk_in1;
 
   (* IBUF_LOW_PWR *) wire clk_in1;
   wire clk_out1;
+  wire clk_out2;
+  wire clk_out3;
+  wire clk_out4;
+  wire clk_out5;
   wire locked;
   wire reset;
 
   clk_wiz_0_clk_wiz_0_clk_wiz inst
        (.clk_in1(clk_in1),
         .clk_out1(clk_out1),
+        .clk_out2(clk_out2),
+        .clk_out3(clk_out3),
+        .clk_out4(clk_out4),
+        .clk_out5(clk_out5),
         .locked(locked),
         .reset(reset));
 endmodule
 
+(* ORIG_REF_NAME = "clk_wiz_0_clk_wiz" *) 
 module clk_wiz_0_clk_wiz_0_clk_wiz
    (clk_out1,
+    clk_out2,
+    clk_out3,
+    clk_out4,
+    clk_out5,
     reset,
     locked,
     clk_in1);
   output clk_out1;
+  output clk_out2;
+  output clk_out3;
+  output clk_out4;
+  output clk_out5;
   input reset;
   output locked;
   input clk_in1;
@@ -49,14 +74,18 @@ module clk_wiz_0_clk_wiz_0_clk_wiz
   wire clk_in1_clk_wiz_0;
   wire clk_out1;
   wire clk_out1_clk_wiz_0;
+  wire clk_out2;
+  wire clk_out2_clk_wiz_0;
+  wire clk_out3;
+  wire clk_out3_clk_wiz_0;
+  wire clk_out4;
+  wire clk_out4_clk_wiz_0;
+  wire clk_out5;
+  wire clk_out5_clk_wiz_0;
   wire clkfbout_buf_clk_wiz_0;
   wire clkfbout_clk_wiz_0;
   wire locked;
   wire reset;
-  wire NLW_plle2_adv_inst_CLKOUT1_UNCONNECTED;
-  wire NLW_plle2_adv_inst_CLKOUT2_UNCONNECTED;
-  wire NLW_plle2_adv_inst_CLKOUT3_UNCONNECTED;
-  wire NLW_plle2_adv_inst_CLKOUT4_UNCONNECTED;
   wire NLW_plle2_adv_inst_CLKOUT5_UNCONNECTED;
   wire NLW_plle2_adv_inst_DRDY_UNCONNECTED;
   wire [15:0]NLW_plle2_adv_inst_DO_UNCONNECTED;
@@ -79,32 +108,48 @@ module clk_wiz_0_clk_wiz_0_clk_wiz
        (.I(clk_out1_clk_wiz_0),
         .O(clk_out1));
   (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout2_buf
+       (.I(clk_out2_clk_wiz_0),
+        .O(clk_out2));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout3_buf
+       (.I(clk_out3_clk_wiz_0),
+        .O(clk_out3));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout4_buf
+       (.I(clk_out4_clk_wiz_0),
+        .O(clk_out4));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout5_buf
+       (.I(clk_out5_clk_wiz_0),
+        .O(clk_out5));
+  (* BOX_TYPE = "PRIMITIVE" *) 
   PLLE2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT(42),
+    .CLKFBOUT_MULT(12),
     .CLKFBOUT_PHASE(0.000000),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE(7),
+    .CLKOUT0_DIVIDE(12),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
-    .CLKOUT1_DIVIDE(1),
+    .CLKOUT1_DIVIDE(10),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
-    .CLKOUT2_DIVIDE(1),
+    .CLKOUT2_DIVIDE(8),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
-    .CLKOUT3_DIVIDE(1),
+    .CLKOUT3_DIVIDE(7),
     .CLKOUT3_DUTY_CYCLE(0.500000),
     .CLKOUT3_PHASE(0.000000),
-    .CLKOUT4_DIVIDE(1),
+    .CLKOUT4_DIVIDE(6),
     .CLKOUT4_DUTY_CYCLE(0.500000),
     .CLKOUT4_PHASE(0.000000),
     .CLKOUT5_DIVIDE(1),
     .CLKOUT5_DUTY_CYCLE(0.500000),
     .CLKOUT5_PHASE(0.000000),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(5),
+    .DIVCLK_DIVIDE(1),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PWRDWN_INVERTED(1'b0),
     .IS_RST_INVERTED(1'b0),
@@ -118,10 +163,10 @@ module clk_wiz_0_clk_wiz_0_clk_wiz
         .CLKIN2(1'b0),
         .CLKINSEL(1'b1),
         .CLKOUT0(clk_out1_clk_wiz_0),
-        .CLKOUT1(NLW_plle2_adv_inst_CLKOUT1_UNCONNECTED),
-        .CLKOUT2(NLW_plle2_adv_inst_CLKOUT2_UNCONNECTED),
-        .CLKOUT3(NLW_plle2_adv_inst_CLKOUT3_UNCONNECTED),
-        .CLKOUT4(NLW_plle2_adv_inst_CLKOUT4_UNCONNECTED),
+        .CLKOUT1(clk_out2_clk_wiz_0),
+        .CLKOUT2(clk_out3_clk_wiz_0),
+        .CLKOUT3(clk_out4_clk_wiz_0),
+        .CLKOUT4(clk_out5_clk_wiz_0),
         .CLKOUT5(NLW_plle2_adv_inst_CLKOUT5_UNCONNECTED),
         .DADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .DCLK(1'b0),
