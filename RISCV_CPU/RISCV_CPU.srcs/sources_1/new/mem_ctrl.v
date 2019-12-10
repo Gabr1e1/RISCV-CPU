@@ -108,8 +108,17 @@ always @ (posedge clk) begin
                     addr_to_mem <= addr_to_mem + 1;
                 end
                 
-                if (count >= 1) begin
-                    data_out[count * `RamWord - 1 -: `RamWord] <= data_from_mem;
+                if (count == 1) begin
+                    data_out[7:0] <= data_from_mem;
+                end
+                else if (count == 2) begin
+                    data_out[15:8] <= data_from_mem;
+                end
+                else if (count == 3) begin
+                    data_out[23:16] <= data_from_mem;
+                end
+                else if (count == 4) begin
+                    data_out[31:24] <= data_from_mem;
                 end
                 q <= q - 1;
 
@@ -131,7 +140,17 @@ always @ (posedge clk) begin
             end
             `BUSYW: begin
                 count <= count + 1;
-                data_to_mem <= data_in[(count + 2) * `RamWord - 1 -: `RamWord];
+//                data_to_mem <= data_in[(count + 2) * `RamWord - 1 -: `RamWord];                
+                if (count == 0) begin
+                    data_to_mem <= data_in[15:8];
+                end
+                else if (count == 1) begin
+                    data_to_mem <= data_in[23:16];
+                end
+                else if (count == 2) begin
+                    data_to_mem <= data_in[31:24];
+                end
+                
                 q <= q - 1;
                 if (count <= 2 && q >= 2)
                     addr_to_mem <= addr_to_mem + 1;

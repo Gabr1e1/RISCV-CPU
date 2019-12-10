@@ -151,7 +151,7 @@
 //ICache
 `define CacheLen 8
 `define CacheSize 256
-`define TagLen 7
+`define TagLen 5
 `define Valid 1'b1
 `define Correct 1'b1
 

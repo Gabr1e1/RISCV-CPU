@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_7" LaunchPart="xc7a35tcpg236-1" LaunchTime="1575912368">
+<GenRun Id="impl_7" LaunchPart="xc7a35tcpg236-1" LaunchTime="1575970217">
   <File Type="BITSTR-BMM" Name="riscv_top_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="riscv_top_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="riscv_top_timing_summary_init.rpt"/>
@@ -337,9 +337,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Performance_ExploreWithRemap" Flow="Vivado Implementation 2019">
-      <Desc>Similar to Performance_ExplorePostRoutePhysOpt, but enables logic optimization step (opt_design) with the ExploreWithRemap directive.</Desc>
-    </StratHandle>
+    <StratHandle Name="Performance_ExploreWithRemap" Flow="Vivado Implementation 2019"/>
     <Step Id="init_design"/>
     <Step Id="opt_design">
       <Option Id="Directive">6</Option>
@@ -353,8 +351,8 @@
       <Option Id="Directive">0</Option>
     </Step>
     <Step Id="route_design">
-      <Option Id="Directive">1</Option>
       <Option Id="MoreOptsStr"><![CDATA[-tns_cleanup]]></Option>
+      <Option Id="Directive">1</Option>
     </Step>
     <Step Id="post_route_phys_opt_design" EnableStepBool="1">
       <Option Id="Directive">0</Option>

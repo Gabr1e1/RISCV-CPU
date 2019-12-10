@@ -15,17 +15,17 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 9688 
+INFO: Helper process launched with PID 13896 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 846.285 ; gain = 234.656
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 846.105 ; gain = 234.113
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'riscv_top' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:4]
 	Parameter SIM bound to: 0 - type: integer 
-	Parameter SYS_CLK_FREQ bound to: 170000000 - type: integer 
+	Parameter SYS_CLK_FREQ bound to: 200000000 - type: integer 
 	Parameter UART_BAUD_RATE bound to: 115200 - type: integer 
 	Parameter RAM_ADDR_WIDTH bound to: 17 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_4/.Xil/Vivado-5808-DESKTOP-KOEBDED/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_4/.Xil/Vivado-5808-DESKTOP-KOEBDED/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_4/.Xil/Vivado-288-DESKTOP-KOEBDED/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_4/.Xil/Vivado-288-DESKTOP-KOEBDED/realtime/clk_wiz_0_stub.v:5]
 WARNING: [Synth 8-7023] instance 'clk_inst' of module 'clk_wiz_0' has 8 connections declared, but only 3 given [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:28]
 INFO: [Synth 8-6157] synthesizing module 'ram' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/ram.v:3]
 	Parameter ADDR_WIDTH bound to: 17 - type: integer 
@@ -67,7 +67,7 @@ INFO: [Synth 8-6155] done synthesizing module 'cache' (15#1) [C:/Users/zhang/Doc
 INFO: [Synth 8-6155] done synthesizing module 'mem_ctrl' (16#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/mem_ctrl.v:22]
 INFO: [Synth 8-6155] done synthesizing module 'cpu' (17#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/cpu.v:4]
 INFO: [Synth 8-6157] synthesizing module 'hci' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/hci.v:30]
-	Parameter SYS_CLK_FREQ bound to: 170000000 - type: integer 
+	Parameter SYS_CLK_FREQ bound to: 200000000 - type: integer 
 	Parameter RAM_ADDR_WIDTH bound to: 17 - type: integer 
 	Parameter BAUD_RATE bound to: 115200 - type: integer 
 	Parameter OP_ECHO bound to: 8'b00000000 
@@ -103,17 +103,17 @@ INFO: [Synth 8-6157] synthesizing module 'fifo' [C:/Users/zhang/Documents/Comput
 	Parameter ADDR_BITS bound to: 10 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'fifo' (18#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/fifo/fifo.v:27]
 INFO: [Synth 8-6157] synthesizing module 'uart' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart.v:28]
-	Parameter SYS_CLK_FREQ bound to: 170000000 - type: integer 
+	Parameter SYS_CLK_FREQ bound to: 200000000 - type: integer 
 	Parameter BAUD_RATE bound to: 115200 - type: integer 
 	Parameter DATA_BITS bound to: 8 - type: integer 
 	Parameter STOP_BITS bound to: 1 - type: integer 
 	Parameter PARITY_MODE bound to: 1 - type: integer 
 	Parameter BAUD_CLK_OVERSAMPLE_RATE bound to: 16 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'uart_baud_clk' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_baud_clk.v:29]
-	Parameter SYS_CLK_FREQ bound to: 170000000 - type: integer 
+	Parameter SYS_CLK_FREQ bound to: 200000000 - type: integer 
 	Parameter BAUD bound to: 115200 - type: integer 
 	Parameter BAUD_CLK_OVERSAMPLE_RATE bound to: 16 - type: integer 
-	Parameter CLKS_PER_OVERSAMPLE_TICK bound to: 16'b0000000001011100 
+	Parameter CLKS_PER_OVERSAMPLE_TICK bound to: 16'b0000000001101100 
 INFO: [Synth 8-6155] done synthesizing module 'uart_baud_clk' (19#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_baud_clk.v:29]
 INFO: [Synth 8-6157] synthesizing module 'uart_rx' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_rx.v:28]
 	Parameter DATA_BITS bound to: 8 - type: integer 
@@ -168,6 +168,8 @@ WARNING: [Synth 8-3331] design cache has unconnected port addr[20]
 WARNING: [Synth 8-3331] design cache has unconnected port addr[19]
 WARNING: [Synth 8-3331] design cache has unconnected port addr[18]
 WARNING: [Synth 8-3331] design cache has unconnected port addr[17]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[16]
+WARNING: [Synth 8-3331] design cache has unconnected port addr[15]
 WARNING: [Synth 8-3331] design cache has unconnected port addr[1]
 WARNING: [Synth 8-3331] design cache has unconnected port addr[0]
 WARNING: [Synth 8-3331] design mem_wb has unconnected port stall[3]
@@ -211,6 +213,38 @@ WARNING: [Synth 8-3331] design ex has unconnected port rd[8]
 WARNING: [Synth 8-3331] design ex has unconnected port rd[7]
 WARNING: [Synth 8-3331] design ex has unconnected port rd[6]
 WARNING: [Synth 8-3331] design ex has unconnected port rd[5]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[31]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[30]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[29]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[28]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[27]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[26]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[25]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[24]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[23]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[22]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[21]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[20]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[19]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[18]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[17]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[16]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[15]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[14]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[13]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[12]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[11]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[10]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[9]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[8]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[7]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[6]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[5]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[4]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[3]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[2]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[1]
+WARNING: [Synth 8-3331] design ex has unconnected port prediction[0]
 WARNING: [Synth 8-3331] design id_ex has unconnected port stall[5]
 WARNING: [Synth 8-3331] design id_ex has unconnected port stall[4]
 WARNING: [Synth 8-3331] design id_ex has unconnected port stall[1]
@@ -219,14 +253,9 @@ WARNING: [Synth 8-3331] design if_id has unconnected port stall[5]
 WARNING: [Synth 8-3331] design if_id has unconnected port stall[4]
 WARNING: [Synth 8-3331] design if_id has unconnected port stall[3]
 WARNING: [Synth 8-3331] design if_id has unconnected port stall[0]
-WARNING: [Synth 8-3331] design if_stage has unconnected port stall[5]
-WARNING: [Synth 8-3331] design if_stage has unconnected port stall[4]
-WARNING: [Synth 8-3331] design if_stage has unconnected port stall[3]
-WARNING: [Synth 8-3331] design if_stage has unconnected port stall[2]
-WARNING: [Synth 8-3331] design if_stage has unconnected port stall[1]
-WARNING: [Synth 8-3331] design if_stage has unconnected port stall[0]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 981.203 ; gain = 369.574
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 979.133 ; gain = 367.141
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -239,12 +268,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 981.203 ; gain = 369.574
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 979.133 ; gain = 367.141
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 981.203 ; gain = 369.574
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 979.133 ; gain = 367.141
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.105 . Memory (MB): peak = 981.203 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.106 . Memory (MB): peak = 979.133 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -257,20 +286,20 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/riscv_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1069.383 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1071.238 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1069.383 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1071.238 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1069.383 ; gain = 457.754
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1071.238 ; gain = 459.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1069.383 ; gain = 457.754
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1071.238 ; gain = 459.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -279,7 +308,7 @@ Applied set_property IO_BUFFER_TYPE = NONE for EXCLK. (constraint file  {c:/User
 Applied set_property CLOCK_BUFFER_TYPE = NONE for EXCLK. (constraint file  {c:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 8).
 Applied set_property DONT_TOUCH = true for clk_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1069.383 ; gain = 457.754
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1071.238 ; gain = 459.246
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5587] ROM size for "reg1_read_enable" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "reg2_read_enable" is below threshold of ROM address width. It will be mapped to LUTs
@@ -289,12 +318,21 @@ INFO: [Synth 8-5546] ROM "aluop" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5587] ROM size for "alusel" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5544] ROM "width" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5546] ROM "if_flushed" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'status_reg' in module 'mem_ctrl'
 INFO: [Synth 8-802] inferred FSM for state register 'q_state_reg' in module 'uart_rx'
 INFO: [Synth 8-802] inferred FSM for state register 'q_state_reg' in module 'uart_tx'
 INFO: [Synth 8-802] inferred FSM for state register 'q_state_reg' in module 'hci'
 INFO: [Synth 8-5546] ROM "d_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "d_err_code" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "d_tx_data" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              001 |                               00
+                 iSTATE1 |                              010 |                               01
+                 iSTATE0 |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'status_reg' using encoding 'one-hot' in module 'mem_ctrl'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -337,7 +375,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'q_state_reg' in module 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'q_state_reg' using encoding 'one-hot' in module 'hci'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1069.383 ; gain = 457.754
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1071.238 ; gain = 459.246
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -350,24 +388,23 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 14    
+	   2 Input     32 Bit       Adders := 13    
 	   3 Input     32 Bit       Adders := 1     
 	   2 Input     17 Bit       Adders := 2     
 	   2 Input     16 Bit       Adders := 1     
 	   2 Input     10 Bit       Adders := 6     
 	   3 Input     10 Bit       Adders := 4     
-	   2 Input      5 Bit       Adders := 1     
 	   2 Input      4 Bit       Adders := 2     
 	   2 Input      3 Bit       Adders := 5     
 	   3 Input      3 Bit       Adders := 2     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
-	   2 Input      1 Bit         XORs := 10    
+	   2 Input      1 Bit         XORs := 3     
 +---XORs : 
 	                8 Bit    Wide XORs := 2     
 +---Registers : 
 	              256 Bit    Registers := 2     
-	               32 Bit    Registers := 53    
+	               32 Bit    Registers := 52    
 	               17 Bit    Registers := 3     
 	               16 Bit    Registers := 1     
 	               10 Bit    Registers := 4     
@@ -375,7 +412,7 @@ Detailed RTL Component Info :
 	                5 Bit    Registers := 2     
 	                4 Bit    Registers := 6     
 	                3 Bit    Registers := 4     
-	                2 Bit    Registers := 4     
+	                2 Bit    Registers := 3     
 	                1 Bit    Registers := 32    
 +---RAMs : 
 	            1024K Bit         RAMs := 1     
@@ -384,12 +421,14 @@ Detailed RTL Component Info :
 	               64 Bit         RAMs := 1     
 +---Muxes : 
 	   2 Input    256 Bit        Muxes := 2     
-	   2 Input     32 Bit        Muxes := 59    
-	   8 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 51    
+	   8 Input     32 Bit        Muxes := 1     
 	   6 Input     32 Bit        Muxes := 1     
 	  11 Input     32 Bit        Muxes := 1     
 	   7 Input     32 Bit        Muxes := 2     
-	   4 Input     32 Bit        Muxes := 5     
+	   9 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 1     
+	   3 Input     32 Bit        Muxes := 5     
 	   2 Input     18 Bit        Muxes := 1     
 	   2 Input     17 Bit        Muxes := 10    
 	   4 Input     17 Bit        Muxes := 2     
@@ -399,11 +438,11 @@ Detailed RTL Component Info :
 	  13 Input     14 Bit        Muxes := 1     
 	  11 Input     14 Bit        Muxes := 1     
 	   2 Input     14 Bit        Muxes := 4     
-	   2 Input      8 Bit        Muxes := 14    
-	   4 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 15    
+	   3 Input      8 Bit        Muxes := 3     
 	   6 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 1     
 	  14 Input      8 Bit        Muxes := 2     
-	   3 Input      8 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 2     
 	  11 Input      5 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 4     
@@ -416,22 +455,20 @@ Detailed RTL Component Info :
 	   4 Input      4 Bit        Muxes := 1     
 	   7 Input      4 Bit        Muxes := 1     
 	   6 Input      4 Bit        Muxes := 2     
-	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 4     
 	  11 Input      3 Bit        Muxes := 1     
 	  12 Input      3 Bit        Muxes := 1     
 	   6 Input      3 Bit        Muxes := 3     
-	   9 Input      3 Bit        Muxes := 1     
+	   3 Input      3 Bit        Muxes := 1     
 	  14 Input      3 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 3     
-	   3 Input      2 Bit        Muxes := 1     
-	   6 Input      2 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 2     
+	   3 Input      2 Bit        Muxes := 4     
+	   4 Input      2 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 81    
 	  11 Input      1 Bit        Muxes := 7     
 	   7 Input      1 Bit        Muxes := 1     
 	  14 Input      1 Bit        Muxes := 8     
-	   3 Input      1 Bit        Muxes := 3     
-	   4 Input      1 Bit        Muxes := 11    
+	   3 Input      1 Bit        Muxes := 13    
 	   6 Input      1 Bit        Muxes := 13    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -484,7 +521,7 @@ Detailed RTL Component Info :
 +---Registers : 
 	               32 Bit    Registers := 3     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 3     
+	   2 Input     32 Bit        Muxes := 2     
 Module id 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -527,21 +564,19 @@ Detailed RTL Component Info :
 Module ex 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 4     
+	   2 Input     32 Bit       Adders := 3     
 	   3 Input     32 Bit       Adders := 1     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
-	   2 Input      1 Bit         XORs := 7     
 +---Registers : 
 	                1 Bit    Registers := 1     
 +---Muxes : 
 	   7 Input     32 Bit        Muxes := 2     
-	   2 Input     32 Bit        Muxes := 9     
-	   8 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 3     
+	   9 Input     32 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 1     
 	   7 Input      4 Bit        Muxes := 1     
-	   9 Input      3 Bit        Muxes := 1     
 	   7 Input      1 Bit        Muxes := 1     
 	  14 Input      1 Bit        Muxes := 1     
 Module ex_mem 
@@ -593,20 +628,23 @@ Module mem_ctrl
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 3     
-	   2 Input      5 Bit       Adders := 1     
 +---Registers : 
-	               32 Bit    Registers := 5     
+	               32 Bit    Registers := 4     
 	                8 Bit    Registers := 1     
-	                2 Bit    Registers := 3     
+	                2 Bit    Registers := 2     
 	                1 Bit    Registers := 3     
 +---Muxes : 
-	   4 Input     32 Bit        Muxes := 5     
-	   2 Input     32 Bit        Muxes := 9     
-	   4 Input      8 Bit        Muxes := 1     
-	   6 Input      2 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 2     
-	   4 Input      1 Bit        Muxes := 11    
+	   2 Input     32 Bit        Muxes := 8     
+	   4 Input     32 Bit        Muxes := 1     
+	   3 Input     32 Bit        Muxes := 5     
+	   2 Input      8 Bit        Muxes := 1     
+	   3 Input      8 Bit        Muxes := 2     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 3     
 	   2 Input      1 Bit        Muxes := 8     
+	   3 Input      1 Bit        Muxes := 10    
 Module fifo 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -725,73 +763,44 @@ INFO: [Synth 8-5587] ROM size for "reg1_read_enable" is below threshold of ROM a
 INFO: [Synth 8-5587] ROM size for "reg2_read_enable" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "rd_enable" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "if_flushed" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[31]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[30]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[29]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[28]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[27]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[26]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[25]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[24]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[23]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[22]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[21]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[20]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[19]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[18]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[17]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[1]
-WARNING: [Synth 8-3331] design mem_ctrl has unconnected port pc[0]
-WARNING: [Synth 8-3331] design mem has unconnected port stall[5]
-WARNING: [Synth 8-3331] design mem has unconnected port stall[4]
-WARNING: [Synth 8-3331] design mem has unconnected port stall[3]
-WARNING: [Synth 8-3331] design mem has unconnected port stall[2]
-WARNING: [Synth 8-3331] design mem has unconnected port stall[1]
-WARNING: [Synth 8-3331] design mem has unconnected port stall[0]
-WARNING: [Synth 8-3331] design ex has unconnected port rd[31]
-WARNING: [Synth 8-3331] design ex has unconnected port rd[30]
-WARNING: [Synth 8-3331] design ex has unconnected port rd[29]
-WARNING: [Synth 8-3331] design ex has unconnected port rd[28]
-WARNING: [Synth 8-3331] design ex has unconnected port rd[27]
-INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 RAM Pipeline Warning: Read Address Register Found For RAM ram0/ram_bram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
 RAM Pipeline Warning: Read Address Register Found For RAM ram0/ram_bram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
 RAM Pipeline Warning: Read Address Register Found For RAM ram0/ram_bram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
 WARNING: [Synth 8-3332] Sequential element (hci0/FSM_onehot_q_state_reg[12]) is unused and will be removed from module riscv_top.
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][31] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][0] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][0] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][3] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][4] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][5] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][3] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][6] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][8] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][9] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][10] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][11] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][9] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][12] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][14] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][15] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][16] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][17] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][15] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][18] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][20] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][21] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][22] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][23] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][21] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][24] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][26] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][27] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][28] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][31] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][30] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:37 . Memory (MB): peak = 1069.383 ; gain = 457.754
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1071.238 ; gain = 459.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -810,8 +819,8 @@ Distributed RAM: Preliminary Mapping	Report (see note below)
 +---------------+---------------------------------------------+-----------+----------------------+----------------------------+
 |Module Name    | RTL Object                                  | Inference | Size (Depth x Width) | Primitives                 | 
 +---------------+---------------------------------------------+-----------+----------------------+----------------------------+
-|cpu0/mem_ctrl0 | cache1/tag_reg                              | Implied   | 256 x 7              | RAM256X1S x 7	             | 
-|cpu0/mem_ctrl0 | cache0/tag_reg                              | Implied   | 256 x 7              | RAM256X1S x 7	             | 
+|cpu0/mem_ctrl0 | cache1/tag_reg                              | Implied   | 256 x 5              | RAM256X1S x 5	             | 
+|cpu0/mem_ctrl0 | cache0/tag_reg                              | Implied   | 256 x 5              | RAM256X1S x 5	             | 
 |cpu0/mem_ctrl0 | cache1/entry_reg                            | Implied   | 256 x 32             | RAM256X1S x 32	            | 
 |cpu0/mem_ctrl0 | cache0/entry_reg                            | Implied   | 256 x 32             | RAM256X1S x 32	            | 
 |riscv_top      | hci0/io_in_fifo/q_data_array_reg            | Implied   | 1 K x 8              | RAM64X1D x 32	RAM64M x 32	 | 
@@ -833,13 +842,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:44 . Memory (MB): peak = 1069.383 ; gain = 457.754
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 1071.238 ; gain = 459.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 1120.824 ; gain = 509.195
+Finished Timing Optimization : Time (s): cpu = 00:00:54 ; elapsed = 00:00:55 . Memory (MB): peak = 1121.660 ; gain = 509.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -857,8 +866,8 @@ Distributed RAM: Final Mapping	Report
 +---------------+---------------------------------------------+-----------+----------------------+----------------------------+
 |Module Name    | RTL Object                                  | Inference | Size (Depth x Width) | Primitives                 | 
 +---------------+---------------------------------------------+-----------+----------------------+----------------------------+
-|cpu0/mem_ctrl0 | cache1/tag_reg                              | Implied   | 256 x 7              | RAM256X1S x 7	             | 
-|cpu0/mem_ctrl0 | cache0/tag_reg                              | Implied   | 256 x 7              | RAM256X1S x 7	             | 
+|cpu0/mem_ctrl0 | cache1/tag_reg                              | Implied   | 256 x 5              | RAM256X1S x 5	             | 
+|cpu0/mem_ctrl0 | cache0/tag_reg                              | Implied   | 256 x 5              | RAM256X1S x 5	             | 
 |cpu0/mem_ctrl0 | cache1/entry_reg                            | Implied   | 256 x 32             | RAM256X1S x 32	            | 
 |cpu0/mem_ctrl0 | cache0/entry_reg                            | Implied   | 256 x 32             | RAM256X1S x 32	            | 
 |riscv_top      | hci0/io_in_fifo/q_data_array_reg            | Implied   | 1 K x 8              | RAM64X1D x 32	RAM64M x 32	 | 
@@ -895,7 +904,7 @@ INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_5 (impl
 INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:54 ; elapsed = 00:00:54 . Memory (MB): peak = 1178.809 ; gain = 567.180
+Finished Technology Mapping : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1171.016 ; gain = 559.023
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -919,13 +928,13 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:57 ; elapsed = 00:00:57 . Memory (MB): peak = 1183.621 ; gain = 571.992
+Finished IO Insertion : Time (s): cpu = 00:01:00 ; elapsed = 00:01:01 . Memory (MB): peak = 1175.813 ; gain = 563.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:57 ; elapsed = 00:00:57 . Memory (MB): peak = 1183.621 ; gain = 571.992
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:00 ; elapsed = 00:01:01 . Memory (MB): peak = 1175.813 ; gain = 563.820
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -944,25 +953,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1183.621 ; gain = 571.992
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1175.813 ; gain = 563.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1183.621 ; gain = 571.992
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1175.813 ; gain = 563.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1183.637 ; gain = 572.008
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1175.816 ; gain = 563.824
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1183.637 ; gain = 572.008
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1175.816 ; gain = 563.824
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -980,16 +989,16 @@ Report Cell Usage:
 |      |Cell       |Count |
 +------+-----------+------+
 |1     |clk_wiz_0  |     1|
-|2     |CARRY4     |   186|
-|3     |LUT1       |    63|
-|4     |LUT2       |   518|
-|5     |LUT3       |   207|
-|6     |LUT4       |   883|
-|7     |LUT5       |   373|
-|8     |LUT6       |  1772|
-|9     |MUXF7      |   357|
-|10    |MUXF8      |   150|
-|11    |RAM256X1S  |    78|
+|2     |CARRY4     |   163|
+|3     |LUT1       |    61|
+|4     |LUT2       |   395|
+|5     |LUT3       |   212|
+|6     |LUT4       |   945|
+|7     |LUT5       |   474|
+|8     |LUT6       |  1665|
+|9     |MUXF7      |   356|
+|10    |MUXF8      |   156|
+|11    |RAM256X1S  |    74|
 |12    |RAM32M     |     2|
 |13    |RAM64M     |    64|
 |14    |RAM64X1D   |    64|
@@ -997,8 +1006,8 @@ Report Cell Usage:
 |16    |RAMB36E1_1 |    16|
 |17    |FDCE       |    59|
 |18    |FDPE       |     6|
-|19    |FDRE       |  2353|
-|20    |FDSE       |     9|
+|19    |FDRE       |  2276|
+|20    |FDSE       |    18|
 |21    |IBUF       |     2|
 |22    |OBUF       |     2|
 +------+-----------+------+
@@ -1007,22 +1016,22 @@ Report Instance Areas:
 +------+------------------------+---------------------+------+
 |      |Instance                |Module               |Cells |
 +------+------------------------+---------------------+------+
-|1     |top                     |                     |  7186|
-|2     |  cpu0                  |cpu                  |  6116|
-|3     |    ex0                 |ex                   |     1|
-|4     |    ctrl0               |ctrl                 |     3|
-|5     |    ex_mem0             |ex_mem               |   173|
-|6     |    id_ex0              |id_ex                |  1181|
-|7     |    if0                 |if_stage             |    76|
-|8     |    if_id0              |if_id                |   588|
+|1     |top                     |                     |  7032|
+|2     |  cpu0                  |cpu                  |  5963|
+|3     |    if0                 |if_stage             |    36|
+|4     |    ex0                 |ex                   |     1|
+|5     |    ctrl0               |ctrl                 |     3|
+|6     |    ex_mem0             |ex_mem               |   160|
+|7     |    id_ex0              |id_ex                |  1115|
+|8     |    if_id0              |if_id                |   604|
 |9     |    mem0                |mem                  |     1|
-|10    |    mem_ctrl0           |mem_ctrl             |  1478|
-|11    |      cache0            |cache                |   465|
-|12    |      cache1            |cache_1              |   525|
+|10    |    mem_ctrl0           |mem_ctrl             |  1457|
+|11    |      cache0            |cache                |   525|
+|12    |      cache1            |cache_1              |   477|
 |13    |    mem_wb0             |mem_wb               |    70|
-|14    |    pc_reg0             |pc_reg               |   667|
-|15    |    register0           |register             |  1878|
-|16    |  hci0                  |hci                  |  1003|
+|14    |    pc_reg0             |pc_reg               |   633|
+|15    |    register0           |register             |  1883|
+|16    |  hci0                  |hci                  |  1001|
 |17    |    io_in_fifo          |fifo                 |   226|
 |18    |    uart_blk            |uart                 |   571|
 |19    |      uart_baud_clk_blk |uart_baud_clk        |    40|
@@ -1030,36 +1039,36 @@ Report Instance Areas:
 |21    |      uart_rx_fifo      |fifo__parameterized0 |   155|
 |22    |      uart_tx_blk       |uart_tx              |    57|
 |23    |      uart_tx_fifo      |fifo_0               |   260|
-|24    |  ram0                  |ram                  |    55|
-|25    |    ram_bram            |single_port_ram_sync |    55|
+|24    |  ram0                  |ram                  |    56|
+|25    |    ram_bram            |single_port_ram_sync |    56|
 +------+------------------------+---------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1183.637 ; gain = 572.008
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1175.816 ; gain = 563.824
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 65 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:44 ; elapsed = 00:00:55 . Memory (MB): peak = 1183.637 ; gain = 483.828
-Synthesis Optimization Complete : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1183.637 ; gain = 572.008
+Synthesis finished with 0 errors, 0 critical warnings and 99 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:48 ; elapsed = 00:00:59 . Memory (MB): peak = 1175.816 ; gain = 471.719
+Synthesis Optimization Complete : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1175.816 ; gain = 563.824
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.118 . Memory (MB): peak = 1195.688 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 933 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.115 . Memory (MB): peak = 1187.883 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 911 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1195.688 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1187.883 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 208 instances were transformed.
-  RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 78 instances
+  A total of 204 instances were transformed.
+  RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 74 instances
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
   RAM64M => RAM64M (RAMD64E(x4)): 64 instances
   RAM64X1D => RAM64X1D (RAMD64E(x2)): 64 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-142 Infos, 103 Warnings, 0 Critical Warnings and 0 Errors encountered.
+144 Infos, 103 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:03 ; elapsed = 00:01:04 . Memory (MB): peak = 1195.688 ; gain = 856.109
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1195.688 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:07 ; elapsed = 00:01:08 . Memory (MB): peak = 1187.883 ; gain = 848.891
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1187.883 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_4/riscv_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file riscv_top_utilization_synth.rpt -pb riscv_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Dec 10 01:27:19 2019...
+INFO: [Common 17-206] Exiting Vivado at Tue Dec 10 17:31:31 2019...

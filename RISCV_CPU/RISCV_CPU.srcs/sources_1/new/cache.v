@@ -38,7 +38,7 @@ module cache(
 
     assign data = entry[addr[`CacheLen - 1 + 2 : 2]];
     assign isValid = valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid;
-    assign isCorrect = (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid) ? (tag[addr[`CacheLen - 1 + 2 : 2]] == addr[16 : `CacheLen + 2]) : 1'b0;
+    assign isCorrect = (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid) ? (tag[addr[`CacheLen - 1 + 2 : 2]] == addr[`CacheLen + `TagLen + 1: `CacheLen + 2]) : 1'b0;
     
     integer i;
     always @ (posedge clk) begin
@@ -48,7 +48,7 @@ module cache(
         else if (replace) begin
 //            $display("%h %h",data_r, addr);
             entry[addr[`CacheLen - 1 + 2 : 2]] <= data_r;
-            tag[addr[`CacheLen - 1 + 2 : 2]] <= addr[16 : `CacheLen + 2];
+            tag[addr[`CacheLen - 1 + 2 : 2]] <= addr[`CacheLen + `TagLen + 1: `CacheLen + 2];
             valid[addr[`CacheLen - 1 + 2 : 2]] <= `Valid;
         end
     end

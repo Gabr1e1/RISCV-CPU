@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Tue Dec 10 01:35:56 2019
+| Date             : Tue Dec 10 17:41:21 2019
 | Host             : DESKTOP-KOEBDED running 64-bit major release  (build 9200)
 | Command          : report_power -file riscv_top_power_routed.rpt -pb riscv_top_power_summary_routed.pb -rpx riscv_top_power_routed.rpx
 | Design           : riscv_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.256        |
+| Total On-Chip Power (W)  | 0.269        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.183        |
+| Dynamic (W)              | 0.196        |
 | Device Static (W)        | 0.074        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 83.7         |
@@ -52,20 +52,20 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.019 |        8 |       --- |             --- |
-| Slice Logic              |     0.002 |     8023 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     3625 |     20800 |           17.43 |
-|   CARRY4                 |    <0.001 |      186 |      8150 |            2.28 |
-|   Register               |    <0.001 |     2540 |     41600 |            6.11 |
-|   F7/F8 Muxes            |    <0.001 |      741 |     32600 |            2.27 |
-|   LUT as Distributed RAM |    <0.001 |      704 |      9600 |            7.33 |
+| Clocks                   |     0.022 |        8 |       --- |             --- |
+| Slice Logic              |     0.003 |     7835 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     3588 |     20800 |           17.25 |
+|   CARRY4                 |    <0.001 |      163 |      8150 |            2.00 |
+|   Register               |    <0.001 |     2474 |     41600 |            5.95 |
+|   F7/F8 Muxes            |    <0.001 |      734 |     32600 |            2.25 |
+|   LUT as Distributed RAM |    <0.001 |      688 |      9600 |            7.17 |
 |   Others                 |     0.000 |       39 |       --- |             --- |
-| Signals                  |     0.004 |     5252 |       --- |             --- |
-| Block RAM                |     0.049 |       32 |        50 |           64.00 |
+| Signals                  |     0.005 |     5143 |       --- |             --- |
+| Block RAM                |     0.057 |       32 |        50 |           64.00 |
 | PLL                      |     0.108 |        1 |         5 |           20.00 |
 | I/O                      |    <0.001 |        5 |       106 |            4.72 |
 | Static Power             |     0.074 |          |           |                 |
-| Total                    |     0.256 |          |           |                 |
+| Total                    |     0.269 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.085 |       0.074 |      0.011 |
+| Vccint    |       1.000 |     0.097 |       0.086 |      0.011 |
 | Vccaux    |       1.800 |     0.070 |       0.058 |      0.013 |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -84,7 +84,7 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.005 |       0.004 |      0.001 |
+| Vccbram   |       1.000 |     0.006 |       0.005 |      0.001 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -132,8 +132,8 @@ Table of Contents
 | Clock                | Domain                           | Constraint (ns) |
 +----------------------+----------------------------------+-----------------+
 | EXCLK                | EXCLK                            |            10.0 |
-| clk_out4_clk_wiz_0   | clk_inst/inst/clk_out4_clk_wiz_0 |             5.8 |
-| clk_out4_clk_wiz_0_1 | clk_inst/inst/clk_out4_clk_wiz_0 |             5.8 |
+| clk_out5_clk_wiz_0   | clk_inst/inst/clk_out5_clk_wiz_0 |             5.0 |
+| clk_out5_clk_wiz_0_1 | clk_inst/inst/clk_out5_clk_wiz_0 |             5.0 |
 | clkfbout_clk_wiz_0   | clk_inst/inst/clkfbout_clk_wiz_0 |            10.0 |
 | clkfbout_clk_wiz_0_1 | clk_inst/inst/clkfbout_clk_wiz_0 |            10.0 |
 | sys_clk_pin          | EXCLK                            |            10.0 |
@@ -149,22 +149,22 @@ Table of Contents
 +--------------------+-----------+
 | Name               | Power (W) |
 +--------------------+-----------+
-| riscv_top          |     0.183 |
+| riscv_top          |     0.196 |
 |   clk_inst         |     0.109 |
 |     inst           |     0.109 |
-|   cpu0             |     0.019 |
+|   cpu0             |     0.023 |
 |     id_ex0         |     0.003 |
 |     if_id0         |     0.002 |
-|     mem_ctrl0      |     0.007 |
-|       cache0       |     0.003 |
+|     mem_ctrl0      |     0.009 |
+|       cache0       |     0.004 |
 |       cache1       |     0.003 |
-|     register0      |     0.006 |
-|   hci0             |     0.005 |
-|     io_in_fifo     |     0.001 |
+|     register0      |     0.007 |
+|   hci0             |     0.006 |
+|     io_in_fifo     |     0.002 |
 |     uart_blk       |     0.003 |
-|       uart_tx_fifo |     0.001 |
-|   ram0             |     0.050 |
-|     ram_bram       |     0.050 |
+|       uart_tx_fifo |     0.002 |
+|   ram0             |     0.058 |
+|     ram_bram       |     0.058 |
 +--------------------+-----------+
 
 

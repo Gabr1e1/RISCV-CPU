@@ -157,41 +157,43 @@ always @ (*) begin
         jmp_target = `ZERO_WORD;
     end
     else begin
+        jmp_target = jmp_addr;
+
         case (ctrlsel)
             `Ctrl_JAL: begin
-                jmp_enable = `JumpEnable ^ (prediction == jmp_addr);
-                jmp_target = jmp_addr;
+                jmp_enable = `JumpEnable; // ^ (prediction == jmp_addr);
+//                jmp_target = jmp_addr;
             end
             `Ctrl_BEQ: begin
-                jmp_enable = beq ^ (prediction == jmp_addr);
-                jmp_target = beq ? jmp_addr : (pc + 4);
+                jmp_enable = beq; // ^ (prediction == jmp_addr);
+//                jmp_target = /*beq ? */ jmp_addr /* : (pc + 4)*/ ;
             end
             `Ctrl_BNE: begin
-                jmp_enable = bne ^ (prediction == jmp_addr);
-                jmp_target = bne ? jmp_addr : (pc + 4);
+                jmp_enable = bne; // ^ (prediction == jmp_addr);
+//                jmp_target = /*bne ? */ jmp_addr /* : (pc + 4)*/ ;
             end
             `Ctrl_BLT: begin
-                jmp_enable = blt ^ (prediction == jmp_addr);
-                jmp_target = blt ? jmp_addr : (pc + 4);                
+                jmp_enable = blt; // ^ (prediction == jmp_addr);
+//                jmp_target = /*blt ? */ jmp_addr /* : (pc + 4)*/ ;                
             end
             `Ctrl_BGE: begin
-                jmp_enable = bge ^ (prediction == jmp_addr);
-                jmp_target = bge ? jmp_addr : (pc + 4);                
+                jmp_enable = bge; // ^ (prediction == jmp_addr);
+//                jmp_target = /*bge ? */ jmp_addr /* : (pc + 4)*/ ;                
             end
             `Ctrl_BLTU: begin
-                jmp_enable = bltu ^ (prediction == jmp_addr);
-                jmp_target = bltu ? jmp_addr : (pc + 4);                
+                jmp_enable = bltu; // ^ (prediction == jmp_addr);
+//                jmp_target = /*bltu ? */ jmp_addr /* : (pc + 4)*/ ;                
             end
             `Ctrl_BGEU: begin
-                jmp_enable = bgeu ^ (prediction == jmp_addr);
-                jmp_target = bgeu ? jmp_addr : (pc + 4);                
+                jmp_enable = bgeu; // ^ (prediction == jmp_addr);
+//                jmp_target = /*bgeu ? */ jmp_addr /* : (pc + 4)*/ ;                
             end
             `Ctrl_Flush: begin
                 jmp_enable = `JumpDisable;
                 jmp_target = `ZERO_WORD;
             end
             default: begin
-                jmp_target = `ZERO_WORD;
+//                jmp_target = `ZERO_WORD;
                 jmp_enable = _jmp_enable;
             end
         endcase
