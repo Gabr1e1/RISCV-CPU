@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_7" LaunchPart="xc7a35tcpg236-1" LaunchTime="1575970217">
+<GenRun Id="impl_7" LaunchPart="xc7a35tcpg236-1" LaunchTime="1575995218">
   <File Type="BITSTR-BMM" Name="riscv_top_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="riscv_top_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="riscv_top_timing_summary_init.rpt"/>
@@ -351,8 +351,8 @@
       <Option Id="Directive">0</Option>
     </Step>
     <Step Id="route_design">
-      <Option Id="MoreOptsStr"><![CDATA[-tns_cleanup]]></Option>
       <Option Id="Directive">1</Option>
+      <Option Id="MoreOptsStr"><![CDATA[-tns_cleanup]]></Option>
     </Step>
     <Step Id="post_route_phys_opt_design" EnableStepBool="1">
       <Option Id="Directive">0</Option>

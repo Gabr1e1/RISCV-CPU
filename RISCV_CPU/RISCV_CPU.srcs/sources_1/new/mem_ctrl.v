@@ -19,6 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+//TODO: No or less stall when writting?
+
 module mem_ctrl(
     input wire rdy,
     input wire rst,
@@ -45,7 +47,7 @@ module mem_ctrl(
     input wire [`RamWord - 1 : 0] data_from_mem
 );
 
-    integer q, count;
+    reg [2:0] q, count;
     reg [1:0] status;
     
     reg replace[0:1];

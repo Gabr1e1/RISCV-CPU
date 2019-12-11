@@ -46,7 +46,7 @@ module ex(
     input wire [`AddrLen - 1 : 0] jmp_addr,
     input wire [`AddrLen - 1 : 0] prediction,
     output reg jmp_enable,
-    output reg [`AddrLen - 1 : 0] jmp_target,
+    output wire [`AddrLen - 1 : 0] jmp_target,
     
 //Flush
     output reg id_flushed
@@ -151,14 +151,13 @@ always @ (posedge clk) begin
     _jmp_enable <= jmp_enable;
 end
 
+assign jmp_target = jmp_addr;
+
 always @ (*) begin
     if (rst == `ResetEnable) begin
         jmp_enable = `JumpDisable;
-        jmp_target = `ZERO_WORD;
     end
     else begin
-        jmp_target = jmp_addr;
-
         case (ctrlsel)
             `Ctrl_JAL: begin
                 jmp_enable = `JumpEnable; // ^ (prediction == jmp_addr);
@@ -190,7 +189,7 @@ always @ (*) begin
             end
             `Ctrl_Flush: begin
                 jmp_enable = `JumpDisable;
-                jmp_target = `ZERO_WORD;
+//                jmp_target = `ZERO_WORD;
             end
             default: begin
 //                jmp_target = `ZERO_WORD;
