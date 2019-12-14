@@ -46,8 +46,10 @@ module ex(
     input wire [`AddrLen - 1 : 0] jmp_addr,
     input wire [`AddrLen - 1 : 0] prediction,
     output reg jmp_enable,
-    output wire [`AddrLen - 1 : 0] jmp_target,
-    
+    output reg [`AddrLen - 1 : 0] jmp_target,
+    //Branch Prediction
+    output reg btb_change_enable,
+
 //Flush
     output reg id_flushed
     );
@@ -151,49 +153,58 @@ always @ (posedge clk) begin
     _jmp_enable <= jmp_enable;
 end
 
-assign jmp_target = jmp_addr;
-
 always @ (*) begin
     if (rst == `ResetEnable) begin
         jmp_enable = `JumpDisable;
+        jmp_target = 0;
+        btb_change_enable = 1'b0;
     end
     else begin
         case (ctrlsel)
             `Ctrl_JAL: begin
-                jmp_enable = `JumpEnable; // ^ (prediction == jmp_addr);
-//                jmp_target = jmp_addr;
+                jmp_enable = prediction != jmp_addr;
+                jmp_target = jmp_addr;
+                btb_change_enable = 1'b1;
             end
             `Ctrl_BEQ: begin
-                jmp_enable = beq; // ^ (prediction == jmp_addr);
-//                jmp_target = /*beq ? */ jmp_addr /* : (pc + 4)*/ ;
+                jmp_enable = prediction != (beq ? jmp_addr : (pc + 4));
+                jmp_target = beq ? jmp_addr : (pc + 4);
+                btb_change_enable = beq;
             end
             `Ctrl_BNE: begin
-                jmp_enable = bne; // ^ (prediction == jmp_addr);
-//                jmp_target = /*bne ? */ jmp_addr /* : (pc + 4)*/ ;
+                jmp_enable = prediction != (bne ? jmp_addr : (pc + 4));
+                jmp_target = bne ? jmp_addr : (pc + 4);
+                btb_change_enable = bne;
             end
             `Ctrl_BLT: begin
-                jmp_enable = blt; // ^ (prediction == jmp_addr);
-//                jmp_target = /*blt ? */ jmp_addr /* : (pc + 4)*/ ;                
+                jmp_enable = prediction != (blt ? jmp_addr : (pc + 4));
+                jmp_target = blt ? jmp_addr : (pc + 4);
+                btb_change_enable = blt;                                
             end
             `Ctrl_BGE: begin
-                jmp_enable = bge; // ^ (prediction == jmp_addr);
-//                jmp_target = /*bge ? */ jmp_addr /* : (pc + 4)*/ ;                
+                jmp_enable = prediction != (bge ? jmp_addr : (pc + 4));
+                jmp_target = bge ? jmp_addr : (pc + 4);
+                btb_change_enable = bge;                               
             end
             `Ctrl_BLTU: begin
-                jmp_enable = bltu; // ^ (prediction == jmp_addr);
-//                jmp_target = /*bltu ? */ jmp_addr /* : (pc + 4)*/ ;                
+                jmp_enable = prediction != (bltu ? jmp_addr : (pc + 4));
+                jmp_target = bltu ? jmp_addr : (pc + 4);
+                btb_change_enable = bltu;                                
             end
             `Ctrl_BGEU: begin
-                jmp_enable = bgeu; // ^ (prediction == jmp_addr);
-//                jmp_target = /*bgeu ? */ jmp_addr /* : (pc + 4)*/ ;                
+                jmp_enable = prediction != (bgeu ? jmp_addr : (pc + 4));
+                jmp_target = bgeu ? jmp_addr : (pc + 4);
+                btb_change_enable = bgeu;               
             end
             `Ctrl_Flush: begin
                 jmp_enable = `JumpDisable;
-//                jmp_target = `ZERO_WORD;
+                jmp_target = `ZERO_WORD;
+                btb_change_enable = 1'b0;
             end
             default: begin
-//                jmp_target = `ZERO_WORD;
-                jmp_enable = _jmp_enable;
+                jmp_target = `ZERO_WORD;
+                jmp_enable = 0;
+                btb_change_enable = 1'b0;
             end
         endcase
     end

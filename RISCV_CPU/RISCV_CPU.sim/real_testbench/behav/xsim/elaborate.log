@@ -16,6 +16,7 @@ Compiling module xil_defaultlib.clk_wiz_0
 Compiling module xil_defaultlib.single_port_ram_sync(ADDR_WIDTH=...
 Compiling module xil_defaultlib.ram
 Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.bp
 Compiling module xil_defaultlib.if_stage
 Compiling module xil_defaultlib.if_id
 Compiling module xil_defaultlib.id
@@ -30,12 +31,12 @@ Compiling module xil_defaultlib.cache
 Compiling module xil_defaultlib.mem_ctrl
 Compiling module xil_defaultlib.cpu
 Compiling module xil_defaultlib.fifo(ADDR_BITS=10)
-Compiling module xil_defaultlib.uart_baud_clk(SYS_CLK_FREQ=22000...
+Compiling module xil_defaultlib.uart_baud_clk(SYS_CLK_FREQ=10000...
 Compiling module xil_defaultlib.uart_rx_default
 Compiling module xil_defaultlib.uart_tx_default
 Compiling module xil_defaultlib.fifo
-Compiling module xil_defaultlib.uart(SYS_CLK_FREQ=220000000,BAUD...
-Compiling module xil_defaultlib.hci(SYS_CLK_FREQ=220000000)
+Compiling module xil_defaultlib.uart(SYS_CLK_FREQ=100000000,BAUD...
+Compiling module xil_defaultlib.hci
 Compiling module xil_defaultlib.riscv_top(SIM=1)
 Compiling module xil_defaultlib.testbench
 Compiling module xil_defaultlib.glbl

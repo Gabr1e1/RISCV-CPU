@@ -39,29 +39,28 @@ module if_stage(
     input wire enable_pc,
     output reg stallreq,
 
+    input wire btb_hit,
+    input wire [`AddrLen - 1 : 0] btb_pred,
     output reg [`AddrLen - 1 : 0] prediction,
-    output wire pred_enable
+    output reg pred_enable
     );
         
     reg [`InstLen - 1 : 0] _inst;
     reg _stallreq, _rw;
     
-    wire [`OpLen - 1 : 0] opcode;
-    assign opcode = inst[`OpLen - 1 : 0];
-    assign pred_enable = 1'b0; //(opcode == `JAL) || (opcode == `BRANCH);
-    assign isBranch = (opcode == `BRANCH);
     assign isLoad = (_inst[`OpLen - 1 : 0] == `LOAD);
     assign pc_o = pc;
-    
+
 always @ (*) begin
-    prediction = pc + 4;
-//    if (mem_status != `DONE) begin
-//        prediction = pc + 4; //the inst after a branch/jal
-//    end
-//    else begin
-//        prediction = pc + 4; //isBranch ? (pc + { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 })
-////                                 : (pc + { {12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0 });
-//    end
+    if (btb_hit) begin
+//        $display("HIT: %h %h", pc, btb_pred);
+        pred_enable = 1'b1;
+        prediction = btb_pred;
+    end
+    else begin
+        pred_enable = 1'b0;
+        prediction = pc + 4;
+    end
 end
 
 always @ (posedge clk) begin

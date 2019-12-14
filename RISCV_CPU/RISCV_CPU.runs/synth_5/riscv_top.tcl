@@ -64,6 +64,7 @@ read_verilog -library xil_defaultlib {
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_rx.v}
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/uart/uart_tx.v}
   {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/cache.v}
+  {C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/bp.v}
 }
 read_ip -quiet {{C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}]

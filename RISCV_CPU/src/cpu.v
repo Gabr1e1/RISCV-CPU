@@ -52,8 +52,8 @@ wire [`RegLen - 1 : 0] cacheVal;
 //IF/ID -> ID
 wire [`AddrLen - 1 : 0] id_pc_i;
 wire [`InstLen - 1 : 0] id_inst_i;
-//wire [`AddrLen - 1 : 0] id_prediction_addr_i;
-//wire [`AddrLen - 1 : 0] id_prediction_addr_o;
+wire [`AddrLen - 1 : 0] id_prediction_addr_i;
+wire [`AddrLen - 1 : 0] id_prediction_addr_o;
 
 //Register -> ID
 wire [`RegLen - 1 : 0] reg1_data;
@@ -123,16 +123,27 @@ wire [`RegLen - 1 : 0] data_out;
 wire [1:0] status_if, status_mem;
 wire [3:0] quantity;
 
+
+//Branch Prediction
+wire btb_hit;
+wire [`AddrLen - 1 : 0] btb_pred;
+wire btb_change_enable;
+
 //Instantiation
 pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc),
               .stall(stall[0]), .enable_pc(enable_pc),
               .jmp_target(jmp_target), .jmp_enable(jmp_enable), .prediction(if_prediction), .pred_enable(pred_enable));
+
+bp bp0(.clk(clk_in), .rst(rst_in), .addr(pc),
+      .addr_r(ex_pc), .jmp_r(jmp_enable), .real_target(jmp_target), .change_enable(btb_change_enable),
+      .jmp_enable(btb_hit), .prediction(btb_pred));
 
 if_stage if0(.rst(rst_in),.clk(clk_in),
       .pc(pc), .pc_o(if_pc), .enable_pc(enable_pc), .inst(if_inst),
 //      .addr_to_mem(addr_from_if), 
       .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
       .stall(stall), .stallreq(stallreq_if),
+      .btb_hit(btb_hit), .btb_pred(btb_pred),
       .prediction(if_prediction), .pred_enable(pred_enable),
       .cacheHit(cacheHit), .cacheVal(cacheVal));
 
@@ -165,7 +176,8 @@ ex ex0(.clk(clk_in), .rst(rst_in), .pc(ex_pc),
       .reg1(ex_reg1), .reg2(ex_reg2), .Imm(ex_Imm), .rd(ex_rd), .rd_enable(ex_rd_enable_i), .aluop(ex_aluop), .alusel(ex_alusel), .ctrlsel(ctrlsel_o), .width_i(ex_width),
       .rd_data_o(ex_rd_data), .rd_addr(ex_rd_addr), .rd_enable_o(ex_rd_enable_o), .mem_addr(ex_mem_addr), .width_o(ex_width_o),
       .jmp_addr(ex_jmp_addr), .prediction(ex_prediction),
-      .jmp_enable(jmp_enable), .jmp_target(jmp_target), 
+      .jmp_enable(jmp_enable), .jmp_target(jmp_target),
+      .btb_change_enable(btb_change_enable),
       .id_flushed(id_flushed));
       
 ex_mem ex_mem0(.clk(clk_in), .rst(rst_in),

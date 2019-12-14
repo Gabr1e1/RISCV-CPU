@@ -39,7 +39,7 @@ always @ (posedge clk) begin
     if (rst == `ResetEnable || (stall[1] == `StallEnable && stall[2] == `StallDisable)) begin
         id_pc <= `ZERO_WORD;
         id_inst <= `ZERO_WORD;
-//        id_prediction <= `ZERO_WORD;
+        id_prediction <= `ZERO_WORD;
     end
     else if (stall[1] == `StallDisable) begin
         if (flush == `FlushDisable) begin
@@ -50,7 +50,7 @@ always @ (posedge clk) begin
         else begin
             id_inst <= `FlushInst;
             id_pc <= `ZERO_WORD;
-//            id_prediction <= `ZERO_WORD;
+            id_prediction <= if_prediction;
         end
     end
 end

@@ -1,44 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_7" LaunchPart="xc7a35tcpg236-1" LaunchTime="1575995218">
   <File Type="BITSTR-BMM" Name="riscv_top_bd.bmm"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="riscv_top_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="riscv_top_timing_summary_init.rpt"/>
   <File Type="ROUTE-PWR" Name="riscv_top_power_routed.rpt"/>
   <File Type="PA-TCL" Name="riscv_top.tcl"/>
-  <File Type="OPT-TIMING" Name="riscv_top_timing_summary_opted.rpt"/>
   <File Type="OPT-DCP" Name="riscv_top_opt.dcp"/>
   <File Type="ROUTE-PWR-SUM" Name="riscv_top_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="riscv_top_reports.tcl"/>
   <File Type="OPT-DRC" Name="riscv_top_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="riscv_top.hwdef"/>
   <File Type="PWROPT-DCP" Name="riscv_top_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="riscv_top_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="riscv_top_timing_summary_pwropted.rpt"/>
   <File Type="PLACE-DCP" Name="riscv_top_placed.dcp"/>
   <File Type="PLACE-IO" Name="riscv_top_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="riscv_top_clock_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="riscv_top_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="riscv_top_utilization_placed.pb"/>
   <File Type="PLACE-CTRL" Name="riscv_top_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="riscv_top_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="riscv_top_incremental_reuse_pre_placed.rpt"/>
-  <File Type="PLACE-TIMING" Name="riscv_top_timing_summary_placed.rpt"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="riscv_top_postplace_pwropt.dcp"/>
   <File Type="BG-BIN" Name="riscv_top.bin"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="riscv_top_timing_summary_postplace_pwropted.rpt"/>
   <File Type="PHYSOPT-DCP" Name="riscv_top_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="riscv_top_drc_physopted.rpt"/>
   <File Type="BITSTR-MSK" Name="riscv_top.msk"/>
-  <File Type="PHYSOPT-TIMING" Name="riscv_top_timing_summary_physopted.rpt"/>
   <File Type="ROUTE-ERROR-DCP" Name="riscv_top_routed_error.dcp"/>
   <File Type="ROUTE-DCP" Name="riscv_top_routed.dcp"/>
   <File Type="ROUTE-BLACKBOX-DCP" Name="riscv_top_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="riscv_top_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="riscv_top_drc_routed.pb"/>
+  <File Type="BITSTR-LTX" Name="riscv_top.ltx"/>
   <File Type="ROUTE-DRC-RPX" Name="riscv_top_drc_routed.rpx"/>
   <File Type="BITSTR-MMI" Name="riscv_top.mmi"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="riscv_top_methodology_drc_routed.rpt"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="riscv_top_methodology_drc_routed.rpx"/>
+  <File Type="BITSTR-SYSDEF" Name="riscv_top.sysdef"/>
   <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="riscv_top_methodology_drc_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="riscv_top_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="riscv_top_route_status.rpt"/>
@@ -46,7 +37,7 @@
   <File Type="ROUTE-TIMINGSUMMARY" Name="riscv_top_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="riscv_top_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="riscv_top_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="riscv_top_incremental_reuse_routed.rpt"/>
+  <File Type="RDI-RDI" Name="riscv_top.vdi"/>
   <File Type="ROUTE-CLK" Name="riscv_top_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="riscv_top_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="riscv_top_bus_skew_routed.pb"/>
@@ -64,17 +55,13 @@
   <File Type="BITSTR-NKY" Name="riscv_top.nky"/>
   <File Type="PDI-FILE" Name="riscv_top.pdi"/>
   <File Type="RCFI_FILE" Name="riscv_top.rcfi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="CFI_FILE" Name="riscv_top.cfi"/>
   <File Type="RNPI_FILE" Name="riscv_top.rnpi"/>
   <File Type="NPI_FILE" Name="riscv_top.npi"/>
   <File Type="RBD_FILE" Name="riscv_top.rbd"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="riscv_top.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="riscv_top.sysdef"/>
   <File Type="BG-BGN" Name="riscv_top.bgn"/>
   <File Type="BG-DRC" Name="riscv_top.drc"/>
-  <File Type="RDI-RDI" Name="riscv_top.vdi"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/config.v">
@@ -358,6 +345,7 @@
       <Option Id="Directive">0</Option>
     </Step>
     <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
 </GenRun>

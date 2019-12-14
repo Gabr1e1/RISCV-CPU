@@ -45,18 +45,18 @@ always @ (posedge clk) begin
     end
     else begin
         if (jmp_enable == `JumpEnable) begin
-            assigned <= 1'b1;
             if (stall == `StallDisable) begin
                 pc <= jmp_target;
                 npc <= jmp_target + 4;
                 enable_pc <= 1'b1;
             end
             else begin
+                assigned <= 1'b1;
                 enable_pc <= 1'b0;
                 npc <= jmp_target;
             end
         end
-        else if (pred_enable == `JumpEnable && assigned != 1'b1) begin
+        else if (pred_enable == `JumpEnable && assigned == 1'b0) begin //No use assigned correct?
             if (stall == `StallDisable) begin
 //                $display("%h",prediction);
                 pc <= prediction;

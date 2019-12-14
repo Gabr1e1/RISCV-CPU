@@ -21,26 +21,40 @@
 
 
 module bp(
+    input clk,
+    input rst,
     input wire [`AddrLen - 1 : 0] addr,
-    input wire wrong,
-    output wire jmp_or_not
+
+//replacement related
+    input wire [`AddrLen - 1 : 0] addr_r,
+    input wire jmp_r,
+    input wire [`AddrLen - 1 : 0] real_target,
+    input wire change_enable,
+
+    output wire jmp_enable,
+    output wire [`AddrLen - 1 : 0] prediction
     );
     
-    reg [1:0] bht[`BHTSize - 1 : 0];
-    assign jmp_or_not = (bht[addr[`BHTLen - 1 + 2 : 2]] == 2'b10) || (bht[addr[`BHTLen - 1 + 2 : 2]] == 2'b11);
+    reg [16 - `BHTLen - 2 : 0] tag[`BHTSize - 1 : 0];
+    reg [`AddrLen - 1 : 0] target[`BHTSize - 1 : 0];
+    reg [`BHTSize - 1 : 0] cnt;
+
+    assign hit = tag[addr[`BHTLen - 1 + 2 : 2]] == addr[16 : `BHTLen + 2];
+    assign valid = cnt[addr[`BHTLen - 1 + 2 : 2]] == 1'b1;
     
-    always @ (*) begin
-        if (wrong) begin
-            case(bht[addr[`BHTLen - 1 + 2 : 2]])
-                2'b00:
-                    bht[addr[`BHTLen - 1 + 2 : 2]] = 2'b01;
-                2'b01:
-                    bht[addr[`BHTLen - 1 + 2 : 2]] = 2'b10;
-                2'b10:
-                    bht[addr[`BHTLen - 1 + 2 : 2]] = 2'b01;
-                2'b11:
-                    bht[addr[`BHTLen - 1 + 2 : 2]] = 2'b10;
-            endcase
+    assign jmp_enable = valid ? hit : 1'b0;
+    assign prediction = target[addr[`BHTLen - 1 + 2 : 2]];
+
+    always @ (posedge clk) begin
+        if (rst == `ResetEnable) begin
+            cnt <= 0;
+        end
+        else if (change_enable) begin
+//            if (jmp_r == 1'b1) 
+//                $display("%0t REPLACE: %h %d %h", $time, addr_r, jmp_r, real_target); 
+            tag[addr_r[`BHTLen - 1 + 2 : 2]] <= addr_r[16 : `BHTLen + 2];
+            target[addr_r[`BHTLen - 1 + 2 : 2]] <= real_target;
+            cnt[addr_r[`BHTLen - 1 + 2 : 2]] <= jmp_r;
         end
     end
 
