@@ -13,7 +13,7 @@ module riscv_top
 	output wire			led
 );
 
-localparam SYS_CLK_FREQ = 100000000;
+localparam SYS_CLK_FREQ = 200000000;
 localparam UART_BAUD_RATE = 115200;
 localparam RAM_ADDR_WIDTH = 17; 			// 128KiB ram, should not be modified
 
@@ -28,7 +28,7 @@ wire clk;
 clk_wiz_0 clk_inst(
     .reset(1'b0),
     .clk_in1(EXCLK),
-    .clk_out1(clk)
+    .clk_out5(clk)
 );
 
 always @(posedge clk or posedge btnC)

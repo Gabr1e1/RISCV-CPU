@@ -147,11 +147,11 @@ always @ (*) begin
     end
 end
 
-reg _jmp_enable;
+//reg _jmp_enable;
 
-always @ (posedge clk) begin
-    _jmp_enable <= jmp_enable;
-end
+//always @ (posedge clk) begin
+//    _jmp_enable <= jmp_enable;
+//end
 
 always @ (*) begin
     if (rst == `ResetEnable) begin
@@ -167,32 +167,38 @@ always @ (*) begin
                 btb_change_enable = 1'b1;
             end
             `Ctrl_BEQ: begin
-                jmp_enable = prediction != (beq ? jmp_addr : (pc + 4));
+                jmp_enable = beq ^ (prediction == jmp_addr);
+//                jmp_enable = prediction != (beq ? jmp_addr : (pc + 4));
                 jmp_target = beq ? jmp_addr : (pc + 4);
                 btb_change_enable = beq;
             end
             `Ctrl_BNE: begin
-                jmp_enable = prediction != (bne ? jmp_addr : (pc + 4));
+                jmp_enable = bne ^ (prediction == jmp_addr);
+//                jmp_enable = prediction != (bne ? jmp_addr : (pc + 4));
                 jmp_target = bne ? jmp_addr : (pc + 4);
                 btb_change_enable = bne;
             end
             `Ctrl_BLT: begin
-                jmp_enable = prediction != (blt ? jmp_addr : (pc + 4));
+                jmp_enable = blt ^ (prediction == jmp_addr);
+//                jmp_enable = prediction != (blt ? jmp_addr : (pc + 4));
                 jmp_target = blt ? jmp_addr : (pc + 4);
                 btb_change_enable = blt;                                
             end
             `Ctrl_BGE: begin
-                jmp_enable = prediction != (bge ? jmp_addr : (pc + 4));
+                jmp_enable = bge ^ (prediction == jmp_addr);
+//                jmp_enable = prediction != (bge ? jmp_addr : (pc + 4));
                 jmp_target = bge ? jmp_addr : (pc + 4);
                 btb_change_enable = bge;                               
             end
             `Ctrl_BLTU: begin
-                jmp_enable = prediction != (bltu ? jmp_addr : (pc + 4));
+                jmp_enable = bltu ^ (prediction == jmp_addr);
+//                jmp_enable = prediction != (bltu ? jmp_addr : (pc + 4));
                 jmp_target = bltu ? jmp_addr : (pc + 4);
                 btb_change_enable = bltu;                                
             end
             `Ctrl_BGEU: begin
-                jmp_enable = prediction != (bgeu ? jmp_addr : (pc + 4));
+                jmp_enable = bgeu ^ (prediction == jmp_addr);
+//                jmp_enable = prediction != (bgeu ? jmp_addr : (pc + 4));
                 jmp_target = bgeu ? jmp_addr : (pc + 4);
                 btb_change_enable = bgeu;               
             end

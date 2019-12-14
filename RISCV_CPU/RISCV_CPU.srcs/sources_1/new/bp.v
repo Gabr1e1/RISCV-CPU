@@ -35,11 +35,11 @@ module bp(
     output wire [`AddrLen - 1 : 0] prediction
     );
     
-    reg [16 - `BHTLen - 2 : 0] tag[`BHTSize - 1 : 0];
-    reg [`AddrLen - 1 : 0] target[`BHTSize - 1 : 0];
+    reg [`InstRealLen - `BHTLen - 2 : 0] tag[`BHTSize - 1 : 0];
+    reg [`InstRealLen - 1 : 0] target[`BHTSize - 1 : 0];
     reg [`BHTSize - 1 : 0] cnt;
 
-    assign hit = tag[addr[`BHTLen - 1 + 2 : 2]] == addr[16 : `BHTLen + 2];
+    assign hit = tag[addr[`BHTLen - 1 + 2 : 2]] == addr[`InstRealLen : `BHTLen + 2];
     assign valid = cnt[addr[`BHTLen - 1 + 2 : 2]] == 1'b1;
     
     assign jmp_enable = valid ? hit : 1'b0;
@@ -52,8 +52,8 @@ module bp(
         else if (change_enable) begin
 //            if (jmp_r == 1'b1) 
 //                $display("%0t REPLACE: %h %d %h", $time, addr_r, jmp_r, real_target); 
-            tag[addr_r[`BHTLen - 1 + 2 : 2]] <= addr_r[16 : `BHTLen + 2];
-            target[addr_r[`BHTLen - 1 + 2 : 2]] <= real_target;
+            tag[addr_r[`BHTLen - 1 + 2 : 2]] <= addr_r[`InstRealLen : `BHTLen + 2];
+            target[addr_r[`BHTLen - 1 + 2 : 2]] <= real_target[`InstRealLen - 1 : 0];
             cnt[addr_r[`BHTLen - 1 + 2 : 2]] <= jmp_r;
         end
     end

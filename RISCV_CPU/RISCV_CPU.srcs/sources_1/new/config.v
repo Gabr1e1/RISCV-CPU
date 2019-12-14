@@ -159,3 +159,5 @@
 `define BHTLen 8
 `define BHTSize 256
 // `define CounterSize 1
+
+`define InstRealLen 13
