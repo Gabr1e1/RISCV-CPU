@@ -50,7 +50,7 @@ always @ (posedge clk) begin
         else begin
             id_inst <= `FlushInst;
             id_pc <= `ZERO_WORD;
-            id_prediction <= if_prediction;
+            id_prediction <= 0;
         end
     end
 end

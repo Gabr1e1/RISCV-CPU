@@ -156,8 +156,8 @@
 `define Correct 1'b1
 
 //Branch Prediction
-`define BHTLen 8
-`define BHTSize 256
+`define BHTLen 7
+`define BHTSize 128
 // `define CounterSize 1
 
 `define InstRealLen 13

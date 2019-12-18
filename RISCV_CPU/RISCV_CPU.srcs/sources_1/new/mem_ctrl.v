@@ -47,7 +47,7 @@ module mem_ctrl(
     input wire [`RamWord - 1 : 0] data_from_mem
 );
 
-    reg [2:0] q, count;
+    reg [3:0] q, count;
     reg [1:0] status;
     
     reg replace[0:1];
@@ -131,6 +131,7 @@ always @ (posedge clk) begin
                     if (status_if == `WORKING) begin
                         status_if <= `DONE;
                         //Replace entry in cache
+
                         if (!isValid[0])
                             replace[0] <= 1'b1;
                         else

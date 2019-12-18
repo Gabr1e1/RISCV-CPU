@@ -50,19 +50,7 @@ module if_stage(
     
     assign isLoad = (_inst[`OpLen - 1 : 0] == `LOAD);
     assign pc_o = pc;
-
-always @ (*) begin
-    if (btb_hit) begin
-//        $display("HIT: %h %h", pc, btb_pred);
-        pred_enable = 1'b1;
-        prediction = btb_pred;
-    end
-    else begin
-        pred_enable = 1'b0;
-        prediction = pc + 4;
-    end
-end
-
+    
 always @ (posedge clk) begin
     _inst <= inst;
     _stallreq <= stallreq;
@@ -76,10 +64,17 @@ always @ (*) begin
         inst = `ZERO_WORD;
     end
     else begin
+        pred_enable = 1'b0;
+        prediction = pc + 4;
         if (mem_status == `DONE) begin
             rw = 1'b0;
             inst = data_from_mem;
             stallreq = `StallDisable;
+            
+            if (btb_hit) begin
+                pred_enable = 1'b1;
+                prediction = btb_pred;
+            end
         end
         else if (mem_status == `IDLE && enable_pc) begin
             if ((!cacheHit) || isLoad) begin
