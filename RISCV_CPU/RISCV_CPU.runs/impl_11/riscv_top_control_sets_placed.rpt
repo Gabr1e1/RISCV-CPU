@@ -1,0 +1,375 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Thu Dec 19 20:42:12 2019
+| Host         : DESKTOP-KOEBDED running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file riscv_top_control_sets_placed.rpt
+| Design       : riscv_top
+| Device       : xc7a35t
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   297 |
+|    Minimum number of control sets                        |    82 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |   215 |
+| Unused register locations in slices containing registers |   932 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   297 |
+| >= 0 to < 4        |    77 |
+| >= 4 to < 6        |    58 |
+| >= 6 to < 8        |    52 |
+| >= 8 to < 10       |    35 |
+| >= 10 to < 12      |     8 |
+| >= 12 to < 14      |    36 |
+| >= 14 to < 16      |     2 |
+| >= 16              |    29 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              16 |           14 |
+| No           | No                    | Yes                    |              44 |           29 |
+| No           | Yes                   | No                     |             814 |          261 |
+| Yes          | No                    | No                     |             170 |           54 |
+| Yes          | No                    | Yes                    |              34 |           12 |
+| Yes          | Yes                   | No                     |            1766 |          833 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------------+---------------------------------------------------------------------+-------------------------------------------------------+------------------+----------------+
+|       Clock Signal      |                            Enable Signal                            |                    Set/Reset Signal                   | Slice Load Count | Bel Load Count |
++-------------------------+---------------------------------------------------------------------+-------------------------------------------------------+------------------+----------------+
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_0[0]                                 | rst_repN_3                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_6[0]                                 | rst                                                   |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | rst_repN_7                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst_repN                                              |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_6[0]                                  | rst                                                   |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_1[0]                                  | rst_repN_7                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_7[0]                                 | rst                                                   |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_3[0]                                 | rst_repN_4                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_2[0]                                  | rst_repN_7                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_4[0]                                 | rst_repN_4                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_6[0]                                 | rst_repN_4                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_1[0]                                  | rst_repN_3                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_2[0]                                 | rst_repN_3                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_3[0]                                  | rst_repN_3                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_7[0]                                  | rst_repN_3                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_3[0]                                  | rst_repN_7                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[3]_0[0]                                 | rst_repN_7                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/cache1/p_1_in_0                                      | rst_repN                                              |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_5[0]                                 | rst_repN_4                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst_repN_4                                            |                1 |              1 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst_repN_3                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_1[0]                                 | rst_repN_7                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_4[0]                                 | rst_repN_6                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_1[0]                                 | rst_repN_7                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_3[0]                                 | rst                                                   |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_0[0]                                  | rst_repN_6                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_3[0]                                 | rst_repN_4                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_0[0]                                  | rst_repN_7                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_3[0]                                 | rst_repN_3                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_3[0]                                 | rst_repN_7                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_6[0]                                 | rst_repN_7                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst                                                   |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | rst_repN_6                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_2[0]                                 | rst_repN_6                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst_repN_7                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_blk/E[0]                                      | rst_repN_4                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_2[0]                                 | rst                                                   |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_3[0]                                 | rst                                                   |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_3[0]                                 | rst_repN_3                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_2[0]                                 | rst_repN_4                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_7[0]                                  | rst_repN_6                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_2[0]                                 | rst_repN_5                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_4[0]                                  | rst_repN_5                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_4[0]                                  | rst_repN_6                                            |                2 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_8[0]                                  | rst                                                   |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_1[0]                                  | rst_repN_6                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_1[0]                                 | rst_repN_3                                            |                1 |              2 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_5[0]                                  | rst                                                   |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_6[0]                                 | rst_repN_3                                            |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_2[0]                                 | rst_repN_7                                            |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_3[0]                                 | rst_repN_7                                            |                1 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_3[0]                                 | rst                                                   |                1 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_3[0]                                 | rst_repN_6                                            |                1 |              3 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_rx_fifo/q_empty_reg_3[0]                         | rst_repN_11                                           |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_4[0]                                  | rst_repN_7                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_8[0]                                  | rst_repN_6                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_8[0]                                  | rst_repN_7                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_8[0]                                  | rst_repN_3                                            |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_5[0]                                 | rst_repN_7                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_3[0]                                 | rst_repN_6                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_0[0]                                 | rst_repN_7                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_2[0]                                  | rst_repN_6                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_3[0]                                 | rst_repN_7                                            |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_6[0]                                 | rst_repN_7                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_6[0]                                 | rst_repN_6                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_5[0]                                 | rst_repN_6                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_5[0]                                 | rst_repN_6                                            |                1 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_4[0]                                 | rst                                                   |                1 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_1[0]                                 | rst_repN_5                                            |                1 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_0[0]                                 | rst_repN_5                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_8[0]                                 | rst                                                   |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_6[0]                                  | rst_repN_3                                            |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_5[0]                                 | rst_repN_7                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | rst_repN_2                                            |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_5[0]                                  | rst_repN_6                                            |                2 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst_repN_2                                            |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_5[0]                                 | rst                                                   |                3 |              3 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_5[0]                                 | rst                                                   |                3 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/count                                                | rst_repN_4                                            |                1 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/E[0]                                                   | rst_repN_6                                            |                3 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_5[0]                                 | rst_repN_3                                            |                4 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_6[0]                                 | rst                                                   |                1 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_5[0]                                 | rst_repN_2                                            |                3 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_6[0]                                 | rst_repN_3                                            |                4 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_3[0]                                 | rst_repN_2                                            |                1 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_6[0]                                 | rst_repN_6                                            |                2 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_3[0]                                 | rst_repN_2                                            |                1 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_3[0]                                  | rst_repN_6                                            |                2 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/cache1/E[0]                                          | rst_repN_11                                           |                2 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_7[0]                                 | rst_repN_6                                            |                3 |              4 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_blk/d_baud_clk_tick_cnt                       | rst_repN_8                                            |                2 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[3]_0[0]                                 | rst_repN_6                                            |                3 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_2[0]                                 | rst_repN_6                                            |                2 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_4[0]                                 | rst_repN_3                                            |                4 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_5[0]                                 | rst_repN_3                                            |                4 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_6[0]                                  | rst_repN_6                                            |                3 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_8[0]                                 | rst_repN_3                                            |                4 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_8[0]                                 | rst_repN_2                                            |                2 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_8[0]                                 | rst_repN_6                                            |                3 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_6[0]                                  | rst_repN_7                                            |                1 |              4 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_rx_blk/d_oversample_tick_cnt                     | rst_repN_9                                            |                3 |              4 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/wr_en_prot                               | rst_repN_8                                            |                1 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_5[0]                                  | rst_repN_3                                            |                4 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_2[0]                                 | rst_repN_7                                            |                1 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_2[0]                                 | rst_repN_6                                            |                2 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_0[0]                                  | rst_repN_5                                            |                2 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_1[0]                                 | rst_repN_5                                            |                3 |              4 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_3[0]                                 | rst_repN_1                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[3]_0[0]                                 | rst_repN_5                                            |                3 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_0[0]                                 | rst_repN_6                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_3[0]                                 | rst_repN_6                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_2[0]                                 | rst_repN_5                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_2[0]                                 | rst_repN_5                                            |                4 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/E[0]                                                   | rst_repN_5                                            |                3 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_6[0]                                 | rst_repN_1                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_1[0]                                 | rst_repN_1                                            |                3 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_1[0]                                 | rst_repN_6                                            |                3 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_1[0]                                 | rst_repN_6                                            |                5 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_3[0]                                 | rst_repN_3                                            |                5 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst_repN_6                                            |                1 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_5[0]                                 | rst_repN_1                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_1[0]                                 | rst_repN_6                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_4[0]                                 | rst_repN_2                                            |                4 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_5[0]                                  | rst_repN_2                                            |                3 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_6[0]                                  | rst_repN_5                                            |                4 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_1[0]                                  | rst_repN_5                                            |                3 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_2[0]                                  | rst_repN_5                                            |                3 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_3[0]                                  | rst_repN_5                                            |                3 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_0[0]                                 | rst_repN_6                                            |                1 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_0[0]                                 | rst_repN_5                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_7[0]                                 | rst_repN_1                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_7[0]                                 | rst_repN_3                                            |                5 |              5 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_rx_fifo/q_empty_reg_3[0]                         | rst_repN_8                                            |                4 |              5 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_rx_blk/q_state[4]_i_1__0_n_0                     | rst_repN_9                                            |                2 |              5 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_blk/q_state[4]_i_1_n_0                        | rst_repN_8                                            |                1 |              5 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_1[0]                                 | rst_repN_2                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_7[0]                                  | rst_repN_1                                            |                1 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_0[0]                                 | rst_repN_1                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_0[0]                                 | rst                                                   |                4 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_0[0]                                 | rst_repN_2                                            |                3 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_0[0]                                 | rst_repN_1                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_3[0]                                  | rst_repN_1                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_3[0]                                  | rst_repN_2                                            |                3 |              6 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/wr_en_prot                               | rst_repN_4                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_2[0]                                 | rst                                                   |                3 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_2[0]                                 | rst                                                   |                4 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_7[0]                                  | rst_repN_5                                            |                3 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_0[0]                                 | rst_repN_5                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_2[0]                                  | rst_repN_1                                            |                1 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_5[0]                                 | rst_repN_5                                            |                3 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_8[0]                                  | rst_repN_1                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_0[0]                                 | rst_repN_2                                            |                4 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_1[0]                                 | rst                                                   |                1 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_1[0]                                 | rst                                                   |                3 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_6[0]                                 | rst_repN_2                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_0[0]                                  | rst_repN_1                                            |                1 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_6[0]                                  | rst_repN_1                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_3[0]                                 | rst_repN_5                                            |                3 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_6[0]                                 | rst_repN_5                                            |                4 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[3]_0[0]                                 | rst_repN_1                                            |                2 |              6 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_3[0]                                 | rst_repN_5                                            |                3 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_2[0]                                 | rst_repN_1                                            |                4 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_2[0]                                 | rst_repN_1                                            |                3 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_2[0]                                 | rst_repN_2                                            |                5 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_0[0]                                 | rst                                                   |                4 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_0[0]                                 | rst_repN_1                                            |                1 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_7[0]                                 | rst_repN_2                                            |                5 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_5[0]                                 | rst_repN_1                                            |                4 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[3]_0[0]                                 | rst                                                   |                2 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_6[0]                                 | rst_repN_1                                            |                2 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_6[0]                                 | rst_repN_2                                            |                3 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_5[0]                                 | rst_repN_5                                            |                3 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_1[0]                                 | rst_repN_1                                            |                3 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_5[0]                                  | rst_repN_1                                            |                1 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_0[0]                                 | rst_repN_6                                            |                2 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_5[0]                                 | rst_repN_2                                            |                7 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_1[0]                                 | rst_repN_1                                            |                3 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_7[0]                                  | rst_repN_2                                            |                5 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_8[0]                                 | rst_repN_1                                            |                1 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_1[0]                                  | rst_repN_1                                            |                2 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_1[0]                                 | rst_repN_5                                            |                3 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_1[0]                                 | rst_repN_2                                            |                3 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/E[0]                                                   | rst                                                   |                4 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_8[0]                                  | rst_repN_5                                            |                2 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_4[0]                                  | rst_repN_1                                            |                1 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_2[0]                                 | rst_repN_1                                            |                1 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_3[0]                                 | rst_repN_2                                            |                4 |              7 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_1[0]                                  | rst_repN_2                                            |                5 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_3[0]                                 | rst_repN_1                                            |                3 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_1[0]                                 | rst                                                   |                6 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_4[0]                                 | rst_repN_1                                            |                5 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_2[0]                                  | rst                                                   |                4 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_3[0]                                 | rst_repN_5                                            |                5 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst_repN_1                                            |                4 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_4[0]                                 | rst_repN_5                                            |                3 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_0[0]                                 | rst_repN_2                                            |                4 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/data_out[23]_i_2_n_0                                 | cpu0/mem_ctrl0/data_out[23]_i_1_n_0                   |                7 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/E[0]                                                   | rst_repN_2                                            |                4 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/data_out[7]_i_2_n_0                                  | cpu0/mem_ctrl0/data_out[7]_i_1_n_0                    |                5 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/E[0]                                                   | rst_repN_1                                            |                4 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_8[0]                                  | rst_repN_2                                            |                3 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/data_out[15]_i_2_n_0                                 | cpu0/mem_ctrl0/data_out[15]_i_1_n_0                   |                4 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/data_to_mem[7]_i_1_n_0                               |                                                       |                4 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_0[0]                                  | rst                                                   |                5 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_4[0]                                  | rst                                                   |                5 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_1[0]                                  | rst                                                   |                4 |              8 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_empty_reg_0                            | rst_repN_11                                           |                3 |              8 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_decode_cnt_reg[0]                      | rst_repN_11                                           |                4 |              8 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_rx_blk/d_data                                    | rst_repN_9                                            |                2 |              8 |
+|  clk_inst/inst/clk_out1 |                                                                     | hci0/uart_blk/uart_rx_fifo/SR[0]                      |                5 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_6[0]                                 | rst_repN_5                                            |                2 |              8 |
+|  clk_inst/inst/clk_out1 |                                                                     | cpu0/mem_ctrl0/SR[0]                                  |                4 |              8 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_blk/d_data                                    | rst_repN_8                                            |                2 |              8 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_6[0]                                  | rst_repN_2                                            |                6 |              9 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_2[0]                                  | rst_repN_2                                            |                6 |              9 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[0]_0[0]                                 | rst                                                   |                4 |              9 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_3[0]                                  | rst                                                   |                5 |              9 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_empty_reg_2[0]                         | rst_repN_11                                           |                5 |              9 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[3]_0[0]                                 | rst_repN_2                                            |                2 |              9 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_4[0]                                 | rst_repN_5                                            |                5 |              9 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_3[0]                                 | rst_repN_1                                            |                4 |              9 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_1[0]                                 | rst_repN_2                                            |                5 |              9 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_5[0]                                  | rst_repN_5                                            |                3 |             10 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_7[0]                                  | rst                                                   |                6 |             10 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_0[0]                                  | rst_repN_2                                            |                5 |             10 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_7[0]                                 | rst_repN_5                                            |                7 |             10 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_enable_reg_4[0]                                  | rst_repN_2                                            |                5 |             10 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_8[0]                                 | rst_repN_5                                            |                5 |             10 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/wr_en_prot                                          | rst_repN_8                                            |                4 |             10 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[2]_2[0]                                 | rst_repN_2                                            |                5 |             10 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_832_895_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_768_831_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_896_959_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_960_1023_0_2_i_1__0_n_0 |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_704_767_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_384_447_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_832_895_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_512_575_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_448_511_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_64_127_0_2_i_1__0_n_0   |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_640_703_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_wb0/wb_rd_addr_reg[1]_2[0]                                 | rst_repN_2                                            |                7 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_576_639_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_320_383_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_192_255_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_256_319_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_128_191_0_2_i_1__0_n_0  |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_128_191_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_192_255_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_320_383_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_384_447_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_576_639_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_704_767_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_448_511_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_768_831_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_512_575_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_640_703_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_64_127_0_2_i_1_n_0                 |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_960_1023_0_2_i_1_n_0               |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_896_959_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_0_63_0_2_i_1_n_0                   |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/q_data_array_reg_256_319_0_2_i_1_n_0                |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_fifo/q_data_array_reg_0_63_0_2_i_4_n_0        |                                                       |                3 |             12 |
+|  clk_inst/inst/clk_out1 |                                                                     | rst_repN_8                                            |               12 |             13 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | rst_repN_1                                            |                8 |             13 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_rx_fifo/E[0]                                     | rst_repN_8                                            |                8 |             13 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | rst_repN_5                                            |                8 |             14 |
+|  clk_inst/inst/clk_out1 |                                                                     | btnC_IBUF                                             |               11 |             15 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_rx_fifo/q_data_array_reg_0_7_0_5_i_1_n_0         |                                                       |                2 |             16 |
+|  clk_inst/inst/clk_out1 |                                                                     |                                                       |               14 |             16 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/addr_to_mem[17]_i_1_n_0                              |                                                       |               10 |             18 |
+|  clk_inst/inst/clk_out1 | hci0/uart_blk/uart_tx_blk/E[0]                                      | rst_repN_8                                            |                6 |             18 |
+|  clk_inst/inst/clk_out1 | hci0/io_in_fifo/rd_en_prot                                          | rst_repN_8                                            |                7 |             20 |
+|  clk_inst/inst/clk_out1 | cpu0/id_ex0/ex_ctrlsel_reg[3]_2                                     |                                                       |                7 |             26 |
+|  clk_inst/inst/clk_out1 | cpu0/id_ex0/ex_ctrlsel_reg[3]_1                                     |                                                       |                7 |             26 |
+|  clk_inst/inst/clk_out1 |                                                                     | rst_repN                                              |                9 |             26 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | rst_repN_4                                            |               16 |             27 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/cache1/FSM_onehot_q_state_reg[13]_1                  | rst_repN_4                                            |                8 |             31 |
+|  clk_inst/inst/clk_out1 | hci0/Q[0]                                                           | rst_repN_8                                            |                8 |             32 |
+|  clk_inst/inst/clk_out1 | cpu0/id_ex0/ex_pc[31]_i_1_n_0                                       | rst_repN                                              |               10 |             37 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | cpu0/mem_wb0/wb_rd_data0_n_0                          |               14 |             38 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/data_out[31]_bret_i_2_n_0                            | cpu0/mem_ctrl0/data_out[31]_bret_i_1_n_0              |               14 |             40 |
+|  clk_inst/inst/clk_out1 |                                                                     | rst_repN_9                                            |               22 |             43 |
+|  clk_inst/inst/clk_out1 |                                                                     | rst_repN_11                                           |               17 |             46 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/cache1/p_1_in_0                                      | rst_repN_10                                           |               16 |             48 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | rst_repN                                              |               19 |             49 |
+|  clk_inst/inst/clk_out1 |                                                                     | rst_repN_4                                            |               23 |             65 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/p_1_in                                               | rst_repN_3                                            |               40 |             71 |
+|  clk_inst/inst/clk_out1 |                                                                     | cpu0/mem_ctrl0/q_io_en_reg                            |               26 |             88 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/cache1/p_1_in_0                                      | cpu0/mem_ctrl0/cache1/FSM_onehot_q_state_reg[13]_3[0] |               33 |             96 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/cache1/FSM_onehot_q_state_reg[13]_1                  | rst_repN_11                                           |               29 |            133 |
+|  clk_inst/inst/clk_out1 | cpu0/id_ex0/ex_jmp_addr[31]_bret_i_1_n_0                            |                                                       |               40 |            144 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/cache0/tag_reg_0_255_0_0_i_1__0_n_0                  |                                                       |               37 |            148 |
+|  clk_inst/inst/clk_out1 | cpu0/mem_ctrl0/cache1/tag_reg_0_255_0_0_i_1_n_0                     |                                                       |               37 |            148 |
+|  clk_inst/inst/clk_out1 |                                                                     | rst_repN_10                                           |               52 |            155 |
+|  clk_inst/inst/clk_out1 |                                                                     | rst_repN_7                                            |               49 |            178 |
+|  clk_inst/inst/clk_out1 |                                                                     | rst_repN_12                                           |               60 |            213 |
++-------------------------+---------------------------------------------------------------------+-------------------------------------------------------+------------------+----------------+
+
+

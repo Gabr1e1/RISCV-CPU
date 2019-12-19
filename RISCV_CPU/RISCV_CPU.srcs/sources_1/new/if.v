@@ -62,6 +62,8 @@ always @ (*) begin
         rw = 1'b0;
         stallreq = `StallDisable;
         inst = `ZERO_WORD;
+        pred_enable = 1'b0;
+        prediction = 0;
     end
     else begin
         pred_enable = 1'b0;

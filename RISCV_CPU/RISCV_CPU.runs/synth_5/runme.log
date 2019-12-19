@@ -15,18 +15,18 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 10856 
+INFO: Helper process launched with PID 12152 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 846.137 ; gain = 233.762
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 846.402 ; gain = 234.895
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'riscv_top' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:4]
 	Parameter SIM bound to: 0 - type: integer 
 	Parameter SYS_CLK_FREQ bound to: 200000000 - type: integer 
 	Parameter UART_BAUD_RATE bound to: 115200 - type: integer 
 	Parameter RAM_ADDR_WIDTH bound to: 17 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_5/.Xil/Vivado-13908-DESKTOP-KOEBDED/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_5/.Xil/Vivado-13908-DESKTOP-KOEBDED/realtime/clk_wiz_0_stub.v:5]
-WARNING: [Synth 8-7023] instance 'clk_inst' of module 'clk_wiz_0' has 9 connections declared, but only 3 given [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:28]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_5/.Xil/Vivado-12068-DESKTOP-KOEBDED/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_5/.Xil/Vivado-12068-DESKTOP-KOEBDED/realtime/clk_wiz_0_stub.v:5]
+WARNING: [Synth 8-7023] instance 'clk_inst' of module 'clk_wiz_0' has 4 connections declared, but only 3 given [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/riscv_top.v:28]
 INFO: [Synth 8-6157] synthesizing module 'ram' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/ram.v:3]
 	Parameter ADDR_WIDTH bound to: 17 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'single_port_ram_sync' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/src/common/block_ram/block_ram.v:62]
@@ -257,7 +257,7 @@ WARNING: [Synth 8-3331] design bp has unconnected port addr_r[28]
 WARNING: [Synth 8-3331] design bp has unconnected port addr_r[27]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 979.883 ; gain = 367.508
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 985.191 ; gain = 373.684
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -270,12 +270,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 979.883 ; gain = 367.508
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 985.191 ; gain = 373.684
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 979.883 ; gain = 367.508
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 985.191 ; gain = 373.684
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.114 . Memory (MB): peak = 979.883 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.114 . Memory (MB): peak = 985.191 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -288,29 +288,29 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/riscv_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1068.219 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1073.324 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1068.219 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1073.324 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1068.219 ; gain = 455.844
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1073.324 ; gain = 461.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1068.219 ; gain = 455.844
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1073.324 ; gain = 461.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for EXCLK. (constraint file  {c:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 8).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for EXCLK. (constraint file  {c:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 9).
+Applied set_property IO_BUFFER_TYPE = NONE for EXCLK. (constraint file  {c:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for EXCLK. (constraint file  {c:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 4).
 Applied set_property DONT_TOUCH = true for clk_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1068.219 ; gain = 455.844
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1073.324 ; gain = 461.816
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5587] ROM size for "reg1_read_enable" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "reg2_read_enable" is below threshold of ROM address width. It will be mapped to LUTs
@@ -327,8 +327,6 @@ INFO: [Synth 8-802] inferred FSM for state register 'q_state_reg' in module 'hci
 INFO: [Synth 8-5546] ROM "d_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "d_err_code" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "d_tx_data" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-327] inferring latch for variable 'prediction_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if.v:68]
-WARNING: [Synth 8-327] inferring latch for variable 'pred_enable_reg' [C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/if.v:67]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -379,7 +377,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'q_state_reg' in module 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'q_state_reg' using encoding 'one-hot' in module 'hci'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1068.219 ; gain = 455.844
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1073.324 ; gain = 461.816
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -428,7 +426,7 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input    256 Bit        Muxes := 2     
 	   2 Input    128 Bit        Muxes := 1     
-	   2 Input     32 Bit        Muxes := 61    
+	   2 Input     32 Bit        Muxes := 62    
 	   8 Input     32 Bit        Muxes := 2     
 	   6 Input     32 Bit        Muxes := 1     
 	  11 Input     32 Bit        Muxes := 1     
@@ -530,7 +528,7 @@ Detailed RTL Component Info :
 	               32 Bit    Registers := 1     
 	                1 Bit    Registers := 2     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 6     
+	   2 Input     32 Bit        Muxes := 7     
 	   2 Input      1 Bit        Muxes := 5     
 Module if_id 
 Detailed RTL Component Info : 
@@ -820,7 +818,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/regi
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][29] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/register0/\regs_reg[0][30] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1068.219 ; gain = 455.844
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1073.324 ; gain = 461.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -864,13 +862,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 1068.219 ; gain = 455.844
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:00:46 . Memory (MB): peak = 1073.324 ; gain = 461.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:53 . Memory (MB): peak = 1129.770 ; gain = 517.395
+Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:53 . Memory (MB): peak = 1128.313 ; gain = 516.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -911,26 +909,26 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[1] along load instance i_4385
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[1] along load instance i_2374
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[1] along load instance i_2768
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[1] along load instance i_4385
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[1] along load instance i_2374
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[0] along load instance i_4386
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[0] along load instance i_2376
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[0] along load instance i_2767
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[0] along load instance i_4386
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[0] along load instance i_2376
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[5] along load instance i_4382
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[5] along load instance i_2363
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[5] along load instance i_2772
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[5] along load instance i_4382
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[5] along load instance i_2363
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[4] along load instance i_4383
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[4] along load instance i_2366
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[4] along load instance i_2771
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[4] along load instance i_4383
-RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[4] along load instance i_2366
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[1] along load instance i_4398
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[1] along load instance i_2389
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[1] along load instance i_2783
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[1] along load instance i_4398
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[1] along load instance i_2389
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[0] along load instance i_4399
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[0] along load instance i_2391
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[0] along load instance i_2782
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[0] along load instance i_4399
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[0] along load instance i_2391
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[5] along load instance i_4395
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[5] along load instance i_2378
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[5] along load instance i_2787
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[5] along load instance i_4395
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[5] along load instance i_2378
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[4] along load instance i_4396
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg2_reg[4] along load instance i_2381
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[4] along load instance i_2786
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[4] along load instance i_4396
+RETIMING: forward move fails for register cpu0/id_ex0/ex_reg1_reg[4] along load instance i_2381
 INFO: [Synth 8-5816] Retiming module `riscv_top`
 	Numbers of forward move = 4, and backward move = 60
 
@@ -1082,17 +1080,16 @@ INFO: [Synth 8-5816] Retiming module `riscv_top`
 		cpu0/pc_reg0/npc_reg[24]_bret__30
 		cpu0/pc_reg0/npc_reg[24]_bret_bret
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__0
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__10
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__11
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__12
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__13
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__14
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__15
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__16
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__17
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__18
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__19
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__21
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__2
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__20
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__22
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__23
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__24
@@ -1102,77 +1099,54 @@ INFO: [Synth 8-5816] Retiming module `riscv_top`
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__29
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__3
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__30
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__31
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__32
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__33
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__34
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__35
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__36
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__37
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__38
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__39
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__4
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__40
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__41
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__42
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__43
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__44
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__45
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__46
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__47
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__48
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__49
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__5
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__50
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__51
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__52
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__53
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__54
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__55
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__57
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__56
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__58
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__59
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__6
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__60
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__61
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__63
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__64
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__65
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__66
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__67
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__68
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__69
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__7
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__70
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__71
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__72
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__73
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__74
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__75
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__76
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__77
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__78
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__79
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__81
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__82
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__83
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__84
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__85
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__87
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__88
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__89
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__8
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__9
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__90
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__91
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__93
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__94
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__0
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__1
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__10
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__100
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__101
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__102
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__103
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__104
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__105
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__106
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__107
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__108
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__11
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__12
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__13
@@ -1266,10 +1240,6 @@ INFO: [Synth 8-5816] Retiming module `riscv_top`
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__93
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__94
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__95
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__96
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__97
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__98
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__99
 		hci0/q_tx_data_reg[0]_bret
 		hci0/q_tx_data_reg[0]_bret__0
 		hci0/q_tx_data_reg[0]_bret__1
@@ -1394,22 +1364,22 @@ WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret__26) i
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret__27) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret__28) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret__29) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__2) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__8) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__14) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__20) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__1) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__6) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__11) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__16) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__21) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__26) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__32) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__38) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__43) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__50) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__56) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__31) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__36) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__42) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__47) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__52) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__57) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__62) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__68) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__74) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__80) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__86) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__92) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__67) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__72) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__77) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (hci0/q_tx_data_reg[7]_bret) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (hci0/q_tx_data_reg[0]_bret__4) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (hci0/q_tx_data_reg[7]_bret_bret__0) is unused and will be removed from module riscv_top.
@@ -1420,8 +1390,8 @@ WARNING: [Synth 8-3332] Sequential element (hci0/q_tx_data_reg[3]_bret__1) is un
 WARNING: [Synth 8-3332] Sequential element (hci0/q_tx_data_reg[2]_bret__1) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (hci0/q_tx_data_reg[1]_bret__4) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (hci0/q_tx_data_reg[0]_bret_bret__2) is unused and will be removed from module riscv_top.
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\cpu0/pc_reg0/npc_reg[24]_bret_bret__44 )
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__44) is unused and will be removed from module riscv_top.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\cpu0/pc_reg0/npc_reg[24]_bret_bret__37 )
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__37) is unused and will be removed from module riscv_top.
 INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
@@ -1439,7 +1409,7 @@ INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_5 (impl
 INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7053] The timing for the instance ram0/ram_bram/ram_reg_3_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:21 ; elapsed = 00:01:22 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Finished Technology Mapping : Time (s): cpu = 00:01:20 ; elapsed = 00:01:21 . Memory (MB): peak = 1329.852 ; gain = 718.344
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1459,10 +1429,10 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-RETIMING: backward move register cpu0/pc_reg0/npc_reg[24]_bret_bret__7 from retiming_backward is deleted already 
-RETIMING: backward move register cpu0/pc_reg0/npc_reg[24]_bret_bret__13 from retiming_backward is deleted already 
-RETIMING: backward move register cpu0/pc_reg0/npc_reg[24]_bret_bret__79 from retiming_backward is deleted already 
-RETIMING: backward move register cpu0/pc_reg0/npc_reg[24]_bret_bret__91 from retiming_backward is deleted already 
+RETIMING: backward move register cpu0/pc_reg0/npc_reg[24]_bret_bret__5 from retiming_backward is deleted already 
+RETIMING: backward move register cpu0/pc_reg0/npc_reg[24]_bret_bret__10 from retiming_backward is deleted already 
+RETIMING: backward move register cpu0/pc_reg0/npc_reg[24]_bret_bret__66 from retiming_backward is deleted already 
+RETIMING: backward move register cpu0/pc_reg0/npc_reg[24]_bret_bret__76 from retiming_backward is deleted already 
 INFO: [Synth 8-5816] Retiming module `riscv_top`
 	Numbers of forward move = 0, and backward move = 1
 
@@ -1613,47 +1583,45 @@ INFO: [Synth 8-5816] Retiming module `riscv_top`
 		cpu0/mem_ctrl0/data_out_reg[31]_bret__3
 		cpu0/pc_reg0/npc_reg[24]_bret__30
 		cpu0/pc_reg0/npc_reg[24]_bret_bret
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__0
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__10
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__11
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__0
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__1
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__10
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__11
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__12
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__13
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__14
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__15
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__16
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__17
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__18
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__19
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__2
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__20
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__21
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__22
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__23
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__24
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__25
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__26
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__27
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__28
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__29
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__3
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__30
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__4
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__5
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__6
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__7
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__8
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__0_bret__9
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__12
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__15
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__16
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__13
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__14
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__17
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__18
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__0
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__1
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__10
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__11
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__12
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__13
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__14
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__15
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__16
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__17
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__18
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__19
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__2
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__20
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__21
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__22
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__23
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__24
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__25
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__26
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__27
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__28
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__29
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__3
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__30
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__4
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__5
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__6
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__7
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__8
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__1_bret__9
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__21
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__19
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__2
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__22
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__23
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__24
@@ -1661,66 +1629,44 @@ INFO: [Synth 8-5816] Retiming module `riscv_top`
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__28
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__29
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__3
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__30
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__32
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__33
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__34
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__35
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__36
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__38
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__39
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__4
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__40
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__41
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__42
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__43
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__44
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__45
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__46
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__47
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__48
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__5
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__51
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__52
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__49
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__50
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__53
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__54
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__57
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__55
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__58
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__59
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__6
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__60
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__63
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__64
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__65
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__66
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__68
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__69
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__7
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__70
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__71
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__72
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__73
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__74
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__75
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__76
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__77
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__78
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__81
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__82
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__83
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__84
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__87
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__88
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__89
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__79
+		cpu0/pc_reg0/npc_reg[24]_bret_bret__8
 		cpu0/pc_reg0/npc_reg[24]_bret_bret__9
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__90
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__93
-		cpu0/pc_reg0/npc_reg[24]_bret_bret__94
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__0
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__1
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__10
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__100
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__101
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__102
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__103
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__104
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__105
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__106
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__107
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__108
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__12
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__11
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__13
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__14
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__15
@@ -1728,59 +1674,59 @@ INFO: [Synth 8-5816] Retiming module `riscv_top`
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__18
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__19
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__2
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__20
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__21
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__22
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__23
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__24
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__25
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__26
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__27
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__28
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__29
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__3
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__30
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__32
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__31
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__33
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__34
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__35
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__37
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__38
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__39
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__4
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__40
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__41
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__42
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__43
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__44
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__45
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__46
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__47
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__48
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__49
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__5
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__50
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__52
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__51
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__53
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__54
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__55
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__57
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__58
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__59
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__6
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__60
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__61
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__62
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__63
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__64
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__65
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__66
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__67
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__68
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__69
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__7
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__70
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__71
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__72
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__73
+		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__74
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__75
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__76
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__77
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__78
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__79
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__8
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__80
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__81
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__82
@@ -1798,10 +1744,6 @@ INFO: [Synth 8-5816] Retiming module `riscv_top`
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__93
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__94
 		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__95
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__96
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__97
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__98
-		cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__99
 		hci0/q_tx_data_reg[0]_bret
 		hci0/q_tx_data_reg[0]_bret__0
 		hci0/q_tx_data_reg[0]_bret__1
@@ -1895,48 +1837,48 @@ INFO: [Synth 8-5816] Retiming module `riscv_top`
 INFO: [Synth 8-5816] Retiming module `riscv_top' done
 
 
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__1) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__7) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__13) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__19) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__0) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__5) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__10) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__15) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__20) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__25) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__31) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__37) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__49) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__55) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__30) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__41) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__46) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__51) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__56) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__61) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__67) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__73) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__79) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__85) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__91) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__1) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__6) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__11) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__66) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__71) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret__76) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__0) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__4) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__8) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__12) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__16) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__21) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__26) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__31) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__20) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__24) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__28) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__32) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__36) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__41) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__46) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__51) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__40) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__44) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__48) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__52) is unused and will be removed from module riscv_top.
 WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__56) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__61) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__66) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__71) is unused and will be removed from module riscv_top.
-WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__74) is unused and will be removed from module riscv_top.
+WARNING: [Synth 8-3332] Sequential element (cpu0/pc_reg0/npc_reg[24]_bret_bret_bret__59) is unused and will be removed from module riscv_top.
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:25 ; elapsed = 00:01:26 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Finished IO Insertion : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 1329.852 ; gain = 718.344
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:25 ; elapsed = 00:01:26 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 1329.852 ; gain = 718.344
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1955,25 +1897,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:25 ; elapsed = 00:01:26 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:24 ; elapsed = 00:01:25 . Memory (MB): peak = 1329.852 ; gain = 718.344
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:26 ; elapsed = 00:01:26 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:24 ; elapsed = 00:01:25 . Memory (MB): peak = 1329.852 ; gain = 718.344
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:26 ; elapsed = 00:01:26 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:24 ; elapsed = 00:01:25 . Memory (MB): peak = 1329.852 ; gain = 718.344
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:26 ; elapsed = 00:01:26 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:24 ; elapsed = 00:01:25 . Memory (MB): peak = 1329.852 ; gain = 718.344
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1991,49 +1933,47 @@ Report Cell Usage:
 |      |Cell       |Count |
 +------+-----------+------+
 |1     |clk_wiz_0  |     1|
-|2     |BUFG       |     1|
-|3     |CARRY4     |   165|
-|4     |LUT1       |    31|
-|5     |LUT2       |   376|
-|6     |LUT3       |   121|
-|7     |LUT4       |  1124|
-|8     |LUT5       |   529|
-|9     |LUT6       |  1782|
-|10    |MUXF7      |   372|
-|11    |MUXF8      |   178|
-|12    |RAM256X1S  |    74|
-|13    |RAM32M     |     2|
-|14    |RAM64M     |    74|
-|15    |RAM64X1D   |    70|
-|16    |RAMB36E1   |    16|
-|17    |RAMB36E1_1 |    16|
-|18    |FDCE       |    59|
-|19    |FDPE       |     6|
-|20    |FDRE       |  2753|
-|21    |FDSE       |    42|
-|22    |LD         |    33|
-|23    |IBUF       |     2|
-|24    |OBUF       |     2|
+|2     |CARRY4     |   165|
+|3     |LUT1       |    30|
+|4     |LUT2       |   357|
+|5     |LUT3       |   134|
+|6     |LUT4       |  1103|
+|7     |LUT5       |   619|
+|8     |LUT6       |  1730|
+|9     |MUXF7      |   373|
+|10    |MUXF8      |   178|
+|11    |RAM256X1S  |    74|
+|12    |RAM32M     |     2|
+|13    |RAM64M     |    74|
+|14    |RAM64X1D   |    70|
+|15    |RAMB36E1   |    16|
+|16    |RAMB36E1_1 |    16|
+|17    |FDCE       |    59|
+|18    |FDPE       |     6|
+|19    |FDRE       |  2722|
+|20    |FDSE       |    42|
+|21    |IBUF       |     2|
+|22    |OBUF       |     2|
 +------+-----------+------+
 
 Report Instance Areas: 
 +------+------------------------+---------------------+------+
 |      |Instance                |Module               |Cells |
 +------+------------------------+---------------------+------+
-|1     |top                     |                     |  7835|
-|2     |  cpu0                  |cpu                  |  6682|
-|3     |    bp0                 |bp                   |   202|
+|1     |top                     |                     |  7776|
+|2     |  cpu0                  |cpu                  |  6629|
+|3     |    bp0                 |bp                   |   243|
 |4     |    ctrl0               |ctrl                 |     4|
 |5     |    ex_mem0             |ex_mem               |   140|
-|6     |    id_ex0              |id_ex                |  1572|
-|7     |    if0                 |if_stage             |   102|
+|6     |    id_ex0              |id_ex                |  1568|
+|7     |    if0                 |if_stage             |    36|
 |8     |    if_id0              |if_id                |   582|
 |9     |    mem0                |mem                  |     1|
-|10    |    mem_ctrl0           |mem_ctrl             |  1191|
+|10    |    mem_ctrl0           |mem_ctrl             |  1213|
 |11    |      cache0            |cache                |   522|
-|12    |      cache1            |cache_1              |   455|
+|12    |      cache1            |cache_1              |   456|
 |13    |    mem_wb0             |mem_wb               |    70|
-|14    |    pc_reg0             |pc_reg               |   926|
+|14    |    pc_reg0             |pc_reg               |   880|
 |15    |    register0           |register             |  1892|
 |16    |  hci0                  |hci                  |  1091|
 |17    |    io_in_fifo          |fifo                 |   226|
@@ -2047,33 +1987,32 @@ Report Instance Areas:
 |25    |    ram_bram            |single_port_ram_sync |    48|
 +------+------------------------+---------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:26 ; elapsed = 00:01:26 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:24 ; elapsed = 00:01:25 . Memory (MB): peak = 1329.852 ; gain = 718.344
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 218 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:13 ; elapsed = 00:01:24 . Memory (MB): peak = 1326.449 ; gain = 625.738
-Synthesis Optimization Complete : Time (s): cpu = 00:01:26 ; elapsed = 00:01:27 . Memory (MB): peak = 1326.449 ; gain = 714.074
+Synthesis finished with 0 errors, 0 critical warnings and 216 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:11 ; elapsed = 00:01:22 . Memory (MB): peak = 1329.852 ; gain = 630.211
+Synthesis Optimization Complete : Time (s): cpu = 00:01:24 ; elapsed = 00:01:25 . Memory (MB): peak = 1329.852 ; gain = 718.344
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.139 . Memory (MB): peak = 1326.449 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1000 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.138 . Memory (MB): peak = 1329.852 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 968 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 1 inverter(s) to 33 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1326.449 ; gain = 0.000
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1329.852 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 253 instances were transformed.
-  LD => LDCE (inverted pins: G): 33 instances
+  A total of 220 instances were transformed.
   RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 74 instances
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
   RAM64M => RAM64M (RAMD64E(x4)): 74 instances
   RAM64X1D => RAM64X1D (RAMD64E(x2)): 70 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-151 Infos, 194 Warnings, 0 Critical Warnings and 0 Errors encountered.
+151 Infos, 192 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:32 ; elapsed = 00:01:33 . Memory (MB): peak = 1326.449 ; gain = 987.367
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1326.449 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:30 ; elapsed = 00:01:32 . Memory (MB): peak = 1329.852 ; gain = 990.145
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1329.852 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.runs/synth_5/riscv_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file riscv_top_utilization_synth.rpt -pb riscv_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Dec 18 20:36:50 2019...
+INFO: [Common 17-206] Exiting Vivado at Thu Dec 19 20:39:07 2019...
