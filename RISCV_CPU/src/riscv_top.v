@@ -28,7 +28,7 @@ wire clk;
 clk_wiz_0 clk_inst(
     .reset(1'b0),
     .clk_in1(EXCLK),
-    .clk_out1(clk)
+    .clk_out2(clk)
 );
 
 always @(posedge clk or posedge btnC)

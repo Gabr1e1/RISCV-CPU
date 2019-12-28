@@ -31,7 +31,7 @@ wire if_flushed, id_flushed;
 wire flush_if, flush_id;
 
 //PC
-wire [`AddrLen - 1 : 0] pc;
+wire [`AddrLen - 1 : 0] pc, npc;
 assign dbgreg_dout = `ZERO_WORD;
 
 wire enable_pc;
@@ -45,12 +45,13 @@ wire [`AddrLen - 1 : 0] jmp_target;
 wire pred_enable;
 
 //IF -> IF/ID
-wire [`InstLen - 1 : 0] if_inst, if_pc;
+wire [`InstLen - 1 : 0] if_inst, if_pc, if_npc;
 wire cacheHit;
 wire [`RegLen - 1 : 0] cacheVal;
 
 //IF/ID -> ID
 wire [`AddrLen - 1 : 0] id_pc_i;
+wire [`AddrLen - 1 : 0] id_npc_i;
 wire [`InstLen - 1 : 0] id_inst_i;
 wire [`AddrLen - 1 : 0] id_prediction_addr_i;
 wire [`AddrLen - 1 : 0] id_prediction_addr_o;
@@ -73,13 +74,13 @@ wire [3:0] id_width;
 wire id_rd_enable;
 wire [`CtrlLen - 1 : 0] ctrlsel_i, ctrlsel_o;
 wire [`AddrLen - 1 : 0] id_jmp_addr, ex_jmp_addr;
-wire [`AddrLen - 1 : 0] id_pc_o;
+wire [`AddrLen - 1 : 0] id_pc_o, id_npc_o;
 
 //ID/EX -> EX
 wire [`OpCodeLen - 1 : 0] ex_aluop;
 wire [`OpSelLen - 1 : 0] ex_alusel;
 wire [`RegLen - 1 : 0] ex_reg1, ex_reg2, ex_Imm, ex_rd;
-wire [`AddrLen - 1 : 0] ex_pc;
+wire [`AddrLen - 1 : 0] ex_pc, ex_npc;
 wire [3:0] ex_width;
 wire ex_rd_enable_i;
 
@@ -130,7 +131,7 @@ wire [`AddrLen - 1 : 0] btb_pred;
 wire btb_change_enable;
 
 //Instantiation
-pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc),
+pc_reg pc_reg0(.clk(clk_in), .rst(rst_in), .pc(pc), .npc(npc),
               .stall(stall[0]), .enable_pc(enable_pc),
               .jmp_target(jmp_target), .jmp_enable(jmp_enable), .prediction(if_prediction), .pred_enable(pred_enable));
 
@@ -139,7 +140,8 @@ bp bp0(.clk(clk_in), .rst(rst_in), .addr(pc),
       .jmp_enable(btb_hit), .prediction(btb_pred));
 
 if_stage if0(.rst(rst_in),.clk(clk_in),
-      .pc(pc), .pc_o(if_pc), .enable_pc(enable_pc), .inst(if_inst),
+      .pc(pc), .pc_o(if_pc), .npc(npc), .npc_o(if_npc),
+      .enable_pc(enable_pc), .inst(if_inst),
 //      .addr_to_mem(addr_from_if), 
       .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
       .stall(stall), .stallreq(stallreq_if),
@@ -147,12 +149,13 @@ if_stage if0(.rst(rst_in),.clk(clk_in),
       .prediction(if_prediction), .pred_enable(pred_enable),
       .cacheHit(cacheHit), .cacheVal(cacheVal));
 
-if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(if_pc), .if_inst(if_inst), .id_pc(id_pc_i), .id_inst(id_inst_i),
+if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(if_pc), .if_npc(if_npc), .if_inst(if_inst), .id_pc(id_pc_i), .id_npc(id_npc_i), .id_inst(id_inst_i),
             .stall(stall),
             .if_prediction(if_prediction), .id_prediction(id_prediction_i),
             .flush(flush_if));
 
-id id0(.rst(rst_in), .pc(id_pc_i), .pc_o(id_pc_o), .inst(id_inst_i), .reg1_data_i(reg1_data), .reg2_data_i(reg2_data), 
+id id0(.rst(rst_in), .pc(id_pc_i), .pc_o(id_pc_o), .npc(id_npc_i), .npc_o(id_npc_o), 
+      .inst(id_inst_i), .reg1_data_i(reg1_data), .reg2_data_i(reg2_data), 
       .reg1_addr_o(reg1_addr), .reg1_read_enable(reg1_read_enable), .reg2_addr_o(reg2_addr), .reg2_read_enable(reg2_read_enable),
       .reg1(id_reg1), .reg2(id_reg2), .Imm(id_Imm), .rd(id_rd), .rd_enable(id_rd_enable), .aluop(id_aluop), .alusel(id_alusel), .ctrlsel(ctrlsel_i), .width(id_width),
       .ex_reg_i(ex_rd_enable_o), .ex_reg_addr(ex_rd_addr), .ex_reg_data(ex_rd_data),
@@ -165,14 +168,14 @@ register register0(.clk(clk_in), .rst(rst_in),
                   .read_enable1(reg1_read_enable), .read_addr1(reg1_addr), .read_data1(reg1_data),
                   .read_enable2(reg2_read_enable), .read_addr2(reg2_addr), .read_data2(reg2_data));
 
-id_ex id_ex0(.clk(clk_in), .rst(rst_in), .id_pc(id_pc_o), .ex_pc(ex_pc), 
+id_ex id_ex0(.clk(clk_in), .rst(rst_in), .id_pc(id_pc_o), .ex_pc(ex_pc), .id_npc(id_npc_o), .ex_npc(ex_npc),
             .id_reg1(id_reg1), .id_reg2(id_reg2), .id_Imm(id_Imm), .id_rd(id_rd), .id_rd_enable(id_rd_enable), .id_aluop(id_aluop), .id_alusel(id_alusel), .id_ctrlsel(ctrlsel_i), .id_width(id_width), 
             .ex_reg1(ex_reg1), .ex_reg2(ex_reg2), .ex_Imm(ex_Imm), .ex_rd(ex_rd), .ex_rd_enable(ex_rd_enable_i), .ex_aluop(ex_aluop), .ex_alusel(ex_alusel), .ex_ctrlsel(ctrlsel_o), .ex_width(ex_width), 
             .id_jmp_addr(id_jmp_addr), .ex_jmp_addr(ex_jmp_addr), 
             .id_prediction(id_prediction_o), .ex_prediction(ex_prediction),
             .stall(stall), .flush(flush_id));
 
-ex ex0(.clk(clk_in), .rst(rst_in), .pc(ex_pc), 
+ex ex0(.clk(clk_in), .rst(rst_in), .pc(ex_pc), .npc(ex_npc), 
       .reg1(ex_reg1), .reg2(ex_reg2), .Imm(ex_Imm), .rd(ex_rd), .rd_enable(ex_rd_enable_i), .aluop(ex_aluop), .alusel(ex_alusel), .ctrlsel(ctrlsel_o), .width_i(ex_width),
       .rd_data_o(ex_rd_data), .rd_addr(ex_rd_addr), .rd_enable_o(ex_rd_enable_o), .mem_addr(ex_mem_addr), .width_o(ex_width_o),
       .jmp_addr(ex_jmp_addr), .prediction(ex_prediction),

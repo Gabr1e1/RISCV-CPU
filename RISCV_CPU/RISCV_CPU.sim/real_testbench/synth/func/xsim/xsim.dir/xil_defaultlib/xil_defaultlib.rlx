@@ -1,6 +1,0 @@
-0.6
-2019.2
-Nov  6 2019
-21:57:16
-C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.sim/real_testbench/synth/func/xsim/testbench_func_synth.v,1575885176,verilog,,C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/real_testbench/imports/sim/testbench.v,,cache;cpu;ctrl;ex;ex_mem;fifo;fifo_0;fifo__parameterized0;glbl;hci;id_ex;if_id;if_stage;mem;mem_ctrl;mem_wb;pc_reg;ram;register;riscv_top;single_port_ram_sync;uart;uart_baud_clk;uart_rx;uart_tx,,,,,,,,
-C:/Users/zhang/Documents/Computer Architecture/ComputerArch2019/RISCV_CPU/RISCV_CPU.srcs/real_testbench/imports/sim/testbench.v,1575730589,verilog,,,,testbench,,,,,,,,
