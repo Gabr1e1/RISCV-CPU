@@ -1,2 +1,5 @@
 
 *.wdb
+*.gz
+*.log
+*.aux
