@@ -36,9 +36,12 @@ module mem_ctrl(
 
     output reg [`RegLen - 1 : 0] data_out,
     output reg [1:0] status_if,
-    output wire cacheHit,
-    output wire [`RegLen - 1 : 0] cacheVal,
-    
+
+    output wire icacheHit,
+    output wire [`RegLen - 1 : 0] icacheVal,
+    output wire dcacheHit,
+    output wire [`RegLen - 1 : 0] dcacheVal,
+
     output reg [1:0] status_mem,
 
     output reg [`AddrLen - 1 : 0] addr_to_mem,
@@ -50,15 +53,24 @@ module mem_ctrl(
     reg [3:0] q, count;
     reg [1:0] status;
     
+//Inst Cache
     reg replace[0:1];
     wire isValid[0:1], isCorrect[0:1];
     wire [`RegLen - 1 : 0] data[0:1];
-    
-    cache cache0(.clk(clk), .rst(rst), .addr(pc), .replace(replace[0]), .data_r(data_out), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
-    cache cache1(.clk(clk), .rst(rst), .addr(pc), .replace(replace[1]), .data_r(data_out), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
+    icache icache0(.clk(clk), .rst(rst), .addr(pc), .replace(replace[0]), .data_r(data_out), .data(data[0]), .isValid(isValid[0]), .isCorrect(isCorrect[0]));
+    icache icache1(.clk(clk), .rst(rst), .addr(pc), .replace(replace[1]), .data_r(data_out), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
+    assign icacheVal = isCorrect[0] ? data[0] : data[1];
+    assign icacheHit = isCorrect[0] || isCorrect[1];    
 
-    assign cacheVal = isCorrect[0] ? data[0] : data[1];
-    assign cacheHit = isCorrect[0] || isCorrect[1];
+//Data Cache
+    reg replace_d;
+    wire isWord;
+    wire isCorrect_d;
+    reg [`RegLen- 1 : 0] data_d;
+
+    dcache dcache (.clk(clk), .rst(rst), .addr(addr_from_mem), .replace(replace_d), .data_r(data_out), .data(data_d), isCorrect(isCorrect_d));
+    assign dcacheVal = data_d;
+    assign dcacheHit = isCorrect_d;
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin
@@ -83,11 +95,14 @@ always @ (posedge clk) begin
                 addr_to_mem <= `ZERO_WORD;
 
                 { replace[0], replace[1] }  <= 2'b00;
+                replace_d = 1'b0;
 
                 if (rw_mem != 2'b00) begin
                     r_nw_to_mem <= (rw_mem == 2'b10);
                     addr_to_mem <= addr_from_mem;
                     q <= quantity;
+                    isWord <= (quantity == 3'b100);
+
                     status_mem <= `WORKING;
                     if (rw_mem == 2'b01)
                         status <= `BUSYR;
@@ -130,7 +145,7 @@ always @ (posedge clk) begin
 
                     if (status_if == `WORKING) begin
                         status_if <= `DONE;
-                        //Replace entry in cache
+                        //Replace entry in icache
 
                         if (!isValid[0])
                             replace[0] <= 1'b1;
@@ -138,6 +153,8 @@ always @ (posedge clk) begin
                             replace[1] <= 1'b1;
                     end
                     else
+                        replace_d <= isWord;
+                        data_d <= data_out;
                         status_mem <= `DONE;
                 end
             end
@@ -161,6 +178,9 @@ always @ (posedge clk) begin
                     addr_to_mem <= `ZERO_WORD;
                     
                 if (count == 2 || q <= 2) begin
+                    replace_d <= isWord;
+                    data_d <= data_to_mem;
+
                     status <= `IDLE;
                     status_mem <= `DONE;
                 end

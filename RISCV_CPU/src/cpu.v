@@ -46,8 +46,8 @@ wire pred_enable;
 
 //IF -> IF/ID
 wire [`InstLen - 1 : 0] if_inst, if_pc, if_npc;
-wire cacheHit;
-wire [`RegLen - 1 : 0] cacheVal;
+wire icacheHit, dcacheHit;
+wire [`RegLen - 1 : 0] icacheVal, dcacheVal;
 
 //IF/ID -> ID
 wire [`AddrLen - 1 : 0] id_pc_i;
@@ -147,7 +147,7 @@ if_stage if0(.rst(rst_in),.clk(clk_in),
       .stall(stall), .stallreq(stallreq_if),
       .btb_hit(btb_hit), .btb_pred(btb_pred),
       .prediction(if_prediction), .pred_enable(pred_enable),
-      .cacheHit(cacheHit), .cacheVal(cacheVal));
+      .cacheHit(icacheHit), .cacheVal(icacheVal));
 
 if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(if_pc), .if_npc(if_npc), .if_inst(if_inst), .id_pc(id_pc_i), .id_npc(id_npc_i), .id_inst(id_inst_i),
             .stall(stall),
@@ -192,7 +192,9 @@ mem mem0(.rst(rst_in),.clk(clk_in),
         .rd_data_i(mem_rd_data_i), .rd_addr_i(mem_rd_addr_i), .rd_enable_i(mem_rd_enable_i), .mem_addr(mem_mem_addr), .width(mem_width), 
         .rd_data_o(mem_rd_data_o), .rd_addr_o(mem_rd_addr_o), .rd_enable_o(mem_rd_enable_o),
         .addr_to_mem(addr_from_mem), .rw_mem(rw_mem), .quantity(quantity), .stallreq(stallreq_mem),
-        .data_from_mem(data_out), .mem_status(status_mem), .data_to_mem(data_in), .stall(stall));
+        .data_from_mem(data_out), .mem_status(status_mem), .data_to_mem(data_in),
+        .cacheHit(dcacheHit), .cacheVal(dcacheVal));
+        .stall(stall));
         
 mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),
               .mem_rd_data(mem_rd_data_o), .mem_rd_addr(mem_rd_addr_o), .mem_rd_enable(mem_rd_enable_o),
@@ -210,5 +212,7 @@ mem_ctrl mem_ctrl0(.rdy(rdy_in), .clk(clk_in), .rst(rst_in), .pc(pc),
                   .data_out(data_out), .status_if(status_if), .status_mem(status_mem), 
                   .addr_to_mem(mem_a), .r_nw_to_mem(mem_wr), .data_to_mem(mem_dout), .data_from_mem(mem_din),
                   .quantity(quantity),
-                  .cacheHit(cacheHit), .cacheVal(cacheVal));
+                  .icacheHit(icacheHit), .icacheVal(icacheVal), 
+                  .dcacheHit(dcacheHit), .dcacheVal(dcacheVal));
+
 endmodule
