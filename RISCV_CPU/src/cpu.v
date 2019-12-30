@@ -140,7 +140,7 @@ bp bp0(.clk(clk_in), .rst(rst_in), .addr(pc),
       .jmp_enable(btb_hit), .prediction(btb_pred));
 
 if_stage if0(.rst(rst_in),.clk(clk_in),
-      .pc(pc), .pc_o(if_pc), .npc(npc), .npc_o(if_npc),
+      .pc(pc), .pc_o(if_pc), .npc(npc), 
       .enable_pc(enable_pc), .inst(if_inst),
 //      .addr_to_mem(addr_from_if), 
       .rw(rw_if), .data_from_mem(data_out), .mem_status(status_if),
@@ -149,12 +149,12 @@ if_stage if0(.rst(rst_in),.clk(clk_in),
       .prediction(if_prediction), .pred_enable(pred_enable),
       .cacheHit(icacheHit), .cacheVal(icacheVal));
 
-if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(if_pc), .if_npc(if_npc), .if_inst(if_inst), .id_pc(id_pc_i), .id_npc(id_npc_i), .id_inst(id_inst_i),
+if_id if_id0(.clk(clk_in), .rst(rst_in), .if_pc(if_pc), .if_inst(if_inst), .id_pc(id_pc_i), .id_inst(id_inst_i),
             .stall(stall),
             .if_prediction(if_prediction), .id_prediction(id_prediction_i),
             .flush(flush_if));
 
-id id0(.rst(rst_in), .pc(id_pc_i), .pc_o(id_pc_o), .npc(id_npc_i), .npc_o(id_npc_o), 
+id id0(.rst(rst_in), .pc(id_pc_i), .pc_o(id_pc_o), .npc_o(id_npc_o),
       .inst(id_inst_i), .reg1_data_i(reg1_data), .reg2_data_i(reg2_data), 
       .reg1_addr_o(reg1_addr), .reg1_read_enable(reg1_read_enable), .reg2_addr_o(reg2_addr), .reg2_read_enable(reg2_read_enable),
       .reg1(id_reg1), .reg2(id_reg2), .Imm(id_Imm), .rd(id_rd), .rd_enable(id_rd_enable), .aluop(id_aluop), .alusel(id_alusel), .ctrlsel(ctrlsel_i), .width(id_width),
@@ -193,7 +193,7 @@ mem mem0(.rst(rst_in),.clk(clk_in),
         .rd_data_o(mem_rd_data_o), .rd_addr_o(mem_rd_addr_o), .rd_enable_o(mem_rd_enable_o),
         .addr_to_mem(addr_from_mem), .rw_mem(rw_mem), .quantity(quantity), .stallreq(stallreq_mem),
         .data_from_mem(data_out), .mem_status(status_mem), .data_to_mem(data_in),
-        .cacheHit(dcacheHit), .cacheVal(dcacheVal));
+        .cacheHit(dcacheHit), .cacheVal(dcacheVal),
         .stall(stall));
         
 mem_wb mem_wb0(.clk(clk_in), .rst(rst_in),

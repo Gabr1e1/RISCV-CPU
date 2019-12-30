@@ -27,7 +27,7 @@ module id_ex(
     input wire [`AddrLen - 1 : 0] id_pc,
     output reg [`AddrLen - 1 : 0] ex_pc,
     input wire [`AddrLen - 1 : 0] id_npc,
-    output wire [`AddrLen - 1 : 0] ex_npc,
+    output reg [`AddrLen - 1 : 0] ex_npc,
     
     input wire [`RegLen - 1 : 0] id_reg1,
     input wire [`RegLen - 1 : 0] id_reg2,
@@ -56,8 +56,6 @@ module id_ex(
     input wire [`PipelineDepth - 1 : 0] stall,
     input wire flush
     );
-
-    assign ex_npc = id_npc;
     
 always @ (posedge clk) begin
     if (rst == `ResetEnable || (stall[2] == `StallEnable && stall[3] == `StallDisable)) begin
@@ -71,6 +69,7 @@ always @ (posedge clk) begin
         ex_width <= `ZERO_WORD;
         ex_pc <= `ZERO_WORD;
         ex_ctrlsel <= `Ctrl_NOP;
+        ex_npc <= 0;
     end
     else if (stall[2] == `StallDisable) begin
         if (flush == `FlushDisable) begin
@@ -85,7 +84,8 @@ always @ (posedge clk) begin
             ex_width <= id_width;
             ex_jmp_addr <= id_jmp_addr;
             ex_prediction <= id_prediction;
-            ex_pc <= id_pc;           
+            ex_pc <= id_pc;
+            ex_npc <= id_npc;
         end
         else begin
             ex_reg1 <= `ZERO_WORD;

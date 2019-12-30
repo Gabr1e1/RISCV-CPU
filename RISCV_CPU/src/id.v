@@ -24,7 +24,6 @@
 module id(
     input wire rst,
     input wire [`AddrLen - 1 : 0] pc,
-    input wire [`AddrLen - 1 : 0] npc,
 
     output wire [`AddrLen - 1 : 0] pc_o,
     output wire [`AddrLen - 1 : 0] npc_o,
@@ -70,7 +69,7 @@ module id(
 
     assign prediction_o = prediction_i;
     assign pc_o = pc;
-    assign npc_o = npc;
+    assign npc_o = pc + 4;
 
     wire [`OpLen - 1 : 0] opcode = inst[`OpLen - 1 : 0];
     wire [`Funct3Len - 1 : 0] funct3 = inst[`Funct3];
@@ -243,7 +242,7 @@ always @ (*) begin
             `JAL: begin
                 reg1_read_enable = `ReadDisable;
                 reg2_read_enable = `ReadDisable;
-                Imm = npc;
+                Imm = pc + 4;
                 rd_enable = `WriteEnable;
                 aluop = `NOP;
                 alusel = `JAL_OP;
@@ -254,7 +253,7 @@ always @ (*) begin
                 reg1_read_enable = `ReadEnable;
                 reg2_read_enable = `ReadDisable;
                 rd_enable = `WriteEnable;
-                Imm = npc;
+                Imm = pc + 4;
                 aluop = `NOP;
                 alusel = `JAL_OP;
                 ctrlsel = `Ctrl_JAL;

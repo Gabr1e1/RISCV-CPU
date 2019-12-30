@@ -24,9 +24,9 @@ module if_stage(
     input wire rst,
     input wire clk,
     input wire [`AddrLen - 1 : 0] pc,
-    output wire [`AddrLen - 1 : 0] pc_o,
     input wire [`AddrLen - 1 : 0] npc,
-    output wire [`AddrLen - 1 : 0] npc_o,
+
+    output wire [`AddrLen - 1 : 0] pc_o,
     
     output reg [`InstLen - 1 : 0] inst,
     
@@ -53,7 +53,6 @@ module if_stage(
     
     assign isLoad = (_inst[`OpLen - 1 : 0] == `LOAD);
     assign pc_o = pc;
-    assign npc_o = npc;
 
 always @ (posedge clk) begin
     _inst <= inst;
@@ -71,7 +70,7 @@ always @ (*) begin
     end
     else begin
         pred_enable = 1'b0;
-        prediction = pc + 4;
+        prediction = npc; //pc + 4;
         if (mem_status == `DONE) begin
             rw = 1'b0;
             inst = data_from_mem;
@@ -80,6 +79,7 @@ always @ (*) begin
             if (btb_hit) begin
                 pred_enable = 1'b1;
                 prediction = btb_pred;
+//                $display("BTB HIT %h %h", pc, prediction);
             end
         end
         else if (mem_status == `IDLE && enable_pc) begin

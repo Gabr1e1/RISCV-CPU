@@ -10,21 +10,22 @@ module dcache(
     output wire isCorrect
     );
 
-    reg [`AddrLen - 1 : 0] entry[`CacheSize - 1 : 0];
-    reg [`TagLen - 1 : 0] tag[`CacheSize - 1 : 0];
-    reg [`CacheSize - 1 : 0] valid;
+    reg [`RegLen - 1 : 0] entry[`DCacheSize - 1 : 0];
+    reg [`DTagLen - 1 : 0] tag[`DCacheSize - 1 : 0];
+    reg [`DCacheSize - 1 : 0] valid;
 
-    assign data = entry[addr[`CacheLen - 1 + 2 : 2]];
-    assign isCorrect = (valid[addr[`CacheLen - 1 + 2 : 2]] == `Valid) ? (tag[addr[`CacheLen - 1 + 2 : 2]] == addr[`CacheLen + `TagLen + 1: `CacheLen + 2]) : 1'b0;
+    assign data = entry[addr[`DCacheLen - 1 + 2 : 2]];
+    assign isCorrect = (valid[addr[`DCacheLen - 1 + 2 : 2]] == `Valid) ? (tag[addr[`DCacheLen - 1 + 2 : 2]] == addr[`DCacheLen + `DTagLen + 1: `DCacheLen + 2]) : 1'b0;
 
     always @ (posedge clk) begin
         if (rst == `ResetEnable) begin
             valid <= 0;
         end
         else if (replace) begin
-            entry[addr[`CacheLen - 1 + 2 : 2]] <= data_r;
-            tag[addr[`CacheLen - 1 + 2 : 2]] <= addr[`CacheLen + `TagLen + 1: `CacheLen + 2];
-            valid[addr[`CacheLen - 1 + 2 : 2]] <= `Valid;
+//            $display("DCache Replace %h %h %h", addr[`DCacheLen + `DTagLen + 1: `DCacheLen + 2], addr, data_r);
+            entry[addr[`DCacheLen - 1 + 2 : 2]] <= data_r;
+            tag[addr[`DCacheLen - 1 + 2 : 2]] <= addr[`DCacheLen + `DTagLen + 1: `DCacheLen + 2];
+            valid[addr[`DCacheLen - 1 + 2 : 2]] <= `Valid;
         end
     end
 endmodule

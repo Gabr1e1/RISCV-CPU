@@ -155,6 +155,11 @@
 `define Valid 1'b1
 `define Correct 1'b1
 
+//DCache
+`define DCacheLen 8
+`define DCacheSize 256
+`define DTagLen 9 //17 - 8
+
 //Branch Prediction
 `define BHTLen 7
 `define BHTSize 128

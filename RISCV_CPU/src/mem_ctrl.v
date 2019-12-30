@@ -64,11 +64,12 @@ module mem_ctrl(
 
 //Data Cache
     reg replace_d;
-    wire isWord;
+    reg isWord;
     wire isCorrect_d;
-    reg [`RegLen- 1 : 0] data_d;
+    reg [`RegLen - 1 : 0] data_dr;
+    wire [`RegLen - 1 : 0] data_d;
 
-    dcache dcache (.clk(clk), .rst(rst), .addr(addr_from_mem), .replace(replace_d), .data_r(data_out), .data(data_d), isCorrect(isCorrect_d));
+    dcache dcache (.clk(clk), .rst(rst), .addr(addr_from_mem), .replace(replace_d), .data_r(data_dr), .data(data_d), .isCorrect(isCorrect_d));
     assign dcacheVal = data_d;
     assign dcacheHit = isCorrect_d;
 
@@ -79,6 +80,8 @@ always @ (posedge clk) begin
         status_mem <= 2'b00;
         r_nw_to_mem <= 1'b0; //Read
         { replace[0], replace[1] } <= { 2'b00 };
+        replace_d <= 1'b0;
+        isWord <= 1'b0;
         q <= 0;
         count <= 0;
     end
@@ -88,12 +91,14 @@ always @ (posedge clk) begin
         case (status)
             `IDLE: begin
                 data_out <= `ZERO_WORD;
+                data_dr <= `ZERO_WORD;
                 count <= 0;
                 status_mem <= `IDLE;
                 status_if <= `IDLE;
                 r_nw_to_mem <= 1'b0;
                 addr_to_mem <= `ZERO_WORD;
-
+                isWord <= (quantity == 3'b100);
+                
                 { replace[0], replace[1] }  <= 2'b00;
                 replace_d = 1'b0;
 
@@ -101,7 +106,6 @@ always @ (posedge clk) begin
                     r_nw_to_mem <= (rw_mem == 2'b10);
                     addr_to_mem <= addr_from_mem;
                     q <= quantity;
-                    isWord <= (quantity == 3'b100);
 
                     status_mem <= `WORKING;
                     if (rw_mem == 2'b01)
@@ -152,10 +156,11 @@ always @ (posedge clk) begin
                         else
                             replace[1] <= 1'b1;
                     end
-                    else
+                    else begin
                         replace_d <= isWord;
-                        data_d <= data_out;
+                        data_dr <= data_out;
                         status_mem <= `DONE;
+                    end
                 end
             end
             `BUSYW: begin
@@ -179,7 +184,7 @@ always @ (posedge clk) begin
                     
                 if (count == 2 || q <= 2) begin
                     replace_d <= isWord;
-                    data_d <= data_to_mem;
+                    data_dr <= data_in;
 
                     status <= `IDLE;
                     status_mem <= `DONE;
