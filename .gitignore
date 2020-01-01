@@ -1,5 +1,12 @@
-
+RISCV_CPU\test\*
 *.wdb
 *.gz
 *.log
 *.aux
+RISCV_CPU/test/test.ans
+RISCV_CPU/test/test.bin
+RISCV_CPU/test/test.c
+RISCV_CPU/test/test.data
+RISCV_CPU/test/test.dump
+RISCV_CPU/test/test.o
+RISCV_CPU/test/test.om
