@@ -28,7 +28,7 @@ module mem_ctrl(
     input wire [`AddrLen - 1 : 0] pc,
     
     input wire [`AddrLen - 1 : 0] addr_from_if,
-    input wire [`AddrLen - 1 : 0] addr_from_mem,
+    input wire [`RegLen - 1 : 0] addr_from_mem,
     input wire [`RegLen - 1: 0] data_in,
     input wire rw_if, // 0 : disable, 1 : read
     input wire [2:0] rw_mem, // 0 : disable, 1 : read 2 : write
@@ -61,15 +61,18 @@ module mem_ctrl(
     icache icache1(.clk(clk), .rst(rst), .addr(pc), .replace(replace[1]), .data_r(data_out), .data(data[1]), .isValid(isValid[1]), .isCorrect(isCorrect[1]));
     assign icacheVal = isCorrect[0] ? data[0] : data[1];
     assign icacheHit = isCorrect[0] || isCorrect[1];    
+//    assign icacheVal = data[0];
+//    assign icacheHit = isCorrect[0];  
 
 //Data Cache
     reg replace_d;
     reg isWord;
     wire isCorrect_d;
+    reg valid_d;
     reg [`RegLen - 1 : 0] data_dr;
     wire [`RegLen - 1 : 0] data_d;
 
-    dcache dcache (.clk(clk), .rst(rst), .addr(addr_from_mem), .replace(replace_d), .data_r(data_dr), .data(data_d), .isCorrect(isCorrect_d));
+    dcache dcache0 (.clk(clk), .rst(rst), .addr(addr_from_mem), .replace(replace_d), .data_r(data_dr), .data(data_d), .isCorrect(isCorrect_d), .valid_r(valid_d));
     assign dcacheVal = data_d;
     assign dcacheHit = isCorrect_d;
 
@@ -80,6 +83,8 @@ always @ (posedge clk) begin
         status_mem <= 2'b00;
         r_nw_to_mem <= 1'b0; //Read
         { replace[0], replace[1] } <= { 2'b00 };
+//        replace[0] = 1'b0;
+        
         replace_d <= 1'b0;
         isWord <= 1'b0;
         q <= 0;
@@ -98,8 +103,10 @@ always @ (posedge clk) begin
                 r_nw_to_mem <= 1'b0;
                 addr_to_mem <= `ZERO_WORD;
                 isWord <= (quantity == 3'b100);
-                
+                valid_d <= 1'b1;
+
                 { replace[0], replace[1] }  <= 2'b00;
+//                replace[0] = 1'b0;
                 replace_d = 1'b0;
 
                 if (rw_mem != 2'b00) begin
@@ -184,6 +191,7 @@ always @ (posedge clk) begin
                     
                 if (count == 2 || q <= 2) begin
                     replace_d <= isWord;
+                    valid_d <= ~isWord;
                     data_dr <= data_in;
 
                     status <= `IDLE;

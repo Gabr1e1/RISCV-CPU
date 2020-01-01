@@ -52,9 +52,7 @@ module mem(
     );
     
     reg _stallreq;
-    
-    assign invAddr = addr_to_mem[17] == 1'b1;
-    
+        
 always @ (posedge clk) begin
     _stallreq <= stallreq;
 end
@@ -95,45 +93,43 @@ always @ (*) begin
         rw_mem = 2'b01;
         addr_to_mem = rd_data_i;
         if (mem_status == `DONE) begin
-            if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
-               if (width[0] == 1'b1) //LBU
-                    rd_data_o = { {24{1'b0}} , data_from_mem[7 : 0] };
-               else
-                    rd_data_o = { {16{1'b0}} , data_from_mem[15 : 0] };
-            end
-            else begin //Signed extension
-                if (width[0] == 1'b1) //LB
+//            if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
+//               if (width[0] == 1'b1) //LBU
+//                    rd_data_o = { {24{1'b0}} , data_from_mem[7 : 0] };
+//               else
+//                    rd_data_o = { {16{1'b0}} , data_from_mem[15 : 0] };
+//            end
+//            else begin //Signed extension
+//                if (width[0] == 1'b1) //LB
+//                    rd_data_o = $signed(data_from_mem[7 : 0]);
+//                else if (width[1] == 1'b1)
+//                    rd_data_o = $signed(data_from_mem[15 : 0]);
+//                else 
+//                    rd_data_o = $signed(data_from_mem[31 : 0]);
+//            end
+            case (width)
+                4'b0001: //LB
                     rd_data_o = $signed(data_from_mem[7 : 0]);
-                else if (width[1] == 1'b1)
+                4'b0010: //LH
                     rd_data_o = $signed(data_from_mem[15 : 0]);
-                else 
+                4'b0100: //LW
                     rd_data_o = $signed(data_from_mem[31 : 0]);
-            end
+                4'b0101: //LBU
+                    rd_data_o = { {24{1'b0}} , data_from_mem[7 : 0] };
+                4'b0110: //LHU
+                    rd_data_o = { {16{1'b0}} , data_from_mem[15 : 0] };
+                default:
+                    rd_data_o = 0;
+            endcase
+            
             stallreq = `StallDisable;
             rw_mem = 2'b00;
         end
         else if (mem_status == `IDLE) begin
-            if (cacheHit && !invAddr) begin
-//                $display("Data Cache Hit!");
+            if (cacheHit && width == 4'b0100) begin
+                rd_data_o = cacheVal;
                 rw_mem = 2'b00;
                 stallreq = `StallDisable;
-                
-                rd_data_o = cacheVal;
-//                //Different width
-//                if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
-//                    if (width[0] == 1'b1) //LBU
-//                         rd_data_o = { {24{1'b0}} , cacheVal[7 : 0] };
-//                    else
-//                        rd_data_o = { {16{1'b0}} , cacheVal[15 : 0] };
-//                end
-//                else begin //Signed extension
-//                    if (width[0] == 1'b1) //LB
-//                        rd_data_o = $signed(cacheVal[7 : 0]);
-//                    else if (width[1] == 1'b1)
-//                        rd_data_o = $signed(cacheVal[15 : 0]);
-//                    else 
-//                        rd_data_o = $signed(cacheVal[31 : 0]);
-//                end
             end
             else begin
                 stallreq = `StallEnable;

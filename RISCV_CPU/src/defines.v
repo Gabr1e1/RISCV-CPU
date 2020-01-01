@@ -156,13 +156,13 @@
 `define Correct 1'b1
 
 //DCache
-`define DCacheLen 8
-`define DCacheSize 256
-`define DTagLen 9 //17 - 8
+`define DCacheLen 5
+`define DCacheSize 32
+`define DTagLen 8
 
 //Branch Prediction
-`define BHTLen 7
-`define BHTSize 128
+`define BHTLen 6
+`define BHTSize 64
 // `define CounterSize 1
 
 `define InstRealLen 13

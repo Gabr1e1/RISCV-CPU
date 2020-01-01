@@ -32,7 +32,7 @@ module if_stage(
     
 //    output reg [`InstLen - 1 : 0] addr_to_mem,
     output reg rw,  
-    input wire [`AddrLen - 1 : 0] data_from_mem,
+    input wire [`RegLen - 1 : 0] data_from_mem,
     input wire [1:0] mem_status,
 //Cache 
     input wire cacheHit,
@@ -79,7 +79,6 @@ always @ (*) begin
             if (btb_hit) begin
                 pred_enable = 1'b1;
                 prediction = btb_pred;
-//                $display("BTB HIT %h %h", pc, prediction);
             end
         end
         else if (mem_status == `IDLE && enable_pc) begin
@@ -92,6 +91,11 @@ always @ (*) begin
                 inst = cacheVal;
                 stallreq = `StallDisable;
                 rw = 1'b0;
+                                
+                if (btb_hit) begin
+                    pred_enable = 1'b1;
+                    prediction = btb_pred;
+                end
             end
         end
         else begin

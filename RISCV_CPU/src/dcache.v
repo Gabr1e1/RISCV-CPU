@@ -2,10 +2,11 @@ module dcache(
     input wire clk,
     input wire rst,
 
-    input wire [`AddrLen - 1 : 0] addr,
-    input wire [`AddrLen - 1 : 0] data_r, //data to replace
+    input wire [`RegLen - 1 : 0] addr,
+    input wire [`RegLen - 1 : 0] data_r, //data to replace
     input wire replace,
-
+    input wire valid_r,
+    
     output wire [`RegLen - 1 : 0] data,
     output wire isCorrect
     );
@@ -21,11 +22,11 @@ module dcache(
         if (rst == `ResetEnable) begin
             valid <= 0;
         end
-        else if (replace) begin
+        else if (replace && addr[17:16] != 2'b11) begin
 //            $display("DCache Replace %h %h %h", addr[`DCacheLen + `DTagLen + 1: `DCacheLen + 2], addr, data_r);
             entry[addr[`DCacheLen - 1 + 2 : 2]] <= data_r;
             tag[addr[`DCacheLen - 1 + 2 : 2]] <= addr[`DCacheLen + `DTagLen + 1: `DCacheLen + 2];
-            valid[addr[`DCacheLen - 1 + 2 : 2]] <= `Valid;
+            valid[addr[`DCacheLen - 1 + 2 : 2]] <= valid_r;
         end
     end
 endmodule

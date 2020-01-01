@@ -24,7 +24,7 @@ module icache(
     input wire clk,
     input wire rst,
     input wire [`AddrLen - 1 : 0] addr,
-    input wire [`AddrLen - 1 : 0] data_r,
+    input wire [`RegLen - 1 : 0] data_r,
     input wire replace,
 
     output wire [`RegLen - 1 : 0] data,
@@ -32,7 +32,7 @@ module icache(
     output wire isValid
     );
 
-    reg [`AddrLen - 1 : 0] entry[`CacheSize - 1 : 0];
+    reg [`RegLen - 1 : 0] entry[`CacheSize - 1 : 0];
     reg [`TagLen - 1 : 0] tag[`CacheSize - 1 : 0];
     reg [`CacheSize - 1 : 0] valid;
 
