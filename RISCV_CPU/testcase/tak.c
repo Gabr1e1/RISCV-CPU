@@ -9,9 +9,9 @@ int main(){
 	int a;
 	int b;
 	int c;
-	a=18; //inl();
-	b=12; //inl();
-	c=6; //inl();
+	a=inl();
+	b=inl();
+	c=inl();
 	// outlln(b);
 	outlln(tak(a,b,c));
 	// printf("%d\n",tak(a,b,c));

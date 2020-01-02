@@ -151,18 +151,18 @@
 //ICache
 `define CacheLen 8
 `define CacheSize 256
-`define TagLen 5
+`define TagLen 6
 `define Valid 1'b1
 `define Correct 1'b1
 
 //DCache
 `define DCacheLen 5
 `define DCacheSize 32
-`define DTagLen 8
+`define DTagLen 10
 
 //Branch Prediction
 `define BHTLen 6
 `define BHTSize 64
 // `define CounterSize 1
 
-`define InstRealLen 13
+`define InstRealLen 16

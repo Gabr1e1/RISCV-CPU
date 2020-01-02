@@ -1,5 +1,6 @@
 #ifndef CPU_JUDGE_TEST_IO_H
 #define CPU_JUDGE_TEST_IO_H
+#define putchar outb
 
 // #define SIM                         // whether in simulation
 

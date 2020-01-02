@@ -190,8 +190,8 @@ always @ (posedge clk) begin
                     addr_to_mem <= `ZERO_WORD;
                     
                 if (count == 2 || q <= 2) begin
-                    replace_d <= isWord;
-                    valid_d <= ~isWord;
+                    replace_d <= 1'b1;
+                    valid_d <= 1'b0;
                     data_dr <= data_in;
 
                     status <= `IDLE;

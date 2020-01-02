@@ -126,14 +126,14 @@ always @ (*) begin
             rw_mem = 2'b00;
         end
         else if (mem_status == `IDLE) begin
-            if (cacheHit && width == 4'b0100) begin
-                rd_data_o = cacheVal;
-                rw_mem = 2'b00;
-                stallreq = `StallDisable;
-            end
-            else begin
+//            if (cacheHit && width == 4'b0100) begin
+//                rd_data_o = cacheVal;
+//                rw_mem = 2'b00;
+//                stallreq = `StallDisable;
+//            end
+//            else begin
                 stallreq = `StallEnable;
-            end
+//            end
         end
         else begin
             stallreq = _stallreq;
