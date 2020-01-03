@@ -27,6 +27,7 @@ module cpu(
 // - 0x30004 write: indicates program stop (will output '\0' through uart tx)
 
 wire rst = rst_in & !rdy_in;
+
 //Flush
 wire if_flushed, id_flushed;
 wire flush_if, flush_id;
