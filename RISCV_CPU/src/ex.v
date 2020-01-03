@@ -165,7 +165,7 @@ always @ (*) begin
             `Ctrl_JAL: begin
                 jmp_enable = prediction != jmp_addr;
                 jmp_target = jmp_addr;
-                btb_change_enable = 1'b1;
+                btb_change_enable = 1'b0;
             end
             `Ctrl_BEQ: begin
                 jmp_enable = beq ^ (prediction == jmp_addr);

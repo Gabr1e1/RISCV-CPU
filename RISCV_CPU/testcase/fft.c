@@ -85,5 +85,5 @@ int main(){
 	for (i=0;i<=n;++i) a[i]=inl();
 	for (i=0;i<=m;++i) b[i]=inl();
 	poly_multiply(a,n,b,m,c);
-	for (i=0;i<=n+m;++i) outl(c[i]), outb(' '), sleep(1);
+	for (i=0;i<=n + m;++i) outl(c[i]), outb(' '), sleep(1);
 }

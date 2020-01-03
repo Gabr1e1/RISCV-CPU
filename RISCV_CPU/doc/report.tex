@@ -62,6 +62,9 @@
             \end{figure}
         \section{Some remarks \& thoughts}
         \begin{enumerate}[label=(\arabic*)]
+            \item Performance \\
+                The performance is listed as follows(at 250MHz):
+                 
             \item Branch Prediction \\
                 Branch Prediction requires calculating the target address in IF stage. However, a significant amount of delay will be introduced by implementing an adder in IF stage.\\
                 Adding a \textbf{Branch Target Buffer(BTB)} resolves this problem. BTB records the target address for all \textit{taken} branches. Thus, the IF stage uses the current PC to index the BTB,
@@ -69,7 +72,6 @@
             \item Overclocking \\
                 Since I wrote the code with the principle of minimizing delay in mind, there is a positive $2ns$ WNS at $100MHz$. \\
                 Overclocking to $250MHz$ still yields stable performance. \\
-                At $250MHz$, testcase \textit{pi} takes $0.6$ seconds.
             \item Debugging \\
                 Debugging is hard, especially on the FPGA, but not impossible. Setting up debug probe allows me to find problem with the rdy signal. \\
                 Also, don't just test \textit{pi}! The code could still be incorrect even if \textit{pi} runs correctly. 

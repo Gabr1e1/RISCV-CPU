@@ -72,9 +72,9 @@ module mem_ctrl(
     reg [`RegLen - 1 : 0] data_dr;
     wire [`RegLen - 1 : 0] data_d;
 
-    dcache dcache0 (.clk(clk), .rst(rst), .addr(addr_from_mem), .replace(replace_d), .data_r(data_dr), .data(data_d), .isCorrect(isCorrect_d), .valid_r(valid_d));
-    assign dcacheVal = data_d;
-    assign dcacheHit = isCorrect_d;
+//    dcache dcache0 (.clk(clk), .rst(rst), .addr(addr_from_mem), .replace(replace_d), .data_r(data_dr), .data(data_d), .isCorrect(isCorrect_d), .valid_r(valid_d));
+//    assign dcacheVal = data_d;
+//    assign dcacheHit = isCorrect_d;
 
 always @ (posedge clk) begin
     if (rst == `ResetEnable) begin

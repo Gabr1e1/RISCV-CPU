@@ -45,6 +45,7 @@ int main() {
 			}
 		}
 		outlln(phi[k]);
+		sleep(1);
 	}
     return 0;
 }

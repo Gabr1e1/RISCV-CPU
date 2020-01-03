@@ -26,7 +26,7 @@ static inline unsigned long inl()
     unsigned long ret = 0;
     unsigned char ch;
     int sign=0;
-    while ((ch=inb())) if(ch!='\n'&&ch!=' '&&ch!='\t') break;
+    while ((ch=inb())) if ((ch >= '0' && ch <= '9') || (ch == '-')) break;
     do {
         if(ch=='-'&&!sign) sign=1;
         else if(ch<'0'||ch>'9') break;

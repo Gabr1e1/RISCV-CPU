@@ -158,7 +158,7 @@
 //DCache
 `define DCacheLen 5
 `define DCacheSize 32
-`define DTagLen 10
+`define DTagLen 12
 
 //Branch Prediction
 `define BHTLen 6

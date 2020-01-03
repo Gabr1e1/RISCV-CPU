@@ -70,7 +70,7 @@ always @ (*) begin
     end
     else begin
         pred_enable = 1'b0;
-        prediction = pc + 4;
+        prediction = npc; //pc + 4;
         if (mem_status == `DONE) begin
             rw = 1'b0;
             inst = data_from_mem;
@@ -91,6 +91,10 @@ always @ (*) begin
                 inst = cacheVal;
                 stallreq = `StallDisable;
                 rw = 1'b0;
+                if (btb_hit) begin
+                    pred_enable = 1'b1;
+                    prediction = btb_pred;
+                end
             end
         end
         else begin

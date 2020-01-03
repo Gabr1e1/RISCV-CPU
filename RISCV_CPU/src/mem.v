@@ -93,20 +93,6 @@ always @ (*) begin
         rw_mem = 2'b01;
         addr_to_mem = rd_data_i;
         if (mem_status == `DONE) begin
-//            if (width[2] ^ width[1] ^ width[0] == 0) begin //Unsigned extension
-//               if (width[0] == 1'b1) //LBU
-//                    rd_data_o = { {24{1'b0}} , data_from_mem[7 : 0] };
-//               else
-//                    rd_data_o = { {16{1'b0}} , data_from_mem[15 : 0] };
-//            end
-//            else begin //Signed extension
-//                if (width[0] == 1'b1) //LB
-//                    rd_data_o = $signed(data_from_mem[7 : 0]);
-//                else if (width[1] == 1'b1)
-//                    rd_data_o = $signed(data_from_mem[15 : 0]);
-//                else 
-//                    rd_data_o = $signed(data_from_mem[31 : 0]);
-//            end
             case (width)
                 4'b0001: //LB
                     rd_data_o = $signed(data_from_mem[7 : 0]);

@@ -117,8 +117,8 @@ always @ (*) begin
             `INTCOM_AUIPC: begin
                 Imm = { inst[31:12], {12{1'b0}} };
                 rd_enable = `WriteEnable;
-                aluop = `OP_LUI;
-                alusel = `LUI_OP;
+                aluop = `OP_AUIPC;
+                alusel = `AUIPC_OP;
             end
             `INTCOM_REG: begin
                 Imm = { {20{inst[31]}} ,inst[31:20] };
