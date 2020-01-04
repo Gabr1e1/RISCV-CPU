@@ -84,13 +84,11 @@ always @ (posedge clk) begin
         r_nw_to_mem <= 1'b0; //Read
         { replace[0], replace[1] } <= { 2'b00 };
 //        replace[0] = 1'b0;
-        
+        data_to_mem <= 0;
         replace_d <= 1'b0;
         isWord <= 1'b0;
         q <= 0;
         count <= 0;
-    end
-    else if (!rdy) begin
     end
     else begin
         case (status)

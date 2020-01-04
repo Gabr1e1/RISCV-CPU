@@ -82,7 +82,7 @@ always @ (*) begin
             end
         end
         else if (mem_status == `IDLE && enable_pc) begin
-            if ((!cacheHit) || isLoad) begin
+            if (1'b1) begin //(!cacheHit) || isLoad) begin
                 rw = 1'b1;
                 stallreq = `StallEnable;
                 inst = _inst;
