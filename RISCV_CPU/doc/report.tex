@@ -36,11 +36,11 @@
             \begin{center}
                 \begin{tabular}{ |c|c| } 
                 \hline
-                    Features & Description \\
+                    \textbf{Features} & \textbf{Description} \\
                 \hline
                     ISA & RISCV32I subset \\
                 \hline
-                    Pipeline & 5-stage pipeline with data-forwarding \\
+                    Pipeline & 5-stage pipeline with complete data-forwarding \\
                 \hline
                     Cache & 1KB 2-way set associative Instruction Cache \& 256Byte direct-mapped Data Cache\\
                 \hline
@@ -48,6 +48,10 @@
                 \hline
                 \end{tabular}
             \end{center}
+            \begin{itemize}
+                \item BTB stores the target address of taken branches, if BTB results in a hit, IF uses the target address provided by the BTB. 
+                \item Data cache uses write-through and write-allocate policy.
+            \end{itemize}
         \subsection{Design \& Datapath graph}
             The design is a standard 5-stage pipeline with forwarding from $EX/MEM$ latch and $MEM/WB$ latch to $ID$ stage.
 
